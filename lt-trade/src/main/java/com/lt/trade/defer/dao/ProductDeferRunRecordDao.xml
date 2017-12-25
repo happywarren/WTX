@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.defer.dao.ProductDeferRunRecordDao">
+
+    <insert id="insertProductDeferRunRecord" parameterType="com.lt.vo.defer.ProductDeferRunRecordVo">
+		INSERT INTO product_defer_run_record
+		(
+		future_type,
+		next_one_period,
+		day,
+		create_time
+
+		)VALUES
+		(
+		#{futureType},
+		#{nextOnePeriod},
+		#{day},
+		#{createTime}
+		)
+	</insert>
+
+    <!-- 查询短品种的递延费扣除执行日志 -->
+    <select id="queryProductDeferRunRecord" parameterType="com.lt.vo.defer.ProductDeferRunRecordVo" resultType="com.lt.vo.defer.ProductDeferRunRecordVo">
+        SELECT * FROM `product_defer_run_record`
+        <where>
+            1=1
+            <if test="futureType != null">
+                and future_type=#{futureType}
+            </if>
+            <if test="nextOnePeriod != null">
+                and next_one_period=#{nextOnePeriod}
+            </if>
+            <if test="day != null">
+                and day=#{day}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>

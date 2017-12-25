@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lt.manager.dao.brand.BrandDao">
+
+    <select id="findPayChannelByBrandId" parameterType="java.lang.String"
+            resultType="com.lt.model.user.charge.ChargeChannelInfo">
+        SELECT
+            cci.channel_id,
+            cci.channel_name
+        FROM
+            brand_pay_info b
+            JOIN
+            charge_channel_info cci
+                ON
+                    cci.channel_id = b.pay_id
+        WHERE
+            b.brand_id = #{brandId}
+    </select>
+
+    <select id="getBrandListPage" parameterType="com.lt.manager.bean.brand.BrandVo"
+            resultType="com.lt.manager.bean.brand.BrandPage">
+		SELECT
+			bi.*, ub.nick_name
+		FROM
+			brand_info bi
+		LEFT JOIN user_base ub ON bi.investor_id = ub.user_id
+        <where>
+            <if test="brandId !=null and brandId != '' ">
+                AND bi.brand_id LIKE concat('%',#{brandId},'%')
+            </if>
+
+            <if test="brandName !=null and brandName != '' ">
+                and bi.brand_name LIKE concat('%',#{brandName},'%')
+            </if>
+
+            <if test="brandCode !=null and brandCode != '' ">
+                and bi.brand_code LIKE concat('%',#{brandCode},'%')
+            </if>
+
+            <if test="investorId !=null and investorId != '' ">
+                and bi.investor_id LIKE concat('%',#{investorId},'%')
+            </if>
+        </where>
+        <if test="offset != null and limit != null">
+            limit ${offset},${limit}
+        </if>
+    </select>
+ <select id="getBrandList" parameterType="com.lt.manager.bean.brand.BrandVo"
+            resultType="com.lt.manager.bean.brand.BrandBean">
+		SELECT
+			bi.brand_id,bi.brand_name,bi.brand_code
+		FROM
+			brand_info bi
+        <where>
+            <if test="brandId !=null and brandId != '' ">
+                AND bi.brand_id LIKE concat('%',#{brandId},'%')
+            </if>
+
+            <if test="brandName !=null and brandName != '' ">
+                and bi.brand_name LIKE concat('%',#{brandName},'%')
+            </if>
+
+            <if test="brandCode !=null and brandCode != '' ">
+                and bi.brand_code LIKE concat('%',#{brandCode},'%')
+            </if>
+
+            <if test="investorId !=null and investorId != '' ">
+                and bi.investor_id LIKE concat('%',#{investorId},'%')
+            </if>
+        </where>
+
+    </select>
+
+    <select id="getBrandCount" parameterType="com.lt.manager.bean.brand.BrandVo"
+            resultType="Integer">
+		SELECT
+			count(bi.id)
+		FROM
+			brand_info bi
+		LEFT JOIN user_base ub ON bi.investor_id = ub.user_id      
+        <where>
+            <if test="brandId !=null and brandId != '' ">
+                AND  bi.brand_id LIKE concat('%',#{brandId},'%')
+            </if>
+
+            <if test="brandName !=null and brandName != '' ">
+                and  bi.brand_name LIKE concat('%',#{brandName},'%')
+            </if>
+
+            <if test="brandCode !=null and brandCode != '' ">
+                and  bi.brand_code LIKE concat('%',#{brandCode},'%')
+            </if>
+            
+            <if test="investorId !=null and investorId != '' ">
+                and  bi.investor_id LIKE concat('%',#{investorId},'%')
+            </if>
+        </where>
+
+    </select>
+
+    <insert id="addBrand" parameterType="com.lt.manager.bean.brand.BrandVo">
+        INSERT INTO brand_info (brand_id, brand_name, brand_code,investor_id) VALUES (#{brandId}, #{brandName}, #{brandCode},#{investorId});
+    </insert>
+
+    <delete id="deleteBrand" parameterType="com.lt.manager.bean.brand.BrandVo">
+        DELETE FROM brand_info
+        WHERE brand_id = #{brandId}
+    </delete>
+
+    <update id="updateBrand" parameterType="com.lt.manager.bean.brand.BrandVo">
+        UPDATE brand_info
+        SET brand_name = #{brandName}, brand_code = #{brandCode},investor_id = #{investorId}
+        WHERE brand_id = #{brandId};
+    </update>
+
+
+    <select id="findBrandNameByBrandId" parameterType="java.lang.String"
+            resultType="String">
+        SELECT
+        b.brand_name
+        FROM
+        brand_info b
+        WHERE
+        b.brand_id = #{brandId}
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.controller.user.dao.IUserDao">
+	
+	<select id="queryUserUsedAmt" resultType="com.lt.controller.user.bean.UserFundMsgBean">
+		select f.*,s.used_amt rmbAmt from ( select id,tele from base_user where tele_status = 1 and `status` = 0) f LEFT JOIN financy_main_cash s
+		on f.id = s.user_id
+	</select>	
+	
+	<select id="queryUserBaseInfo" resultType="com.lt.controller.user.bean.UserOldBaseInfo">
+		select f.*,s.head_pic,th.image_1,th.image_2,th.image_3,IFNULL(th.real_status,0) real_status,IFNULL(fo.user_name,'') user_name,IFNULL(fo.id_card_num,'') id_card_num,
+		IFNULL(fo.bank_num,'') bank_num,IFNULL(fo.bank_name,'') bank_name,IFNULL(fo.is_default,1) is_default_bank,IFNULL(fo.bank_status,0) bank_status from 
+		(select id userId,tele,tele_status,nick_name,`password`,create_date,reg_mode,reg_source,device_imei,ip,device_model,device_version version,version device_version from base_user ) f 
+
+		LEFT JOIN user_detail s on s.user_id = f.userId
+
+		LEFT JOIN (select user_id,image_1,image_2,image_3 ,`status` real_status from user_audit where  `status` = 1 GROUP BY user_id) th on f.userId = th.user_id
+
+		LEFT JOIN (select user_id,user_name,id_card_num,bank_num,bank_name,is_default,bank_status from user_bank) fo 
+		
+		on fo.user_id = f.userId
+	</select>
+	
+	<select id="queryUserMain" resultType="com.lt.controller.user.bean.UserMainCash" parameterType="java.lang.String">
+		select used_amt balance,store_amt total_recharge_amount,draw_amt total_draw_amount,user_id,cash_benefit total_benefit_amount,counter_fee total_counter_fee from financy_main_cash  where user_id = #{userId}
+	</select>
+	
+	<select id="querydeferFee" resultType="java.lang.Double" parameterType="java.lang.String">
+		select COUNT(cur_flow_amt) from financy_flow_cash_temp where remark LIKE '%递延%费%' and user_id = #{userId}
+	</select>
+	
+	<select id="queryUserOrder" resultType="java.lang.Integer" parameterType="java.lang.String">
+		select COUNT(*) from futures_cash_orders where user_id = #{userId}
+	</select>
+</mapper>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.SysNoticeDao">
+
+	<select id="selectSysNoticePage" parameterType="com.lt.manager.bean.sys.SysNoticeParam" resultType="com.lt.model.sys.SysNotice">
+		select * from sys_notice
+		<where>
+			<if test="beginTime != null and beginTime != ''">
+				and create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= create_date
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="id != null and id != ''">
+				and id=#{id}
+			</if>
+			<if test="title != null and title != ''">
+				and title like CONCAT('%',#{title},'%')
+			</if>
+		</where>
+		order by modify_date desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectSysNoticeCount" parameterType="com.lt.manager.bean.sys.SysNoticeParam" resultType="Integer">
+		select count(1) from sys_notice
+		<where>
+			<if test="beginTime != null and beginTime != ''">
+				and create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= create_date
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="id != null and id != ''">
+				and id=#{id}
+			</if>
+			<if test="title != null and title != ''">
+				and title like CONCAT('%',#{title},'%')
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertSysNotice" parameterType="com.lt.manager.bean.sys.SysNoticeParam">
+		insert into sys_notice
+		(
+ 		 	`title` ,
+ 		 	`content`,
+ 		 	<if test="invalidType != null">
+ 		 		`invalid_type`,
+ 		 	</if>
+  			`invalid_day` ,
+  			`create_date`,
+  			`create_user_id`,
+  			`modify_date`,		
+  			<if test="status != null">
+  				`status`,
+  			</if>
+  			`modify_user_id`
+  			
+  		)
+  			values
+  		(
+  			#{title},
+  			#{content},
+  			<if test="invalidType != null">
+ 		 		#{invalidType},
+ 		 	</if>		
+  			#{invalidDay},
+  			now(),
+  			#{createUserId},
+  			now(),			
+  			<if test="status != null">
+  				#{status},
+  			</if>
+  			#{modifyUserId}
+  		)
+  		
+	</insert>
+	
+	<delete id="deleteSysNotice" parameterType="com.lt.manager.bean.sys.SysNoticeParam">	
+		delete from sys_notice where id in(${ids})
+	</delete>
+	
+	<update id="updateSysNotice" parameterType="com.lt.manager.bean.sys.SysNoticeParam">
+		update sys_notice
+		<set>
+			<if test="title != null and title != ''">
+				title = #{title},
+			</if>
+			<if test="content != null and content != ''">
+				content = #{content},
+			</if>
+			<if test="invalidType != null">
+				invalid_type = #{invalidType},
+			</if>
+			<if test="invalidDay != null">
+				invalid_day = #{invalidDay},
+			</if>
+			<if test="modifyUserId != null and modifyUserId != ''">
+				modify_user_id = #{modifyUserId}
+			</if>
+			modify_date=now(),
+			<if test="status != null">
+				status=#{status}
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectSysNoticeOne" parameterType="com.lt.manager.bean.sys.SysNoticeParam" resultType="com.lt.model.sys.SysNotice">
+		select * from sys_notice 
+		<where>
+			<if test="id != null and id != ''">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/redis
+       http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
+       
+	<!-- redis 相关 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="150" />
+		<property name="maxIdle" value="30" />
+		<property name="minIdle" value="10" />
+		<!-- <property name="maxWaitMillis" value="1000l" /> -->
+	</bean>
+
+	<bean id="redisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		p:hostName="${redis_stock.hostName}"
+		p:password="${redis_stock.password}"
+		p:port="${redis_stock.port}"
+		p:usePool="${redis_stock.usePool}"
+		p:database="${redis_stock.database}"
+		p:poolConfig-ref="jedisPoolConfig" />
+
+	<!-- 序列化Java对象的方法 -->
+	<bean id="fastJsonSerializer" class="com.lt.util.utils.redis.RedisJsonSerializer" />
+	
+	<bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connectionFactory-ref="redisConnectionFactory"
+		p:defaultSerializer-ref="fastJsonSerializer"
+		p:keySerializer-ref="stringSerializer" />
+	
+</beans>    

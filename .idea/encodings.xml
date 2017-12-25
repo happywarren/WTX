@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/inner-quota" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-business" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-fund" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-interface" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-manager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-quota" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-task" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-trade" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-trades" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-user" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/lt-util" charset="UTF-8" />
+  </component>
+</project>

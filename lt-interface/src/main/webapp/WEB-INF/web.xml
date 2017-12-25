@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+
+	<display-name>Archetype Created Web Application</display-name>
+
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/log4j.properties</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:/spring*.xml</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>AdapterServlet</servlet-name>
+		<servlet-class>com.lt.adapter.AdapterServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>AdapterServlet</servlet-name>
+		<url-pattern>/api</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FileUploadAdapterServlet</servlet-name>
+		<servlet-class>com.lt.adapter.FileUploadAdapterServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>FileUploadAdapterServlet</servlet-name>
+		<url-pattern>/fileUploadapi</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>H5AdapterServlet</servlet-name>
+		<servlet-class>com.lt.adapter.H5AdapterServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>H5AdapterServlet</servlet-name>
+		<url-pattern>/h5api</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>aliPayCallBackServlet</servlet-name>
+		<servlet-class>com.lt.adapter.AliPayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>aliPayCallBackFServlet</servlet-name>
+		<servlet-class>com.lt.adapter.AliPayCallBackFServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>aliPayCallBackServlet</servlet-name>
+		<url-pattern>/aliPayCallback</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>aliPayCallBackFServlet</servlet-name>
+		<url-pattern>/aliPayCallFback</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UnspayCallBackServlet</servlet-name>
+		<servlet-class>com.lt.adapter.UnspayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>UnspayCallBackServlet</servlet-name>
+		<url-pattern>/unspayCallback</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PromoteServlet</servlet-name>
+		<servlet-class>com.lt.adapter.PromoteServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>PromoteServlet</servlet-name>
+		<url-pattern>/pro/p</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>kqCallBackServlet</servlet-name>
+		<servlet-class>com.lt.adapter.KqPayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>kqCallBackServlet</servlet-name>
+		<url-pattern>/kqCallBack</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>advertiseServlet</servlet-name>
+		<servlet-class>com.lt.adapter.AdvertiseServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>advertiseServlet</servlet-name>
+		<url-pattern>/advertise</url-pattern>
+	</servlet-mapping>
+
+	<!-- 智付回调接口接收start -->
+	<servlet>
+		<servlet-name>dinpayCallBackServlet</servlet-name>
+		<servlet-class>com.lt.adapter.DinpayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dinpayCallBackServlet</servlet-name>
+		<url-pattern>/dinpayCallBack</url-pattern>
+	</servlet-mapping>
+	<!-- 智付回调接口接收end -->
+
+
+	<!-- 熙大支付宝回调接口接收start -->
+	<servlet>
+		<servlet-name>xdpayCallBackServlet</servlet-name>
+		<servlet-class>com.lt.adapter.XDPayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>xdpayCallBackServlet</servlet-name>
+		<url-pattern>/xdpayCallBackServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 熙大支付宝回调接口接收end -->
+
+	<!-- 威富通回调接口接收start -->
+	<servlet>
+		<servlet-name>swiftPassResultSerlet</servlet-name>
+		<servlet-class>com.lt.adapter.SwiftPassResultSerlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>swiftPassResultSerlet</servlet-name>
+		<url-pattern>/swiftPassResultSerlet</url-pattern>
+	</servlet-mapping>
+	<!-- 威富通回调接口接收end -->
+
+	<!--  爱贝入金回调接口接收start -->
+	<servlet>
+		<servlet-name>iapppayServlet</servlet-name>
+		<servlet-class>com.lt.adapter.IapppayCallBackServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>iapppayServlet</servlet-name>
+		<url-pattern>/iapppayServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 爱贝入金回调接口接收end -->
+
+	<!-- 钱通充值start -->
+	<servlet>
+		<servlet-name>QianTongPayCallBackFServlet</servlet-name>
+		<servlet-class>com.lt.adapter.QianTongPayCallBackFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QianTongPayCallBackFServlet</servlet-name>
+		<url-pattern>/QianTongPayCallBackFServlet</url-pattern>
+	</servlet-mapping>
+	<!-- 钱通充值end -->
+
+
+	<!-- 聚合回调start -->
+	<servlet>
+		<servlet-name>aggpayCallBack</servlet-name>
+		<servlet-class>com.lt.adapter.AggpayCallBackFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>aggpayCallBack</servlet-name>
+		<url-pattern>/aggpayCallBack</url-pattern>
+	</servlet-mapping>
+	<!-- 聚合回调end -->
+</web-app>

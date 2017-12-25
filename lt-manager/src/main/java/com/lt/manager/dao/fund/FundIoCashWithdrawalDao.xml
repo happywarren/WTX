@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.fund.FundIoCashWithdrawalDao">	
+	<!-- 查询提现记录 -->
+	<select id="selectFundIoCashWithdrawalById" parameterType="java.lang.Long" resultType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_cash_withdrawal where id = #{id} for update 
+	</select>
+	
+	<update id="updateFundIoCashWithds" parameterType="java.util.List">
+		<foreach collection="list" index="index" item="item" separator=";">
+			update fund_io_cash_withdrawal 
+		 <set>
+			<if test="item.status != null">status = #{item.status}, </if>   
+			<if test="item.payId != null">pay_id = #{item.payId}, </if>   
+			<if test="item.remark != null">remark = #{item.remark}, </if>
+			<if test="item.firstOptCode != null">first_optcode = #{item.firstOptCode},</if>
+			<if test="item.secondOptCode != null">second_optcode = #{item.secondOptCode},</if>
+			<if test="item.thirdOptCode != null">third_optcode = #{item.thirdOptCode},</if>
+			<if test="item.modifyUserId != null">modify_user_id =  #{item.modifyUserId}, </if>
+			<if test="item.unspayAccountType != null">unspay_account_type =  #{item.unspayAccountType}, </if>
+			modify_date = NOW()
+		</set>
+		 where id = #{item.id}
+		</foreach>
+	</update>
+	
+	<update id="updateFundIoCashWithd" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		update fund_io_cash_withdrawal 
+		 <set>
+			<if test="status != null">status = #{status}, </if>   
+			<if test="modifyUserId != null">modify_user_id =  #{modifyUserId}, </if>
+			<if test="thirdOptCode != null">third_optcode = #{thirdOptCode}, </if>
+			<if test="modifyUserId != null">modify_user_id = #{modifyUserId}, </if>
+			<if test="remark != null">remark = #{remark}, </if>
+			 modify_date = NOW(),
+			done_date = now()
+		</set>
+		 where id = #{id}
+	</update>
+	
+	<select id="selectTransferDetailByIoid" parameterType="Long" resultType="com.lt.model.fund.FundTransferDetail">
+		select * from fund_transfer_detail where io_id=#{ioId}
+	</select>
+	
+	<select id="selectTransferDetailByPayid" parameterType="String" resultType="com.lt.model.fund.FundTransferDetail">
+		select * from fund_transfer_detail where pay_id=#{payId}
+	</select>
+	
+	<insert id="insertFundTransferDetails" parameterType="java.util.List">
+	insert into fund_transfer_detail
+		(
+  		`pay_id` ,
+  		`user_id`,
+  		`io_id`,
+ 		 `user_name`,
+ 		 `bank_num`,
+ 		 `open_bank_prov`,
+ 		 `open_bank_city` ,
+ 		 `branch_name`,
+ 		 `bank_name`,
+ 		 `amount`,
+ 		  `rmb_amt`,
+ 		 `create_date` ,
+ 		 `transfer_date`,
+ 		 `transfer_user_id`,
+ 		 `remark`,
+ 		 `operate_statu`,
+ 		 `status`
+		)values	
+		<foreach collection="list" item="item" index="index" separator="," >
+			(
+			#{item.payId},
+			#{item.userId},
+			#{item.ioId},
+			#{item.userName},
+			#{item.bankNum},
+			#{item.openBankProv},
+			#{item.openBankCity},
+			#{item.branchName},
+			#{item.bankName},
+			#{item.amount},
+			#{item.rmbAmt},
+			#{item.createDate},
+			now(),
+			#{item.transferUserId},
+			#{item.remark},
+			#{item.operateStatu},
+			#{item.status}
+			)
+		</foreach>
+	</insert>
+	
+	<insert id="insertFundTransferDetail" parameterType="com.lt.model.fund.FundTransferDetail">
+	insert into fund_transfer_detail
+		(
+  		`pay_id` ,
+  		`user_id`,
+  		`io_id`,
+ 		 `user_name`,
+ 		 `bank_num`,
+ 		 `open_bank_prov`,
+ 		 `open_bank_city` ,
+ 		 `branch_name`,
+ 		 `bank_name`,
+ 		 `amount`,
+ 		 `rmb_amt`,
+ 		 `create_date` ,
+ 		 `transfer_date`,
+ 		 `transfer_user_id`,
+ 		 `remark`,
+ 		 `operate_statu`,
+ 		 `status`,
+ 		 `done_date`
+		)values	(
+			#{payId},
+			#{userId},
+			#{ioId},
+			#{userName},
+			#{bankNum},
+			#{openBankProv},
+			#{openBankCity},
+			#{branchName},
+			#{bankName},
+			#{amount},
+			#{rmbAmt},
+			#{createDate},
+			now(),
+			#{transferUserId},
+			#{remark},
+			#{operateStatu},
+			#{status},
+			#{doneDate})
+	</insert>
+	
+	<update id="updateTransferDetail" parameterType="com.lt.model.fund.FundTransferDetail">
+		update fund_transfer_detail
+		<set>
+			<if test="status != null">
+				status = #{status},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark = #{remark},
+			</if>
+			<if test="operateStatu != null and operateStatu != ''">
+				operate_statu = #{operateStatu},
+			</if>
+			done_date=now()
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectFundIoCashWithds" resultType="com.lt.model.fund.FundIoCashWithdrawal" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_cash_withdrawal
+		<where>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="thirdOptCode != null and thirdOptCode != ''">
+				and third_optcode=#{thirdOptCode}
+			</if>
+			<if test="payId != null and payId != ''">
+				and pay_id=#{payId}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectFundIoCashWithdalIds" resultType="com.lt.model.fund.FundIoCashWithdrawal" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		select id from fund_io_cash_withdrawal
+		<where>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="thirdOptCode != null and thirdOptCode != ''">
+				and third_optcode=#{thirdOptCode}
+			</if>
+			<if test="payId != null and payId != ''">
+				and pay_id=#{payId}
+			</if>
+		</where>
+	</select>
+		
+	<select id="selectFundIoCashWithdByPayIdForUpdate" parameterType="String" resultType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_cash_withdrawal where pay_id=#{payId} for update
+	</select>
+		
+	<select id="selectFundIoCashWithdByPayId" parameterType="String" resultType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_cash_withdrawal where pay_id=#{orderId}
+	</select>	
+</mapper>

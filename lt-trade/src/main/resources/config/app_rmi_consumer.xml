@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://code.alibabatech.com/schema/dubbo
+                        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 资金服务分布式接口 -->
+    <dubbo:reference id="fundAccountApiService" interface="com.lt.api.fund.IFundAccountApiService" check="false"/>
+    
+    <!-- 资金服务分布式接口:资金扣款、结算、退款业务实现 -->
+    <dubbo:reference id="fundTradeApiService" interface="com.lt.api.fund.IFundTradeApiService" check="false"/>
+ 
+	<!-- 产品服务分布式接口 -->
+    <dubbo:reference id="productApiService" interface="com.lt.api.business.product.IProductApiService" check="false"/>
+    
+    <!-- 产品行情、交易、清仓时间服务分布式接口 -->
+    <dubbo:reference id="productTimeConfigApiService" interface="com.lt.api.business.product.IProductTimeConfigApiService" check="false"/>
+    
+    <!-- 提供短信服务接口 -->
+    <dubbo:reference id="smsApiService" interface="com.lt.api.sms.ISmsApiService" check="false"/>
+    
+    <!-- 券商费用配置服务分布式接口 -->
+    <dubbo:reference id="investorFeeCfgApiService" interface="com.lt.api.user.IInvestorFeeCfgApiService" check="false"/>
+    
+    <!-- 行情服务分布式接口 -->
+    <dubbo:reference id="dispatcherApiService" interface="com.lt.api.dispatcher.IDispatcherApiService" check="false"/>
+    
+    <!-- 用户操作日志对外分布式接口 -->
+    <dubbo:reference id="IUserApiLogService" interface="com.lt.api.user.IUserApiLogService" check="false"/>
+    
+    <!-- 用户对外分布式接口 -->
+    <dubbo:reference id="userApiService" interface="com.lt.api.user.IUserApiService" check="false"/>
+    
+    <dubbo:reference id="investorProductConfigApiService" interface="com.lt.api.user.IInvestorProductConfigApiService" check="false"/>
+    
+    <dubbo:reference id="productRiskConfigService" interface="com.lt.api.business.product.IProductRiskConfigService" check="false"/>
+    
+</beans>

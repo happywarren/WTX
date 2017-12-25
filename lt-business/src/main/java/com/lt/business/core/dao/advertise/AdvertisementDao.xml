@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.advertise.AdvertisementDao">
+
+	<select id="qryAdvertisementByWeightUptDate" parameterType="java.lang.Integer" resultType="com.lt.model.advertise.Advertisement">
+		select adver_id,banner_url,title,h5_url,content,content_type,is_show_content from advertisement where adver_type=#{adverType} and is_show = '1' ORDER BY weight DESC,update_date DESC
+	</select>
+	
+	<select id="qryAdvertisementById" parameterType="java.lang.String" resultType="com.lt.model.advertise.Advertisement">
+		select content_type,content,h5_url,is_show_content from advertisement where adver_id=#{adverId}
+	</select>
+	
+</mapper>

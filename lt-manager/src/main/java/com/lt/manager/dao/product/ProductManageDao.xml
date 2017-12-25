@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductManageDao">
+	<select id="selectProductPage" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.vo.product.ProductVo">
+		SELECT DISTINCT p.id,p.*,ei.`name` exchangeName,pt.`name` typeName  FROM 
+		(
+			SELECT *,2 p FROM product WHERE expiration_time >= NOW() AND NOW() >= expiration_begin_time 
+			UNION ALL			
+		  	SELECT t.*,1 p FROM (SELECT * FROM (select p.*  from product p where  not EXISTS 
+			(select 1 from product where p.short_code=short_code and create_date > p.create_date)) a WHERE a.short_code NOT IN 
+			(SELECT short_code FROM product WHERE expiration_time >= NOW() AND NOW() >= expiration_begin_time)) t 
+		) p LEFT JOIN product_tag_mapper ptm ON(p.id=ptm.product_id)
+		LEFT JOIN exchange_info ei ON(ei.id =p.exchange_id) LEFT JOIN product_type pt ON(pt.id=p.product_type_id)
+
+		<where>
+			<if test="code != null and code != ''">
+				and p.product_code like  concat('%',#{code},'%')
+			</if>
+			<if test="name != null and name != ''">
+				and p.product_name like concat('%',#{name},'%')
+			</if>
+			<if test="productTypeId != null ">
+				and p.product_type_id=#{productTypeId}
+			</if>
+			<if test="exchangeId != null ">
+				and p.exchange_id=#{exchangeId}
+			</if>
+			<if test="status != null">
+				and p.status=#{status}
+			</if>
+			<if test="marketStatus != null">
+				and p.market_status=#{marketStatus}
+			</if>
+			<if test="tagIds != null and tagIds != ''">
+				and ptm.tag_id in(${tagIds})
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and p.expiration_time >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= p.expiration_time
+			</if>
+			<if test="id != null">
+				and p.id=#{id}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and p.short_code=#{shortCode}
+			</if>
+		</where>
+		ORDER BY sort_num
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectProductCount" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="Integer">
+		SELECT count(DISTINCT short_code) FROM product p LEFT JOIN product_tag_mapper ptm ON(p.id=ptm.product_id)
+		LEFT JOIN exchange_info ei on(ei.id=p.exchange_id) LEFT JOIN product_type pt on(pt.id=p.product_type_id)
+		<where>
+			<if test="code != null and code != ''">
+				and p.product_code like  concat('%',#{code},'%')
+			</if>
+			<if test="name != null and name != ''">
+				and p.product_name like concat('%',#{name},'%')
+			</if>
+			<if test="productTypeId != null ">
+				and p.product_type_id=#{productTypeId}
+			</if>
+			<if test="exchangeId != null ">
+				and p.exchange_id=#{exchangeId}
+			</if>
+			<if test="status != null">
+				and p.status=#{status}
+			</if>
+			<if test="marketStatus != null">
+				and p.market_status=#{marketStatus}
+			</if>
+			<if test="tagIds != null and tagIds != ''">
+				and ptm.tag_id in(${tagIds})
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and p.expiration_time >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= p.expiration_time
+			</if>
+			<if test="id != null">
+				and p.id=#{id}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and p.short_code=#{shortCode}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectProductCodeS" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="String">
+		SELECT product_code FROM product WHERE id in(${ids})
+	</select>
+	
+	<select id="selectProductMap" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.vo.product.ProductVo">
+		SELECT p.*,ei.`name` exchangeName,pt.`name` typeName ,er.currency,pt.code typeCode,d.max_single_open_position,d.max_position_per_account,d.max_lever,d.contract_size,d.spread,d.brand_position
+		FROM product p 
+		LEFT JOIN exchange_info ei on(p.exchange_id=ei.id) LEFT JOIN product_type pt ON(p.product_type_id=pt.id)
+		LEFT JOIN exchange_rate er ON(p.current_rate_id=er.id)
+		LEFT JOIN digital_coin_config d ON(p.product_code = d.product_code)
+		WHERE p.id=#{id}
+	</select>
+	
+	<insert id="inserProduct" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+									keyProperty="id"	useGeneratedKeys="true">
+		INSERT INTO product
+		(
+			product_code,
+			short_code,
+			product_name,
+			product_type_id,
+			exchange_id,
+			quota_exchange_code,
+			market_status,
+			status,
+			sort_num,
+			icon_url,
+			slogan,
+			current_rate_id,
+			create_date,
+			modify_date,
+			operator,
+			decimal_digits,
+			expiration_time,
+			expiration_begin_time,
+			fund_type,
+			begin_time,
+			end_time,
+			is_operate,
+			open_time_summer,
+			close_time_summer,
+			open_time_winter,
+			close_time_winter
+			
+		)VALUES
+		(
+			#{code},
+			#{shortCode},
+			#{name},
+			#{productTypeId},
+			#{exchangeId},
+			#{quotaExchangeCode},
+			#{marketStatus},
+			#{status},
+			1,
+			#{iconUrl},
+			#{slogan},
+			#{currentRateId},
+			now(),
+			now(),
+			#{operator},
+			#{decimalDigits},
+			#{expirationTime},
+			#{expirationBeginTime},
+			#{fundType},
+			#{beginTime},
+			#{endTime},
+			#{isOperate},
+			#{openTimeSummer},
+			#{closeTimeSummer},
+			#{openTimeWinter},
+			#{closeTimeWinter}
+		)
+	</insert>
+	
+	<update id="updateProducts" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		UPDATE product 
+		<set>
+			<if test="code != null and code != ''">
+				product_code=#{code},
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				short_code=#{shortCode},
+			</if>
+			<if test="name != null and name != ''">
+				product_name=#{name},
+			</if>
+			<if test="productTypeId != null ">
+				product_type_id=#{productTypeId},
+			</if>
+			<if test="exchangeId != null ">
+				exchange_id=#{exchangeId},
+			</if>
+			<if test="quotaExchangeCode != null ">
+				quota_exchange_code=#{quotaExchangeCode},
+			</if>
+			<if test="marketStatus != null ">
+				market_status=#{marketStatus},
+			</if>
+			<if test="sortNum != null">
+				sort_num=#{sortNum},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="iconUrl != null and iconUrl != ''">
+				icon_url=#{iconUrl},
+			</if>
+			<if test="slogan != null">
+				slogan=#{slogan},
+			</if>
+			<if test="currentRateId != null">
+				current_rate_id=#{currentRateId},
+			</if>
+			<if test="operator != null">
+				operator=#{operator},
+			</if>
+			<if test="decimalDigits != null">
+				decimal_digits=#{decimalDigits},
+			</if>
+			<if test="expirationTime != null and expirationTime != ''">
+				expiration_time=#{expirationTime},
+			</if>
+			<if test="expirationBeginTime != null and expirationBeginTime != ''">
+				expiration_begin_time=#{expirationBeginTime},
+			</if>
+			<if test="fundType != null">
+				fund_type=#{fundType},
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				begin_time=#{beginTime},
+			</if>
+			<if test="endTime != null and endTime != ''">
+				end_time=#{endTime},
+			</if>
+			<if test="isOperate != null">
+				is_operate=#{isOperate},
+			</if>
+			<if test="shutReason != null and shutReason != ''">
+				shut_reason=#{shutReason},
+			</if>
+			<if test="openTimeSummer != null and openTimeSummer != ''">
+				open_time_summer=#{openTimeSummer},
+			</if>
+			<if test="closeTimeSummer != null and closeTimeSummer != ''">
+				close_time_summer=#{closeTimeSummer},
+			</if>
+			<if test="openTimeWinter != null and openTimeWinter != ''">
+				open_time_winter=#{openTimeWinter},
+			</if>
+			<if test="closeTimeWinter != null and closeTimeWinter != ''">
+				close_time_winter=#{closeTimeWinter},
+			</if>
+			modify_date=now()
+		</set>
+		where id in(${ids})
+	</update>
+	
+	<update id="updateProductSort">
+		UPDATE product SET sort_num=sort_num+1
+	</update>	
+	
+	<update id="updateProSortForList" parameterType="java.util.List">
+		<foreach collection="list" item="item" index="index" separator=";" >  
+			UPDATE product set sort_num=#{item.sortNum} where id=#{item.id}
+		</foreach>
+	</update>
+	
+	<select id="selectProducts" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.model.product.Product">
+		SELECT p.*,ei.plate FROM product p JOIN exchange_info ei on(p.exchange_id=ei.id) order by p.sort_num
+	</select>
+	
+	<select id="selectProductVos"  resultType="com.lt.vo.product.ProductVo">
+		SELECT p.*,ei.plate,ei.`code` exchangeCode,ei.`name` exchangeName,ptc.jump_price,ptc.jump_value,ptc.float_limit,
+		ptc.is_market_price,ptc.limited_price_value,er.currency,er.rate,er.sign currencySign,er.unit currencyUnit,pt.code productTypeCode,d.spread,d.contract_size,d.max_lever,d.max_position_per_account,d.max_single_open_position,d.brand_position
+		FROM product p JOIN exchange_info ei ON(p.exchange_id=ei.id) JOIN product_trade_config ptc ON(p.id=ptc.product_id)
+		JOIN exchange_rate er ON(er.id=p.current_rate_id)
+		LEFT JOIN product_type pt ON (p.product_type_id = pt.id)
+		LEFT JOIN digital_coin_config d ON(p.product_code = d.product_code)
+		ORDER BY p.sort_num
+	</select>
+	
+	<select id="selectProductOne" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.model.product.Product">
+		SELECT p.*,d.spread,d.contract_size,d.max_lever,d.max_position_per_account,d.max_single_open_position,d.brand_position FROM product p LEFT JOIN digital_coin_config d ON (p.product_code = d.product_code)
+		<where>
+			<if test="id != null">
+				and p.id=#{id}
+			</if>
+			<if test="code != null and code != ''">
+				and p.product_code=#{code}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="deleteProduct" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		DELETE FROM product WHERE id in(${ids})
+	</delete>
+	
+	<!-- 大改小 -->
+	<update id="updateProSortForGTL" parameterType="map">
+		UPDATE product SET sort_num=sort_num+1	
+		where sort_num >= #{newSort} and #{oldSort} > sort_num
+	</update>
+	
+	<!-- 小改大 -->
+	<update id="updateProSortForLTG" parameterType="map">
+		UPDATE product SET sort_num=sort_num-1
+		where sort_num > #{oldSort} and #{newSort} >= sort_num
+	</update>
+	
+	<select id="selectProCountByParam" parameterType="map" resultType="Integer">
+		select count(id) from product
+		<where>
+			<if test="typeIds != null and typeIds != ''">
+				and  product_type_id in(${typeIds})
+			</if>
+			<if test="exchangeIds != null and exchangeIds != ''">
+				and exchange_id in(${exchangeIds})
+			</if>
+			<if test="rateIds != null and rateIds != ''">
+				and current_rate_id in(${rateIds})
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="selectProShortCode" resultType="com.lt.model.product.Product" parameterType="com.lt.model.product.Product">
+		select p.*,ei.plate from product p JOIN exchange_info ei on(p.exchange_id=ei.id)
+		<where>
+			<if test="plate != null">
+				and ei.plate=#{plate}
+			</if>
+			<if test="productTypeId != null">
+				and p.product_type_id=#{productTypeId}
+			</if>
+			and NOW() > p.expiration_begin_time and p.expiration_time >= NOW()
+		</where>
+	</select>
+	
+	<select id="selectProCountByCode" resultType="Integer" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		select count(id) from product
+		<where>
+			<if test="code != null and code != ''">
+				and product_code = #{code}
+			</if>
+			<if test="id != null">
+				and id != #{id}
+			</if>
+		</where> 
+	</select>
+	
+	<select id="selectOrderCount" parameterType="java.util.List" resultType="Integer">
+		select count(id) from v_order_cash_info where product_code in(
+		<foreach collection="list" item="item" separator=",">
+			#{item}
+		</foreach>
+		) and 3 >= `status`
+	</select>
+	
+	<select id="selectScoreOrderCount" parameterType="java.util.List" resultType="Integer">
+		select count(id) from v_order_score_info where product_code in(
+		<foreach collection="list" item="item" separator=",">
+			#{item}
+		</foreach>
+		) and 3 >= `status`
+	</select>
+	<select id="selectRateByCurrency" parameterType="java.util.List" resultType="String">
+		select rate from exchange_rate where currency = #{currency}
+		
+	</select>
+	
+	<update id="updateTimeSummer">
+		UPDATE product set begin_time=open_time_summer,end_time=close_time_summer
+	</update>
+	
+	<update id="updateTimeWinter">
+		UPDATE product set begin_time=open_time_winter,end_time=close_time_winter
+	</update>
+	
+	<select id="selectProductList" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.vo.product.ProductVo">
+		select * from product 
+		<where>
+			<if test="shortCode != null and shortCode != ''">
+				and short_code=#{shortCode}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectProAccMapperList" parameterType="String" resultType="com.lt.manager.bean.user.ProductAccountMapper">
+		select * from product_account_mapper where product_id in
+		(select id from product where short_code =(select short_code from product where product_code=#{productCode}))
+		GROUP BY security_code,user_id
+	</select>
+
+	<select id="getLastProduct" parameterType="Integer" resultType="com.lt.model.product.Product">
+		select * from product where short_code in (select short_code from product where id = #{productId}) and id != #{productId} order by expiration_begin_time desc LIMIT 0,1;
+	</select>
+</mapper>

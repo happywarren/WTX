@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.promote.CommisionManageDao">
+
+	<select id="selectCommisionIoPage" parameterType="com.lt.manager.bean.promote.CommisionParamVo" resultType="com.lt.manager.bean.promote.CommisionParamVo">
+		select ci.id,ci.user_id,u.nick_name,ci.amount,ci.balance,ci.create_date from commision_io ci 
+		LEFT JOIN user_base u on(ci.user_id=u.user_id)
+		<where>
+			<if test="userId != null and userId != ''">
+				and ci.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and ci.create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= ci.create_date
+			</if>
+			<if test="status != null">
+				and ci.status=#{status}
+			</if>
+			<if test="flowType != null">
+				and ci.flow_type=#{flowType}
+			</if>
+		</where>
+		order by ci.create_date desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectCommisionIoCount" parameterType="com.lt.manager.bean.promote.CommisionParamVo" resultType="Integer">
+		select COUNT(ci.id) from commision_io ci 
+		LEFT JOIN user_base u on(ci.user_id=u.user_id)
+		<where>
+			<if test="userId != null and userId != ''">
+				and ci.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and ci.create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= ci.create_date
+			</if>
+			<if test="status != null">
+				and ci.status=#{status}
+			</if>
+			<if test="flowType != null">
+				and ci.flow_type=#{flowType}
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and u.brand_id = #{brandId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCommisionFlowPage" parameterType="com.lt.manager.bean.promote.CommisionParamVo" resultType="com.lt.manager.bean.promote.CommisionParamVo">
+		select cf.user_id,cf.create_date,u.nick_name,cf.amount,cf.balance,co.first_optname,co.second_optname,cf.remark,cf.flow_type from commision_flow cf 
+		LEFT JOIN user_base u on(cf.user_id=u.user_id) LEFT JOIN commision_optcode co on(cf.third_optcode=co.third_optcode)
+		JOIN user_base ub ON cf.user_id=ub.user_id
+
+		<where>
+			<if test="userId != null and userId != ''">
+				and cf.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and cf.create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= cf.create_date
+			</if>
+			<if test="remark != null and remark != ''">
+				and cf.remark like concat('%',#{remark},'%')
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and cf.first_optcode=#{firstOptcode}
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and cf.second_optcode=#{secondOptcode}
+			</if>
+			<if test="flowType != null">
+				and cf.flow_type=#{flowType}
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and ub.brand_id = #{brandId}
+			</if>
+		</where>
+		order by cf.id desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectCommisionFlowCount" parameterType="com.lt.manager.bean.promote.CommisionParamVo" resultType="Integer">
+		select COUNT(cf.id) from commision_flow cf 
+		LEFT JOIN user_base u on(cf.user_id=u.user_id) LEFT JOIN commision_optcode co on(cf.third_optcode=co.third_optcode)
+		JOIN user_base ub ON cf.user_id=ub.user_id
+
+		<where>
+			<if test="userId != null and userId != ''">
+				and cf.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and cf.create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= cf.create_date
+			</if>
+			<if test="remark != null and remark != ''">
+				and cf.remark like concat('%',#{remark},'%')
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and cf.first_optcode=#{firstOptcode}
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and cf.second_optcode=#{secondOptcode}
+			</if>
+			<if test="flowType != null">
+				and cf.flow_type=#{flowType}
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and ub.brand_id = #{brandId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCommisionFlowData" parameterType="com.lt.manager.bean.promote.CommisionParamVo" resultType="map">
+		select sum((CASE when cf.flow_type=1 then cf.amount ELSE 0 end)) income,
+		sum((CASE when cf.flow_type=-1 then cf.amount ELSE 0 end)) outcome
+		from commision_flow cf 
+		LEFT JOIN user_base u on(cf.user_id=u.user_id) LEFT JOIN commision_optcode co on(cf.third_optcode=co.third_optcode)
+		JOIN user_base ub ON cf.user_id=ub.user_id
+
+		<where>
+			<if test="userId != null and userId != ''">
+				and cf.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and cf.create_date >= #{beginTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and #{endTime} >= cf.create_date
+			</if>
+			<if test="remark != null and remark != ''">
+				and cf.remark like concat('%',#{remark},'%')
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and cf.first_optcode=#{firstOptcode}
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and cf.second_optcode=#{secondOptcode}
+			</if>
+			<if test="flowType != null">
+				and cf.flow_type=#{flowType}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getCommisionOptcodes" resultType="com.lt.model.promote.CommisionOptcode" parameterType="com.lt.model.promote.CommisionOptcode">
+		select DISTINCT first_optcode,first_optname,second_optcode,second_optname from commision_optcode
+		<where>1=1
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and first_optcode=#{firstOptcode}
+			</if>
+		</where>
+	</select>
+</mapper>

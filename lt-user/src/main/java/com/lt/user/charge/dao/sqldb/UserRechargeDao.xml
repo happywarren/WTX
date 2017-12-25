@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserRechargeDao">
+
+	<select id="selectGroupIdByChannelId" parameterType="java.lang.String" resultType="java.lang.String">
+		select
+			group_id
+		from
+			charge_channel_info
+		where
+			channel_id = #{channelId}
+	</select>
+
+
+
+	<select id="selectFundOptCodebyThirdOptCode" parameterType="java.lang.String" resultType="com.lt.model.fund.FundOptCode">
+		SELECT 
+			* 
+		from 
+			fund_optcode 
+		where 
+			third_optcode = #{thirdOptCode}
+	</select>
+
+	<select id="selectChannelIdByGroupId" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT 
+			channel_id
+		from 
+			charge_channel_info 
+		where 
+			group_id = #{groupId}
+	</select>
+</mapper>

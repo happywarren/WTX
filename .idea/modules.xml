@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/inner-quota/inner-quota.iml" filepath="$PROJECT_DIR$/inner-quota/inner-quota.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-api/lt-api.iml" filepath="$PROJECT_DIR$/lt-api/lt-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-business/lt-business.iml" filepath="$PROJECT_DIR$/lt-business/lt-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lt-code.iml" filepath="$PROJECT_DIR$/.idea/lt-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-fund/lt-fund.iml" filepath="$PROJECT_DIR$/lt-fund/lt-fund.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-interface/lt-interface.iml" filepath="$PROJECT_DIR$/lt-interface/lt-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-manager/lt-manager.iml" filepath="$PROJECT_DIR$/lt-manager/lt-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-quota/lt-quota.iml" filepath="$PROJECT_DIR$/lt-quota/lt-quota.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-task/lt-task.iml" filepath="$PROJECT_DIR$/lt-task/lt-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-trade/lt-trade.iml" filepath="$PROJECT_DIR$/lt-trade/lt-trade.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-trades/lt-trades.iml" filepath="$PROJECT_DIR$/lt-trades/lt-trades.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-user/lt-user.iml" filepath="$PROJECT_DIR$/lt-user/lt-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-util/lt-util.iml" filepath="$PROJECT_DIR$/lt-util/lt-util.iml" />
+    </modules>
+  </component>
+</project>

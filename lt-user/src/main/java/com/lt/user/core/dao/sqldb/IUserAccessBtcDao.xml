@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserAccessBtcDao">
+	<select id="findUserAccessBtc" resultType="com.lt.model.user.UserAccessBtc">
+		SELECT * FROM user_access_btc WHERE user_id = #{0}
+	</select>
+
+	<insert id="userAccessBtc" parameterType="com.lt.model.user.UserAccessBtc">
+		INSERT INTO user_access_btc
+		(
+		`user_id` ,
+		`is_access`
+		)VALUES
+		(
+		#{userId},
+		#{isAccess}
+		)
+	</insert>
+</mapper>

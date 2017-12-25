@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserInvestorAccountDao">
+	
+	
+	<select id="selectInvestorAccountIdForCode" resultType="Integer">
+	   SELECT
+			id
+	   FROM investor_account
+      WHERE  security_code = #{0}
+       	
+	</select>
+
+	<select id="listInvestorAccountForServer" resultType="com.lt.model.user.InvestorAccount">
+		SELECT
+		*
+		FROM investor_account t
+		WHERE t.is_open = 1
+	</select>
+
+	<select id="selectInvestorAccountById" resultType="com.lt.model.user.InvestorAccount">
+		SELECT
+		*
+		FROM investor_account
+		WHERE id = #{0}
+	</select>
+	
+</mapper>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductTradeConfigManageDao">
+	<insert id="insertProductTradeConfig" parameterType="com.lt.model.product.ProductTradeConfig">
+		INSERT INTO product_trade_config
+		(
+			product_id,
+			max_stop_profit,
+			max_stop_loss,
+			max_multiple,
+			create_date,
+			create_user_id,
+			modify_date,
+			modify_user_id,
+			jump_price,
+			min_stop_profit,
+			min_stop_loss,
+			jump_value,
+			min_multiple,
+			min_surcharge,
+			max_surcharge,
+			min_defer_fund,
+			max_defer_fund,
+			min_defer_fee,
+			max_defer_fee,
+			min_counter_fee,
+			max_counter_fee,
+			is_defer,
+			float_limit,
+			is_market_price,
+			stop_profit_range,
+			stop_loss_range,
+			multiple_range,
+			default_count,
+			default_stop_profit,
+			default_stop_loss,
+			limited_price_value
+		)VALUES
+		(
+			#{productId},
+			#{maxStopProfit},
+			#{maxStopLoss},
+			#{maxMultiple},
+			now(),
+			#{createUserId},
+			now(),
+			#{modifyUserId},
+			#{jumpPrice},
+			#{minStopProfit},
+			#{minStopLoss},
+			#{jumpValue},
+			#{minMultiple},
+			#{minSurcharge},
+			#{maxSurcharge},
+			#{minDeferFund},
+			#{maxDeferFund},
+			#{minDeferFee},
+			#{maxDeferFee},
+			#{minCounterFee},
+			#{maxCounterFee},
+			#{isDefer},
+			#{floatLimit},
+			#{isMarketPrice},
+			#{stopProfitRange},
+			#{stopLossRange},
+			#{multipleRange},
+			#{defaultCount},
+			#{defaultStopProfit},
+			#{defaultStopLoss},
+			#{limitedPriceValue}
+		)
+	</insert>
+	
+	<update id="updateProductTradeConfigs" parameterType="com.lt.model.product.ProductTradeConfig">
+		UPDATE product_trade_config
+		<set>
+			<if test="maxStopProfit != null">
+				max_stop_profit=#{maxStopProfit},
+			</if>
+			<if test="maxStopLoss != null">
+				max_stop_loss=#{maxStopLoss},
+			</if>
+			<if test="maxMultiple != null">
+				max_multiple=#{maxMultiple},
+			</if>
+				modify_date=now(),
+			<if test="modifyUserId != null">
+				modify_user_id=#{modifyUserId},
+			</if>
+			<if test="jumpPrice != null">
+				jump_price=#{jumpPrice},
+			</if>
+			<if test="minStopProfit != null">
+				min_stop_profit=#{minStopProfit},
+			</if>
+			<if test="minStopLoss != null">
+				min_stop_loss=#{minStopLoss},
+			</if>
+			<if test="jumpValue != null">
+				jump_value=#{jumpValue},
+			</if>
+			<if test="minMultiple != null">
+				min_multiple=#{minMultiple},
+			</if>
+			<if test="minSurcharge != null">
+				min_surcharge=#{minSurcharge},
+			</if>
+			<if test="maxSurcharge != null">
+				max_surcharge=#{maxSurcharge},
+			</if>
+			<if test="minDeferFund != null">
+				min_defer_fund=#{minDeferFund},
+			</if>
+			<if test="maxDeferFund != null">
+				max_defer_fund=#{maxDeferFund},
+			</if>
+			<if test="minDeferFee != null">
+				min_defer_fee=#{minDeferFee},
+			</if>
+			<if test="maxDeferFee !=null">
+				max_defer_fee=#{maxDeferFee},
+			</if>
+			<if test="minCounterFee != null">
+				min_counter_fee=#{minCounterFee},
+			</if>
+			<if test="maxCounterFee != null">
+				max_counter_fee=#{maxCounterFee},
+			</if>
+			<if test="isDefer != null">
+				is_defer=#{isDefer},
+			</if>
+			<if test="floatLimit != null">
+				float_limit=#{floatLimit},
+			</if>
+			<if test="isMarketPrice != null">
+				is_market_price=#{isMarketPrice},
+			</if>
+			<if test="limitedPriceValue != null">
+				limited_price_value=#{limitedPriceValue},
+			</if>
+			<if test="stopProfitRange != null and stopProfitRange != ''" >
+				stop_profit_range=#{stopProfitRange},
+			</if>
+			<if test="stopLossRange != null and stopLossRange != '' ">
+				stop_loss_range=#{stopLossRange},
+			</if>
+			<if test="multipleRange != null and multipleRange != ''">
+				multiple_range=#{multipleRange},
+			</if>
+			<if test="defaultCount != null  ">
+				default_count = #{defaultCount},
+			</if>
+			<if test="defaultStopProfit != null">
+				default_stop_profit=#{defaultStopProfit},
+			</if>
+			<if test="defaultStopLoss != null ">
+				default_stop_loss=#{defaultStopLoss},
+			</if>
+		</set>
+		where product_id in(${ids})
+	</update>
+	
+	<delete id="deleteProTradeCfgs" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		DELETE FROM product_trade_config where product_id in(${ids})
+	</delete>
+	
+	<select id="selectProTradeCfg" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+												resultType="com.lt.model.product.ProductTradeConfig">
+		SELECT * FROM product_trade_config WHERE product_id=#{id}
+	</select>
+	
+	<select id="selectProTradeCfgs" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+											 resultType="com.lt.model.product.ProductTradeConfig">
+		SELECT * FROM product_trade_config 
+		<where>
+			<if test="id !=null">
+			product_id = ${id}
+			</if>
+		</where>
+	</select>
+</mapper>

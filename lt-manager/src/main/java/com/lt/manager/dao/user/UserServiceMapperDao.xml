@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.UserServiceMapperDao">
+	
+	<select id="selectUserServiceMapperByUserId" parameterType="String" resultType="com.lt.manager.bean.user.UserServiceMapper" >
+		
+		select 
+		     m.*,s.service_name  from  user_service_mapper as m
+		Left join 
+		     user_service s on s.service_code = m.service_code
+		where 
+		    user_id=#{userId} 
+	</select>
+	
+	<delete id="deleteUserServiceMapper" parameterType="com.lt.manager.bean.user.UserServiceMapper">
+		delete from user_service_mapper where user_id=#{userId} and service_code=#{serviceCode}
+	</delete>
+	
+	<select id="findUserServiceByCode" parameterType="String" resultType="String" >
+		select 
+		     user_id from  user_service_mapper 
+		where 
+		    service_code=#{serviceCode} 
+		    
+	</select>
+	
+	<delete id="deleteUserService" parameterType="map" >
+		delete from user_service_mapper where user_id=#{userId} and service_code in(${all})
+	</delete>
+	
+	<insert id="insertServiceMappper" parameterType="map">
+		insert into user_service_mapper
+		(
+			user_id,
+			service_code,
+			status,
+			open_time,
+			create_date
+		)values
+		(
+			#{userId},
+			#{code},
+			1,
+			now(),
+			now()
+		)
+	</insert>
+	
+	<update id="updateUserInvestorId" parameterType="java.lang.String">
+		update user_base set investor_account_id=user_id WHERE user_id = #{userId}
+	</update>
+</mapper>

@@ -1,0 +1,6 @@
+2017-12-26  00:01:25.387 [nioEventLoopGroup-40-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-26  00:01:27.590 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-26  00:01:36.025 [nioEventLoopGroup-42-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-26  00:03:05.039 [nioEventLoopGroup-42-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-26  00:03:07.242 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-26  00:03:13.458 [nioEventLoopGroup-43-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功

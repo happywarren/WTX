@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.promote.dao.statistic.IStatisticBrancherDayLogDao">
+
+	<insert id="insertBrancherDayLogs" parameterType="java.util.List">
+		INSERT INTO statistic_brancher_day_log
+		(
+			user_id,
+			promoter_user_id,
+			recharge_amount,
+			hand_count,
+			trade_amount,			
+			statistic_time,
+			create_time,
+			modify_time
+		)VALUES
+		<foreach collection="list" separator="," item="item">
+			(
+				#{item.userId},
+				#{item.promoterUserId},
+				0,
+				0,
+				0,
+				#{item.statisticTime},
+				now(),
+				now()
+			)
+		</foreach>
+	</insert>
+	
+	<insert id="insertBrancherDayLog" parameterType="com.lt.model.statistic.StatisticBrancherDayLog">
+		INSERT INTO statistic_brancher_day_log
+		(
+			user_id,
+			promoter_user_id,
+			recharge_amount,
+			hand_count,
+			trade_amount,			
+			statistic_time,
+			create_time,
+			modify_time
+		)VALUES
+		(
+			#{userId},
+			#{promoterUserId},
+			0,
+			0,
+			0,
+			#{statisticTime},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<select id="selectBrancherDayLog" parameterType="String" resultType="com.lt.model.statistic.StatisticBrancherDayLog">
+		select log.* from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id)
+ 		join statistic_brancher_day_log log on(log.user_id=pum.user_id and log.promoter_user_id=p.user_id) 
+ 		where p.flag=1 and pum.flag=1
+		and log.user_id=#{userId} and log.statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+	
+	<update id="updateBrancherDayLog" parameterType="com.lt.model.statistic.StatisticBrancherDayLog">
+		update statistic_brancher_day_log
+		<set>
+			<if test="rechargeAmount != null">recharge_amount=recharge_amount+#{rechargeAmount},</if>
+			<if test="handCount != null">hand_count=hand_count+#{handCount},</if>
+			<if test="tradeAmount != null">trade_amount=trade_amount+#{tradeAmount},</if>
+			modify_time=now(),
+		</set>
+		where id=#{id}
+	</update>
+	
+	<select id="selectBrancherDayLogList" parameterType="String" resultType="com.lt.model.statistic.StatisticBrancherDayLog">
+		select pum.promoter_id promoter_user_id,log.* from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) 
+		join statistic_brancher_day_log log on(log.user_id=pum.user_id)
+		where p.flag=1 and pum.flag=1 and log.statistic_time=#{statisticTime}
+	</select>
+	
+	
+	<select id="selectBrancherDayLogListByMap" parameterType="map" resultType="com.lt.model.statistic.StatisticBrancherDayLog">
+		select log.* from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) 
+		join statistic_brancher_day_log log on(log.user_id=pum.user_id)
+		where p.flag=1 and pum.flag=1 and log.statistic_time=#{statisticTime} and log.promoter_user_id=#{userId}
+	</select>
+	
+	
+	<select id="selectBrancherDayLogInfoList" parameterType="java.util.List" resultType="com.lt.promote.vo.PromoteVo">
+		select log.user_id,log.hand_count,plog.first_hand_count from statistic_brancher_day_log log 
+		LEFT JOIN statistic_promoter_day_log plog on(log.user_id=plog.user_id and plog.statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')) 
+		where log.statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')
+ 		 and log.user_id in
+ 		<foreach collection="list" item="item" open="(" close=")" separator=",">
+ 			#{item.userId}
+ 		</foreach>
+	</select>
+	
+	<!-- 查询一层下线交易信息（查的是所有的商品==需求如此） -->
+	<select id="selectBrancherTradeInfo" parameterType="map" resultType="map">
+		select a.user_id,b.count hand_count,b.trade_amount,a.promoter_id from 
+		(select pum.user_id,pum.promoter_id from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) where p.flag=1 and pum.flag=1)
+		a LEFT JOIN
+		(select coi.user_id,sum(coi.buy_success_count) count,sum(coi.actual_counter_fee) trade_amount from v_order_cash_info coi 
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY coi.user_id) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectBrancherRechargeInfo" parameterType="map" resultType="map">
+		select a.user_id,b.recharge_amount,a.promoter_id from 
+		(select pum.user_id,pum.promoter_id from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) where p.flag=1 and pum.flag=1) 
+		a LEFT JOIN
+		(select user_id,sum(actual_amount) recharge_amount from fund_io_cash_recharge 
+		where done_date >= #{beginTime} and #{endTime} >=done_date
+ 		GROUP BY user_id) b on(a.user_id=b.user_id)
+ 		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+</mapper>

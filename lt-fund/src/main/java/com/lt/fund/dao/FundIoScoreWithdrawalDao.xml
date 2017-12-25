@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundIoScoreWithdrawalDao">	
+	<!-- 
+	  `id` bigint(15) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+	  `user_id` int(10) DEFAULT NULL COMMENT '用户ID',
+	  `first_optcode` varchar(8) DEFAULT NULL COMMENT '一级资金业务码,提现类型: 支付宝, 快钱, 银行卡',
+	  `second_optcode` varchar(8) DEFAULT NULL COMMENT '二级资金业务码',
+	  `third_optcode` varchar(8) DEFAULT NULL COMMENT '三级资金业务码',
+	  `amount` double(15,2) DEFAULT '0.00' COMMENT '提现金额',
+	  `balance` double(15,2) DEFAULT '0.00' COMMENT '余额',
+	  `tax` double(15,2) DEFAULT '2.00' COMMENT '手续费',
+	  `fact_tax` double(10,2) DEFAULT '2.00' COMMENT '实际手续费',
+	  `create_date` datetime NOT NULL COMMENT '创建时间',
+	  `audit_date` datetime DEFAULT NULL COMMENT '审核时间',
+	  `done_date` datetime DEFAULT NULL COMMENT '完成时间',
+	  `modify_date` datetime DEFAULT NULL COMMENT '修改时间',
+	  `modify_user_id` int(10) DEFAULT NULL COMMENT '修改人ID',
+	  `remark` varchar(255) DEFAULT NULL COMMENT '详情说明',
+	  `status` int(3) DEFAULT '0' COMMENT '状态: 0 待审核, 1 待转账, 2 提现拒绝, 3 转账中, 4 转账失败, 5 转账成功, 6 提现撤销',
+	 -->
+	 
+	<!-- 添加提现审核记录   -->
+	<insert id="addFundIoCashWithdrawal" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		INSERT INTO fund_io_score_withdrawal (
+			user_id, first_optcode, second_optcode, third_optcode, status,
+			amount, balance, tax, fact_tax, create_date, modify_date
+		) VALUES (
+			#{userId}, #{firstOptCode}, #{secondOptCode}, #{thirdOptCode}, 0,
+			#{amount}, #{balance}, #{tax}, #{fact_tax}, now(), now()
+		)
+	</insert>
+	<!-- 修改提现审核记录   -->
+	<insert id="updateFundIoCashWithdrawal" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		update fund_io_score_withdrawal 
+		   set 
+		<if test="status != null">status = #{status}, </if>   
+		<if test="remark != null">remark = #{remark}, </if>
+		<if test="modify_user_id != null">modify_user_id =  #{modifyUserId}, </if>
+		<if test="done_date != null">done_date = #{doneDte}, </if>
+		<if test="audit_date != null">audit_date = #{auditDate}, </if>   
+			   modify_date = NOW()
+		 where id = #{id}
+	</insert>
+	
+	<!-- 查询提现记录 -->
+	<select id="queryFundIoCashWithdrawalById" parameterType="java.lang.Long" resultType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_score_withdrawal where id = #{id};
+	</select>
+</mapper>

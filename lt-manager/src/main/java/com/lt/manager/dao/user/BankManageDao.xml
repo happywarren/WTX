@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.BankManageDao">
+
+	<!-- 添加银行卡信息 -->
+	<insert id="insertBankInfo" parameterType="com.lt.manager.bean.user.BankVo">
+		insert into 
+			bank_info
+			(bank_name,bank_code,bank_pic,card_background)
+		values
+			(#{bankName},#{bankCode},#{bankPic},#{cardBackground})
+	</insert>
+	
+	<!-- 添加银行卡充值信息 -->
+	<insert id="insertBankCharge" parameterType="com.lt.manager.bean.user.BankVo">
+		insert into 
+			bank_charge_mapper
+			(bank_code,channel_id,single_limit,daily_limit,update_date,create_date)
+		values
+			(#{bankCode},#{channelId},#{singleLimit},#{dailyLimit},now(),now())
+	</insert>
+	
+	<!-- 更新银行信息 -->
+	<update id="updateBankInfo" parameterType="com.lt.manager.bean.user.BankVo">
+		update bank_info
+		<set>
+			<if test="bankName != null and bankName != ''">
+				bank_name=#{bankName},
+			</if>
+			<if test="bankPic != null and bankPic != ''">
+				bank_pic=#{bankPic},
+			</if>
+			<if test="cardBackground != null and cardBackground != ''">
+				card_background=#{cardBackground},
+			</if>
+		</set>
+		where bank_code=#{bankCode}
+	</update>
+	
+	<!-- 更新银行充值信息 -->
+	<update id="updateBankCharge" parameterType="com.lt.manager.bean.user.BankVo">
+		update 
+			bank_charge_mapper
+		<set>
+			<if test="singleLimit != null ">
+				single_limit=#{singleLimit},
+			</if>		
+			<if test="dailyLimit != null ">
+				daily_limit=#{dailyLimit},
+			</if>
+			update_Date=now()
+		</set>
+		where
+			bank_code=#{bankCode}
+		and
+			channel_id=#{channelId}
+	</update>
+
+
+	<!-- 删除银行信息 -->	
+	<delete id="deleteBankInfo"	parameterType="com.lt.manager.bean.user.BankVo">
+		delete 
+		from 
+			bank_info
+		where 
+			bank_code=#{bankCode}
+	</delete>
+	
+	<!-- 删除银行充值信息 -->
+	<delete id="deleteBankCharge"	parameterType="com.lt.manager.bean.user.BankVo">
+		delete 
+		from bank_charge_mapper
+		where id=#{id}
+	</delete>
+	
+	<select id="selectBankChannelList" parameterType="com.lt.manager.bean.user.BankVo">
+		select 
+			ucm.id,
+			ucm.bank_code as bankCode,
+			ucm.channel_id as channelId,
+			ucm.single_limit as singleLimit,
+			ucm.daily_limit as dailyLimit,
+			ucm.update_date as updateDate,
+			ucm.create_date as createDate,
+			bi.bank_name as bankName
+		from 
+			user_charge_mapper ucm
+		join 
+			bank_info bi 
+		on 
+			ucm.bank_code=bi.bank_code
+	
+	</select>
+	
+	
+	<!-- 查询最大的银行编号 -->
+	<select id="selectMaxBankCode" resultType="java.lang.String">
+		select
+			bank_code 
+		from 
+			bank_info 
+		order by 
+			bank_code desc 
+		limit 1;
+	</select>
+	
+	
+	<!-- 查询银行信息列表 -->
+	<select id="selectBankInfoList" resultType="com.lt.manager.bean.user.BankVo">
+		 select 
+		 	bi.bank_code as bankCode,
+		 	bi.bank_pic as bankPic,
+		 	bi.bank_name as bankName
+		 from 
+		 	bank_info bi 
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>	 	
+	</select>
+	
+	
+	<!-- 查询银行信息总数 -->
+	<select id="selectBankInfoCount" resultType="java.lang.Integer">
+		 select 
+			count(bi.id)
+		 from 
+		 	bank_info bi 
+	</select>
+	
+	<!-- 根据银行编号查询渠道信息列表 -->
+	<select id="selectChannelByBankCode" resultType="com.lt.manager.bean.user.BankVo" parameterType="java.lang.String">
+		select 
+			cci.channel_id as channelId,
+			cci.channel_name as channelName,
+			bcm.single_limit as singleLimit,
+			bcm.daily_limit as dailyLimit,			
+			bcm.update_date as updateDate,
+			bcm.create_date as createDate
+		from 
+			bank_charge_mapper bcm
+		join 
+			charge_channel_info cci 
+		on 
+			cci.channel_id=bcm.channel_id
+		where
+			bcm.bank_code=#{bankCode}
+		order by 
+			cci.weight desc
+	</select>
+	
+	<!-- 根据银行编号查询渠道信息列表 -->
+	<select id="selectBankLimitInfoList" resultType="com.lt.model.user.charge.BankChargeMapper" parameterType="java.lang.String">
+		select 
+			cci.channel_name as channelName,
+			cci.channel_id as channelId,
+			bcm.single_limit as singleLimit,
+			bcm.daily_limit as dailyLimit,
+			bcm.create_date as createDate,
+			bcm.update_date as updateDate
+		from 
+			bank_charge_mapper bcm
+		join 
+			charge_channel_info cci 
+		on 
+			cci.channel_id=bcm.channel_id
+		where
+			bcm.bank_code=#{bankCode}
+		order by 
+			cci.weight desc
+	</select>
+	
+	<!-- 根据银行编号查询渠道信息列表 -->
+	<select id="selectBankVo" resultType="com.lt.manager.bean.user.BankVo" parameterType="java.lang.String">
+		select 
+			bi.bank_code as bankCode,
+			bi.bank_name as bankName,
+			bi.bank_pic as bankPic
+		from 
+			bank_info bi
+		where
+			bi.bank_code=#{bankCode}
+			
+	</select>
+	
+	
+	<select id="selectBankVoByBankCode" resultType="com.lt.manager.bean.user.BankVo" parameterType="java.lang.String">
+		select 
+			bi.bank_code as bankCode,
+			bi.bank_name as bankName,
+			bi.bank_pic as bankPic,
+			cci.channel_id as channelId,
+			cci.channel_name as channelName,
+			bcm.update_date as updateDate,
+			bcm.create_date as createDate
+		from 
+			bank_info bi
+		join
+			bank_charge_mapper bcm
+		on
+			bi.bank_code=bcm.bank_code
+		join 
+			charge_channel_info cci 
+		on 
+			cci.channel_id=bcm.channel_id
+		where
+			bi.bank_code=#{bankCode}
+		order by 
+			cci.weight desc
+	</select>
+	
+	<!-- 查询支付通道列表 -->
+	<select id="selectChargeChannelList" resultType="com.lt.manager.bean.user.BankVo">
+		select 
+			channel_id as channelId,
+			priority,
+			channel_name as channelName,
+			is_start as isStart
+		from 
+			charge_channel_info
+		where
+			is_start='1'
+		order by 
+			weight desc
+	</select>
+	
+	<select id="qryAllUser" resultType="com.lt.manager.bean.user.UserBaseInfoQueryVO">
+		select user_id from user_base ;
+	</select>
+
+	<insert id="insertUserChargeMapperMutil" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_charge_mapper (user_id,channel_id,create_time) VALUES 
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userId},#{item.channelId},now())
+		</foreach>
+	</insert>
+
+	<!-- 查询充值渠道信息列表 -->
+	<select id="selectChargeChannelPriorityList" resultType="com.lt.manager.bean.user.BankVo">
+		 select 
+		 	cci.channel_id as channelId,
+		 	cci.priority,
+		 	cci.channel_name as channelName
+		 from 
+		 	charge_channel_info cci
+		 order by
+		 	cci.weight desc
+	</select>
+
+</mapper>

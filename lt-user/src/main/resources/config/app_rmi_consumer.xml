@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <dubbo:reference check="false" id="smsService" interface="com.lt.api.sms.ISmsApiService" />
+    <dubbo:reference check="false" id="promoteApiService" interface="com.lt.api.promote.IPromoteApiService" />
+
+    <dubbo:reference check="false" id="fundAccountApiService" interface="com.lt.api.fund.IFundAccountApiService" />
+
+    <dubbo:reference check="false" id="productApiService" interface="com.lt.api.business.product.IProductApiService" />
+
+    <!-- 进程锁服务 -->
+    <dubbo:reference check="false" id="threadLockService" interface="com.lt.api.sys.IThreadLockService" />
+</beans>

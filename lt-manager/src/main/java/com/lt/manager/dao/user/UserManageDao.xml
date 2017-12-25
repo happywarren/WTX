@@ -1,0 +1,897 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.UserManageDao">
+
+    <select id="selectUserInfoPage" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+            resultType="com.lt.manager.bean.user.UserBase">
+        select
+        ub.*
+        from
+        v_user_base ub
+
+        <if test="serviceCode != null and serviceCode != ''">
+            JOIN user_service_mapper usm on(usm.user_id=ub.id and usm.`status`=1)
+        </if>
+        <!-- <if test="tagId != null">
+            LEFT JOIN user_tag_mapper utm on(utm.user_id=ub.id)
+        </if> -->
+        <if test="promoteId != null">
+            JOIN promoter_user_mapper pum on(pum.user_id=ub.id and pum.flag=1)
+        </if>
+
+        <where>
+            1=1
+            <if test="promoteId != null">
+                and pum.promoter_id=#{promoteId}
+            </if>
+            <if test="nickName !=null and nickName != ''">
+                and ub.nick_name like concat('%',#{nickName},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and ub.user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="regSource != null">
+                and ub.reg_source = #{regSource}
+            </if>
+            <if test="openAccountStatus != null and openAccountStatus!=2 ">
+                and ub.open_account_status = #{openAccountStatus}
+            </if>
+            <if test="openAccountStatus != null and openAccountStatus==2 ">
+                and ub.open_account_status != 1 and ub.user_name!='' and ub.id_card_num!='' and id_pic_positive!='' and id_pic_reverse!='' and face_pic_path!=''
+            </if>
+            <if test="realNameStatus != null and realNameStatus != -1 ">
+                and ub.real_name_status = #{realNameStatus}
+            </if>
+            <if test="realNameStatus != null and realNameStatus == -1 ">
+                and ub.real_name_status != 2
+            </if>
+            <if test="regMode != null">
+                and ub.reg_mode = #{regMode}
+            </if>
+            <if test="id != null and id != ''">
+                and ub.id = #{id}
+            </if>
+            <if test="isStaff !=null">
+                and ub.is_staff = #{isStaff}
+            </if>
+            <if test="status !=null and status!=10">
+                and ub.status = #{status}
+            </if>
+            <if test="status !=null and status==10">
+                and ub.status != -10
+            </if>
+            <if test="tele !=null and tele != ''">
+                and ub.tele like concat('%',#{tele},'%')
+            </if>
+            <if test="idCardNum !=null and idCardNum != ''">
+                and ub.idCardNum like concat('%',#{idCardNum},'%')
+            </if>
+            <if test="isBlack != null">
+                and ub.is_black=#{isBlack}
+            </if>
+            <if test="startTime != null and startTime != ''">
+                and ub.create_date <![CDATA[ >= ]]>
+                #{startTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and ub.create_date <![CDATA[ <= ]]>
+                #{endTime}
+            </if>
+            <if test="deviceModel !=null and deviceModel != ''">
+                and ub.device_model like concat('%',#{deviceModel},'%')
+            </if>
+            <if test="lastLoginImei !=null and lastLoginImei != ''">
+                and ub.last_login_imei like concat('%',#{lastLoginImei},'%')
+            </if>
+            <if test="deviceImei != null and deviceImei != ''">
+                and ub.device_imei=#{deviceImei}
+            </if>
+            <if test="ip !=null and ip != ''">
+                and ub.ip = #{ip}
+            </if>
+            <if test="leftDaysMin !=null">
+                and ub.last_login_date  <![CDATA[ <= ]]>  date_add(CURRENT_DATE(), interval -${leftDaysMin} day)
+            </if>
+            <if test="leftDaysMax !=null">
+                and ub.last_login_date  <![CDATA[ >= ]]>   date_add(CURRENT_DATE(), interval -#{leftDaysMax} day)
+            </if>
+            <if test="fundType != null and fundInfo != null and fundInfo != ''">
+                <if test="minMoney != null">
+                    <if test="fundType == 0"><!-- 现金 -->
+                        <if test="fundInfo == 01">
+                            and ub.balanceCash
+                        </if>
+                        <if test="fundInfo == 02">
+                            and ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            and ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            and ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            and ub.totalInterestAmount
+                        </if>
+                        <if test="fundInfo == 06">
+                            and ub.totalRechargeAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            and ub.totalDrawAmount
+                        </if>
+                    </if>
+                    <if test="fundType == 1"><!-- 积分 -->
+                        <if test="fundInfo == 01">
+                            and ub.balanceScore
+                        </if>
+                        <if test="fundInfo == 02">
+                            and ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            and ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            and ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            and ub.totalInterestAmount
+                        </if>
+                        <if test="fundInfo == 06">
+                            and ub.totalManualinAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            and ub.totalManualoutAmount
+                        </if>
+                    </if>
+
+                    >= #{minMoney}
+                </if>
+                <if test="maxMoney != null">
+                    and #{maxMoney} >=
+
+                    <if test="fundType == 0"><!-- 现金 -->
+                        <if test="fundInfo == 01">
+                            ub.balanceCash
+                        </if>
+                        <if test="fundInfo == 02">
+                            ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            ub.totalInterestAmount
+                        </if>
+                        <if test="fundInfo == 06">
+                            ub.totalRechargeAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            ub.totalDrawAmount
+                        </if>
+                    </if>
+                    <if test="fundType == 1"><!-- 积分 -->
+                        <if test="fundInfo == 01">
+                            ub.balanceScore
+                        </if>
+                        <if test="fundInfo == 02">
+                            ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            ub.totalInterestAmount
+                        </if>
+                         <if test="fundInfo == 06">
+                            ub.totalManualinAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            ub.totalManualoutAmount
+                        </if>
+                    </if>
+                </if>
+            </if>
+            <if test="serviceCode != null and serviceCode != ''">
+                and ub.service_code=#{serviceCode}
+            </if>
+            <if test="brandId != null and brandId!= ''">
+                and ub.brand_id=#{brandId}
+            </if>
+            <!-- <if test="tagId != null">
+                and utm.tag_id=#{tagId}
+            </if> -->
+        </where>
+        ORDER BY
+        <if test="col != null and col != '' ">
+            ${col}
+            <if test="dir != null and dir != ''">
+                ${dir}
+            </if>
+        </if>
+
+        <if test="col == null or col == ''">
+            ub.create_date desc
+        </if>
+
+        <if test="offset != null and limit != null">
+            limit ${offset},${limit}
+        </if>
+    </select>
+
+    <select id="selectUserInfoCount" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO" resultType="Integer">
+        select
+        count(ub.id)
+
+        from
+        v_user_base ub
+
+        <if test="serviceCode != null and serviceCode != ''">
+            LEFT JOIN user_service_mapper usm on(usm.user_id=ub.id and usm.`status`=1)
+        </if>
+        <!-- <if test="tagId != null">
+            LEFT JOIN user_tag_mapper utm on(utm.user_id=ub.id)
+        </if> -->
+        <if test="promoteId != null">
+            LEFT JOIN promoter_user_mapper pum on(pum.user_id=ub.id and pum.flag=1)
+        </if>
+
+        <where>
+            1=1
+            <if test="promoteId != null">
+                and pum.promoter_id=#{promoteId}
+            </if>
+            <if test="nickName !=null and nickName != ''">
+                and ub.nick_name like concat('%',#{nickName},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and ub.user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="regSource != null">
+                and ub.reg_source = #{regSource}
+            </if>
+            <if test="openAccountStatus != null and openAccountStatus!=2 ">
+                and ub.open_account_status = #{openAccountStatus}
+            </if>
+            <if test="openAccountStatus != null and openAccountStatus==2 ">
+                and ub.open_account_status != 1 and ub.user_name!='' and ub.id_card_num!='' and id_pic_positive!='' and id_pic_reverse!='' and face_pic_path !=''
+            </if>
+            <if test="realNameStatus != null and realNameStatus != -1">
+                and ub.real_name_status = #{realNameStatus}
+            </if>
+            <if test="realNameStatus != null and realNameStatus == -1 ">
+                and ub.real_name_status != 2
+            </if>
+            <if test="regMode != null">
+                and ub.reg_mode = #{regMode}
+            </if>
+            <if test="id != null and id != ''">
+                and ub.id = #{id}
+            </if>
+            <if test="isStaff !=null">
+                and ub.is_staff = #{isStaff}
+            </if>
+            <if test="status !=null and status!=10">
+                and ub.status = #{status}
+            </if>
+            <if test="status !=null and status==10">
+                and ub.status != -10
+            </if>
+            <if test="tele !=null and tele != ''">
+                and ub.tele like concat('%',#{tele},'%')
+            </if>
+            <if test="idCardNum !=null and idCardNum != ''">
+                and ub.idCardNum like concat('%',#{idCardNum},'%')
+            </if>
+            <if test="isBlack != null">
+                and ub.is_black=#{isBlack}
+            </if>
+            <if test="startTime != null and startTime != ''">
+                and ub.create_date <![CDATA[ >= ]]>
+                #{startTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and ub.create_date <![CDATA[ <= ]]>
+                #{endTime}
+            </if>
+            <if test="deviceModel !=null and deviceModel != ''">
+                and ub.device_model like concat('%',#{deviceModel},'%')
+            </if>
+            <if test="lastLoginImei !=null and lastLoginImei != ''">
+                and ub.last_login_imei like concat('%',#{lastLoginImei},'%')
+            </if>
+            <if test="deviceImei != null and deviceImei != ''">
+                and ub.device_imei=#{deviceImei}
+            </if>
+            <if test="ip !=null and ip != ''">
+                and ub.ip = #{ip}
+            </if>
+            <if test="leftDaysMin !=null">
+                and ub.last_login_date  <![CDATA[ <= ]]>  date_add(CURRENT_DATE(), interval -${leftDaysMin} day)
+            </if>
+            <if test="leftDaysMax !=null">
+                and ub.last_login_date  <![CDATA[ >= ]]>   date_add(CURRENT_DATE(), interval -#{leftDaysMax} day)
+            </if>
+            <if test="fundType != null and fundInfo != null and fundInfo != ''">
+                <if test="minMoney != null">
+                    <if test="fundType == 0"><!-- 现金 -->
+                        <if test="fundInfo == 01">
+                            and ub.balanceCash
+                        </if>
+                        <if test="fundInfo == 02">
+                            and ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            and ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            and ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            and ub.totalInterestAmount
+                        </if>
+                        <if test="fundInfo == 06">
+                            and ub.totalRechargeAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            and ub.totalDrawAmount
+                        </if>
+                    </if>
+                    <if test="fundType == 1"><!-- 积分 -->
+                        <if test="fundInfo == 01">
+                            and ub.balanceScore
+                        </if>
+                        <if test="fundInfo == 02">
+                            and ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            and ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            and ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            and ub.totalInterestAmount
+                        </if>
+                         <if test="fundInfo == 06">
+                            and ub.totalManualinAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            and ub.totalManualoutAmount
+                        </if>
+                    </if>
+
+                    >= #{minMoney}
+                </if>
+                <if test="maxMoney != null">
+                    and #{maxMoney} >=
+
+                    <if test="fundType == 0"><!-- 现金 -->
+                        <if test="fundInfo == 01">
+                            ub.balanceCash
+                        </if>
+                        <if test="fundInfo == 02">
+                            ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            ub.totalInterestAmount
+                        </if>
+                        <if test="fundInfo == 06">
+                            ub.totalRechargeAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            ub.totalDrawAmount
+                        </if>
+                    </if>
+                    <if test="fundType == 1"><!-- 积分 -->
+                        <if test="fundInfo == 01">
+                            ub.balanceScore
+                        </if>
+                        <if test="fundInfo == 02">
+                            ub.holdFund
+                        </if>
+                        <if test="fundInfo == 03">
+                            ub.deferFund
+                        </if>
+                        <if test="fundInfo == 04">
+                            ub.totalCounterFee
+                        </if>
+                        <if test="fundInfo == 05">
+                            ub.totalInterestAmount
+                        </if>
+                         <if test="fundInfo == 06">
+                            ub.totalManualinAmount
+                        </if>
+                        <if test="fundInfo == 07">
+                            ub.totalManualoutAmount
+                        </if>
+                    </if>
+                </if>
+            </if>
+            <if test="serviceCode != null and serviceCode != ''">
+                and ub.service_code=#{serviceCode}
+            </if>
+            <if test="brandId != null and brandId!= ''">
+                and ub.brand_id=#{brandId}
+            </if>            
+            <!-- <if test="tagId != null">
+                and utm.tag_id=#{tagId}
+            </if> -->
+        </where>
+    </select>
+
+    <select id="selectUserBlackListPage" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+            resultType="com.lt.manager.bean.user.UserBase">
+        select
+        ub.user_id as id,
+        ub.user_name as userName,
+        ub.nick_name as nickName,
+        ub.create_date as createDate,
+        o.operator_time as operatorTime,
+        c.balance as balanceCash
+        from
+        user_base ub
+        left join fund_main_cash as c ON ub.user_id = c.user_id
+        left join user_status_operator as o ON ub.user_id = o.user_id
+        <where>
+            1=1 and ub.status = -20
+            <if test="nickName !=null and nickName != ''">
+                and ub.nick_name like concat('%',#{nickName},'%')
+            </if>
+
+            <if test="tele != null and tele != ''">
+                and ub.tele like concat('%',#{tele},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and ub.user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="id != null and id != ''">
+                and ub.user_id = #{id}
+            </if>
+            <if test="status !=null">
+                and ub.status = #{status}
+            </if>
+            <if test="idCardNum !=null and idCardNum != ''">
+                and ub.idCardNum like concat('%',#{idCardNum},'%')
+            </if>
+            <if test="operStartTime != null and operStartTime != ''">
+                and o.operator_time <![CDATA[ >= ]]>
+                #{operStartTime}
+            </if>
+            <if test="operEndTime != null and operEndTime != ''">
+                and o.operator_time <![CDATA[ <= ]]>
+                #{operEndTime}
+            </if>
+        </where>
+        ORDER BY id desc
+    </select>
+
+    <select id="selectUserBlackListCount" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+            resultType="Integer">
+        select
+        count(*)
+        from
+        user_base ub
+        left join fund_main_cash as c ON ub.user_id = c.user_id
+        left join user_status_operator as o ON ub.user_id = o.user_id
+        <where>
+            1=1 and ub.status = -20
+            <if test="nickName !=null and nickName != ''">
+                and ub.nick_name like concat('%',#{nickName},'%')
+            </if>
+            <if test="status !=null">
+                and ub.status = -20
+            </if>
+            <if test="tele != null and tele != ''">
+                and ub.tele like concat('%',#{tele},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and ub.user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="id != null and id != ''">
+                and ub.user_id = #{id}
+            </if>
+            <if test="status !=null">
+                and ub.status = #{status}
+            </if>
+            <if test="idCardNum !=null and idCardNum != ''">
+                and ub.idCardNum like concat('%',#{idCardNum},'%')
+            </if>
+            <if test="operStartTime != null and operStartTime != ''">
+                and o.operator_time <![CDATA[ >= ]]>
+                #{operStartTime}
+            </if>
+            <if test="operEndTime != null and operEndTime != ''">
+                and o.operator_time <![CDATA[ <= ]]>
+                #{operEndTime}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateUserBase" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO">
+        UPDATE user_base
+        <set>
+            <if test="userName != null and userName != ''">
+                user_name=#{userName},
+            </if>
+            <if test="passwd != null and passwd != ''">
+                passwd=#{passwd},
+            </if>
+            <if test="nickName != null and nickName != ''">
+                nick_name=#{nickName},
+            </if>
+            <if test="personalSign != null and personalSign != ''">
+                personal_sign=#{personalSign},
+            </if>
+            <if test="sex != null ">
+                sex=#{sex},
+            </if>
+            <if test="systemName != null ">
+                system_name=#{systemName},
+            </if>
+            <if test="isStartGesture != null ">
+                is_start_gesture=#{isStartGesture},
+            </if>
+            <if test="isSetGesturePwd != null ">
+                is_set_gesture_pwd=#{isSetGesturePwd},
+            </if>
+            <if test="status != null">
+                status=#{status},
+            </if>
+            <if test="idCardNum != null  and idCardNum != ''">
+                id_card_num=#{idCardNum},
+            </if>
+            <if test="promoteId != null">
+                promote_id=#{promoteId},
+            </if>
+            <if test="creditValue != null">
+                credit_value=#{creditValue},
+            </if>
+            <if test="tele != null  and tele != ''">
+                tele=#{tele},
+            </if>
+            <if test="teleStatus != null">
+                tele_status=#{teleStatus},
+            </if>
+            <if test="creditValue != null">
+                credit_value=#{creditValue},
+            </if>
+            <if test="openAccountStatus != null">
+                open_account_status=#{openAccountStatus},
+            </if>
+            <if test="realNameStatus != null">
+                real_name_status=#{realNameStatus},
+            </if>
+            <if test="regOperator != null">
+                reg_operator=#{regOperator},
+            </if>
+            <if test="regSource != null">
+                reg_source=#{regSource},
+            </if>
+            <if test="regMode != null">
+                reg_mode=#{regMode},
+            </if>
+            <if test="isStaff != null">
+                is_staff=#{isStaff},
+            </if>
+            <if test="ip != null and ip != ''">
+                ip=#{ip},
+            </if>
+            <if test="headPic != null and headPic != ''">
+                head_pic=#{headPic},
+            </if>
+            <if test="deviceModel != null and deviceModel != ''">
+                device_model=#{deviceModel},
+            </if>
+            <if test="deviceVersion != null and deviceVersion != ''">
+                device_version=#{deviceVersion},
+            </if>
+            <if test="deviceImei != null and deviceImei != ''">
+                device_imei=#{deviceImei},
+            </if>
+            <if test="version != null  and version != ''">
+                version=#{version},
+            </if>
+            <if test="userGrade != null">
+                user_grade=#{userGrade},
+            </if>
+            <if test="lastLoginDate != null and lastLoginDate != ''">
+                last_login_date=#{lastLoginDate},
+            </if>
+            <if test="lastLoginImei != null  and lastLoginImei != ''">
+                last_login_imei=#{lastLoginImei},
+            </if>
+            <if test="createDate != null  and createDate != ''">
+                create_date=#{createDate},
+            </if>
+            <if test="modifyDate != null and modifyDate != ''">
+                modify_date=#{modifyDate},
+            </if>
+            <if test="remark != null and remark != ''">
+                remark=#{remark},
+            </if>
+            <if test="isBlack != null ">
+                is_black = #{isBlack},
+            </if>
+            <if test="idPicPositive != null and idPicPositive !='' ">
+                id_pic_positive = #{idPicPositive},
+            </if>
+            <if test="idPicReverse != null and idPicReverse !='' ">
+                id_pic_reverse = #{idPicReverse},
+            </if>
+            <if test="bankCardPic != null and bankCardPic !='' ">
+                bankcard_pic = #{bankCardPic},
+            </if>
+            <if test="facePicPath != null and facePicPath !='' ">
+                face_pic_path = #{facePicPath},
+            </if>
+            <if test="signPicPath != null and signPicPath !='' ">
+                sign_pic_path = #{signPicPath},
+            </if>
+            <if test="investorAccountId != null and investorAccountId != ''">
+                investor_account_id=#{investorAccountId},
+            </if>
+            <if test="riskLevel != null and riskLevel!= ''">
+                risk_level=#{riskLevel},
+            </if>
+            modify_date=now(),
+        </set>
+        where user_id=#{id}
+    </update>
+
+    <update id="updateUserInvestor" parameterType="java.lang.String">
+        UPDATE user_base
+        <set>
+            investor_account_id=#{investorAccountId},
+            modify_date=now()
+        </set>
+        where user_id in
+        <foreach  collection="list" item="userId" open="(" close=")" separator=",">
+            #{userId}
+        </foreach>
+
+    </update>
+
+    <delete id="deleteUserBase" parameterType="String">
+		DELETE FROM user_base where user_id=#{id}
+	</delete>
+
+    <select id="selectUserBase" parameterType="String" resultType="com.lt.manager.bean.user.UserBase">
+        select
+            ub.*,
+            bi.brand_name,
+            ch.channel_name
+        FROM user_base ub
+            JOIN brand_info bi
+                ON bi.brand_id = ub.brand_id
+        	left join channel ch
+        		on ch.code = ub.reg_source
+        where ub.user_id = #{id}
+	</select>
+
+    <select id="selectUserInfo" parameterType="String" resultType="com.lt.model.user.UserBussinessInfo">
+		select ub.*,ubc.bank_name,ubc.bank_card_num
+		from user_base ub
+		left join (select user_id,bank_name,bank_card_num from user_bankcard where user_id =  #{userId} ORDER BY create_date DESC LIMIT 1) ubc
+		on ub.user_id=ubc.user_id where ub.user_id= #{userId}
+	</select>
+
+    <select id="selectUserPic" parameterType="String" resultType="com.lt.manager.bean.user.UserBase">
+          select
+			    ub.user_name as userName,
+				ub.nick_name as nickName,
+				ub.tele as tele,
+				ub.id_pic_positive as idPicPositive,
+				ub.id_pic_reverse as idPicReverse,
+				ub.bankcard_pic as bankCardPic,
+				ub.tele_status as teleStatus,
+				ub.id_card_num as idCardNum,
+				bc.bank_name as bankName,
+				bc.bank_card_num as bankCardNum,
+				ub.risk_ret as riskRet,
+				ub.sign_pic_path as signPicPath,
+				ub.face_pic_path as facePicPath
+		  from
+		        user_base ub
+		  left join
+		       user_bankcard as bc ON ub.user_id = bc.user_id
+		  and bc.is_default = 1
+		  where
+		       ub.user_id=#{id}
+
+	</select>
+
+    <select id="selectRealNameList" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+            resultType="com.lt.manager.bean.user.UserBase">
+        select
+        user_id as id,
+        nick_name as nickName,
+        real_name_status as realNameStatus,
+        apply_time as applyTime
+        from
+        user_base
+        <where>
+            1=1
+            <if test="nickName !=null and nickName != ''">
+                and nick_name like concat('%',#{nickName},'%')
+            </if>
+
+            <if test="tele != null and tele != ''">
+                and tele like concat('%',#{tele},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="id != null and id != ''">
+                and user_id = #{id}
+            </if>
+            <if test="realNameStatus != null and realNameStatus != ''">
+                and real_name_status = #{realNameStatus}
+            </if>
+            <if test="realNameStatus == null or realNameStatus == ''">
+                and real_name_status in (1,2,3)
+            </if>
+            <if test="operStartTime != null and operStartTime != ''">
+                and apply_time <![CDATA[ >= ]]>
+                #{operStartTime}
+            </if>
+            <if test="operEndTime != null and operEndTime != ''">
+                and apply_time <![CDATA[ <= ]]>
+                #{operEndTime}
+            </if>
+        </where>
+        ORDER BY apply_time DESC
+        <if test="offset != null and limit != null">
+            limit ${offset},${limit}
+        </if>
+
+    </select>
+
+    <select id="selectRealNameListCount" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+            resultType="integer">
+        select
+        count(*)
+        from
+        user_base
+        <where>
+            1=1
+            <if test="nickName !=null and nickName != ''">
+                and nick_name like concat('%',#{nickName},'%')
+            </if>
+
+            <if test="tele != null and tele != ''">
+                and tele like concat('%',#{tele},'%')
+            </if>
+            <if test="userName !=null and userName != ''">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="id != null and id != ''">
+                and user_id = #{id}
+            </if>
+            <if test="realNameStatus != null and realNameStatus != ''">
+                and real_name_status = #{realNameStatus}
+            </if>
+            <if test="realNameStatus == null or realNameStatus == ''">
+                and real_name_status in (1,2,3)
+            </if>
+            <if test="operStartTime != null and operStartTime != ''">
+                and apply_time <![CDATA[ >= ]]>
+                #{operStartTime}
+            </if>
+            <if test="operEndTime != null and operEndTime != ''">
+                and apply_time <![CDATA[ <= ]]>
+                #{operEndTime}
+            </if>
+        </where>
+
+    </select>
+
+
+    <select id="selectUserBankInfoByUserId" parameterType="String" resultType="com.lt.manager.bean.user.BankCard">
+		SELECT
+			ub.id,
+			ub.user_id,
+			ub.bank_name,
+			ub.bank_card_num,
+			ub.province_code,
+			ub.city_code,
+			ub.branch_id,
+			ub.is_default,
+			ub.bank_code,
+			ub.card_background,
+			bi.bank_pic
+		FROM
+			user_bankcard ub
+		JOIN bank_info bi ON bi.bank_code = ub.bank_code
+		WHERE
+			user_id=#{userId}
+	</select>
+	<select id="selectInvestorList" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+		resultType="com.lt.manager.bean.user.UserBase">
+		select
+		ub.*
+		from
+		v_user_base ub
+		<if test="serviceCode != null and serviceCode != ''">
+			JOIN user_service_mapper usm on(usm.user_id=ub.id and usm.`status`=1)
+		</if>
+		<where>
+			1=1
+            <if test="id != null and id != ''">
+                and ub.id = #{id}
+            </if>			
+			<if test="nickName !=null and nickName != ''">
+				and ub.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="userName !=null and userName != ''">
+				and ub.user_name like concat('%',#{userName},'%')
+			</if>
+            <if test="status !=null and status!=10">
+                and ub.status = #{status}
+            </if>
+			<if test="serviceCode != null and serviceCode != ''">
+				and usm.service_code=#{serviceCode}
+			</if>
+			<if test="brandId != null and brandId!= ''">
+				and ub.brand_id=#{brandId}
+			</if>
+		</where>
+		ORDER BY
+		<if test="col != null and col != '' ">
+			${col}
+			<if test="dir != null and dir != ''">
+				${dir}
+			</if>
+		</if>
+		<if test="col == null or col == ''">
+			ub.create_date desc
+		</if>
+
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+
+	<select id="selectInvestorCount" parameterType="com.lt.manager.bean.user.UserBaseInfoQueryVO"
+		resultType="Integer">
+		select
+		count(ub.id)
+		from
+		v_user_base ub
+
+		<if test="serviceCode != null and serviceCode != ''">
+			LEFT JOIN user_service_mapper usm on(usm.user_id=ub.id and
+			usm.`status`=1)
+		</if>
+		<where>
+			1=1
+            <if test="id != null and id != ''">
+                and ub.id = #{id}
+            </if>			
+			<if test="nickName !=null and nickName != ''">
+				and ub.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="userName !=null and userName != ''">
+				and ub.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="serviceCode != null and serviceCode != ''">
+				and usm.service_code=#{serviceCode}
+			</if>
+			<if test="brandId != null and brandId!= ''">
+				and ub.brand_id=#{brandId}
+			</if>
+		</where>
+	</select>	
+</mapper>

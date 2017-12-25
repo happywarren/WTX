@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.order.dao.OrderScoreInfoDao">
+	
+	<!-- 添加现金订单流水 -->
+	<insert id="add" parameterType="com.lt.model.trade.OrderScoreInfo" keyProperty="id" useGeneratedKeys="true">
+		insert into order_score_info (
+			order_id,condition_id,user_id,nick_name, investor_id,account_id,security_code, 
+			per_stop_profit, per_stop_loss,per_counter_fee,per_surcharge,per_defer_fund,
+			per_defer_interest,product_id,product_code,product_name,currency,unit,
+			rate,plate,exchange_code,display,defer_status,trail_stop_loss,balance_status,
+			buy_trigger_type,buy_entrust_type,user_commit_buy_date,entrust_buy_date,
+			last_buy_date,user_commit_buy_price,entrust_buy_price,buy_avg_price,sell_trigger_type,
+			sell_entrust_type,user_commit_sell_date,entrust_sell_date,last_sell_date,user_commit_sell_price,
+			entrust_sell_price,sell_avg_price,trade_direction,sys_set_sell_date,buy_entrust_count,
+			buy_success_count,buy_fail_count,hold_count,sell_entrust_count,sell_success_count,stop_loss_price,
+			stop_loss,stop_profit_price,stop_profit,sys_loss_profit,loss_profit,defer_interest,
+			defer_times,should_hold_fund,should_defer_fund,should_counter_fee,should_coupon_fund,
+			actual_hold_fund,actual_defer_fund,actual_counter_fee,actual_coupon_fund,create_date,modify_date,modify_user_id,
+			loss_profit_rate,purchase_order_type
+		) values (
+			#{orderId},#{conditionId},#{userId},#{nickName}, #{investorId},#{accountId},#{securityCode}, 
+			#{perStopProfit},#{perStopLoss} ,#{perCounterFee},#{perSurcharge},#{perDeferFund},
+			#{perDeferInterest},#{productId},#{productCode},#{productName},#{currency},#{unit},
+			#{rate},#{plate},#{exchangeCode},#{display},#{deferStatus},#{trailStopLoss},#{balanceStatus},
+			#{buyTriggerType},#{buyEntrustType},#{userCommitBuyDate},#{entrustBuyDate},
+			#{lastBuyDate},#{userCommitBuyPrice},#{entrustBuyPrice},#{buyAvgPrice},#{sellTriggerType},
+			#{sellEntrustType},#{userCommitSellDate},#{entrustSellDate},#{lastSellDate},#{userCommitSellPrice},
+			#{entrustSellPrice},#{sellAvgPrice},#{tradeDirection},#{sysSetSellDate},#{buyEntrustCount},
+			#{buySuccessCount},#{buyFailCount},#{holdCount},#{sellEntrustCount},#{sellSuccessCount},#{stopLossPrice},
+			#{stopLoss},#{stopProfitPrice},#{stopProfit},#{sysLossProfit},#{lossProfit},#{deferInterest},
+			#{deferTimes},#{shouldHoldFund},#{shouldDeferFund},#{shouldCounterFee},#{shouldCouponFund},
+			#{actualHoldFund},#{actualDeferFund},#{actualCounterFee},#{actualCouponFund},#{createDate},#{modifyDate},
+			<if test="modifyUserId == null || modifyUserId == ''">
+				0,
+			</if>
+			<if test="modifyUserId != null and modifyUserId != ''">
+				#{modifyUserId},
+			</if>			
+			#{lossProfitRate},#{purchaseOrderType}
+
+		)
+	</insert>
+
+	<!-- 现金订单流水 -->
+	<update id="update" parameterType="com.lt.model.trade.OrderScoreInfo">
+		update order_score_info
+		<set>
+			<if test="conditionId != null and conditionId != ''">condition_id=#{conditionId},</if>
+			<if test="userId != null">user_id=#{userId},</if>
+			<if test="nickName != null and nickName != ''">nick_name=#{nickName},</if>
+			<if test="investorId != null">investor_id=#{investorId},</if>
+			<if test="accountId != null">account_id=#{accountId},</if>
+			<if test="securityCode != null and securityCode != ''">security_code=#{securityCode},</if>
+			<if test="perStopProfit != null">per_stop_profit=#{perStopProfit},</if>
+			<if test="perStopLoss != null">per_stop_loss=#{perStopLoss},</if>
+			<if test="perCounterFee != null">per_counter_fee=#{perCounterFee},</if>
+			<if test="perSurcharge != null">per_surcharge=#{perSurcharge},</if>
+			<if test="perDeferFund != null">per_defer_fund=#{perDeferFund},</if>
+			<if test="perDeferInterest != null">per_defer_interest=#{perDeferInterest},</if>
+			<if test="productId != null">product_id=#{productId},</if>
+			<if test="productCode != null and productCode != ''">product_code=#{productCode},</if>
+			<if test="productName != null and productName != ''">product_name=#{productName},</if>
+			<if test="currency != null and currency != ''">currency=#{currency},</if>
+			<if test="unit != null and unit != ''">unit=#{unit},</if>
+			<if test="rate != null">rate=#{rate},</if>
+			<if test="plate != null">plate=#{plate},</if>
+			<if test="exchangeCode != null and exchangeCode != ''">exchange_code=#{exchangeCode},</if>
+			<if test="display != null">display=#{display},</if>
+			<if test="lossProfitRate != null">loss_profit_rate=#{lossProfitRate},</if>
+			<if test="deferStatus != null">defer_status=#{deferStatus},</if>
+			<if test="trailStopLoss != null">trail_stop_loss=#{trailStopLoss},</if>
+			<if test="balanceStatus != null">balance_status=#{balanceStatus},</if>
+			<if test="buyTriggerType != null">buy_trigger_type=#{buyTriggerType},</if>
+			<if test="buyEntrustType != null">buy_entrust_type=#{buyEntrustType},</if>
+			<if test="userCommitBuyDate != null">user_commit_buy_date=#{userCommitBuyDate},</if>
+			<if test="entrustBuyDate != null">entrust_buy_date=#{entrustBuyDate},</if>
+			<if test="lastBuyDate != null">last_buy_date=#{lastBuyDate},</if>
+			<if test="userCommitBuyPrice != null">user_commit_buy_price=#{userCommitBuyPrice},</if>
+			<if test="entrustBuyPrice != null">entrust_buy_price=#{entrustBuyPrice},</if>
+			<if test="buyAvgPrice != null">buy_avg_price=#{buyAvgPrice},</if>
+			<if test="sellTriggerType != null">sell_trigger_type=#{sellTriggerType},</if>
+			<if test="sellEntrustType != null">sell_entrust_type=#{sellEntrustType},</if>
+			<if test="userCommitSellDate != null">user_commit_sell_date=#{userCommitSellDate},</if>
+			<if test="entrustSellDate != null">entrust_sell_date=#{entrustSellDate},</if>
+			<if test="lastSellDate != null">last_sell_date=#{lastSellDate},</if>
+			<if test="userCommitSellPrice != null">user_commit_sell_price=#{userCommitSellPrice},</if>
+			<if test="entrustSellPrice != null">entrust_sell_price=#{entrustSellPrice},</if>
+			<if test="sellAvgPrice != null">sell_avg_price=#{sellAvgPrice},</if>
+			<if test="tradeDirection != null">trade_direction=#{tradeDirection},</if>
+			<if test="sysSetSellDate != null">sys_set_sell_date=#{sysSetSellDate},</if>
+			<if test="buyEntrustCount != null">buy_entrust_count=#{buyEntrustCount},</if>
+			<if test="buySuccessCount != null">buy_success_count=#{buySuccessCount},</if>
+			<if test="buyFailCount != null">buy_fail_count=#{buyFailCount},</if>
+			<if test="holdCount != null">hold_count=#{holdCount},</if>
+			<if test="sellEntrustCount != null">sell_entrust_count=#{sellEntrustCount},</if>
+			<if test="sellSuccessCount != null">sell_success_count=#{sellSuccessCount},</if>
+			<if test="stopLossPrice != null">stop_loss_price=#{stopLossPrice},</if>
+			<if test="stopLoss != null">stop_loss=#{stopLoss},</if>
+			<if test="stopProfitPrice != null">stop_profit_price=#{stopProfitPrice},</if>
+			<if test="stopProfit != null">stop_profit=#{stopProfit},</if>
+			<if test="sysLossProfit != null">sys_loss_profit=#{sysLossProfit},</if>
+			<if test="lossProfit != null">loss_profit=#{lossProfit},</if>
+			<if test="deferInterest != null">defer_interest=#{deferInterest},</if>
+			<if test="deferTimes != null">defer_times=#{deferTimes},</if>
+			<if test=" shouldHoldFund!= null">should_hold_fund=#{shouldHoldFund},</if>
+			<if test="shouldDeferFund != null">should_defer_fund=#{shouldDeferFund},</if>
+			<if test="shouldCounterFee != null">should_counter_fee=#{shouldCounterFee},</if>
+			<if test="shouldCouponFund != null">should_coupon_fund=#{shouldCouponFund},</if>
+			<if test="actualHoldFund != null">actual_hold_fund=#{actualHoldFund},</if>
+			<if test="actualDeferFund != null">actual_defer_fund=#{actualDeferFund},</if>
+			<if test="actualCounterFee != null">actual_counter_fee=#{actualCounterFee},</if>
+			<if test="actualCouponFund != null">actual_coupon_fund=#{actualCouponFund},</if>
+			<if test="createDate != null">create_date=#{createDate},</if>
+			<if test="moveStopLoss != null">move_stop_loss=#{moveStopLoss},</if>
+			<if test="moveStopLossPrice != null">move_stop_loss_price=#{moveStopLossPrice},</if>
+			modify_date= now()	
+		</set>
+		where order_id = #{orderId}
+	</update>
+	
+	<!-- 查询现金订单 -->
+	<select id="queryById" parameterType="java.lang.String" resultType="com.lt.model.trade.OrderScoreInfo">
+		select id,order_id,user_id,security_code,exchange_code,hold_count,sell_entrust_count,create_date,stop_loss_price,stop_profit_price,actual_defer_fund,
+		plate,trade_direction,rate,product_id,product_code,investor_id,product_name,sys_set_sell_date,actual_hold_fund,per_defer_fund,
+		buy_avg_price,stop_loss,stop_profit,defer_status,trail_stop_loss from order_score_info where order_id = #{id} 
+	</select>
+	
+	<!-- 查询现金订单 -->
+	<select id="queryByOrderId" parameterType="String" resultType="com.lt.model.trade.OrderScoreInfo">
+		select * from order_score_info where order_id=#{orderId} for update
+	</select>	
+	
+	<!-- 查询用户的持仓大于0的可售的所有现金订单 -->
+	<select id="queryUserVendibleScoreOrderList" resultType="com.lt.model.trade.OrderScoreInfo">
+		select * from order_score_info v
+	 left join product on v.product_code = product.product_code
+		 where v.user_id = #{userId}
+		   and v.hold_count > 0 and (v.sell_entrust_count=0 or v.sell_entrust_count is null)
+		   and product.status = 1
+		   and product.market_status in (2,3)
+		<if test="productCode != null and productCode != ''">
+		   and v.product_code = #{productCode}
+		</if>
+		order by v.id desc
+	</select>
+	
+	<!--查询所有内/外盘现金持仓订单-->
+	<select id="queryAllPositionScoreOrders" parameterType="Integer" resultType="com.lt.model.trade.OrderScoreInfo">
+		select * from order_score_info where hold_count > 0 and (sell_entrust_count=0 or sell_entrust_count is null) and plate=#{plate} ORDER BY id desc
+	</select>
+	
+	<!-- 用户持仓订单  -->
+	<select id="findScorePositionList" parameterType="String" resultType="com.lt.vo.trade.PositionOrderVo">
+	select `o`.`id` AS `id`,p.decimal_digits as decimalDigits,
+		`o`.`order_id` AS `order_id`,`o`.`buy_success_count` buySuccCount,`o`.`buy_entrust_count` count,`o`.`per_stop_loss`,`o`.`per_stop_profit`,
+	`o`.`sell_entrust_count`,`o`.`buy_avg_price` sysBuyAvgPrice,`o`.`user_id`,`o`.`trade_direction` tradeType,`o`.`product_code`,`o`.`product_name`,
+	`o`.`plate` ,`o`.`actual_hold_fund` holdFund,`o`.`should_hold_fund`,`o`.`stop_loss`,`o`.`stop_profit`,`o`.`stop_loss_price`,
+	`o`.`stop_profit_price`,`o`.`hold_count`,`o`.`entrust_buy_price`,`o`.`entrust_buy_date` sysCommitBuyDate,`o`.`create_date`,
+	`o`.`sys_set_sell_date` sysSaleTime ,`o`.`currency`,`o`.`rate`,`o`.`defer_status`,`o`.`actual_defer_fund` deferFund,`o`.`should_defer_fund`,
+	`o`.`defer_interest`,`o`.`defer_times`,`o`.`trail_stop_loss`,`p`.`market_status`,`p`.`expiration_time`,`ptc`.`jump_price`,
+	`ptc`.`jump_value`,`o`.`should_counter_fee`,`o`.`actual_counter_fee`,`o`.`buy_entrust_type`,`o`.`unit`
+	from order_score_info o JOIN product p on(o.product_id=p.id) 
+	join product_trade_config ptc on(p.id=ptc.product_id)
+	where o.hold_count > 0 and (o.sell_entrust_count=0 or o.sell_entrust_count is null) and o.user_id=#{userId}
+	ORDER BY o.id desc
+	</select>
+
+	<select id="findScorePositionListByUserAndProduct" parameterType="String" resultType="com.lt.vo.trade.PositionOrderVo">
+		select `o`.`id` AS `id`,p.decimal_digits as decimalDigits,
+		`o`.`order_id` AS `order_id`,`o`.`buy_success_count` buySuccCount,`o`.`buy_entrust_count` count,`o`.`per_stop_loss`,`o`.`per_stop_profit`,
+		`o`.`sell_entrust_count`,`o`.`buy_avg_price` sysBuyAvgPrice,`o`.`user_id`,`o`.`trade_direction` tradeType,`o`.`product_code`,`o`.`product_name`,
+		`o`.`plate` ,`o`.`actual_hold_fund` holdFund,`o`.`should_hold_fund`,`o`.`stop_loss`,`o`.`stop_profit`,`o`.`stop_loss_price`,
+		`o`.`stop_profit_price`,`o`.`hold_count`,`o`.`entrust_buy_price`,`o`.`entrust_buy_date` sysCommitBuyDate,`o`.`create_date`,
+		`o`.`sys_set_sell_date` sysSaleTime ,`o`.`currency`,`o`.`rate`,`o`.`defer_status`,`o`.`actual_defer_fund` deferFund,`o`.`should_defer_fund`,
+		`o`.`defer_interest`,`o`.`defer_times`,`o`.`trail_stop_loss`,`p`.`market_status`,`p`.`expiration_time`,`ptc`.`jump_price`,
+		`ptc`.`jump_value`,`o`.`should_counter_fee`,`o`.`actual_counter_fee`,`o`.`buy_entrust_type`,`o`.`unit`
+		from order_score_info o JOIN product p on(o.product_id=p.id)
+		join product_trade_config ptc on(p.id=ptc.product_id)
+		where o.hold_count > 0 and (o.sell_entrust_count=0 or o.sell_entrust_count is null) and o.user_id=#{userId} and p.product_code = #{productCode}
+		ORDER BY o.id desc
+	</select>
+	
+	<!-- 计算用户持仓订单盈亏使用的对象 -->
+	<select id="findScoreFloatAmtOrderList" parameterType="com.lt.model.trade.OrderCashInfo" resultType="com.lt.vo.trade.FloatAmtOrderVo">	   
+		   select coi.user_id as userId, coi.id as orderId, coi.buy_avg_price, 
+			   coi.trade_direction , coi.product_code as productCode
+		  from order_score_info as coi		
+		 where 1 = 1
+		   and coi.hold_count > 0 and (coi.sell_entrust_count=0 or coi.sell_entrust_count is null)
+		   <if test="userId != null">
+		   		 and coi.user_id = #{userId}
+		   </if>
+		   <if test="orderId != null and orderId != ''">
+		   		and coi.order_id=#{orderId}
+		   </if>
+	</select>
+	
+	<!-- 单品持仓订单 -->
+	<select id="findSinglePositionScoreOrderList"  resultType="com.lt.vo.trade.SinglePositionOrderVo">
+		select ptc.jump_price as jumpPrice, ptc.jump_value as jumpValue, coi.rate as rate, 
+			   coi.order_id as orderId, coi.trade_direction tradeType, coi.hold_count as holdCount, 
+			   coi.buy_avg_price as sysBuyAvgPrice 
+	      from order_score_info as coi
+     left join product_trade_config as ptc
+       		on ptc.product_id = coi.product_id
+		 where coi.user_id = #{userId}
+		 	   and coi.product_code = #{productCode}
+			   and coi.hold_count > 0 and (coi.sell_entrust_count=0 or coi.sell_entrust_count is null)
+	ORDER BY coi.id desc
+	</select>
+	
+	<!-- 查询用户委托中订单个数 -->
+	<select id="selectEntrustTheOrdersCount" resultType="String">
+	select count(id) 
+		  from order_score_info 	
+		 where user_id = #{userId}
+	and (buy_entrust_count - buy_success_count - buy_fail_count> 0) or (hold_count=0 and sell_entrust_count > sell_success_count)
+	</select>
+	
+	<!-- 查询用户委托中订单 -->
+	<select id="selectEntrustTheOrdersList" resultType="com.lt.vo.trade.EntrustVo">
+		  select * from order_score_info 		
+		where user_id = #{userId}
+		  and (buy_entrust_count - buy_success_count - buy_fail_count> 0) or (hold_count=0 and sell_entrust_count > sell_success_count)
+		  order by id desc
+	</select>
+	
+	<!-- 查询用户下单数 -->
+	<select id="selectScoreOrderCount" parameterType="String" resultType="Integer">
+		select count(id) from order_score_info where user_id=#{userId}
+	</select>
+	
+	
+	<!--查询结算订单记录信息  -->
+	<select id="selectOrderBalanceVo" parameterType="java.util.Map" resultType="com.lt.vo.trade.OrderBalanceVo">	  
+	 SELECT o.*,p.decimal_digits as decimalDigits,order_id orderId, sell_avg_price as sysSaleAvgPrice, 0 as fundType,last_buy_date as sysLastBuyDate,last_sell_date as sysLastSellDate,
+	  buy_entrust_count count,actual_hold_fund holdFund,buy_avg_price sysBuyAvgPrice,
+		sell_trigger_type balanceType,trade_direction tradeType,actual_defer_fund defer_fund,defer_interest,
+	  (case when sell_success_count=buy_success_count then 4 when buy_fail_count=buy_entrust_count then 5 end) status,
+	  (case when sell_success_count=buy_success_count then '完成' when buy_fail_count=buy_entrust_count then '失败' end) statusFmt
+		  from order_score_info o
+		 left join product p on o.product_code = p.product_code
+		 where o.user_id = #{userId}
+		   and (sell_success_count=buy_success_count or buy_fail_count=buy_entrust_count)
+	  order BY o.modify_date desc
+		 LIMIT #{limit1}, #{limit2}
+	</select>
+	
+	<!--查询委托记录信息  -->
+	<select id="selectOrderEntrustVo" parameterType="java.util.Map" resultType="com.lt.vo.trade.OrderEntrustVo">	  
+	  SELECT * from order_score_entrust_info 
+	 left join order_score_info on order_score_entrust_info.order_id = order_score_info.order_id
+		 where order_score_info.user_id = #{userId}
+	  order BY order_score_entrust_info.id desc
+		 LIMIT #{limit1}, #{limit2}
+	</select>
+	
+	<select id="selectEntrustAndSuccess" parameterType="String" resultType="map">
+		select 
+		(case when t.trade_type=1 then '开仓' else '平仓' end) tradeTypeFmt,
+		t.trade_type tradeType,
+		t.product_code productCode,
+		t.product_name productName,
+		(case when t.type=1 then '委托成功' when t.type=2 then '成交' when t.type=3 then '成交结果' end) typeFmt,
+		t.other,t.count,t.date,t.type
+		from (
+		select trade_type,product_code,product_name,(case when entrust_type=1 then '市价' else '限价' end) other,entrust_count count,entrust_date date,1 type from order_score_entrust_info
+		where order_id=#{orderId} and entrust_status=1
+		UNION all
+		select trade_type,s.product_code,s.product_name,s.success_price other,s.success_count count,s.success_date date,2 type from order_score_success_info s 
+		where s.order_id=#{orderId}
+		UNION ALL
+		select 1 trade_type,o.product_code,o.product_name,o.buy_success_count other,o.buy_fail_count count,o.last_buy_date date,3 type  from  order_score_info o
+ 		where o.order_id=#{orderId}
+		UNION ALL
+ 		select 2 trade_type,o.product_code,o.product_name,o.sell_success_count other,0 count,o.last_sell_date date,3 type  from  order_score_info o
+ 		where o.order_id=#{orderId}
+		) t
+		ORDER BY t.trade_type,t.type,t.date asc
+	</select>
+
+	<update id="updateSysSellDate">
+		update order_score_info
+		<set>
+			sys_set_sell_date=#{sysSetSellDate},
+			modify_date= now()
+		</set>
+		where order_id = #{orderId}
+		and defer_status = 0;
+	</update>
+</mapper>

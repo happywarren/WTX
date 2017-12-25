@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.news.NewsArticleBrandDao">
+
+	<insert id="saveNewsArticleBrand" useGeneratedKeys="true" keyProperty="id"  parameterType="com.lt.model.news.NewsArticleBrand">
+		INSERT INTO news_article_brand
+		(
+		brand_id,
+		brand_name,
+		creater,
+		news_article_id,
+		create_date
+		)VALUES
+		(
+		#{brandId},
+		#{brandName},
+		#{creater},
+		#{newsArticleId},
+		now()
+		)
+	</insert>
+
+	<delete id="deleteNewsArticleBrandByNewsArticleId">
+
+		DELETE FROM news_article_brand WHERE news_article_id in
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<delete id="deleteNewsArticleBrandByBrandId">
+
+		DELETE FROM news_article_brand WHERE brand_id = #{brandId}
+
+	</delete>
+
+	<select id="findBrandNameByNewsArticleId" resultType="com.lt.model.news.NewsArticleBrand">
+		SELECT * FROM news_article_brand where news_article_id = #{newsArticleId}
+	</select>
+
+</mapper>

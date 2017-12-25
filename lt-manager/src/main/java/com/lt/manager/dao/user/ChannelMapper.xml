@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lt.manager.dao.user.ChannelDao">
+<!-- 查询条件 -->
+<select id="selectChannelPage" parameterType="com.lt.manager.bean.user.Channel"   resultType="com.lt.manager.bean.user.Channel">
+select c.* ,b.brand_name from channel c JOIN brand_info b ON c.brand_id=b.brand_id
+where 1=1
+<trim  suffixOverrides="," >
+	<if test="id != null and id != ''" >
+	    and c.id =  #{id}
+	</if>
+	<if test="channelName != null and channelName != ''" >
+	    and c.channel_name =  #{channelName}
+	</if>
+	<if test="ctype != null and ctype != ''" >
+	    and c.ctype =  #{ctype}
+	</if>
+	<if test="status != null and status != ''" >
+	    and c.status =  #{status}
+	</if>
+	<if test="orgName != null and orgName != ''" >
+	    and c.org_name =  #{orgName}
+	</if>
+	<if test="code != null and code != ''" >
+	    and c.code =  #{code}
+	</if>
+	<if test="mobile != null and mobile != ''" >
+	    and c.mobile =  #{mobile}
+	</if>
+	<if test="tele != null and tele != ''" >
+	    and c.tele =  #{tele}
+	</if>
+	<if test="manager != null and manager != ''" >
+	    and c.manager =  #{manager}
+	</if>
+	<if test="createStaffId != null and createStaffId != ''" >
+	    and c.create_staff_id =  #{createStaffId}
+	</if>
+	<if test="modifyStaffId != null and modifyStaffId != ''" >
+	    and c.modify_staff_id =  #{modifyStaffId}
+	</if>
+	<if test="createDate != null and createDate != ''" >
+	    and c.create_date =  #{createDate}
+	</if>
+	<if test="modifyDate != null and modifyDate != ''" >
+	    and c.modify_date =  #{modifyDate}
+	</if>
+</trim>
+	<if test="offset != null and limit != null">
+		limit ${offset},${limit}
+	</if>
+</select>
+
+<select id="selectChannelCount" parameterType="com.lt.manager.bean.user.Channel"   resultType="Integer">
+select
+				count(*)
+				from channel
+
+where 1=1
+<trim  suffixOverrides="," >
+	<if test="id != null and id != ''" >
+	    and id =  #{id}
+	</if>
+	<if test="channelName != null and channelName != ''" >
+	    and channel_name =  #{channelName}
+	</if>
+	<if test="ctype != null and ctype != ''" >
+	    and ctype =  #{ctype}
+	</if>
+	<if test="status != null and status != ''" >
+	    and status =  #{status}
+	</if>
+	<if test="orgName != null and orgName != ''" >
+	    and org_name =  #{orgName}
+	</if>
+	<if test="code != null and code != ''" >
+	    and code =  #{code}
+	</if>
+	<if test="mobile != null and mobile != ''" >
+	    and mobile =  #{mobile}
+	</if>
+	<if test="tele != null and tele != ''" >
+	    and tele =  #{tele}
+	</if>
+	<if test="manager != null and manager != ''" >
+	    and manager =  #{manager}
+	</if>
+	<if test="createStaffId != null and createStaffId != ''" >
+	    and create_staff_id =  #{createStaffId}
+	</if>
+	<if test="modifyStaffId != null and modifyStaffId != ''" >
+	    and modify_staff_id =  #{modifyStaffId}
+	</if>
+	<if test="createDate != null and createDate != ''" >
+	    and create_date =  #{createDate}
+	</if>
+	<if test="modifyDate != null and modifyDate != ''" >
+	    and modify_date =  #{modifyDate}
+	</if>
+</trim>
+</select>
+
+
+<!-- 插入记录 -->
+<insert id="insertChannel" parameterType="com.lt.manager.bean.user.Channel" >
+  insert into channel(id,channel_name,ctype,status,org_name,code,mobile,tele,manager,create_staff_id,modify_staff_id,create_date,modify_date,brand_id)
+ values(#{id},#{channelName},#{ctype},#{status},#{orgName},#{code},#{mobile},#{tele},#{manager},#{createStaffId},#{modifyStaffId},now(),now(),#{brandId})
+</insert>
+
+ <!-- 修改记录，只修改只不为空的字段 -->
+<update id="updateChannel" parameterType="com.lt.manager.bean.user.Channel" >
+	update channel set
+	<if test="channelName != null  ">
+		channel_name=#{channelName},
+	</if>
+	<if test="ctype != null  ">
+		ctype=#{ctype},
+	</if>
+	<if test="status != null  ">
+		status=#{status},
+	</if>
+	<if test="orgName != null  ">
+		org_name=#{orgName},
+	</if>
+	<if test="mobile != null  ">
+		mobile=#{mobile},
+	</if>
+	<if test="tele != null  ">
+		tele=#{tele},
+	</if>
+	<if test="manager != null  ">
+		manager=#{manager},
+	</if>
+	<if test="modifyStaffId != null  ">
+		modify_staff_id=#{modifyStaffId},
+	</if>
+		modify_date = now(),
+	<if test="brandId != null  ">
+		brand_id=#{brandId}
+	</if>
+	 where id=#{id}
+</update>
+
+<!-- 删除记录 -->
+<delete id="deleteChannel" >
+	delete 	 from channel where id = #{id}
+</delete>
+
+<!-- 根据id查询 订单 -->
+<select id="selectChannelById"  resultType="com.lt.manager.bean.user.Channel" parameterType="Integer">
+
+	select *
+	 from channel where id = #{id} ORDER BY  id desc
+
+</select>
+
+<!-- 订单 列表总数-->
+<select id="queryChannelByCount" resultType="Integer"  parameterType="com.lt.manager.bean.user.Channel">
+	select count(*) from channel
+</select>
+
+	<!-- 查询支付渠道关联关系 -->
+  	<select id="selectPayChannelRelation" parameterType="java.lang.String" resultType="com.lt.manager.bean.user.ChargeChannelVo">
+ 	 	select
+ 	 		cci.channel_id,cci.channel_name
+ 	 	from
+ 	 		pay_and_channel_relation pr
+ 	 	join
+ 	 		charge_channel_info cci
+ 	 	on
+ 	 		cci.channel_id=pr.pay_channel_id
+ 	 	where
+ 	 		pr.channel_id=#{channelId}
+  	</select>
+
+  	<!-- 删除支付渠道关联关系 -->
+  	<delete id="deletePayChannelRelation" parameterType="java.lang.String" >
+ 	 	delete
+
+ 	 	from
+ 	 		pay_and_channel_relation
+ 	 	where
+ 	 		channel_id=#{channelId}
+  	</delete>
+
+  	<!-- 新增支付渠道关联关系 -->
+  	<insert id="insertPayChannelRelation" parameterType="java.util.List" >
+			INSERT INTO
+				pay_and_channel_relation
+			(channel_id,pay_channel_id,create_time)
+			values
+		 <foreach collection="list" item="item" open="" close="" separator=",">
+			(
+				#{item.channelId},
+				#{item.payChannelId},
+				now()
+			)
+		 </foreach>
+  	</insert>
+  	<select id="selectRechargeCount" parameterType="java.lang.String" resultType="com.lt.manager.bean.user.Channel">
+
+		select
+			count(DISTINCT charge.user_id) as rechargeCount ,SUM(charge.actual_amount) as rechargeAmount
+		from
+			fund_io_cash_recharge charge
+		join
+			user_base ub
+		on
+			charge.user_id=ub.user_id
+		where
+			charge.status='1' and ub.reg_source=#{code} and charge.done_date >= DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 00:00:00')
+			and DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 23:59:59') >= charge.done_date
+  	</select>
+
+  	<select id="selectRechargeAmount" parameterType="String" resultType="Double">
+  		select
+			SUM(charge.actual_amount) as rechargeAmount
+		from
+			fund_io_cash_recharge charge
+		join
+			user_base ub
+		on
+			charge.user_id=ub.user_id
+		where
+			charge.status='1' and ub.reg_source=#{code} and charge.done_date >= DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 00:00:00')
+			and DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 23:59:59') >= charge.done_date
+  	</select>
+
+
+  	<select id="selectTraderCount" parameterType="java.lang.String" resultType="Integer">
+  		select count(DISTINCT o.user_id) from v_order_cash_info o JOIN user_base u on(o.user_id=u.user_id)
+		where o.`status`=4 and o.entrust_sell_date >= DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 00:00:00')
+		and DATE_FORMAT(CURDATE()-1,'%Y-%m-%d 23:59:59') >= o.entrust_sell_date and u.reg_source=#{code}
+  	</select>
+
+  	<select id="selectRegisterCount"  resultType="java.lang.Integer">
+		select
+			count(ub2.id) as registerCount
+		from
+			user_base ub2
+		where
+			ub2.reg_source=#{0} and ub2.brand_id = #{1}
+  	</select>
+
+  	<select id="selectUserIds" parameterType="java.lang.String" resultType="java.lang.String">
+		select
+			user_id
+		from
+			user_base
+		where
+			status!='-10' and reg_source=#{regSource}
+  	</select>
+
+
+  	<select id="selectUserChargeMappers" parameterType="java.lang.String" resultType="com.lt.model.user.charge.UserChargeMapper">
+		select
+			ucm.user_id,ucm.channel_id
+		from
+			user_charge_mapper ucm
+		join
+			user_base ub
+		on
+			ucm.user_id=ub.user_id
+		and
+			ub.reg_source=#{regSource};
+  	</select>
+
+	<insert id="insertUserChargeMapperMutil" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO user_charge_mapper (user_id,channel_id,create_time) VALUES
+		<foreach collection="list" item="item" index="index" separator=",">
+			(#{item.userId},#{item.channelId},now())
+		</foreach>
+	</insert>
+
+
+	<select id="findChannelByBrandId" parameterType="String" resultType="com.lt.manager.bean.user.Channel">
+        select * from channel WHERE brand_id = #{brandId}
+    </select>
+</mapper>   

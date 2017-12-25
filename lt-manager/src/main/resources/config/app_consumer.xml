@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="lt-manager-consumer"  /> 
+ 
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://192.168.1.245:2181" /> 
+    
+ 	
+ 	<dubbo:reference check="false" id="dispatcherApiService" interface="com.lt.api.dispatcher.IDispatcherApiService" />
+ 	
+ 	<dubbo:reference check="false" id="productApiService" interface="com.lt.api.business.product.IProductApiService" />
+ 	
+ 	<dubbo:reference check="false" id="userApiBussinessService" interface="com.lt.api.user.IUserApiBussinessService" />
+
+	<dubbo:reference check="false" id="userApiLogService" interface="com.lt.api.user.IUserApiLogService" />
+	<!-- 资金服务远程服务接口-->
+ 	<dubbo:reference  check="false"  id="fundAccountApiService" interface="com.lt.api.fund.IFundAccountApiService"/>
+ 	
+ 	<dubbo:reference  check="false"  id="orderApiService" interface="com.lt.api.trade.IOrderApiService"/>
+
+ 	<dubbo:reference  check="false"  id="userApiService" interface="com.lt.api.user.IUserApiService"/>
+
+	<dubbo:reference  check="false"  id="orderScoreApiService" interface="com.lt.api.trade.IOrderScoreApiService"/>
+ 	
+ 	<dubbo:reference  check="false"  id="promoteApiService" interface="com.lt.api.promote.IPromoteApiService"/>
+ 	
+ 	<dubbo:reference  check="false"  id="fundTradeApiService" interface="com.lt.api.fund.IFundTradeApiService"/>
+ 	
+ 	<dubbo:reference  check="false"  id="smsService" interface="com.lt.api.sms.ISmsApiService"/>
+ 	
+ 	<dubbo:reference  check="false"  id="userLogApiService" interface="com.lt.api.log.IUserLogApiService"/>
+ 	
+</beans>

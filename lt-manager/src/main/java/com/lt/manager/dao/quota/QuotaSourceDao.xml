@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.quota.QuotaSourceDao">
+
+    <select id="listQuotaSource" parameterType="String" resultType="com.lt.manager.bean.quota.QuotaSourceVo">
+		select * from qtc_sys_config where type=#{type}
+	</select>
+
+	<select id="getQuotaSourceById" parameterType="Long" resultType="com.lt.manager.bean.quota.QuotaSourceVo">
+		select * from qtc_sys_config where id=#{id}
+	</select>
+
+	<select id="getQuotaSource" parameterType="com.lt.manager.bean.quota.QuotaSourceVo" resultType="com.lt.manager.bean.quota.QuotaSourceVo">
+		select * from qtc_sys_config where type=#{type} and host = #{host} and port = #{port}
+	</select>
+
+    <insert id="insertQuotaSource" parameterType="com.lt.manager.bean.quota.QuotaSourceVo">
+		insert into qtc_sys_config
+		(
+			type,name,host,port,req_url,status,create_time
+		)
+		values
+		(	
+			#{type},#{name},#{host},#{port},#{reqUrl},0,now()
+		)
+	</insert>
+
+    <update id="startQuotaSource" parameterType="Long">
+		update qtc_sys_config set status=1,create_time=now() where id=#{id} and status=0
+	</update>
+
+    <update id="endQuotaSource" parameterType="Long">
+		update qtc_sys_config set status=0,create_time=now() where id=#{id} and status=1
+	</update>
+
+    <delete id="deleteQuotaSource" parameterType="Long">
+		DELETE FROM qtc_sys_config WHERE id=#{id}
+	</delete>
+
+</mapper>

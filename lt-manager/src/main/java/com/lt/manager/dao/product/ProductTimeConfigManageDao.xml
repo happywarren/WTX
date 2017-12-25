@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductTimeConfigManageDao">	
+	<insert id="insertProTimeCfgs" parameterType="java.util.List">
+	   INSERT INTO product_time_config (
+	   		time_id,
+  	   		product_id,
+  	   		quota_begin_time,
+  	   		quota_end_time,
+  	   		trade_begin_time,
+  	   		trade_end_time,
+  	   		sys_sale_begin_time,
+  	   		sys_sale_end_time,
+  	   		sys_sale_time,
+  	   		defer_balance_time,
+  	   		next_time_id,
+  	   		prev_time_id,
+  	   		create_date,
+  	   		create_user  	   		
+       )VALUES
+	   <foreach collection="list" item="item" index="index" separator="," >  
+	   (
+	   		#{item.timeId},
+    		#{item.productId},
+    		#{item.quotaBeginTime},
+    		#{item.quotaEndTime},
+    		#{item.tradeBeginTime},
+    		#{item.tradeEndTime},
+    		#{item.sysSaleBeginTime},
+    		#{item.sysSaleEndTime},
+    		#{item.sysSaleTime},
+    		#{item.deferBalanceTime},
+    		#{item.nextTimeId},
+    		#{item.prevTimeId},
+    		now(),
+    		#{item.createUser}
+       )
+	   </foreach>  
+    </insert>
+    
+    <insert id="insertProTimeCfgsWinter" parameterType="java.util.List">
+	   INSERT INTO product_time_config_winter (
+	   		time_id,
+  	   		product_id,
+  	   		quota_begin_time,
+  	   		quota_end_time,
+  	   		trade_begin_time,
+  	   		trade_end_time,
+  	   		sys_sale_begin_time,
+  	   		sys_sale_end_time,
+  	   		sys_sale_time,
+  	   		defer_balance_time,
+  	   		next_time_id,
+  	   		prev_time_id,
+  	   		create_date,
+  	   		create_user  	   		
+       )VALUES
+	   <foreach collection="list" item="item" index="index" separator="," >  
+	   (
+	   		#{item.timeId},
+    		#{item.productId},
+    		#{item.quotaBeginTime},
+    		#{item.quotaEndTime},
+    		#{item.tradeBeginTime},
+    		#{item.tradeEndTime},
+    		#{item.sysSaleBeginTime},
+    		#{item.sysSaleEndTime},
+    		#{item.sysSaleTime},
+    		#{item.deferBalanceTime},
+    		#{item.nextTimeId},
+    		#{item.prevTimeId},
+    		now(),
+    		#{item.createUser}
+       )
+	   </foreach>  
+    </insert>
+    
+    <select id="selectProTimeCfgs" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+    						resultType="com.lt.model.product.ProductTimeConfig">
+    	SELECT id,product_id,quota_begin_time,quota_end_time,trade_begin_time,trade_end_time,sys_sale_begin_time,
+    	sys_sale_end_time,sys_sale_time,defer_balance_time FROM product_time_config WHERE product_id=#{id} ORDER BY id
+    </select>
+    
+    <select id="selectProTimeCfgsWinter" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+    						resultType="com.lt.model.product.ProductTimeConfig">
+    	SELECT id,product_id,quota_begin_time,quota_end_time,trade_begin_time,trade_end_time,sys_sale_begin_time,
+    	sys_sale_end_time,sys_sale_time,defer_balance_time FROM product_time_config_winter WHERE product_id=#{id} ORDER BY id
+    </select>
+    
+    <delete id="deleteProTimeCfgs" parameterType="com.lt.manager.bean.product.ProductParamVO">
+    	DELETE FROM product_time_config WHERE product_id in(${ids})
+    </delete>
+    
+    <delete id="deleteProTimeCfgsWinter" parameterType="com.lt.manager.bean.product.ProductParamVO">
+    	DELETE FROM product_time_config_winter WHERE product_id in(${ids})
+    </delete>
+</mapper>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.news.NewsArticleMainDao">
+
+	<select id="qryNewsPageList" resultType="com.lt.manager.bean.news.NewsArticleVo" parameterType="com.lt.manager.bean.news.NewsArticleVo">
+		select f.*,s.`name` plateName,t.`name` sectionName from (select id news_id,section,title,top,`status`,create_date,brand_id,creater,create_staff_name,publish_date from news_article
+		<where>
+			<if test="title != null and title != ''">
+				and title like concat('%',#{title},'%')
+			</if>
+			
+			<if test="section != null and section != ''">
+				and section = #{section}
+			</if>
+			
+			<if test="status != null">
+				and status = #{status}
+			</if>
+			
+			<if test="top != null">
+				and top = #{top}
+			</if>
+			
+			<if test="publishBeginDate != null and publishBeginDate != ''">
+				and publish_date >= #{publishBeginDate}
+			</if>
+			
+			<if test="publishEndDate != null and publishEndDate != ''">
+				and publish_date &lt; #{publishEndDate}
+			</if>
+		</where>
+		) f
+		LEFT JOIN (select s3.news_id,GROUP_CONCAT(s3.`name`) name from (select s1.news_id,s2.`name` from news_plate_relation s1 LEFT JOIN news_plate s2 on s1.plate_id = s2.id) s3 GROUP BY s3.news_id) s
+			on s.news_id = f.news_id
+			LEFT JOIN news_section t on f.section = t.id
+
+		<where>
+			<if test="plateName != null and plateName != ''">
+				and s.`name` like concat('%',#{plateName},'%')
+			</if>
+		</where>
+		
+		order by f.create_date desc 
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="qryNewsPageListCount" resultType="java.lang.Long" parameterType="com.lt.manager.bean.news.NewsArticleVo">
+		select count(*) from (select f.*,s.`name` plateName,t.`name` sectionName from (select id news_id,section,title,top,`status`,create_date,create_staff_id,publish_date from news_article
+		<where>
+			<if test="title != null and title != ''">
+				and title like concat('%',#{title},'%')
+			</if>
+			
+			<if test="section != null and section != ''">
+				and section = #{section}
+			</if>
+			
+			<if test="status != null">
+				and status = #{status}
+			</if>
+			
+			<if test="top != null">
+				and top = #{top}
+			</if>
+			
+			<if test="publishBeginDate != null and publishBeginDate != ''">
+				and publish_date >= #{publishBeginDate}
+			</if>
+			
+			<if test="publishEndDate != null and publishEndDate != ''">
+				and publish_date &lt; #{publishEndDate}
+			</if>
+		</where>
+		) f
+		LEFT JOIN (select s3.news_id,GROUP_CONCAT(s3.`name`) name from (select s1.news_id,s2.`name` from news_plate_relation s1 LEFT JOIN news_plate s2 on s1.plate_id = s2.id) s3 GROUP BY s3.news_id) s
+			on s.news_id = f.news_id
+			LEFT JOIN news_section t on f.section = t.id) total 
+		<where>
+			<if test="plateName != null and plateName != ''">
+				and total.plateName like concat('%',#{plateName},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="qryNewsDetailById" parameterType="java.lang.Integer" resultType="com.lt.manager.bean.news.NewsArticleDetail">
+		select f.*,s.`name` section_name,s.id section_id,t.`name` plate_name,t.id plate,IFNULL(th.init_like_count,0) init_like_count,IFNULL(th.init_read_count,0) init_read_count,
+		IFNULL(th.real_comment_count,0) real_comment_count,IFNULL(th.real_like_count,0) real_like_count,
+		IFNULL(th.real_read_count,0) real_read_count from (SELECT id,title,section ,summary,pic_flag,brand_id,creater,out_source_name,banner_url,publish_date,permit_comment,content,create_staff_name,`status` FROM news_article
+		where id = #{newsId}) f LEFT JOIN news_section s  on f.section = s.id 
+		LEFT JOIN (select s3.news_id,GROUP_CONCAT(s3.`name`) name,GROUP_CONCAT(s3.`id`) id from (select s1.news_id,s2.`name`,s2.id from news_plate_relation s1 LEFT JOIN news_plate s2 on s1.plate_id = s2.id) s3 GROUP BY s3.news_id) t
+		on t.news_id = f.id
+		LEFT JOIN (select init_like_count,init_read_count,real_comment_count,real_read_count,real_like_count,target_id from news_act_info where target_id = #{newsId}) th on th.target_id = f.id
+	</select>
+	
+	<insert id="insertNewsArticle" useGeneratedKeys="true" keyProperty="newsArticleId" parameterType="com.lt.manager.bean.news.NewsArticleDetail">  
+            INSERT INTO news_article 
+		(
+  			title,
+			section,
+			summary,
+			out_source_name,
+			banner_url,
+			permit_comment,
+			status,
+			content,
+			create_date,
+			modify_date,
+			create_staff_name,
+			create_staff_id,
+			pic_flag,
+			publish_date,
+			creater,
+			brand_id
+		)VALUES
+		(
+  			#{title},
+			#{sectionId},
+			#{summary},
+			#{outSourceName},
+			#{bannerUrl},
+			#{permitComment},
+			#{status},
+			#{content},
+			now(),
+			now(),
+			#{createStaffName},
+			#{createStaffId},
+			#{picFlag},
+			#{publishDate},
+			#{creater},
+			#{brandId}
+		)
+    </insert>
+    
+    <delete id="deleteNewsArticle">
+		DELETE FROM news_article WHERE id in
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<update id="topNewsArticle">
+		UPDATE news_article set top = #{status} where id in 
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<update id="checkedNewsArticle">
+		UPDATE news_article set 
+		status = #{status} where id in 
+		<foreach collection="idList" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<update id="checkedNewsArticleShow">
+		UPDATE news_article set 
+		status = #{status},publish_date = now() where id in 
+		<foreach collection="idList" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</update>
+	
+	<update id="updateNewsArticle" parameterType="com.lt.manager.bean.news.NewsArticleDetail">
+		UPDATE news_article 
+		<set>
+			<if test="sectionId != null and sectionId != '' ">
+				section = #{sectionId},
+			</if>
+			
+			<if test="title != null and title != '' ">
+				title = #{title},
+			</if>
+			
+			<if test="summary != null and summary != '' ">
+				summary = #{summary},
+			</if>
+	
+			<if test="publishDate != null and publishDate != '' ">
+				publish_date = #{publishDate},
+			</if>
+			  
+			<if test="outSourceName != null ">
+				out_source_name = #{outSourceName},
+			</if>
+			
+				banner_url = #{bannerUrl},
+
+			<if test="permitComment != null">
+				permit_comment = #{permitComment},
+			</if>
+			
+			<if test="content != null and content != '' ">
+				content = #{content},
+			</if>
+
+			<if test="brandId != null and brandId != '' ">
+				brand_id = #{brandId},
+			</if>
+			<if test="creater != null and creater != '' ">
+				creater = #{creater},
+			</if>
+			<if test="picFlag != null">
+				pic_flag = #{picFlag},
+			</if>
+
+			modify_staff_name = #{modifyStaffName},
+
+			modify_staff_id = #{modifyStaffId},
+
+			modify_date = now()
+		</set>
+		
+		where id = #{newsArticleId}
+	</update>
+	
+	
+	<select id="qryNewsCmtRlyPageList" resultType="com.lt.manager.bean.news.NewsArticleCmtReplyVo" parameterType="com.lt.manager.bean.news.NewsArticleVo">
+		select f.*,t.`name` sectionName,ifnull(s.init_read_count,0) init_read_count,ifnull(s.init_like_count,0) init_like_count,ifnull(s.real_read_count,0) real_read_count,
+		ifnull(s.real_like_count,0) real_like_count,ifnull(s.real_reply_count,0) real_reply_count,ifnull(s.real_comment_count,0) real_comment_count
+		 from (select id news_id,section,title,top,`status`,create_date,create_staff_name,publish_date,summary from news_article
+		<where>
+			<if test="title != null and title != ''">
+				and title like concat('%',#{title},'%')
+			</if>
+			
+			<if test="section != null and section != ''">
+				and section = #{section}
+			</if>
+			
+			<if test="publishBeginDate != null and publishBeginDate != ''">
+				and publish_date >= #{publishBeginDate}
+			</if>
+			
+			<if test="publishBeginDate != null and publishBeginDate != ''">
+				and publish_date &lt; #{publishBeginDate}
+			</if>
+		</where>
+		) f LEFT JOIN news_section t on f.section = t.id
+		left join news_act_info s on s.target_id = f.news_id 
+		
+		order by f.create_date desc 
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="qryRlyCmtLikeCount" parameterType="com.lt.manager.bean.news.NewsArticleCmtLikeRlyCount">
+	select SUM(CASE WHEN log_type = 1 then 1 ELSE 0 END) like_count,
+			SUM(CASE WHEN log_type = 3 then 1 ELSE 0 END) read_count,
+			SUM(CASE WHEN log_type = 4 then 1 ELSE 0 END) comment_count,
+			create_date time_frame from news_act_info_log where log_type in ('1','3','4') and create_date &lt; NOW() 
+		and create_date >= #{date} GROUP BY create_date;
+	</select>
+	
+	<select id="qryNewsCommentByNewsId" resultType="com.lt.manager.bean.news.NewsUserComment">
+	select f.*,s.nick_name,s.head_pic,s.user_grade,IFNULL(t.num,0) reply_count from (SELECT news_id,content,user_id,`status`,id comment_id,create_date FROM `news_comment`
+	<where>
+		news_id=#{newsId} 
+		
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</where> ) f
+		LEFT JOIN user_base s on s.user_id = f.user_id
+		LEFT JOIN (SELECT cmt_id,COUNT(*) num FROM news_cmt_reply GROUP BY cmt_id) t on t.cmt_id = f.comment_id
+	ORDER BY f.create_date DESC
+	</select>
+	
+	<select id="qryNewsCommentReplyByComment" resultType="com.lt.manager.bean.news.NewsUserCommentReply">
+	select f.*,s.nick_name reply_name,s.reply_user_id reply_source_user_id  from (select f1.*,f2.nick_name from  (SELECT id,reply_content,reply_user_id,`status`,cmt_id,reply_id,create_date  FROM `news_cmt_reply` 
+	<where>
+		cmt_id = #{commentId}
+		<if test="status != null">
+			and status = #{status}
+		</if>
+	</where>) f1 
+		LEFT JOIN user_base f2 on f2.user_id = f1.reply_user_id) f LEFT JOIN
+		(select s1.id,s1.reply_user_id,s2.nick_name from news_cmt_reply s1 LEFT JOIN user_base s2  on s1.reply_user_id = s2.user_id) s on f.reply_id = s.id
+		order by f.create_date asc
+	</select>
+</mapper>

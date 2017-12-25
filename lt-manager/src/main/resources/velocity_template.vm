@@ -1,0 +1,2 @@
+#include("./test.vm")
+world

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 定义默认数据源  -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        <property name="url" value="${db_stock.url}" />
+        <property name="username" value="${db_stock.username}" />
+        <property name="password" value="${db_stock.password}" />
+        <property name="filters" value="stat" />
+        <property name="maxActive" value="50" />
+        <property name="initialSize" value="3" />
+        <property name="maxWait" value="60000" />
+        <property name="minIdle" value="3" />
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
+        <property name="poolPreparedStatements" value="true" />
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="50" />
+    </bean>
+
+    <!-- <bean id="sqlSessionFactoryDefault" class="org.mybatis.spring.SqlSessionFactoryBean"
+        p:dataSource-ref="dataSource"
+        p:configLocation="classpath:config/mybatis-config.xml"
+        p:mapperLocations="classpath:com/lt/trade/*/dao/*.xml"/> -->
+        
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="mapperLocations">
+            <array>
+                <value>classpath:com/lt/trade/order/dao/*.xml</value>
+            </array>
+        </property>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+    </bean>
+     
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+        p:dataSource-ref="dataSource"/>
+
+	<!-- 配置事务传播特性 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="do*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置参与事务的类 -->
+	<aop:config>
+		<aop:pointcut id="txPointcut" expression="execution(* com.lt.trade.order.service.impl.*.*(..))" />
+		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice" />
+	</aop:config>
+
+    <!-- 开启注解事务管理 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

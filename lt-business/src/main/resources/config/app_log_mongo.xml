@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+	<context:component-scan base-package="com.lt.business.core.dao" />
+	<!-- Mongdb 连接 -->
+	<mongo:mongo host="${mongo_stock_hostName}" port="${mongo_stock_port}" />
+	<!-- 连接到指定mongodb库，根据实际情况修改 db-name -->
+	<mongo:db-factory mongo-ref="mongo" dbname="${mongo_stock_dbname}"
+		id="loggerFactory"></mongo:db-factory>
+
+	<!-- 注册 stockLoggerTemplate, spring的mongodb操作Template类， -->
+	<!-- 类似 spring jdbc 的jdbcTemplate -->
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="loggerFactory" />
+	</bean>
+
+</beans>

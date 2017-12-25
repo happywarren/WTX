@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.promote.ICommisionOptcodeDao">
+	
+	<select id="selectCommisionOptcode" parameterType="com.lt.model.promote.CommisionOptcode" resultType="com.lt.model.promote.CommisionOptcode">
+		SELECT * FROM commision_optcode
+		<where>
+			<if test="thirdOptcode != null and thirdOptcode != ''">
+				third_optcode=#{thirdOptcode}
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				second_optcode=#{secondOptcode}
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				first_optcode=#{firstOptcode}
+			</if>
+		</where>
+	</select>
+</mapper>

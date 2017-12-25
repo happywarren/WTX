@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.InvestorProductConfigManageDao">
+	<insert id="insertInvestorProductConfig" parameterType="com.lt.manager.bean.user.InvestorProductConfig">
+		INSERT INTO investor_product_config
+		(
+			investor_account_id,
+			product_code,
+			counter_fee,
+			create_time,
+			creater
+			
+		)VALUES	
+		(
+		    #{investorAccountId},
+			#{productCode},
+			#{counterFee},
+			#{createTime},
+			#{creater}
+		)
+	</insert>
+
+	<update id="updateInvestorProductConfig" parameterType="com.lt.manager.bean.user.InvestorProductConfig">
+		UPDATE investor_product_config
+		<set>
+			<if test="counterFee != null">
+				counter_fee=#{counterFee},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="selectInvestorProductConfig" parameterType="com.lt.manager.bean.user.InvestorProductConfig"  resultType="com.lt.manager.bean.user.InvestorProductConfig">
+		select
+		*
+		from
+		investor_product_config
+		<where>
+			1=1
+			<if test="investorAccountId != null">
+				and investor_account_id=#{investorAccountId}
+			</if>
+			<if test="productCode != null">
+				and product_code=#{productCode}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="deleteInvestorProductConfig" parameterType="com.lt.manager.bean.user.InvestorProductConfig">
+		DELETE FROM investor_product_config where id=#{0}
+	</delete>
+
+	<delete id="deleteInvestorProductConfigByProduct" parameterType="java.lang.String">
+		DELETE FROM investor_product_config where product_code = #{productCode}
+	</delete>
+
+	<select id="selectInvestorProductConfigCount" parameterType="com.lt.manager.bean.user.InvestorProductConfig"  resultType="Long">
+		select count(DISTINCT f.id) from
+		investor_product_config as f
+		inner join product as p on f.product_code = p.short_code
+		inner join exchange_rate er on p.current_rate_id=er.id
+		inner join product_trade_config as ptc on p.id = ptc.product_id
+		<where>
+			1=1
+			<if test="investorAccountId != null">
+				and f.investor_account_id=#{investorAccountId}
+			</if>
+			<if test="productCode != null">
+				and f.product_code=#{productCode}
+			</if>
+			<if test="productType != null">
+				and p.product_type_id=#{productType}
+			</if>
+			<if test="productName != null">
+				and ( p.short_code like concat('%',#{productName} ,'%') or p.product_name like concat('%',#{productName} ,'%') )
+			</if>
+		</where>
+	</select>
+
+	<select id="selectNoCheckProductList" parameterType="com.lt.manager.bean.user.InvestorProductConfig"  resultType="com.lt.manager.bean.user.InvestorProductConfig">
+		select p.short_code as productCode,p.product_name as productName,p.product_type_id as productType,er.sign as currency from
+		product as p
+		inner join exchange_rate er on er.id = p.current_rate_id
+		<where>
+			1=1
+			<if test="investorAccountId != null">
+				AND p.short_code NOT IN (
+				SELECT
+				product_code
+				FROM
+				investor_product_config
+				WHERE
+				investor_account_id = #{investorAccountId}
+				)
+			</if>
+		</where>
+		GROUP BY p.short_code  ORDER BY modify_date desc
+	</select>
+
+	<select id="selectInvestorProductConfigPage" parameterType="com.lt.manager.bean.user.InvestorProductConfig"  resultType="com.lt.manager.bean.user.InvestorProductConfig">
+		select
+		DISTINCT f.id as id,p.product_name as productName,p.short_code as productCode,f.counter_fee as counterFee,f.investor_account_id as investorAccountId,
+		f.creater as creater,f.create_time as createTime,er.sign as currency,ptc.min_counter_fee as minCounterFee,ptc.max_counter_fee as maxCounterFee
+		from
+		investor_product_config as f
+		inner join product as p on f.product_code = p.short_code
+		inner join exchange_rate er on p.current_rate_id=er.id
+		inner join product_trade_config as ptc on p.id = ptc.product_id
+		<where>
+			1=1
+			<if test="investorAccountId != null">
+				and f.investor_account_id=#{investorAccountId}
+			</if>
+			<if test="productCode != null">
+				and f.product_code=#{productCode}
+			</if>
+			<if test="productType != null">
+				and p.product_type_id=#{productType}
+			</if>
+			<if test="productName != null">
+				and ( p.short_code like concat('%',#{productName} ,'%') or p.product_name like concat('%',#{productName} ,'%') )
+			</if>
+		</where>
+		ORDER BY  f.id desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+</mapper>

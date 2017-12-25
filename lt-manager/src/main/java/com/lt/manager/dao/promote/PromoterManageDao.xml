@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.promote.PromoterManageDao">
+	
+	<select id="selectPromoterCount" parameterType="com.lt.model.promote.Promoter" resultType="Integer">
+		SELECT COUNT(ID) FROM promoter 
+		where 1=1
+		<if test="levelId != null">
+			and level_id=#{levelId}
+		</if>
+		<if test="userId != null and userId != ''">
+			and user_id=#{userId}
+		</if>
+		<if test="flag != null">
+			and flag=#{flag}
+		</if>
+	</select>
+	
+	<select id="selectPromoterPage" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="com.lt.manager.bean.promote.PromoteParamVo">
+		SELECT p.user_id,u.nick_name,u.user_name,l.`level`,log.first_register_count,log.first_trader_count,
+		log.first_hand_count,log.first_commision,log.second_hand_count,log.second_commision,log.balance_commision,
+		cm.withdraw_commision, cm.commision_balance
+ 		FROM promoter p LEFT JOIN user_base u ON (p.user_id = u.user_id )
+		LEFT JOIN statistic_promoter_summary_log log on(p.user_id=log.user_id) 
+		LEFT JOIN promoter_level l on(p.level_id=l.id) LEFT JOIN commision_main cm on(p.user_id=cm.user_id)
+		<where> p.flag=1
+			<if test="userId != null and userId != ''">
+				and p.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="levelId != null">
+				and p.level_id=#{levelId}
+			</if>
+		</where>
+		ORDER BY log.first_register_count desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectPromoterPageCount" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="Integer">
+		SELECT COUNT(p.id)
+ 		FROM promoter p LEFT JOIN user_base u ON (p.user_id = u.user_id )
+		LEFT JOIN statistic_promoter_summary_log log on(p.user_id=log.user_id) 
+		LEFT JOIN promoter_level l on(p.level_id=l.id) LEFT JOIN commision_main cm on(p.user_id=cm.user_id)
+		<where> p.flag=1
+			<if test="userId != null and userId != ''">
+				and p.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+			<if test="userName != null and userName != ''">
+				and u.user_name like concat('%',#{userName},'%')
+			</if>
+			<if test="tele != null and tele != ''">
+				and u.tele like concat('%',#{tele},'%')
+			</if>
+			<if test="levelId != null">
+				and p.level_id=#{levelId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectPromoterDataPage" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="com.lt.manager.bean.promote.PromoteParamVo">
+		SELECT p.user_id,u.nick_name,log.first_register_count,log.first_recharger_count,log.first_recharge_amount,log.first_trader_count,
+		log.first_hand_count,log.first_trade_amount
+ 		FROM promoter p LEFT JOIN user_base u ON (p.user_id = u.user_id )
+		LEFT JOIN statistic_promoter_summary_log log on(p.user_id=log.user_id) 
+		LEFT JOIN promoter_level l on(p.level_id=l.id) LEFT JOIN commision_main cm on(p.user_id=cm.user_id)
+		<where> p.flag=1
+			<if test="userId != null and userId != ''">
+				and p.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and u.nick_name like concat('%',#{nickName},'%')
+			</if>
+		</where>
+		ORDER BY log.first_register_count desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectBrancherPage" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="com.lt.manager.bean.promote.PromoteParamVo">
+		select u1.user_id userId,u2.nick_name,u1.nick_name brancher_nick_name,log.recharge_amount,
+		log.hand_count,log.trade_amount,u1.create_date
+ 		from statistic_brancher_summary_log log LEFT JOIN promoter_user_mapper pum on(log.user_id=pum.user_id )
+		LEFT JOIN user_base u1 on(log.user_id=u1.user_id) LEFT JOIN user_base u2 on(pum.promoter_id=u2.user_id)
+		where u2.user_id=#{userId} and pum.flag=1 and log.flag=1
+		<if test="brancherUserId != null">
+			and u1.user_id=#{brancherUserId}
+		</if>
+		<if test="brancherNickName != null and brancherNickName != ''">
+			and u1.nick_name like concat('%',#{brancherNickName},'%')
+		</if>
+		<if test="beginTime != null and beginTime != ''">
+			and u1.create_date >= #{beginTime}
+		</if>
+		<if test="endTime != null and endTime != ''">
+			and #{endTime} >= u1.create_date
+		</if>
+		order by u1.create_date desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectBrancherPageCount" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="Integer">
+		select COUNT(log.id)
+ 		from statistic_brancher_summary_log log LEFT JOIN promoter_user_mapper pum on(log.user_id=pum.user_id)
+		LEFT JOIN user_base u1 on(log.user_id=u1.user_id) LEFT JOIN user_base u2 on(pum.promoter_id=u2.user_id)
+		where u2.user_id=#{userId}  and pum.flag=1 and log.flag=1
+		<if test="brancherUserId != null">
+			and u1.user_id=#{brancherUserId}
+		</if>
+		<if test="brancherNickName != null and brancherNickName != ''">
+			and u1.nick_name like concat('%',#{brancherNickName},'%')
+		</if>
+		<if test="beginTime != null and beginTime != ''">
+			and u1.create_date >= #{beginTime}
+		</if>
+		<if test="endTime != null and endTime != ''">
+			and #{endTime} >= u1.create_date
+		</if>
+	</select>
+
+	<update id="updatePromoter" parameterType="com.lt.model.promote.Promoter">
+		update promoter 
+		<set>
+			<if test="levelId != null">
+				level_id=#{levelId},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id=#{modifyUserId},
+			</if>
+			<if test="flag != null">
+				flag=#{flag},
+			</if>
+			modify_time=now()
+		</set>
+		where user_id=#{userId}
+	</update>
+	
+	<select id="selectUserId" parameterType="com.lt.manager.bean.user.UserBase" resultType="String">
+		select user_id id from user_base
+		<where> status=0
+			<if test="tele != null and tele != ''">
+				and tele=#{tele}
+			</if>
+			<if test="id != null and id != ''">
+				and user_id=#{id}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updatePromoterUserMapper" parameterType="com.lt.model.promote.PromoterUserMapper">
+		update promoter_user_mapper
+		<set>
+			<if test="flag != null">
+				flag=#{flag},
+			</if>
+			modify_time=now()
+		</set>
+		where user_id=#{userId}
+		<if test="promoterId != null">
+			and promoter_id=#{promoterId}
+		</if>
+	</update>
+	
+	<insert id="insertPromoterUserMapper" parameterType="com.lt.model.promote.PromoterUserMapper">
+		insert into promoter_user_mapper
+		(
+			user_id,
+			promoter_id,
+			flag,
+			create_time,
+			modify_time
+		)values
+		(
+			#{userId},
+			#{promoterId},
+			#{flag},
+			now(),
+			now()
+		)
+	</insert>
+
+	<select id="selectPromoterInfo" parameterType="String" resultType="map">
+		select p.user_id,p.level_id,l.`level`,log.first_register_count,log.second_register_count,log.first_trader_count,log.second_trader_count
+		,log.first_hand_count,log.second_hand_count,log.first_commision,log.second_commision
+		,log.balance_commision ,cm.withdraw_commision,p.create_time,cm.commision_balance
+		from promoter p 
+		LEFT JOIN promoter_level l on(l.id=p.level_id) LEFT JOIN statistic_promoter_summary_log log on(log.user_id=p.user_id)
+		LEFT JOIN commision_main cm on(cm.user_id=p.user_id)
+		where p.user_id=#{userId} and p.flag=1
+	</select>
+	
+	<select id="selectPromoterUserMapper" parameterType="String" resultType="map">
+		select pum.promoter_id,u.nick_name from promoter_user_mapper pum LEFT JOIN user_base u on(pum.promoter_id=u.user_id)
+		where pum.flag=1 and pum.user_id=#{userId}
+	</select>
+	
+	<select id="selectPromoterUserMapperCount" parameterType="com.lt.model.promote.PromoterUserMapper" resultType="Integer">
+		select count(id) from promoter_user_mapper 
+		<where>
+			<if test="flag != null">
+				and flag=#{flag}
+			</if>
+			<if test="userId != null and userId != ''">
+				and user_id=#{userId}
+			</if>
+			<if test="promoterId != null">
+				and promoter_id=#{promoterId}
+			</if>
+		</where>
+	</select>
+	
+	<delete id="deletePromoter" parameterType="String">
+		delete from promoter where user_id=#{userId}
+	</delete>
+	
+	<update id="updateBrancherSummaryStatus" parameterType="map">
+		update statistic_brancher_summary_log 
+		set flag=#{flag},modify_time=now()
+		 where user_id=#{userId} 
+		 <if test="promoterUserId != null">
+		 	 and promoter_user_id=#{promoterUserId}
+		 </if>		
+	</update>
+	
+	<select id="selectBrancherSummaryLogCount" resultType="Integer" parameterType="com.lt.model.statistic.StatisticBrancherSummaryLog"> 
+		select count(id) from statistic_brancher_summary_log
+		<where>
+			<if test="flag != null">
+				and flag=#{flag}
+			</if>
+			<if test="promoterUserId != null">
+				and promoter_user_id=#{promoterUserId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and user_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="initBrancherSummaryLog" parameterType="com.lt.model.statistic.StatisticBrancherSummaryLog">
+		INSERT INTO statistic_brancher_summary_log
+		(
+			user_id,
+			promoter_user_id,
+			create_time,
+			modify_time,
+			flag
+		)VALUES
+		(
+			#{userId},
+			#{promoterUserId},
+			now(),
+			now(),
+			1
+		)
+	</insert>
+	
+	<select id="selectFirstPromoterUserMapper" parameterType="String" resultType="com.lt.model.promote.PromoterUserMapper">
+		select * from promoter_user_mapper where user_id=#{userId} ORDER BY create_time LIMIT 0,1
+	</select>
+	
+	<select id="selectBrancherDayLogCount" parameterType="com.lt.model.statistic.StatisticBrancherDayLog" resultType="Integer">
+		select count(1) from statistic_brancher_day_log
+		<where>
+			<if test="promoterUserId != null">
+				and promoter_user_id=#{promoterUserId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and user_id=#{userId}
+			</if>
+			<if test="statisticTime != null and statisticTime != ''">
+				and statistic_time=#{statisticTime}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertBrancherDayLog" parameterType="com.lt.model.statistic.StatisticBrancherDayLog">
+		insert into statistic_brancher_day_log
+		(
+			user_id,
+			promoter_user_id,
+			recharge_amount,
+			hand_count,
+			trade_amount,
+			create_time,
+			modify_time,
+			statistic_time
+		)values
+		(
+			#{userId},
+			#{promoterUserId},
+			0.0,
+			0,
+			0.0,
+			now(),
+			now(),
+			#{statisticTime}
+		)
+	</insert>
+</mapper>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 开启控制器注解 -->
+	<context:component-scan base-package="com.lt.manager" >
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />   
+    	<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />  
+	</context:component-scan>
+
+	<!-- 支持上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+	</bean>
+	
+		
+<!-- 	<bean id = "OSSObjectSample" class="com.lt.util.utils.OSSObjectSample" init-method="init">
+	    <property name="access_id" value="QVnXfoPDZONogO78" />
+		<property name="access_key" value="OKvsD3ihBKj0wSAdXxkmHruDtRGPZM" />
+		<property name="bucketName" value="cainiu" />
+		<property name="url" value=".oss-cn-hangzhou.aliyuncs.com/" />
+		<property name="pkg" value="photo/" /> 
+	</bean> -->
+	 
+	<!-- 讯达云 -->
+	<bean id = "SpeendyCloud" class="com.lt.util.utils.speedycloud.SpeedyCloudUtils" init-method="init">
+	    <property name="accessKey" value="D862B7822119A3D797CE47F1604AAE63" />
+		<property name="secretKey" value="d450ec3b19d40a6b0e738378548e18c9316f8c2e0bd6e4af00af8d008dc14d04" />
+		<property name="bucket" value="cainiu-lt" />
+		<property name="host" value="http://cos.speedycloud.org" />
+	</bean>
+	
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- <ref bean="jacksonMessageConverter" /> -->
+				<ref bean="stringHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<!-- 由于SpringMVC默认的字符串转换器编码是ISO8859-1，所以此处需要覆盖设置 -->
+	<bean id="stringHttpMessageConverter"
+		class="org.springframework.http.converter.StringHttpMessageConverter">
+		<!-- 添加配置，去除因为@ResponseBody导致的返回Accept-Charset大量数据的问题 -->
+		<property name="writeAcceptCharset" value="false"></property>
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+				<value>text/json;charset=UTF-8</value>
+				<value>application/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+	<!-- 避免IE在ajax请求时，返回json出现下载 -->
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/json;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 本地化解析 -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver"
+		p:cookieName="clientLanguage" p:cookieMaxAge="100000" p:cookiePath="/"
+		p:defaultLocale="zh_CN" />
+	<!-- 静态资源不受Spring控制器拦截 -->
+	<!-- <mvc:resources mapping="/static/**" location="/static/" /> -->
+	<mvc:resources mapping="/ueditor/**" location="/ueditor/" />
+	<!-- <mvc:annotation-driven /> -->
+ 	 <mvc:interceptors> 
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.lt.manager.inteceptor.PrivilegesInteceptor"> 
+				<property name="excuUrls" value="login,unlogin,sendSms,callbackForUnspay,callbackForDaddypay"></property>
+			</bean>
+		</mvc:interceptor>  
+		 <mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.lt.manager.inteceptor.OperationInterceptor" />
+		</mvc:interceptor> 
+		 <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	 </mvc:interceptors> 
+</beans>

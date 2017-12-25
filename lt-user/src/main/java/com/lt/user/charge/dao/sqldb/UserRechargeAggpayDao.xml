@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserRechargeAggpayDao">
+
+	<insert id="insertAggpayRecharge" parameterType="com.lt.model.user.charge.FundAggpayRecharge" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into fund_aggpay_recharge
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="tradeType != null">
+				trade_type,
+			</if>
+			<if test="payType != null">
+				pay_type,
+			</if>
+			<if test="merchantId != null">
+				merchant_id,
+			</if>
+			<if test="appId != null">
+				app_id,
+			</if>
+			<if test="openId != null">
+				open_id,
+			</if>
+			<if test="orderId != null">
+				order_id,
+			</if>
+			<if test="subject != null">
+				subject,
+			</if>
+			<if test="machineIp != null">
+				machine_ip,
+			</if>
+			<if test="notifyUrl != null">
+				notify_url,
+			</if>
+			<if test="returnUrl != null">
+				return_url,
+			</if>
+			<if test="submitTime != null">
+				submit_time,
+			</if>
+			<if test="creditLimit != null">
+				credit_limit,
+			</if>
+			<if test="amt != null">
+				amt,
+			</if>
+			<if test="summary != null">
+				summary,
+			</if>
+			<if test="sign != null">
+				sign,
+			</if>
+			<if test="createStamp != null">
+				create_stamp,
+			</if>
+			<if test="modtifyStamp != null">
+				modtify_stamp,
+			</if>
+			<if test="platSerial != null">
+				plat_serial,
+			</if>
+			<if test="retStatus != null">
+				ret_status,
+			</if>
+			<if test="retCode != null">
+				ret_code,
+			</if>
+			<if test="retMsg != null">
+				ret_msg,
+			</if>
+			<if test="retDesc != null">
+				ret_desc,
+			</if>
+			<if test="codeUrl != null">
+				code_url,
+			</if>
+			<if test="codeImgUrl != null">
+				code_Img_url,
+			</if>
+			<if test="payUrl != null">
+				pay_url,
+			</if>
+			<if test="payCode != null">
+				pay_code,
+			</if>
+			<if test="bizCode != null">
+				biz_code,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeType != null">
+				#{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="payType != null">
+				#{payType,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantId != null">
+				#{merchantId,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				#{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="openId != null">
+				#{openId,jdbcType=VARCHAR},
+			</if>
+			<if test="orderId != null">
+				#{orderId,jdbcType=VARCHAR},
+			</if>
+			<if test="subject != null">
+				#{subject,jdbcType=VARCHAR},
+			</if>
+			<if test="machineIp != null">
+				#{machineIp,jdbcType=VARCHAR},
+			</if>
+			<if test="notifyUrl != null">
+				#{notifyUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="returnUrl != null">
+				#{returnUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="submitTime != null">
+				#{submitTime,jdbcType=VARCHAR},
+			</if>
+			<if test="creditLimit != null">
+				#{creditLimit,jdbcType=VARCHAR},
+			</if>
+			<if test="amt != null">
+				#{amt,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				#{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="sign != null">
+				#{sign,jdbcType=VARCHAR},
+			</if>
+			<if test="createStamp != null">
+				#{createStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modtifyStamp != null">
+				#{modtifyStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="platSerial != null">
+				#{platSerial,jdbcType=VARCHAR},
+			</if>
+			<if test="retStatus != null">
+				#{retStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="retCode != null">
+				#{retCode,jdbcType=VARCHAR},
+			</if>
+			<if test="retMsg != null">
+				#{retMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="retDesc != null">
+				#{retDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="codeUrl != null">
+				#{codeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="codeImgUrl != null">
+				#{codeImgUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="payUrl != null">
+				#{payUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="payCode != null">
+				#{payCode,jdbcType=VARCHAR},
+			</if>
+			<if test="bizCode != null">
+				#{bizCode,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<select id="getAggRecharge" parameterType="java.lang.String" resultType="com.lt.model.user.charge.FundAggpayRecharge">
+		select
+		*
+		from
+		fund_aggpay_recharge
+		where
+		order_id= #{orderId}
+	</select>
+
+	<select id="getAggpayRechargeForUpdate" parameterType="java.lang.String" resultType="com.lt.model.user.charge.FundAggpayRecharge">
+		select
+		*
+		from
+		fund_aggpay_recharge
+		where
+		order_id= #{orderId}
+		for update
+	</select>
+
+	<update id="updateAggpayRecharge" parameterType="com.lt.model.user.charge.FundAggpayRecharge">
+		update fund_aggpay_recharge
+		<set>
+			<if test="userId != null">
+				user_id = #{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="tradeType != null">
+				trade_type = #{tradeType,jdbcType=VARCHAR},
+			</if>
+			<if test="payType != null">
+				pay_type = #{payType,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantId != null">
+				merchant_id = #{merchantId,jdbcType=VARCHAR},
+			</if>
+			<if test="appId != null">
+				app_id = #{appId,jdbcType=VARCHAR},
+			</if>
+			<if test="openId != null">
+				open_id = #{openId,jdbcType=VARCHAR},
+			</if>
+			<if test="subject != null">
+				subject = #{subject,jdbcType=VARCHAR},
+			</if>
+			<if test="machineIp != null">
+				machine_ip = #{machineIp,jdbcType=VARCHAR},
+			</if>
+			<if test="notifyUrl != null">
+				notify_url = #{notifyUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="returnUrl != null">
+				return_url = #{returnUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="submitTime != null">
+				submit_time = #{submitTime,jdbcType=VARCHAR},
+			</if>
+			<if test="creditLimit != null">
+				credit_limit = #{creditLimit,jdbcType=VARCHAR},
+			</if>
+			<if test="amt != null">
+				amt = #{amt,jdbcType=VARCHAR},
+			</if>
+			<if test="summary != null">
+				summary = #{summary,jdbcType=VARCHAR},
+			</if>
+			<if test="sign != null">
+				sign = #{sign,jdbcType=VARCHAR},
+			</if>
+			<if test="createStamp != null">
+				create_stamp = #{createStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="modtifyStamp != null">
+				modtify_stamp = #{modtifyStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="platSerial != null">
+				plat_serial = #{platSerial,jdbcType=VARCHAR},
+			</if>
+			<if test="retStatus != null">
+				ret_status = #{retStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="retCode != null">
+				ret_code = #{retCode,jdbcType=VARCHAR},
+			</if>
+			<if test="retMsg != null">
+				ret_msg = #{retMsg,jdbcType=VARCHAR},
+			</if>
+			<if test="retDesc != null">
+				ret_desc = #{retDesc,jdbcType=VARCHAR},
+			</if>
+			<if test="codeUrl != null">
+				code_url = #{codeUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="codeImgUrl != null">
+				code_Img_url = #{codeImgUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="payUrl != null">
+				pay_url = #{payUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="payCode != null">
+				pay_code = #{payCode,jdbcType=VARCHAR},
+			</if>
+			<if test="bizCode != null">
+				biz_code = #{bizCode,jdbcType=VARCHAR},
+			</if>
+			<if test="dealStatus != null">
+				deal_status = #{dealStatus,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where order_id = #{orderId}
+	</update>
+
+	<select id="getAggpayListByCondition" resultType="java.lang.String">
+		select order_id from fund_aggpay_recharge
+		<where>
+			<if test="dealStatus != null and dealStatus != ''">and deal_status = #{dealStatus}</if>
+			<if test="beginDate != null and beginDate != ''">and create_stamp &gt;= #{beginDate}</if>
+		</where>
+		<if test="limit != null and limit != ''">
+			limit ${limit}
+		</if>
+	</select>
+</mapper>

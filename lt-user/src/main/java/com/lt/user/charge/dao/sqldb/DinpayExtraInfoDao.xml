@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.DinpayExtraInfoDao">
+  <resultMap id="BaseResultMap" type="com.lt.model.user.charge.DinpayExtraInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="order_no" jdbcType="VARCHAR" property="orderNo" />
+    <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
+    <result column="order_amount" jdbcType="DOUBLE" property="orderAmount" />
+    <result column="trade_no" jdbcType="VARCHAR" property="tradeNo" />
+    <result column="trade_time" jdbcType="TIMESTAMP" property="tradeTime" />
+    <result column="trade_status" jdbcType="VARCHAR" property="tradeStatus" />
+    <result column="extra_data" jdbcType="VARCHAR" property="extraData" />
+    <result column="error_code" jdbcType="VARCHAR" property="errorCode" />
+    <result column="error_desc" jdbcType="VARCHAR" property="errorDesc" />
+    <result column="req_message" jdbcType="VARCHAR" property="reqMessage" />
+    <result column="resp_message" jdbcType="VARCHAR" property="respMessage" />
+    <result column="reserve" jdbcType="VARCHAR" property="reserve" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_statmp" jdbcType="TIMESTAMP" property="createStatmp" />
+    <result column="last_updae_stamp" jdbcType="TIMESTAMP" property="lastUpdaeStamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, order_no, order_time, order_amount, trade_no, trade_time, trade_status, extra_data, 
+    error_code, error_desc, req_message, resp_message, reserve, remark, create_statmp, 
+    last_updae_stamp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dinpay_extra_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dinpay_extra_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lt.model.user.charge.DinpayExtraInfo">
+    insert into dinpay_extra_info (id, order_no, order_time, 
+      order_amount, trade_no, trade_time, 
+      trade_status, extra_data, error_code, 
+      error_desc, req_message, resp_message, 
+      reserve, remark, create_statmp, 
+      last_updae_stamp)
+    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=VARCHAR}, #{orderTime,jdbcType=TIMESTAMP}, 
+      #{orderAmount,jdbcType=DOUBLE}, #{tradeNo,jdbcType=VARCHAR}, #{tradeTime,jdbcType=TIMESTAMP}, 
+      #{tradeStatus,jdbcType=VARCHAR}, #{extraData,jdbcType=VARCHAR}, #{errorCode,jdbcType=VARCHAR}, 
+      #{errorDesc,jdbcType=VARCHAR}, #{reqMessage,jdbcType=VARCHAR}, #{respMessage,jdbcType=VARCHAR}, 
+      #{reserve,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createStatmp,jdbcType=TIMESTAMP}, 
+      #{lastUpdaeStamp,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lt.model.user.charge.DinpayExtraInfo">
+    insert into dinpay_extra_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orderNo != null">
+        order_no,
+      </if>
+      <if test="orderTime != null">
+        order_time,
+      </if>
+      <if test="orderAmount != null">
+        order_amount,
+      </if>
+      <if test="tradeNo != null">
+        trade_no,
+      </if>
+      <if test="tradeTime != null">
+        trade_time,
+      </if>
+      <if test="tradeStatus != null">
+        trade_status,
+      </if>
+      <if test="extraData != null">
+        extra_data,
+      </if>
+      <if test="errorCode != null">
+        error_code,
+      </if>
+      <if test="errorDesc != null">
+        error_desc,
+      </if>
+      <if test="reqMessage != null">
+        req_message,
+      </if>
+      <if test="respMessage != null">
+        resp_message,
+      </if>
+      <if test="reserve != null">
+        reserve,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createStatmp != null">
+        create_statmp,
+      </if>
+      <if test="lastUpdaeStamp != null">
+        last_updae_stamp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderNo != null">
+        #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderAmount != null">
+        #{orderAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tradeNo != null">
+        #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null">
+        #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeStatus != null">
+        #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="extraData != null">
+        #{extraData,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null">
+        #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errorDesc != null">
+        #{errorDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMessage != null">
+        #{reqMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="respMessage != null">
+        #{respMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createStatmp != null">
+        #{createStatmp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdaeStamp != null">
+        #{lastUpdaeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lt.model.user.charge.DinpayExtraInfo">
+    update dinpay_extra_info
+    <set>
+      <if test="orderNo != null">
+        order_no = #{orderNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderTime != null">
+        order_time = #{orderTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderAmount != null">
+        order_amount = #{orderAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="tradeNo != null">
+        trade_no = #{tradeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null">
+        trade_time = #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tradeStatus != null">
+        trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="extraData != null">
+        extra_data = #{extraData,jdbcType=VARCHAR},
+      </if>
+      <if test="errorCode != null">
+        error_code = #{errorCode,jdbcType=VARCHAR},
+      </if>
+      <if test="errorDesc != null">
+        error_desc = #{errorDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="reqMessage != null">
+        req_message = #{reqMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="respMessage != null">
+        resp_message = #{respMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="reserve != null">
+        reserve = #{reserve,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createStatmp != null">
+        create_statmp = #{createStatmp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdaeStamp != null">
+        last_updae_stamp = #{lastUpdaeStamp,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lt.model.user.charge.DinpayExtraInfo">
+    update dinpay_extra_info
+    set order_no = #{orderNo,jdbcType=VARCHAR},
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_amount = #{orderAmount,jdbcType=DOUBLE},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_time = #{tradeTime,jdbcType=TIMESTAMP},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      extra_data = #{extraData,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      error_desc = #{errorDesc,jdbcType=VARCHAR},
+      req_message = #{reqMessage,jdbcType=VARCHAR},
+      resp_message = #{respMessage,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_statmp = #{createStatmp,jdbcType=TIMESTAMP},
+      last_updae_stamp = #{lastUpdaeStamp,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByOrderNo" parameterType="com.lt.model.user.charge.DinpayExtraInfo">
+    update dinpay_extra_info
+    set
+      order_time = #{orderTime,jdbcType=TIMESTAMP},
+      order_amount = #{orderAmount,jdbcType=DOUBLE},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_time = #{tradeTime,jdbcType=TIMESTAMP},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      extra_data = #{extraData,jdbcType=VARCHAR},
+      error_code = #{errorCode,jdbcType=VARCHAR},
+      error_desc = #{errorDesc,jdbcType=VARCHAR},
+      req_message = #{reqMessage,jdbcType=VARCHAR},
+      resp_message = #{respMessage,jdbcType=VARCHAR},
+      reserve = #{reserve,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_statmp = #{createStatmp,jdbcType=TIMESTAMP},
+      last_updae_stamp = #{lastUpdaeStamp,jdbcType=TIMESTAMP}
+    where order_no = #{orderNo,jdbcType=VARCHAR}
+  </update>
+</mapper>

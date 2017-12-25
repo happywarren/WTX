@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.AuthDao">
+	<!-- insert -->
+	<!-- 追加新员工权限 -->
+	<insert id="addAuth" parameterType="com.lt.manager.bean.sys.AuthMap" useGeneratedKeys="true"  keyProperty="id">
+		INSERT INTO authmap (staffid,authid,type)
+		VALUES
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.staffId},#{item.authId},#{item.type})
+		</foreach>
+	</insert>
+
+
+	<!-- delete -->
+	<!-- 删除员工权限 -->
+	<delete id="delAuth" parameterType="java.lang.Integer">
+		DELETE FROM authmap WHERE id IN
+		<foreach collection="list" item="id" index="index" open="("
+			close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<delete id="delAuthById" parameterType="java.lang.Integer">
+		DELETE FROM auth WHERE id =	#{id}
+	</delete>
+	<!-- update -->
+	<update id="updateAuth">
+		update auth set 
+		name = #{name}, 
+		<if test="desc !=null and desc != '' ">
+			auth.desc = #{desc},
+		</if>
+		url  = #{url}, 
+		menus_id = #{menusId},
+		opera_type = #{operaType},
+		modify_date=now()
+		where id =#{id}
+	</update>
+	<!-- select -->
+	<!-- 根据权限id获取权限 -->
+	<select id="selectAuthById" parameterType="java.lang.Integer"
+		resultType="Auth">
+		select * from  auth where id = #{0}
+	</select>
+	<!-- 获取所有权限 -->
+	<select id="selectAuthList" resultType="Auth">
+		select * from auth
+	</select>
+	<!-- 查询员工对应的权限 -->
+	<select id="queryStaffAuth" parameterType="java.util.List"
+		resultType="com.lt.manager.bean.sys.Auth">
+		SELECT * FROM auth WHERE id IN
+		<foreach collection="list" item="id" index="index" open="("
+			close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
+	<select id="selectStaffAuth" parameterType="java.lang.Integer"
+		resultType="com.lt.manager.bean.sys.Auth">
+		select * from auth where id in(
+			SELECT authid FROM authmap WHERE staffid = #{0}
+		)
+	</select>
+	<select id="selectAuth" parameterType="java.util.Map" resultType="com.lt.manager.bean.sys.AuthInfoVo">
+	select auth.id,
+	auth.pid,
+	auth.name,
+	auth.url,
+	auth.target,
+	auth.icon,
+	auth.type,
+	auth.desc,
+	auth.menus_id,
+	auth.opera_type,
+	auth.create_user_id,
+	auth.modify_user_id,
+	auth.create_date,
+	auth.modify_date,menus.name as menusName from auth
+ 	left join menus on auth.menus_id = menus.id
+	<where>
+			1=1
+		<if test="name !=null and name!='' ">
+				and auth.name like concat('%',#{name},'%')
+		</if>
+		<if test="menusId !=null and menusId != '' ">
+				and menus_id in 
+			<foreach collection="menusId" item="id" index="index" open="("
+			close=")" separator=",">
+			#{id}
+			</foreach>
+		</if>
+		<if test="operaType !=null and operaType !='' ">
+				and opera_type = #{operaType}
+		</if>
+		<if test="url != null and url != ''">
+			and auth.url=#{url}
+		</if>
+	</where> 
+	order by id desc 
+	limit #{limit1},#{limit2}
+	</select>
+	<update id="upadteAuth" parameterType="Auth">
+		update auth set 
+		name = #{name}, 
+		<if test="desc !=null and desc != '' ">
+			auth.desc = #{desc},
+		</if>
+		url  = #{url}, 
+		menus_id = #{menusId},
+		opera_type = #{operaType},
+		modify_date=now()
+		where id =#{id}
+	</update>
+	<select id="selectAuthCount" parameterType="java.util.Map" resultType="Integer">
+	select count(id)
+	 from auth
+	<where>
+			1=1
+		<if test="name !=null and name!='' ">
+				and auth.name like concat('%',#{name},'%')
+		</if>
+		<if test="menusId !=null and menusId != '' ">
+				and menus_id in
+				<foreach collection="menusId" item="id" index="index" open="("
+			close=")" separator=",">
+			#{id}
+			</foreach>
+		</if>
+		<if test="operaType !=null and operaType !='' ">
+				and opera_type = #{operaType}
+		</if>
+		<if test="url != null and url != ''">
+			and auth.url=#{url}
+		</if>
+	</where> 
+	</select>
+	
+	<delete id="deleteAuthMap" parameterType="int">
+		delete
+		from
+		authmap
+		where
+		staffid=#{staffId}
+	</delete>
+
+	<insert id="addAuthMap">
+		insert into
+		authmap
+		(authid,staffid)
+		values
+		<foreach collection="idList" item="aId" index="index"
+			separator=",">
+			(#{aId},#{staffId})
+		</foreach>
+	</insert>
+
+	<insert id="saveAuth" parameterType="com.lt.manager.bean.sys.Auth"
+		useGeneratedKeys="true" keyProperty="id" flushCache="true">
+		INSERT INTO auth (name,url,`desc`,type,create_date,modify_date,menus_id,opera_type)
+		VALUE (#{name},#{url},#{desc},'1',now(),now(),#{menusId},#{operaType})
+	</insert>
+	
+	<select id="getAuthUrl" parameterType="int" resultType="String">
+		select REPLACE(url,'{authid}',id) from auth where id=#{id}
+	</select>
+	
+	<select id="getAuthByUrl" parameterType="String" resultType="com.lt.manager.bean.sys.Auth">
+		select * from auth where url = #{url} limit 1
+	<!-- 	select * from auth where url like concat('%',#{url},'%') -->
+	</select>
+	
+	<select id="getRoleAuthByRoleAndAuthId" resultType="com.lt.manager.bean.sys.RoleAuth">
+		select * from role_auth where role_id=#{roleId} and auth_id=#{authId}
+	</select>
+</mapper>

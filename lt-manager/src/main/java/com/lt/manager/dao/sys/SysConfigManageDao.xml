@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.SysConfigManageDao">
+	<select id="selectSysConfigs" resultType="com.lt.model.sys.SysConfig">
+		SELECT * FROM sys_config WHERE isuse=1
+	</select>
+	
+	<select id="selectSysConfigByCode" resultType="com.lt.model.sys.SysConfig" parameterType="java.lang.String">
+		SELECT * FROM sys_config WHERE cfg_code=#{cfgCode}
+	</select>
+	
+	<update id="updateSysConfig"	parameterType="com.lt.model.sys.SysConfig">
+		update	
+			sys_config
+		<set>
+			<if test="cfgValue!=null and cfgValue!=''">
+				cfg_value=#{cfgValue},
+			</if>
+			<if test="releaseName!=null and releaseName!=''">
+				release_name=#{releaseName}
+			</if>
+		</set>
+		<where>
+			cfg_code=#{cfgCode}
+		</where>
+	</update>
+
+
+	<select id="fuzzySelectSysConfig" resultType="com.lt.model.sys.SysConfig" parameterType="java.util.List">
+		SELECT * FROM sys_config WHERE cfg_code in 
+		<foreach collection="list" close=")" item="cfgCode" open="(" separator=",">#{cfgCode}</foreach>
+	</select>
+	
+	
+	<update id="updateSysConfigList" parameterType="java.util.List">
+		<foreach collection="list" separator=";" item="item">
+			UPDATE sys_config
+			<set>
+				<if test="item.cfgValue != null">cfg_value=#{item.cfgValue},</if>
+				<if test="item.releaseName != null">release_name=#{item.releaseName},</if>
+				create_date=now()
+			</set>
+			where cfg_code=#{item.cfgCode}
+		</foreach>		
+	</update>		
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.product.IProductDao">
+
+	<select id="findAllToProductVo" resultType="com.lt.vo.product.ProductVo">
+		select
+		p.*,ptc.float_limit as floatLimit 
+		from product as p 
+		left join
+		product_trade_config as ptc 
+		on p.id = ptc.product_id
+	</select>
+	<select id="findAllByStatus" resultType="com.lt.model.product.Product">
+		select
+		*
+		from product 
+		where
+		status = #{status}
+		
+	</select>
+	<update id="updateProductStatus" >
+		update product 
+		set market_status = #{marketStatus}
+		where product_code = #{productName}
+	</update>
+	
+	<update id="updateProduct" parameterType="com.lt.vo.product.ProductVo">
+		update product 
+		<set>
+			<if test="marketStatus != null">
+				market_status = #{marketStatus},
+			</if>
+			<if test="shutReason != null and shutReason != ''">
+				shut_reason = #{shutReason},
+			</if>
+			modify_date=now()
+		</set>
+		where product_code=#{productCode}
+	</update>
+	
+	<select id="selectProductLobby" parameterType="map" resultType="com.lt.vo.product.ProductVo">
+		SELECT p.*,pqc.baseline,pt.`name` type_name,er.currency,er.`name` currency_name,er.sign currency_sign,pqc.num as dayPoints,
+			er.unit currency_unit,pqc.interval_float,pqc.is_double,ei.`code` exchange_code,ei.`name` exchange_name,er.rate ,ei.plate,
+		ptc.jump_price,ptc.jump_value
+		FROM product p LEFT JOIN product_quota_config pqc ON(p.id=pqc.product_id) LEFT JOIN product_type pt 
+		ON(pt.id=p.product_type_id) LEFT JOIN exchange_rate er ON(p.current_rate_id=er.id) LEFT JOIN exchange_info ei 
+		ON(p.exchange_id=ei.id) LEFT JOIN product_trade_config ptc on(ptc.product_id=p.id)
+		<if test="investorId != null and investorId != ''">
+		RIGHT JOIN investor_product_config upc ON(p.short_code = upc.product_code)
+		</if>
+		<where>
+			NOW() > p.expiration_begin_time and p.expiration_time >= NOW()
+			and p.status in(1,2)
+			<if test="productTypeId != null">
+				and p.product_type_id=#{productTypeId}
+			</if>
+			<if test="fundType != null">
+				<if test="fundType == 0">
+					and p.fund_type in(0,2)
+				</if>
+				<if test="fundType == 1">
+					and p.fund_type in(1,2)
+				</if>
+			</if>							
+			<if test="productCode != null">
+				and p.product_code=#{productCode}
+			</if>
+			<if test="investorId != null and investorId != ''">
+				and upc.investor_account_id = #{investorId}
+			</if>
+		</where>
+		ORDER BY p.sort_num
+	</select>
+	
+	<select id="selectProductInfo" parameterType="String" resultType="com.lt.vo.product.ProductVo">
+		select p.*,ei.`code` exchangeCode,er.currency,er.rate,er.unit currencyUnit,prc.jump_price,prc.jump_value ,
+		ei.plate ,prc.is_market_price,prc.limited_price_value
+		from product p JOIN exchange_info ei ON(p.exchange_id=ei.id) 
+		JOIN exchange_rate er ON(p.current_rate_id=er.id) JOIN product_trade_config prc ON(p.id=prc.product_id)
+		WHERE p.product_code=#{proCode}
+	</select>
+	
+	<select id="selectCodeByNow" parameterType="String" resultType="String">
+		SELECT t.product_code productCode from exchange_holiday eh JOIN 
+		(SELECT p.product_code,ei.id FROM product p JOIN exchange_info ei ON(p.exchange_id=ei.id)) t
+		on(eh.exchange_id=t.id)
+		where 
+		#{time} >= eh.begin_time and eh.end_time >= #{time}
+	</select>
+	
+	<select id="selectCodeAndTimeForHoliday" parameterType="String" resultType="map">
+		SELECT eh.begin_time,t.product_code from exchange_holiday eh JOIN 
+		(SELECT p.product_code,ei.id FROM product p JOIN exchange_info ei ON(p.exchange_id=ei.id)) t
+		on(eh.exchange_id=t.id)
+		WHERE DATE_FORMAT(eh.begin_time,'%Y-%m-%d') =  DATE_FORMAT(#{time},'%Y-%m-%d')
+	</select>
+	
+	<select id="selectMarketStatus" parameterType="java.util.List" resultType="map">
+		select market_status marketStatus,product_code productCode from product where product_code in
+		<foreach collection="list" item="proCode" separator="," open="(" close=")" index="i">
+			#{proCode}
+		</foreach>
+	</select>
+	
+	<select id="selectHolidayCount" parameterType="map" resultType="Integer">
+	select count(eh.id) from exchange_holiday eh join exchange_info ei on(eh.exchange_id=ei.id) 
+	where ei.`code`=#{exchangeCode} and #{date2} >= begin_time
+	and end_time >= #{date2} and TIMESTAMPDIFF(HOUR,begin_time,end_time) >= 72
+	</select>
+	
+	<select id="selectRateByCurrency" resultType="String" parameterType="String">
+		select rate from exchange_rate where currency=#{currency}
+	</select>
+
+	<select id="selectProductInfoById" parameterType="Integer" resultType="com.lt.vo.product.ProductVo">
+		select p.*,ei.`code` exchangeCode,er.currency,er.rate,er.unit currencyUnit,prc.jump_price,prc.jump_value ,
+		ei.plate ,prc.is_market_price,prc.limited_price_value
+		from product p JOIN exchange_info ei ON(p.exchange_id=ei.id)
+		JOIN exchange_rate er ON(p.current_rate_id=er.id) JOIN product_trade_config prc ON(p.id=prc.product_id)
+		WHERE p.id=#{productId}
+	</select>
+
+	<select id="loadProduct" parameterType="Integer" resultType="com.lt.model.product.Product">
+		select * from product
+		WHERE id=#{id}
+	</select>
+
+	<select id="findAllCodeHoliday" parameterType="java.util.List" resultType="com.lt.vo.defer.PeroidOrderHolidayVo">
+		select f.id product_id,s.begin_time,s.end_time from product f LEFT JOIN
+		(select exchange_id,begin_time,end_time from exchange_holiday where begin_time > NOW()) s ON f.exchange_id = s.exchange_id
+		where f.id in
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+		ORDER BY f.id
+	</select>
+
+	<select id="qryNextDayTradeTime" parameterType="java.util.List" resultType="com.lt.vo.defer.ProNextTradePeriodVo">
+		select f.sys_sale_end_time,s.id product_id from (SELECT DISTINCT sys_sale_end_time,product_id FROM `product_time_config` ORDER BY id) f
+		LEFT JOIN product s on f.product_id = s.id where s.id in
+		<foreach collection="list" item="code" index="index" open="(" separator="," close=")">
+			#{code}
+		</foreach>
+	</select>
+	
+	<select id="getProductCountByCondition" resultType="java.lang.Integer">
+		SELECT
+			count(product.id)
+		FROM
+			investor_product_config AS upc
+		LEFT JOIN product ON product.short_code = upc.product_code
+		JOIN product_type pt ON pt.id = product.product_type_id
+		WHERE
+			upc.investor_account_id = #{investorId}
+		AND pt.`code` = #{productTypeCode}
+
+	</select>
+</mapper>

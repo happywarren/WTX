@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundFlowScoreDao">	
+	
+	<!-- 添加资金流水 -->
+	<insert id="addFundFlowScore" parameterType="com.lt.model.fund.FundFlow">
+		INSERT INTO fund_flow_score (
+			user_id, flow_type, first_optcode, second_optcode, third_optcode, 
+			amount, balance, external_id, remark, create_date, modify_date
+		) VALUES (
+			#{userId}, #{flowType}, #{firstOptCode}, #{secondOptCode}, #{thirdOptCode}, 
+			#{amount}, #{balance}, #{externalId}, #{remark}, #{createDate}, #{modifyDate}
+		)
+	</insert>
+	
+	<!-- 批量添加资金流水 -->
+	<insert id="addFundFlowScoreList" parameterType="java.util.List">
+		INSERT INTO fund_flow_score (
+			user_id, flow_type, first_optcode, second_optcode, third_optcode, 
+			amount, balance, external_id, remark, create_date, modify_date
+		) VALUES
+		<foreach collection="flowList" item="fundFlow" open="" separator="," close="">
+		(
+			#{fundFlow.userId}, #{fundFlow.flowType}, #{fundFlow.firstOptCode}, 
+			#{fundFlow.secondOptCode}, #{fundFlow.thirdOptCode}, 
+			#{fundFlow.amount}, #{fundFlow.balance}, #{fundFlow.externalId}, 
+			#{fundFlow.remark}, #{fundFlow.createDate}, #{fundFlow.modifyDate}
+		)	
+		</foreach>		
+	</insert>
+	
+	<!-- 查询指定业务编码的订单流水汇总-->
+	<select id="queryFundFlowScoreSum" resultType="java.lang.Double">
+		select sum(ifnull(amount, 0.0)) amount 
+		  from fund_flow_score 
+		 where user_id = #{userId} 
+		   and external_id = #{orderId} 
+		   and second_optcode in (
+			<foreach collection="secondOptcodeList" item="secondOptcode" open="" separator="," close="">
+			   #{secondOptcode}
+			</foreach>
+			)
+	</select>
+	
+	<!-- 查询用户资金流水 -->
+	<select id="findFundFollowByUserId" parameterType="java.util.Map" resultType="com.lt.vo.fund.FundFlowVo">
+		select remark, amount, create_date 
+		  from fund_flow_score 
+		 where user_id = #{userId} 
+      order by create_date desc 
+         limit #{limit1}, #{limit2}
+	</select>
+
+	<!-- 查询用户资金流水 -->
+	<select id="findFundFlowListByOrder" parameterType="java.util.Map" resultType="com.lt.vo.fund.FundFlowVo">
+		select remark ,amount,create_date from fund_flow_score where user_id = #{userId} and external_id = #{orderId} order by create_date desc ,id desc
+	</select>
+</mapper>

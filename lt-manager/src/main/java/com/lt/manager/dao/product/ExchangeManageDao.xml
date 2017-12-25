@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ExchangeManageDao">
+	<select id="selectExchangeInfoPage" parameterType="com.lt.manager.bean.product.ExchangeParamVO" resultType="com.lt.model.product.ExchangeInfo">
+		SELECT * FROM exchange_info 
+		<where>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+			<if test="code != null and code != ''">
+				and code like concat('%',#{code},'%')
+			</if>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+		</where>
+		
+		order by create_date desc
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectExchangeInfoCount" parameterType="com.lt.manager.bean.product.ExchangeParamVO" resultType="Integer">
+		SELECT count(1) FROM exchange_info 
+		<where>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+			<if test="code != null and code != ''">
+				and code like concat('%',#{code},'%')
+			</if>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertExchangeInfo" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		INSERT INTO exchange_info 
+		(
+   			code,
+   			name,
+   			create_date,
+   			remark,
+   			plate   
+		)VALUES
+		(
+			#{code},
+			#{name},
+			now(),
+			#{remark},
+			#{plate}
+		)
+	</insert>
+	
+	<update id="updateExchangeInfo" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		UPDATE exchange_info 
+		<set>
+			<if test="code != null and code != ''">
+				code=#{code},
+			</if>
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="remark != null">
+				remark=#{remark},
+			</if>
+			<if test="plate != null">
+				plate=#{plate},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteExchangeInfo" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		DELETE FROM exchange_info where id in(${ids})
+	</delete>
+</mapper>

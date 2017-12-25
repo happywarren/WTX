@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    
+	<!--Spring初始化Bean工具类-->
+    <bean id="springUtils" class="com.lt.util.utils.SpringUtils"/> 
+     <!-- 开启Dao注解 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lt.trade.**.dao"/>
+    </bean>
+    <!-- <bean id="orderCashEntrustInfoDao" class="com.lt.trade.order.dao.OrderCashEntrustInfoDao"/>  -->
+   	<!-- 开启注解自动扫描模式 -->
+    <!-- 1. 加载order包中的类 -->
+	<context:component-scan base-package="com.lt.trade.order"/>
+	<!-- 2. 加载tradeserver中的类 -->
+	<context:component-scan base-package="com.lt.trade.tradeserver"/>	
+	<!-- 3. 加载tradeserver中的类 -->
+	<context:component-scan base-package="com.lt.trade.settle"/>
+	<!-- 4. 加载defer中的类 -->
+	<context:component-scan base-package="com.lt.trade.defer"/>
+	
+   
+    
+    <!-- spring的属性加载器，加载properties文件中的属性 -->
+    <bean id="propertyConfig" class="com.lt.util.utils.prop.CustomerPropertiesConfig">
+        <property name="locations">
+            <list>
+                <value>classpath:config/config.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="utf-8"/>
+    </bean>
+
+    <!-- redis设置 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="150" />
+        <property name="maxIdle" value="30" />
+        <property name="minIdle" value="10" />
+    </bean>
+
+    <bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:hostName="${redis_hostName}"
+          p:password="${redis_password}"
+          p:port="${redis_port}"
+          p:usePool="${redis_usePool}"
+          p:database="${redis_database}"
+          p:poolConfig-ref="jedisPoolConfig" />
+
+    <bean id="fastJsonSerializer" class="com.lt.util.utils.redis.RedisJsonSerializer" />
+    <bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connectionFactory-ref="redisConnectionFactory"
+          p:defaultSerializer-ref="fastJsonSerializer"
+          p:keySerializer-ref="stringSerializer" />
+	
+	
+    <!--交易模块-->
+    <bean id="tradeServer" class="com.lt.trade.TradeServer"/>
+    
+</beans>    

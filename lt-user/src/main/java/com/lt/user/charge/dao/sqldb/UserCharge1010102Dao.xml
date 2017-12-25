@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserCharge1010102Dao">
+
+	<insert id="insertKQrecordValid" parameterType="com.lt.model.user.charge.FundKqRecharge" useGeneratedKeys="true" keyProperty="id">
+	    insert into fund_kq_recharge
+	    (kq_order_id,user_id,merchant_id,user_name,id_card_num,bank_card_num,amount,valid_time,valid_packet)
+	    	values
+	    (#{kqOrderId},#{userId},#{merchantId},#{userName},#{idCardNum},#{bankCardNum},#{amount},#{validTime},#{validPacket})
+	</insert>
+	
+	<update id="addKQrecordValid" parameterType="com.lt.model.user.charge.FundKqRecharge">
+	    update fund_kq_recharge
+	    <set>
+	    	<if test="validResponseCode != null and validResponseCode != ''"> valid_response_code = #{validResponseCode},</if>
+	    	<if test="validResponseTime != null and validResponseTime != ''"> valid_response_time = #{validResponseTime},</if> 
+	    	<if test="validResponseToken != null and validResponseToken != ''"> valid_response_token = #{validResponseToken},</if> 
+	    	<if test="validResponseMsg != null and validResponseMsg != ''"> valid_response_msg = #{validResponseMsg}, </if>
+	    	<if test="validResponsePacket != null and validResponsePacket != ''"> valid_response_packet = #{validResponsePacket}, </if>
+	  	</set>  	
+	   	where kq_order_id = #{kqOrderId}	
+	</update>
+	
+	<update id="addKQrecordPay" parameterType="com.lt.model.user.charge.FundKqRecharge">
+	    update fund_kq_recharge
+	    <set>
+	    	<if test="reqPayTime != null and reqPayTime != ''"> req_pay_time = #{reqPayTime},</if>
+	    	<if test="reqCallbackUrl != null and reqCallbackUrl != ''"> req_callback_url = #{reqCallbackUrl},</if> 
+	    	<if test="reqValidCode != null and reqValidCode != ''"> req_valid_code = #{reqValidCode}, </if>
+	    	<if test="reqPacket != null and reqPacket != ''"> req_packet = #{reqPacket}, </if>
+	  	</set>  	
+	   	where kq_order_id = #{kqOrderId}	
+	</update>
+	
+	<update id="addKQrecordResponsePay" parameterType="com.lt.model.user.charge.FundKqRecharge">
+	    update fund_kq_recharge
+	    <set>
+	    	<if test="payDoneTime != null and payDoneTime != ''"> pay_done_time = #{payDoneTime},</if>
+	    	<if test="payAmount != null and payAmount != ''"> pay_amount = #{payAmount},</if> 
+	    	<if test="payCode != null and payCode != ''"> pay_code = #{payCode}, </if>
+	    	<if test="payMsg != null and payMsg != ''"> pay_msg = #{payMsg}, </if>
+	    	<if test="payPacket != null and payPacket != ''"> pay_packet = #{payPacket}, </if>
+	    	<if test="refNumber != null and refNumber != ''"> ref_number = #{refNumber}, </if>
+	  	</set>  	
+	   	where kq_order_id = #{kqOrderId}	
+	</update>
+	
+	<select id="getFundKqRechargeInValid" parameterType="String" resultType="com.lt.model.user.charge.FundKqRecharge">
+		select user_id,merchant_id,user_name,id_card_num,bank_card_num,amount from fund_kq_recharge where kq_order_id = #{id}
+	</select>	
+	
+</mapper>

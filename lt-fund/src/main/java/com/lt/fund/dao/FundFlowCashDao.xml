@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundFlowCashDao">
+
+	<!-- 添加资金流水 -->
+	<insert id="addFundFlowCash" parameterType="com.lt.model.fund.FundFlow">
+		INSERT INTO fund_flow_cash (
+			user_id, flow_type, first_optcode, second_optcode, third_optcode, 
+			amount, balance, external_id, remark, create_date, modify_date
+		) VALUES (
+			#{userId}, #{flowType}, #{firstOptCode}, #{secondOptCode}, #{thirdOptCode}, 
+			#{amount}, #{balance}, #{externalId}, #{remark}, #{createDate}, #{modifyDate}
+		)
+	</insert>
+
+	<!-- 批量添加资金流水 -->
+	<insert id="addFundFlowCashList" parameterType="java.util.List">
+		INSERT INTO fund_flow_cash (
+			user_id, flow_type, first_optcode, second_optcode, third_optcode,
+			amount, balance, external_id, remark, create_date, modify_date
+		) VALUES
+		<foreach collection="flowList" item="fundFlow" open="" separator="," close="">
+		(
+			#{fundFlow.userId}, #{fundFlow.flowType}, #{fundFlow.firstOptCode},
+			#{fundFlow.secondOptCode}, #{fundFlow.thirdOptCode},
+			#{fundFlow.amount}, #{fundFlow.balance}, #{fundFlow.externalId},
+			#{fundFlow.remark}, #{fundFlow.createDate}, #{fundFlow.modifyDate}
+		)
+		</foreach>
+	</insert>
+
+	<!-- 查询订单流水汇总金额 -->
+	<!-- <select id="queryFundFlowSum" resultType="java.lang.Double">
+		select sum(amount) from fund_flow_cash where 1 = 1
+		<if test="orderId != null and orderId != ''">
+		and order_id = #{orderId}
+		</if>
+		<if test="userId != null and userId != 0">
+		and user_id = #{userId}
+		</if>
+	</select> -->
+
+	<!-- 查询订单流水数量 -->
+	<select id="queryFundFlowCashSum" parameterType="java.util.List" resultType="java.lang.Double">
+		select sum(ifnull(amount, 0.0)) amount
+		  from fund_flow_cash
+		 where user_id = #{userId}
+		   and external_id = #{orderId}
+		<if test="secondOptcodeList != null and secondOptcodeList != ''">
+			and second_optcode in (
+			<foreach collection="secondOptcodeList" item="secondOptcode" open="" separator="," close="">
+				#{secondOptcode}
+			</foreach>
+			)
+		</if>
+	</select>
+	<!-- 查询用户资金流水 -->
+	<select id="findFundFollowByUserId" parameterType="java.util.Map" resultType="com.lt.vo.fund.FundFlowVo">
+		select (case when first_optcode = 201 then '用户出金' when first_optcode = 101 then '用户入金' WHEN first_optcode = 106 THEN	'出金失败' else remark end) remark ,amount,create_date from fund_flow_cash where user_id = #{userId}
+		<if test="createDate!=null">
+			and create_date > #{createDate}
+		</if>
+		<if test="flowType != null and flowType != ''">
+			<if test="flowType == 'recharge'">
+				and (first_optcode = '101' or first_optcode = '103')
+			</if>
+			<if test="flowType == 'draw'">
+				and (first_optcode = '201' or first_optcode = '203')
+			</if>
+			<if test="flowType == 'order'">
+				and first_optcode in ('104','105','106','204','205','206')
+			</if>
+			<if test="flowType == 'promote'">
+				and third_optcode = '1020101'
+			</if>
+		</if>
+		 order by create_date desc ,id desc  limit #{limit1},#{limit2}
+	</select>
+
+	<!-- 查询用户资金流水 -->
+	<select id="findFundFlowListByOrder" parameterType="java.util.Map" resultType="com.lt.vo.fund.FundFlowVo">
+		select remark ,amount,create_date from fund_flow_cash where user_id = #{userId} and external_id = #{orderId} order by create_date desc ,id desc
+	</select>
+
+	<!-- 查询用户剩余每日充值金额 -->
+	<select id="getUserDailyRechargeTopAmt" parameterType="String" resultType="java.lang.Double">
+		 select (f.daily_top_in_amt - IFNULL(s.amt,0)) amt  from (select daily_top_in_amt,user_id  from user_base where user_id = #{userId}) f
+			LEFT JOIN 
+		(select SUM(actual_rmb_amount) amt,user_id from fund_io_cash_recharge where `status` != -1 and  user_id = #{userId} and done_date >= CAST(CURDATE() AS DATETIME) and done_date &lt; NOW() GROUP BY user_id ) s
+		ON f.user_id = s.user_id
+	</select>
+
+	<!-- 查询用户剩余每日充值金额 -->
+	<select id="getPingAnRechargeAmt" parameterType="String" resultType="java.lang.Double">
+		 select  SUM(amount) amt from fund_flow_cash where third_optcode = 1010104 and user_id = #{userId} and YEAR(create_date) = YEAR(NOW()) and create_date &lt; NOW() GROUP BY user_id 
+	</select>
+
+	<update id="updateFundCashFlow" parameterType="com.lt.model.fund.FundFlow">
+		UPDATE fund_flow_cash
+		<set>
+			<if test="thirdOptCode != null and thirdOptCode != ''">
+				third_optcode=#{thirdOptCode},
+			</if>
+
+			<if test="remark != null and remark != ''">
+				remark=#{remark},
+			</if>
+
+		</set>
+		WHERE id=#{id}
+	</update>
+
+	<select id="qryFundCashFlowByExternId" parameterType="String" resultType="com.lt.model.fund.FundFlow">
+		 select  id,third_optcode from fund_flow_cash where external_id = #{id} and second_optcode = '20101'
+	</select>
+
+	<select id="selectHoldFundByOrderId" parameterType="String" resultType="String">
+		select amount from fund_flow_cash where third_optcode=20401 and external_id=#{orderId}
+		ORDER BY modify_date desc LIMIT 0,1;
+	</select>
+
+	<select id="getFundFlow" parameterType="String" resultType="com.lt.model.fund.FundFlow">
+		select  id,third_optcode from fund_flow_cash where external_id = #{id} and third_optcode = #{thirdOptCode}
+	</select>
+
+</mapper>

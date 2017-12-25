@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.order.dao.ProductInfoDao">
+
+	<!-- 查询商品基础信息 -->
+	<select id="queryProductInfo" resultType="com.lt.model.product.Product">
+		select product.* from product join exchange_info on product.exchange_id = exchange_info.id
+		where exchange_info.plate = #{plate} and product.status = 1
+	</select>
+
+	<!-- 查询商品时间信息 -->
+	<select id="queryProductTime" parameterType="Integer" resultType="com.lt.model.product.ProductTimeConfig">
+		select * from product_time_config where product_id = #{productId}
+	</select>
+
+</mapper>

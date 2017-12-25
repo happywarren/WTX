@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.ChargeChannelManageDao">
+
+	
+	<!-- 更新银行充值信息 -->
+	<update id="updateChargeChannel" parameterType="com.lt.manager.bean.user.ChargeChannelVo">
+		update 
+			charge_channel_info
+		<set>
+			<if test="isDefault != null">
+				is_default=#{isDefault},
+			</if>		
+			<if test="isStart != null ">
+				is_start=#{isStart},
+			</if>
+			<if test="channelName != null and channelName != ''">
+				channel_name=#{channelName},
+			</if>
+			<if test="totalAmount != null and totalAmount != ''">
+				total_amount=#{totalAmount},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark=#{remark},
+			</if>
+			<if test="dailyLimitCount != null ">
+				daily_limit_count=#{dailyLimitCount},
+			</if>
+			<if test="weight != null">
+				weight=#{weight},
+			</if>
+			<if test="mchId != null and mchId!='' ">
+				mch_id=#{mchId},
+			</if>
+			<if test="secretKey!= null and secretKey!='' ">
+				secret_key=#{secretKey},
+			</if>
+			create_time=now()
+		</set>
+		where
+			channel_id=#{channelId}
+	</update>
+	
+
+	<!-- 更新充值渠道优先级 -->
+	<update id="updateChargeChannelPriority" parameterType="com.lt.manager.bean.user.ChargeChannelVo">
+		update 
+			charge_channel_info
+		<set>
+			priority=#{priority},
+			create_time=now()
+		</set>
+		where
+			channel_id=#{channelId}
+	</update>
+	
+	<!-- 大改小 -->
+	<update id="updateChargeChannelPriorityDesc" parameterType="map">
+		update 
+			charge_channel_info 
+		set 
+			priority=priority-1
+		where 
+			priority > #{oldPriority} and #{newPriority} >= priority
+				
+	</update>
+	
+	<!-- 小改大 -->
+	<update id="updateChargeChannelPriorityAsc" parameterType="map">
+		update 
+			charge_channel_info
+		set 
+			priority=priority+1	
+		where 
+			priority >= #{newPriority} and #{oldPriority} > priority
+	</update>
+	
+		
+	<!-- 查询充值渠道信息列表 -->
+	<select id="selectChargeChannelList" resultType="com.lt.manager.bean.user.ChargeChannelVo">
+		 select 
+		 	cci.channel_id as channelId,
+		 	cci.priority,
+		 	cci.is_default as isDefault,
+		 	cci.is_start as isStart,
+		 	cci.channel_name as channelName,
+		 	cci.create_time as createTime,
+		 	cci.total_amount as totalAmount,
+		 	cci.remark,
+		 	cci.daily_limit_count as dailyLimitCount,
+		 	cci.weight,
+		 	cci.mch_id,
+		 	cci.secret_key,
+		 	cci.group_id
+		 from 
+		 	charge_channel_info cci
+		 order by
+		 	cci.weight desc
+	</select>
+	
+	<!-- 查询单个充值渠道信息 -->
+	<select id="selectChargeChannel" parameterType="java.lang.String"	resultType="com.lt.manager.bean.user.ChargeChannelVo">
+		 select 
+		 	cci.channel_id as channelId,
+		 	cci.priority,
+		 	cci.is_default as isDefault,
+		 	cci.is_start as isStart,
+		 	cci.channel_name as channelName,
+		 	cci.create_time as createTime,
+		 	cci.total_amount as totalAmount,
+		 	cci.remark,
+		 	cci.weight
+		 from 
+		 	charge_channel_info cci
+		 where
+		 	channel_id=#{channelId}
+	</select>
+		
+	<!-- 查询充值渠道信息列表 -->
+	<select id="selectChargeChannelPriorityList" resultType="com.lt.manager.bean.user.ChargeChannelVo">
+		 select 
+		 	cci.channel_id as channelId,
+		 	cci.priority,
+		 	cci.channel_name as channelName,
+		 	cci.weight
+		 from 
+		 	charge_channel_info cci
+		 order by
+		 	cci.weight desc
+	</select>
+	
+	<select id="selectUserChargeChannelList" resultType="com.lt.manager.bean.user.ChargeChannelVo" parameterType="java.lang.String">
+		 select 
+			cci.channel_id,cci.channel_name ,cci.daily_limit_count
+		 from 
+		 	user_charge_mapper ucm
+		 join
+		 	charge_channel_info cci
+		 on
+			ucm.channel_id=cci.channel_id
+		where
+			ucm.user_id=#{userId}
+		 order by
+		 	cci.id
+	</select>
+	
+	<!-- 查询用户不支持渠道 --> 
+	<select id="selectUserUnsupportChargeChannelList" resultType="com.lt.manager.bean.user.ChargeChannelVo" parameterType="java.lang.String">
+		select
+			cci.channel_id as channelId,
+			cci.channel_name as channelName
+		from 
+			charge_channel_info cci 
+		where
+			cci.is_start='1'
+		and
+			cci.channel_id 
+		not in
+			 (	select 
+			 		ucm.channel_id 
+			 	from 
+			 		user_charge_mapper ucm  
+			 	where 
+					ucm.user_id=#{userId}
+			);
+	</select>
+	
+	<!-- 查询用户渠道信息 -->
+	<select id="selectUserChargeChannel" resultType="com.lt.manager.bean.user.ChargeChannelVo" parameterType="map">
+		 select 
+			cci.channel_id,cci.channel_name
+		 from 
+		 	user_charge_mapper ucm
+		 join
+		 	charge_channel_info cci
+		 on
+			ucm.channel_id=cci.channel_id
+		where
+			ucm.user_id=#{userId}
+		and
+			ucm.channel_id=#{channelId}
+		 order by
+		 	cci.id
+	</select>
+	
+	<!-- 查询有效充值渠道信息 -->
+	<select id="selectAviableChargeChannelList" resultType="com.lt.manager.bean.user.ChargeChannelVo">
+		 select 
+		 	cci.channel_id as channelId,
+		 	cci.priority,
+		 	cci.is_default as isDefault,
+		 	cci.is_start as isStart,
+		 	cci.channel_name as channelName,
+		 	cci.create_time as createTime,
+		 	cci.total_amount as totalAmount,
+		 	cci.remark,
+			cci.weight
+		 from 
+		 	charge_channel_info cci
+		where
+			is_start='1'
+	</select>	
+	
+	<!-- 新增用户渠道关系 -->
+	<insert id="insertUserChargeMapper" parameterType="map">
+		insert into 
+			user_charge_mapper
+		(user_id,channel_id,create_time)
+		values
+			(#{userId},#{channelId},now())			
+	</insert>
+	
+	<!-- 删除用户渠道关系 -->
+	<delete id="deleteUserChargeMapper" parameterType="map">
+		delete
+		from
+			user_charge_mapper
+		where
+			user_id=#{userId}
+		and
+			channel_id=#{channelId}
+	</delete>
+	
+	<select id="selectUserChannelTransCount" resultType="java.lang.Integer" parameterType="com.lt.model.user.charge.UserChannelTrans">
+		select 
+			count(id) 
+		from 
+			user_channel_trans 
+		where 
+			user_id=#{userId}
+		 and 
+		 	channel_id=#{channelId}
+		 and
+		 	create_date=#{createDate}
+	</select>
+	
+	<select id="selectRechargeGroupList" resultType="com.lt.manager.bean.user.RechargeGroupVO" >
+		select 
+			*
+		from 
+			recharge_group 
+	</select>
+	
+		
+	<insert id="insertChargeChannel" useGeneratedKeys="true" keyProperty="id" parameterType="com.lt.manager.bean.user.ChargeChannelVo" >
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>	
+		insert into charge_channel_info 
+			(channel_id,remark,channel_name,create_time,mch_id,secret_key,daily_limit_count,weight,group_id) 
+		values 
+			(#{channelId},#{remark},#{channelName},now(),#{mchId},#{secretKey},#{dailyLimitCount},#{weight},#{groupId})
+	</insert>
+	
+	<insert id="insertFundOptcode" useGeneratedKeys="true" keyProperty="id" parameterType="com.lt.model.fund.FundOptCode" >
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>		
+		insert into fund_optcode 
+			(third_optcode,third_optname,second_optcode,second_optname,first_optcode,first_optname,flow_type,fund_type,remark) 
+		values 
+			(#{thirdOptCode},#{thirdOptName},#{secondOptCode},#{secondOptName},#{firstOptCode},#{firstOptName},#{flowType},#{fundType},#{remark})
+	</insert>
+	
+	<insert id="insertBankChargeMapperList" useGeneratedKeys="true" keyProperty="id" parameterType="java.util.List" >
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>		
+		insert into 
+			bank_charge_mapper 
+				(bank_code,channel_id,single_limit,daily_limit,update_date,create_date) 
+		values 
+		<foreach collection="list" item="item" index="index" separator=",">
+				(#{item.bankCode},#{item.channelId},#{item.singleLimit},#{item.dailyLimit},now(),now())
+		</foreach>
+	</insert>
+	
+	<select id="selectMaxChannelId" resultType="java.lang.String" >
+		select 
+			channel_id
+		from 
+			charge_channel_info 
+		order by 
+			channel_id desc 
+		limit 1
+	</select>	
+	
+	<delete id="deleteChargeChannelInfoByChannelId"	parameterType="java.lang.String">
+		delete
+		from
+			charge_channel_info
+		where
+			channel_id=#{channelId}
+	</delete>
+	
+	<delete id="delteBankChargeMapperByChannelId"	parameterType="java.lang.String">
+		delete
+		from
+			bank_charge_mapper
+		where
+			channel_id=#{channelId};
+		delete
+		from
+			user_charge_mapper
+		where
+			channel_id=#{channelId};
+		delete
+		from
+			pay_and_channel_relation
+		where
+			pay_channel_id=#{channelId};
+		delete
+		from
+			brand_pay_info
+		where
+			pay_id=#{channelId};
+	</delete>
+	
+	<delete id="delteFundOptCodeByThirdOptCode"	parameterType="java.lang.String">
+		delete
+		from
+			fund_optcode
+		where
+			third_optcode=#{channelId}
+	</delete>
+	
+	<select id="selectRechargeInfoList" resultType="com.lt.manager.bean.user.RechargeInfo">
+		SELECT
+			cci.channel_id,
+			cci.mch_id,
+			cci.secret_key,
+			cci.public_key,
+			rg.req_url,
+			rg.notify_url,
+			rg.reserve
+		FROM
+			charge_channel_info cci
+		JOIN recharge_group rg ON cci.group_id = rg.group_id;
+	</select>
+	
+</mapper>

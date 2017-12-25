@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.SysThreadLockDao">
+
+	<select id="selectSysThreadLock" parameterType="String" resultType="Integer">
+		select count(id) from sys_thread_lock where code=#{code}
+	</select>
+	
+	<insert id="insertSysThreadLock" parameterType="com.lt.model.sys.SysThreadLock">
+		insert into sys_thread_lock
+		(
+			name,code,modify_date,status
+		)
+		values
+		(	
+			#{name},#{code},now(),0
+		)
+	</insert>
+	
+	<update id="updatesSysThreadLocked" parameterType="String">
+		update sys_thread_lock set status=1,modify_date=now() where code=#{code} and status=0
+	</update>
+		
+	<update id="updatesSysThreadUnLocked" parameterType="String">
+		update sys_thread_lock set status=0,modify_date=now() where code=#{code} and status=1
+	</update>
+</mapper>

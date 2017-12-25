@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.promote.IPromoterDao">
+
+	<insert id="insertPromoter" parameterType="com.lt.model.promote.Promoter">
+		INSERT INTO promoter
+		(
+  			`user_id`,
+  			`level_id` ,
+ 			`create_time`,
+ 			`modify_time`
+		)
+		VALUES
+		(
+			#{userId},
+			#{levelId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<select id="selectPromoters" resultType="com.lt.model.promote.Promoter">
+		SELECT p.*,m.commision_balance FROM promoter p join commision_main m on(p.user_id=m.user_id )
+		where  p.flag=1
+	</select>
+	
+	<select id="selectPromoterByUserId" resultType="com.lt.model.promote.Promoter" parameterType="String">
+		SELECT p.*,m.commision_balance FROM promoter p join commision_main m on(p.user_id=m.user_id )
+		where  p.flag=1 and p.user_id=#{userId}
+	</select>
+	
+	<select id="selectPromoterCount" parameterType="com.lt.model.promote.Promoter" resultType="Integer">
+		SELECT COUNT(ID) FROM  promoter 
+		<where> 
+			<if test="userId != null">
+				and user_id=#{userId}
+			</if>
+			<if test="flag != null">
+				and flag=#{flag}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updatePromoter" parameterType="com.lt.model.promote.Promoter">
+		update promoter
+		<set>
+			<if test="flag != null">
+				flag=#{flag},
+			</if>
+			<if test="modifyUserId != null">
+				modify_user_id=#{modifyUserId},
+			</if>
+			modify_time=now()
+		</set>
+		where user_id=#{userId}
+	</update>
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+ 
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="lt-interface-consumer"  /> 
+    
+ 	<!-- 关闭所有服务的启动时检查：(没有提供者时报错)  写在定义服务消费者一方  
+ 		与下面的单个服务检查有冲突，只能使用一种-->
+ 	<!-- <dubbo:consumer check="false" /> -->
+ 	
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://114.215.168.241:2181" />
+  
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+ 
+    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <!-- check="false" 关闭某个服务的启动时检查：(没有提供者时报错) --> 
+	<dubbo:reference  check="false" id="userService" interface="com.lt.api.user.IUserApiService" />   
+	
+	<!-- 产品远程服务接口-->
+	<!-- 回声测试用于检测服务是否可用，回声测试按照正常请求流程执行，能够测试整个调用是否通畅，可用于监控。
+		   所有服务自动实现EchoService接口，只需将任意服务引用强制转型为EchoService，即可使用。 -->
+ 	<dubbo:reference  check="false"  id="productApiService" interface="com.lt.api.business.product.IProductApiService" />
+    
+    <!-- 用户业务远程服务接口-->
+    <dubbo:reference  check="false"  id="userBussinessService" interface="com.lt.api.user.IUserApiBussinessService" />
+    
+    <!-- 老开户服务接口 -->
+	<dubbo:reference  check="false"  id="userBussinessV1Service" interface="com.lt.api.user.IUserApiBussinessV1Service" />
+	
+	<!-- 用户费用配置远程服务接口-->
+ 	<dubbo:reference check="false"  id="userFeeCfgApiService" interface="com.lt.api.user.IInvestorFeeCfgApiService" />
+ 	
+ 	<!-- 交易服务远程服务接口-->
+ 	<dubbo:reference check="false" id="orderApiService" interface="com.lt.api.trade.IOrderApiService"/>
+
+    <!-- 积分交易服务远程服务接口-->
+    <dubbo:reference check="false" id="orderScoreApiService" interface="com.lt.api.trade.IOrderScoreApiService"/>
+ 	
+ 	<!-- 资金服务远程服务接口-->
+ 	<dubbo:reference check="false" id="fundAccountApiService" interface="com.lt.api.fund.IFundAccountApiService"/>
+
+	<!-- 行情服务分布式接口 -->
+	<dubbo:reference check="false" id="dispatcherApiService" interface="com.lt.api.dispatcher.IDispatcherApiService"/>
+	
+	<!-- 推广服务接口 -->
+	<dubbo:reference check="false" id="promoteApiService" interface="com.lt.api.promote.IPromoteApiService"/>
+ 	 	
+	<!-- 新闻策略资讯服务分布式接口 -->
+	<dubbo:reference check="false" id="newsArticleApiService" interface="com.lt.api.news.INewsArticleApiService"/>
+	
+	<!-- 系统版本接口 -->
+	<dubbo:reference check="false" id="sysVersionApiService" interface="com.lt.api.version.SysVersionApiService"/>
+    
+    <!-- 用户充值远程服务接口-->
+    <dubbo:reference  check="false"  id="userRechargeService" interface="com.lt.api.user.IUserRechargeService" />
+    
+    <!-- 自动选择渠道充值远程服务接口-->
+    <dubbo:reference  check="false"  id="userAutoRechargeService" interface="com.lt.api.user.charge.IUserApiAutoRechargeService" />
+    
+    <!-- 用户充值远程服务接口(新)-->
+    <dubbo:reference  check="false"  id="userNRechargeService" interface="com.lt.api.user.charge.IUserApiRechargeService" />
+    
+    <!-- 广告图接口-->
+    <dubbo:reference  check="false"  id="advertiseApiService" interface="com.lt.api.advertise.AdvertiseApiService" />
+    
+    <dubbo:reference  check="false"  id="userLogApiService" interface="com.lt.api.log.IUserLogApiService" />
+    
+    <!-- 系统公告 -->
+    <dubbo:reference  check="false"  id="sysApiService" interface="com.lt.api.sys.ISysApiService" />
+   
+    <!-- 新券商商品配置信息 -->
+    <dubbo:reference  check="false"  id="investorProductConfigApiService" interface="com.lt.api.user.IInvestorProductConfigApiService" />
+ 	
+ 	<dubbo:reference  check="false"  id="productRiskConfigService" interface="com.lt.api.business.product.IProductRiskConfigService" />
+</beans>

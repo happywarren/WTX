@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.StaffDao">
+<!-- insert -->
+	
+	<!-- 添加用户信息 -->
+	<insert id="saveStaffInfo" parameterType="Staff" useGeneratedKeys="true" keyProperty="id">
+		
+		insert into staff(
+			login_name,name,tele,email,
+			create_date,create_staff_id
+		)
+		values(
+			#{loginName},#{name},#{tele},#{email},
+			now(),#{createStaffId}
+		)
+	</insert>
+	
+	<!-- delete -->
+	
+<!-- update -->
+	<!-- 更新员工信息 -->
+	<update id="updateStaffInfo" parameterType="Staff">
+		update staff
+			<set>
+			
+			<if test="name != null and name != '' "> name = #{name}, </if>
+            <if test="loginName != null and loginName != '' "> login_name = #{loginName},</if>
+            <if test="tele != null"> tele = #{tele},</if>
+				<if test="email != null"> email = #{email},</if>
+            <if test="modifyStaffId != null and modifyStaffId != '' "> modify_staff_id = #{modifyStaffId},</if> 
+            modify_date = now() 
+			</set>	 
+		where
+			id=#{id}
+	
+	</update>
+	<update id="updateIPStatus">
+		update 
+			staff
+		set 
+			is_start_use_ip_astrict = #{status},
+			modify_date = now()
+		where
+			id = #{sId}
+	</update>
+	<update id="updateStaffClickNum" >
+		update 
+			staff
+		set 
+			click_num = #{clickNum},
+			modify_date = now()
+		where
+			id = #{staffId}
+	</update>
+	
+	<!-- 更新员工密码 -->
+	<update id="updateStaffPassword" >
+		update 
+			staff
+		set 
+			pwd = #{pwd},
+			modify_date = now()
+		where
+			id = #{staffId}
+	</update>
+	
+	<!-- 更新员工状态 -->
+	<update id="updateStaffStatus" >
+		update 
+			staff
+		set 
+			status = #{status},
+			modify_date = now()
+		where
+			id = #{staffId}
+	</update>
+	
+	<!-- 员工列表分页查询 -->
+	 <select id="pageSelectStaff" parameterType="java.util.Map"  resultType="Staff">
+	    select  s.* from staff as s LEFT JOIN rolemap as r  
+	on
+	        s.id = r.staff_id 
+	    where
+	       1=1
+	    	<if test="userName !=null and userName != ''">
+	    		and s.login_name like concat('%',#{userName},'%')
+	    	</if>
+	    	<if test="tele != null and tele != ''">
+	    		and s.tele like concat('%',#{tele},'%')
+	    	</if>
+	    	<if test="status != null and status != ''">
+	    		and s.status = #{status}
+	    	</if>
+	    	<if test="roleId !=null and roleId !=''">
+	    		and r.role_id = #{roleId}
+	    	</if>
+	    	<if test="name !=null and name !=''">
+	    		and s.name like concat('%',#{name},'%')
+	    	</if>
+	    	group by s.id 	
+	    	
+	    	order by s.id desc 
+	    	
+	    	limit #{limit1},#{limit2}
+	</select> 
+	 <select id="pageSelectStaffCount" parameterType="java.util.Map"  resultType="Integer">
+	   select  count(DISTINCT(s.id)) from staff as s LEFT JOIN rolemap as r  
+	on
+	        s.id = r.staff_id 
+	    where
+	       1=1
+	    	<if test="userName !=null and userName != ''">
+	    		and s.login_name like concat('%',#{userName},'%')
+	    	</if>
+	    	<if test="tele != null and tele != ''">
+	    		and s.tele like concat('%',#{tele},'%')
+	    	</if>
+	    	<if test="status != null and status != ''">
+	    		and s.status = #{status}
+	    	</if>
+	    	<if test="roleId !=null and roleId !=''">
+	    		and r.role_id = #{roleId}
+	    	</if>
+	    	<if test="name !=null and name !=''">
+	    		and s.name like concat('%',#{name},'%')
+	    	</if>
+	    	order by s.id desc 
+	    	
+	</select> 
+	<select id="queryStaffByLoginName" resultType="java.lang.Integer">
+		select count(*) from staff where login_name=#{loginName} 
+			<if test="staffId !=null and staffId != ''">
+	    		and id !=#{staffId}
+	    	</if>
+	</select>
+	
+	<!-- 判定当前邮箱是否已被其他员工使用 -->
+	<select id="queryStaffByEmail" resultType="java.lang.Integer">
+		select count(*) from staff where email=#{email} 
+			<if test="staffId !=null and staffId != ''">
+	    		and id !=#{staffId}
+	    	</if>
+			
+	</select>
+	
+	<!-- 判定当前电话号码是否已被其他员工使用 -->
+	<select id="queryStaffByTele" resultType="java.lang.Integer">
+		select count(*) from staff where tele=#{tele} 
+			<if test="staffId !=null and staffId != ''">
+	    		and id !=#{staffId}
+	    	</if>
+	    	
+	</select>
+	
+	<!-- 获取登录用户信息 -->
+	<select id="selectLoginStaff" resultType="Staff">
+		select * from staff
+		where
+		<!--先 查询 登录信息数据，然后判断status值，0正常，-1冻结 	status='0'
+		and  -->
+			login_name=#{0}		
+		and pwd = #{1}
+	</select>
+	
+	<!-- 根据员工id查询员工信息 -->
+	<select id="queryStaffInfoById" resultType="Staff">
+		select * from staff where id=#{0}
+	</select>
+	
+	<!-- 根据员工id查询员工拥有的权限 -->
+	<select id="queryStaffAuthByStaffId" resultType="Auth">
+		select * 
+		from 
+			authmap  t1,
+			auth 	 t2
+		where 
+			t1.authid = t2.id
+		    and 
+		    t1.staffid=#{0}
+	</select>
+	<!-- <select id="selectStaffIp" resultType="StaffIp">
+		select * 
+		from 
+			staff_ip
+		where 
+		    ip = #{ip} limit 1
+	</select>
+	<select id="selectStaffIps" resultType="StaffIp">
+		select * 
+		from 
+			staff_ip
+		where 
+		    ips = #{ips} limit 1
+	</select> -->
+	<select id="selectLoginStaffByUserName" resultType="Staff">
+		select * from staff
+		where
+		login_name=#{0}		
+	</select>
+	<select id="selectStaffByUserName" resultType="Staff">
+		select * from staff
+		where
+		login_name like concat('%',#{0},'%')		
+	</select>
+	
+	<update id="updateDeviceStatus" >
+		update 
+			staff
+		set 
+			is_start_device_astrict = #{status},
+			modify_date = now()
+		where
+			id = #{staffId}
+	</update>
+	
+	<update id="updateStaffIps" >
+		update 
+			staff_ip
+		set 
+			 ips = #{ips}
+		where
+			id = 1
+	</update>
+	
+	<select id="getStaffAll" resultType="Staff" >
+		select login_name as loginName,id from staff 
+	</select>
+	
+	<delete id="deleteById">
+		delete from staff where id = #{id}
+	</delete>
+	
+	<select id="selectUserId" resultType="String" parameterType="Integer">
+		select bu.id user_id from base_user bu join staff s on(bu.tele=s.tele and bu.tele_status=1) 
+		where s.id=#{id}
+	</select>
+	<select id="findCountByIp" resultType="Integer" parameterType="String">
+		select count(id) from staff_ip where ip = #{ip}
+	</select>
+	<select id="findStaffIpById" resultType="StaffIp" parameterType="Map">
+		select * from staff_ip where 
+		1=1 
+		<if test="ip !=null and ip != ''">
+			and ip like concat('%',#{ip},'%')
+		 </if>
+		 order by id desc
+		limit #{limit1},#{limit2}
+	</select>
+	<select id="findStaffIpCount" resultType="Integer" parameterType="Map">
+		select count(id) from staff_ip 
+		where
+		 1=1 
+	 	<if test="ip !=null and ip != ''">
+			and ip like concat('%',#{ip},'%')
+		 </if>
+	</select>
+	<delete id="deleteStaffIpById" >
+		delete from staff_ip where id =  #{id}
+	</delete>
+	<insert id="saveStaffIp" parameterType="StaffIp" useGeneratedKeys="true" keyProperty="id">
+		
+		insert into staff_ip(
+			ip,	create_date,creator,staff_ip.desc
+		)
+		values(
+			#{ip}, now(),#{creator},#{desc}
+		)
+	</insert>
+	<update id="updateStaffIp" >
+		update 
+			staff_ip
+		set 
+		<if test="ip !=null and ip != ''">
+			ip = #{ip},
+		</if>
+		<if test="desc !=null and desc != ''">
+			staff_ip.desc = #{desc}
+		</if>
+		where
+			id = #{id}
+	</update>
+	
+</mapper>

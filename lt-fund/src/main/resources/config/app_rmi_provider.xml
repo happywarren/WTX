@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://code.alibabatech.com/schema/dubbo
+			http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 提供方应用信息, 用于计算依赖关系 -->
+    <dubbo:application name="lt-fund-provider"/>
+    
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://192.168.1.245:2181" />
+    
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20882" />
+
+    <!-- 资金服务分布式接口 -->
+    <!-- 服务调用超时设置为1200秒,超时不重试--> 
+    <bean id="fundAccountApiServiceImpl" class="com.lt.fund.service.impl.FundAccountApiServiceImpl" /> 
+    <dubbo:service interface="com.lt.api.fund.IFundAccountApiService" ref="fundAccountApiServiceImpl" timeout="1200000" retries="0"/>
+    
+    <bean id="fundTradeApiServiceImpl" class="com.lt.fund.service.impl.FundTradeApiServiceImpl" /> 
+    <dubbo:service interface="com.lt.api.fund.IFundTradeApiService" ref="fundTradeApiServiceImpl" timeout="1200000" retries="0"/>
+    
+</beans>

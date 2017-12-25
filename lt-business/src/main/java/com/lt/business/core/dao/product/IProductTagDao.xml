@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.product.IProductTagDao">
+	<select id="selectProductTagList" resultType="com.lt.model.product.ProductTagInfo">
+		SELECT * FROM
+		product_tag_info order by create_time desc
+	</select>
+
+	<select id="selectProductTagListByProId" resultType="com.lt.model.product.ProductTagInfo"
+		parameterType="Integer">
+		select pti.* from product_tag_info pti JOIN
+		product_tag_mapper ptm on(pti.id=ptm.tag_id)
+		where ptm.product_id=#{proId}
+	</select>
+
+	<select id="selectProductByTagId" resultType="com.lt.vo.user.UserProductSelectListVo"
+		parameterType="Integer">
+		select product.*,pt.`name` AS typeName from product 
+		JOIN product_tag_mapper ptm on ptm.product_id = product.id
+		JOIN product_type pt on pt.id = product.product_type_id
+		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2) and ptm.tag_id = #{tagId}
+		ORDER BY product.sort_num
+
+	</select>
+	
+	<select id="selectProductForTagId" resultType="com.lt.vo.user.UserProductSelectListVo"
+		>
+		
+		select pt.`name` ,product.* from investor_product_config as upc
+		left JOIN product on product.short_code = upc.product_code
+	    JOIN product_type pt on pt.id = product.product_type_id
+	    JOIN user_product_select as ps on product.short_code = ps.product_short_code
+		JOIN product_tag_mapper ptm on ptm.product_id = product.id
+		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2) and  ps.user_id = #{userId}
+		AND upc.investor_account_id = #{investorId}
+		and ptm.tag_id = #{tagId}
+		ORDER BY product.sort_num;
+
+	</select>
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserProductSelectDao">
+
+
+	<!-- 查询用户自选股 -->
+	<select id="selectObjectByUserId" resultType="com.lt.vo.user.UserProductSelectListVo">
+		select product.*,pt.`name` AS typeName from product 
+		JOIN product_type pt on pt.id = product.product_type_id
+		JOIN user_product_select as	ps on product.short_code = ps.product_short_code
+		where 
+		ps.user_id = #{userId}
+		and NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2)
+	</select>
+	
+	<!-- 根据条件查询用户自选股 -->
+	<select id="selectObjectByCondition" resultType="com.lt.vo.user.UserProductSelectListVo">
+		select product.*,pt.`name` AS typeName from product 
+		JOIN product_type pt on pt.id = product.product_type_id
+		JOIN user_product_select as	ps on product.short_code = ps.product_short_code
+		where 
+		ps.user_id = #{userId}
+		and NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2)
+		<if test="excludeProductTypeCode !=null and excludeProductTypeCode !='' ">
+			and pt.code!=#{excludeProductTypeCode}
+		</if>
+		ORDER BY ps.create_date desc;
+	</select>	
+	
+	<!-- 查询券商分组后自选商品 -->
+	<select id="selectProductForInvestorGroup" resultType="com.lt.vo.user.UserProductSelectListVo">
+		select pt.`name` ,product.* from investor_product_config as upc
+		left JOIN product on product.short_code = upc.product_code
+	    JOIN product_type pt on pt.id = product.product_type_id
+	    JOIN user_product_select as ps on product.short_code = ps.product_short_code
+		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2)
+		and ps.user_id = #{userId}
+		and upc.investor_account_id = #{investorId}
+		<if test="excludeProductTypeCode !=null and excludeProductTypeCode !='' ">
+			and pt.code!=#{excludeProductTypeCode}
+		</if>
+		ORDER BY ps.create_date desc ;
+	</select>
+	<!-- 批量新增 -->
+	<insert id="addObject" useGeneratedKeys="true" parameterType="java.util.List">
+		<selectKey resultType="long" keyProperty="id" order="AFTER">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into user_product_select (user_id,product_id,create_date,product_short_code)
+		values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(#{item.userId},#{item.productId},now(3),#{productShortCode})
+		</foreach>
+	</insert>
+
+	<!-- 新增 -->
+	<insert id="saveObject"  parameterType="com.lt.model.user.UserProductSelect">
+		insert into 
+		user_product_select (user_id,product_id,create_date,product_short_code)
+		values
+			(#{userId},#{productId},now(3),#{productShortCode})
+	</insert>
+
+	<!-- 删除 -->
+	<delete id="deleteObjectByUserId" parameterType="String">
+	delete from user_product_select where userId = #{userId} 
+	</delete>
+	
+	<!-- 删除 -->
+	<delete id="deleteObjectByUserIdAndCode" >
+	delete from user_product_select where user_id = #{userId} and product_short_code in (select short_code from product where product.product_code = #{productCode})
+	</delete>
+	
+	<!-- 批量删除 -->
+	<delete id="deleteObject" parameterType="Integer">
+        delete from user_product_select where user_id = #{userId} and id in
+        <foreach item="item" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+    
+    <select id="selectProductOptional" resultType="com.lt.model.user.UserProductSelect">
+		select
+		*
+		from user_product_select as
+		ps
+		where 
+		ps.user_id = #{userId}
+		and ps.product_short_code = #{shortCode}
+	</select>
+</mapper>

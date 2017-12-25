@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://code.alibabatech.com/schema/dubbo
+			http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="lt-promote"/>
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://114.215.168.241:2181" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20887" />
+
+    <!-- 推广服务 -->
+	<dubbo:service interface="com.lt.api.promote.IPromoteApiService" ref="promoteApiService" timeout="1200000"/>
+    <bean id="promoteApiService" class="com.lt.promote.service.impl.PromoteApiServiceImpl" /> 
+    
+
+</beans>

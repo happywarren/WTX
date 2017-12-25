@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.fund.FundWithdrawDao">
+
+	<update id="auditWithdraw" parameterType="map">
+		UPDATE fund_io_cash_withdrawal 
+		set  modify_user_id = #{modifyId},status = #{status},modify_date=now()
+		
+		<if test="auditDate != null and auditDate != ''">
+			,audit_date=now()
+		</if>
+		
+		<if test="remark != null and remark != ''">
+			,remark = #{remark}
+		</if>
+		
+		<if test="doneDate != null and doneDate != ''">
+			,done_date = now()
+		</if>
+		
+		where id in (#{ids})
+	</update>
+	
+	<select id="alipayTranferToBank" parameterType="map" resultType="com.lt.manager.bean.fund.FundIoCashWithdrawalVO" >
+		select f.fact_tax tax,f.id flow_id,f.amount,f.user_id,f.remark,s.user_name,t.bank_card_num,t.bank_name from (select id,user_id,fact_tax,amount,remark from fund_io_cash_withdrawal 
+		<where>
+			<if test="status != null and status != ''">
+				and status = #{status}
+			</if>
+			
+			<if test="ioId != null and ioId != ''">
+				and id in (${ioId})
+			</if>
+		</where>
+		) f
+			LEFT JOIN  (select user_name,user_id from user_base) s on s.user_id = f.user_id
+			LEFT JOIN (select t1.user_id,t1.bank_card_num,t2.bank_name from user_bankcard t1 LEFT JOIN bank_info t2 on t1.bank_code = t2.bank_code) t on f.user_id = t.user_id 
+	</select>
+	
+	<select id="qryFundCashWithdsById" resultType="com.lt.model.fund.FundIoCashWithdrawal" parameterType="com.lt.model.fund.FundIoCashWithdrawal">
+		select * from fund_io_cash_withdrawal
+		<where>
+			<if test="payId != null and payId !=''">
+				and pay_id=#{payId}
+			</if>
+			
+			<if test="id != null and id != ''">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+	
+	<update id="updateTransferDetail" parameterType="map">
+		UPDATE fund_transfer_detail 
+		set  status = #{status},modify_date=now()
+	
+		<if test="doneDate != null and doneDate != ''">
+			,done_date = now()
+		</if>
+		
+		where io_id = #{ids}
+	</update>
+	
+	<select id="selectRechargeIo" resultType="com.lt.model.fund.FundIoCashRecharge" parameterType="java.lang.String">
+		select * from fund_io_cash_recharge where id= #{id} for update
+	</select>
+	
+	<update id="updateFinancyIoMutil">
+		update fund_io_cash_recharge SET `status` = -1 ,modify_date = NOW() where id in 
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+	    </foreach>
+	    and status = 0
+	</update>
+	
+	
+	<select id="selectFundRepair" resultType="com.lt.manager.bean.fund.FundIoCashRechargeVO" parameterType="com.lt.manager.bean.fund.FundIoCashRechargeVO">
+		select f.*,s.nick_name,s.user_name,t.bank_card_num,t.bank_name,t.open_bank_city,t.open_bank_prov,t4.third_optname,	sf.modify_user_name 
+		from (SELECT id io_id,rate,transfer_number,modify_user_id,remark,amount,user_id,actual_amount,`status`,pay_id,create_date,done_date,first_optcode,second_optcode,third_optcode,alipay_num FROM fund_io_cash_recharge
+		where id =#{ioId} 
+		<if test="status != null">
+			and status = #{status}
+		</if>
+		) f LEFT JOIN ( SELECT nick_name,user_id,user_name from user_base) s on f.user_id = s.user_id
+		LEFT JOIN (select t1.user_id,t1.bank_card_num,t2.bank_name,t4.open_bank_prov,t3.open_bank_city from (SELECT user_id,bank_code,bank_card_num,province_code,city_code FROM user_bankcard) t1 LEFT JOIN bank_info t2 on t1.bank_code = t2.bank_code LEFT JOIN area_city t3 on t1.city_code = t3.city_code LEFT JOIN area_province t4 on t1.province_code = t4.province_code ) t
+		 ON t.bank_card_num = f.transfer_number and t.user_id = f.user_id
+		LEFT JOIN (select third_optcode,third_optname from fund_optcode) t4 on f.third_optcode = t4.third_optcode
+		left JOIN (SELECT `id` as staff_id,`name` as modify_user_name FROM staff) sf on sf.staff_id=f.modify_user_id
+	</select>
+	
+</mapper>

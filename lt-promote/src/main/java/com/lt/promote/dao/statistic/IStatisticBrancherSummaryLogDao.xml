@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.promote.dao.statistic.IStatisticBrancherSummaryLogDao">
+	
+	<insert id="initBrancherSummaryLog" parameterType="com.lt.model.statistic.StatisticBrancherSummaryLog">
+		INSERT INTO statistic_brancher_summary_log
+		(
+			user_id,
+			promoter_user_id,
+			create_time,
+			modify_time,
+			flag
+		)VALUES
+		(
+			#{userId},
+			#{promoterUserId},
+			now(),
+			now(),
+			1
+		)
+	</insert>
+	
+	<insert id="initBrancherSummaryLogs" parameterType="java.util.List">
+		INSERT INTO statistic_brancher_summary_log
+		(
+			user_id,
+			promoter_user_id,
+			create_time,
+			modify_time,
+			flag
+		)VALUES
+		<foreach collection="list" item="item" index="index" separator="," >  
+        (
+			#{item.userId},
+			#{item.promoterUserId},
+			now(),
+			now(),
+			1
+		)
+    	</foreach> 
+	</insert>
+	
+	<update id="updateBrancherSummaryLogs" parameterType="java.util.List">
+		<foreach collection="list" separator=";" item="item">
+			UPDATE statistic_brancher_summary_log
+			<set>
+				<if test="item.rechargeAmount != null">recharge_amount=recharge_amount+#{item.rechargeAmount},</if>
+				<if test="item.handCount != null">hand_count=hand_count+#{item.handCount},</if>
+				<if test="item.tradeAmount != null">trade_amount=trade_amount+#{item.tradeAmount},</if>
+				modify_time=now()
+			</set>
+			where user_id=#{item.userId} and promoter_user_id=#{item.promoterUserId} and flag=1
+		</foreach>
+	</update>
+	
+	<select id="selectBrancherInfos" parameterType="String" resultType="com.lt.promote.vo.PromoteVo">
+		select log.user_id,u.create_date,u.nick_name,log.hand_count,plog.first_hand_count from statistic_brancher_summary_log log 
+		LEFT JOIN user_base u on(log.user_id=u.user_id) LEFT JOIN  statistic_promoter_summary_log plog on(log.user_id=plog.user_id)
+ 		where log.promoter_user_id=#{userId} and log.flag=1
+	</select>
+</mapper>

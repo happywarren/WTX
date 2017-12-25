@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">	
+	<task:scheduled-tasks>
+		<!-- 冬令时：每天凌晨六点执行,,将商品时间配置加载到缓存中 -->
+		<task:scheduled ref="productTaskServiceImpl" method="loadProTimeCfgToRedisSchedule" cron="0 0 6 * * ?" />
+		
+		<!-- 夏令时:每天凌晨五点执行,,将商品时间配置加载到缓存中 -->
+		<task:scheduled ref="productTaskServiceImpl" method="loadProTimeCfgToRedisSchedule" cron="0 0 5 * * ?" />
+		
+		<task:scheduled ref="quotaInitializeServer" method="loadInit" cron="0 0 6 * * ?" />
+		<!-- 每一分钟刷新当前市场状态 -->
+		<task:scheduled ref="productTaskServiceImpl" method="refreshProMarketStatusForRedis" cron="0 0/1 * * * ?" />
+		<!-- 日K 周K 月K -->
+		<task:scheduled ref="schedueServcie" method="execCreateDay" cron="0 0 5,6 * * ?" />
+	</task:scheduled-tasks>
+</beans>

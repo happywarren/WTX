@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.defer.dao.DeferDao">
+
+	<select id="findAllCashOrdersByCode" parameterType="java.util.List" resultType="com.lt.trade.defer.bean.NextPeroidOrderInfo">
+		select th.* from  
+		(select f.order_id,f.user_id,f.investor_id,f.product_id,f.product_name,f.product_code,f.plate,f.trade_direction,f.hold_count,f.order_id display_id,f.rate,f.defer_interest,f.defer_times,f.sys_set_sell_date,
+			s.expiration_time,t.tele,(case when (f.hold_count > 0 and (f.sell_entrust_count=0 or f.sell_entrust_count is null)) then 2 else 0 end) status,f.defer_status,f.per_defer_interest from order_cash_info f
+			LEFT JOIN product s on f.product_id = s.id
+			LEFT JOIN user_base t on f.user_id = t.user_id ) th
+		 where th.`status` = 2 and th.defer_status = 1  and th.product_id in 
+			 <foreach collection="list" item="code" index="index" open="(" separator="," close=")">
+					#{code}
+			</foreach>
+		 
+		 ORDER BY th.user_id
+	</select>
+
+</mapper>

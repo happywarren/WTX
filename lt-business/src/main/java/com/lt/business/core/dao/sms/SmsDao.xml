@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.sms.SmsDao">
+	
+	<insert id="saveSms" parameterType="com.lt.model.sms.SystemMessage">
+	    insert into 
+	    	sys_short_msg
+	    	(user_id,destination,subject,content,cause,type,sms_type,priority,status,try_count,create_date,
+	    	send_date,user_type,ip,brand_id)
+	    values
+	    	(#{userId},#{destination},#{subject},#{content},#{cause},#{type},#{smsType},#{priority},#{status},#{tryCount},#{createDate},
+	    	#{sendDate},#{userType},#{ip},#{brandId})
+	</insert>
+	
+	<!-- 查询员工最后一条验证数据 15分钟之内后台发送的数据-->
+	<select id="findLastCodeByStaffId" parameterType="Integer" resultType="com.lt.model.sms.SystemMessage">
+	    select * from sys_short_msg where 
+	    send_date between date_add(now(), interval - 15 minute) and now()
+	    and user_id = #{staffId} 
+	    and sms_type = 104
+	    order by id desc limit 1
+	    
+	</select>
+	
+</mapper>

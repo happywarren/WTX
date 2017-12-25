@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.UserTagMapperDao">
+	
+	<select id="selectUserTagMapperByUserId" parameterType="String" resultType="com.lt.manager.bean.user.UserTagMapper" >
+		select 
+		     m.*,t.name  from  user_tag_mapper as m 
+		Left join 
+		     user_tag t on t.id = m.tag_id 
+		where 
+		    user_id=#{userId} 
+	</select>
+
+	<insert id="insertUserTagMapper" parameterType="com.lt.manager.bean.user.UserTagMapper">
+		INSERT INTO user_tag_mapper
+		(
+			user_id,
+			tag_id,
+			create_date
+		)VALUES	
+		(
+		    #{userId},
+			#{tagId},
+			now()
+		)
+	</insert>
+	
+	<delete id="deleteUserTagMapper" >
+		DELETE FROM user_tag_mapper where user_id=#{userId} and  tag_id=#{tagId}
+	</delete>
+	
+	<select id="selectUserTagMapper"  resultType="com.lt.manager.bean.user.UserTagMapper" >
+		SELECT
+			user_id as userId,tag_id as tagId,create_date as createDate
+		FROM
+		user_tag_mapper
+	</select>
+	
+	<delete id="deleteUserTagMapperByTagId" parameterType="Integer">
+		DELETE FROM user_tag_mapper where tag_id=#{tagId}
+	</delete>
+</mapper>

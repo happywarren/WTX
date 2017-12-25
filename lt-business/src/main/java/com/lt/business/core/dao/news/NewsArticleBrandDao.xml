@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.news.NewsArticleBrandDao">
+
+
+	<select id="getNewsByBrandIdSection" resultType="com.lt.vo.news.NewsArticleVo">
+    	SELECT na.id as id, title, sub_title, section, ns.name as section_name, na.keyword, na.summary,
+			    out_source_url, source_type, banner_url, permit_comment, '' as content,
+			   (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+			   COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count,
+			   COALESCE(nai.init_share_count + nai.real_share_count, 0) as share_count,
+			   (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+			   na.modify_date as modify_date, na.publish_date as create_date, na.top, na.hot, na.hot_end_time, na.pic_flag,nab.creater as out_source_name,
+			   nab.brand_name,nab.brand_id
+		  FROM news_article_brand nab
+		left join news_article na on na.id = nab.news_article_id
+	 left join news_section ns on na.`section` = ns.id
+	 left join news_act_info nai on na.id = nai.target_id
+		 where na.status = 2
+		   and na.section = #{section}
+		<if test="brandId != null">
+			and nab.brand_id = #{brandId}
+		</if>
+		<if test="topId != null">
+		   and na.id != #{topId}
+		</if>
+
+        GROUP BY id
+	  order by na.publish_date desc limit #{index},#{size}
+    </select>
+	<select id="getNewsArticleVoById" resultType="com.lt.vo.news.NewsArticleVo">
+		select na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary,
+		out_source_url, source_type, banner_url, permit_comment, content,
+		(select count(1) from news_comment where news_id = na.id and status=1 ) as cmt_count,
+		coalesce(nai.init_read_count + nai.real_read_count, 0) as read_count ,
+		coalesce(nai.init_share_count + nai.real_share_count, 0) as share_count ,
+		(select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+		na.modify_date as modify_date, publish_date as `create_date`, top, hot, hot_end_time, pic_flag,nab.creater as out_source_name
+		from news_article na
+		LEFT join news_article_brand nab on nab.news_article_id = na.id
+		left join news_section ns on na.`section` = ns.id
+		left join news_act_info nai on na.id = nai.target_id
+		where na.id = #{newsId}
+        <if test="brandId != null">
+		and nab.brand_id = #{brandId}
+        </if>
+        GROUP BY id
+	</select>
+
+    <select id="getLastTopNews" resultType="com.lt.vo.news.NewsArticleVo">
+        SELECT na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary,
+         out_source_url, source_type, banner_url, permit_comment, '' as content,
+        (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+        COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count ,
+        COALESCE(nai.init_share_count +nai.real_share_count, 0) as share_count ,
+        (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+        na.modify_date as modify_date, publish_date as create_date, top, hot, hot_end_time, pic_flag,nab.creater as out_source_name
+        FROM news_article na
+        LEFT join news_article_brand nab on nab.news_article_id = na.id
+        left join news_section ns on na.`section` = ns.id
+        left join news_act_info nai on na.id = nai.target_id
+        where top=1 and na.status = 2
+        and section = 55
+        <if test="brandId != null">
+        and nab.brand_id = #{brandId}
+        </if>
+        GROUP BY id
+        order by na.publish_date desc limit 1
+    </select>
+
+    <select id="getNewsBySection" resultType="com.lt.vo.news.NewsArticleVo">
+        SELECT na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary,
+         out_source_url, source_type, banner_url, permit_comment, '' as content,
+        (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+        COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count,
+        COALESCE(nai.init_share_count + nai.real_share_count, 0) as share_count,
+        (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+        na.modify_date as modify_date, publish_date as create_date, top, hot, hot_end_time, pic_flag,nab.creater as out_source_name
+        FROM news_article na
+        LEFT join news_article_brand nab on nab.news_article_id = na.id
+        left join news_section ns on na.`section` = ns.id
+        left join news_act_info nai on na.id = nai.target_id
+        where na.status = 2
+        and section = #{section}
+        <if test="brandId != null">
+        and nab.brand_id = #{brandId}
+        </if>
+        <if test="topId != null">
+            and na.id != #{topId}
+        </if>
+        GROUP BY id
+        order by na.publish_date desc limit #{index},#{size}
+    </select>
+    
+</mapper>

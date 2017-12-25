@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.controller.promote.dao.IPromoteDaoOld">
+	<select id="selectPromoterList" resultType="com.lt.controller.promote.bean.PromoterOld">
+		select user_id,promote_level level_id,monitor_date create_time,monitor_date modify_time,
+		1 flag
+		from promote_user
+	</select>
+	
+	<select id="selectPromoterUserMapperList" resultType="com.lt.controller.promote.bean.PromoterUserMapperOld">
+		select user_id user_id,promote_id promoter_id,1 flag,create_date create_time,modify_date modify_time from user_promotion
+		where promote_id != 0
+	</select>
+	
+	<select id="selectCommisionMainList" resultType="com.lt.controller.promote.bean.CommisionMainOld">
+		select user_id user_id,used_commissions*0.1389 commision_balance,total_draw_commissions*0.1389 withdraw_commision,
+		create_date create_time,create_date modify_time from commissions_main
+	</select>
+	
+	<select id="getRegisterIdsByPromoteIdOfDate" resultType="String" parameterType="String">
+		select user_id from user_promotion
+		where promote_id =
+		#{promoteId}
+	</select>
+	
+	<select id="getConsumerCountByUserIds" resultType="java.lang.Integer" parameterType="java.util.List">
+		select count(distinct user_id )
+		from futures_cash_orders
+		where `status`=6 and
+		user_id in
+		<foreach collection="list" item="userId" open="(" close=")" separator=",">
+			#{userId}
+		</foreach>		
+	</select>
+	
+	
+	<select id="getConsumerHandSumByUserIds" resultType="java.lang.Integer" parameterType="java.util.List">
+		select count(id )
+		from futures_cash_orders
+		where `status`=6 and
+		user_id
+		in
+		<foreach collection="list" item="userId" open="(" close=")"
+			separator=",">
+			#{userId}
+		</foreach>
+	</select>
+	
+	<select id="getSubRegisterIdsByPromoteIdOfDate" resultType="String" parameterType="String">
+		select user_id from user_promotion
+		where promote_id in (select user_id
+		from user_promotion
+		where promote_id = #{promoteId})
+	</select>
+	
+	<select id="getCommissionsMainByPromoteId" resultType="com.lt.controller.promote.bean.CommissionsMain" parameterType="String">
+		select id,user_id,used_commissions*0.1389 used_commissions,total_commissions*0.1389 total_commissions,
+		cur_draw_commissions*0.1389 cur_draw_commissions,freeze_commissions*0.1389 freeze_commissions,
+		total_draw_commissions*0.1389 total_draw_commissions,
+		total_level_one_commissions*0.1389 total_level_one_commissions,total_level_two_commissions*0.1389 total_level_two_commissions,
+		create_date
+		from commissions_main where user_id=#{promoteId}
+	</select>
+	
+	<select id="getUserPromoteDetail" resultType="com.lt.controller.promote.bean.UserPromoteDetailVo" parameterType="String">
+		select 
+		sum(IFNULL(financy_main.store_amt,0))*0.1389 store_amt,
+		sum(IFNULL(financy_main.counter_fee,0))*0.1389 counter_fee
+		from user_promotion
+		,base_user
+		left join
+		financy_main
+		on
+		financy_main.user_id =
+		base_user.id
+		where
+		user_promotion.user_id = base_user.id
+			and promote_id = #{promoteId}
+
+	</select>
+	
+	<select id="getStoreAmtCountByUserIds" resultType="java.lang.Integer" parameterType="java.util.List">
+		select count(distinct user_id )
+		from financy_flow_cash_temp
+		where
+		user_id
+		in
+		<foreach collection="list" item="userId" open="(" close=")"
+			separator=",">
+			#{userId}
+		</foreach>
+		and first_flow_way
+		in (100, 101, 102, 103, 104, 105, 106, 107, 201 , 502) and
+		is_display=1
+		
+	</select>
+	
+	
+	<select id="getUserPromoteDetails" resultType="com.lt.controller.promote.bean.UserPromoteDetailVo" parameterType="String">
+		select 
+		financy_main.store_amt*0.1389 store_amt,
+		financy_main.counter_fee*0.1389 counter_fee
+		from 
+		financy_main
+		
+		where 1=1
+		
+			and user_id = #{userId}
+
+	</select>
+</mapper>

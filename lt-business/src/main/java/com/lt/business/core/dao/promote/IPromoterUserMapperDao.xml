@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.promote.IPromoterUserMapperDao">
+	
+	<insert id="insertPromoterUserMapper" parameterType="com.lt.model.promote.PromoterUserMapper">
+		INSERT INTO promoter_user_mapper
+		(
+			user_id,
+			promoter_id,
+			create_time,
+			modify_time
+		)VALUES
+		(
+			#{userId},
+			#{promoterId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<select id="selectPromoterUserMapper" resultType="com.lt.model.promote.PromoterUserMapper">
+		SELECT * FROM promoter_user_mapper WHERE flag=1
+	</select>
+	
+	<select id="selectPromoterBranchers" resultType="com.lt.model.promote.PromoterUserMapper">
+		select pum.* from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) where p.flag=1 and pum.flag=1
+	</select>
+	
+	<select id="selectPromoterUserMapperByUserId" resultType="com.lt.model.promote.PromoterUserMapper" parameterType="String">
+		SELECT * FROM promoter_user_mapper WHERE flag=1 and promoter_id=#{userId}
+	</select>
+	
+	<select id="selectNoSummaryBranchers" resultType="com.lt.model.promote.PromoterUserMapper" parameterType="String">
+		select * from promoter_user_mapper where flag=1 and promoter_id=#{userId} 
+		and user_id not in(select user_id from statistic_brancher_summary_log)
+	</select>
+	
+	<select id="selectFirstPromoterCount" parameterType="String" resultType="Integer">
+		select count(id) from promoter_user_mapper where flag=1 and promoter_id=#{userId} and DATE_FORMAT(modify_time,'%Y-%m-%d') != DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+	
+	<select id="selectSecondPromoterCount" parameterType="String" resultType="Integer">
+		select count(p2.user_id) from promoter_user_mapper p1 JOIN promoter_user_mapper p2 on(p1.user_id=p2.promoter_id and p2.flag=1)
+		where p1.flag=1 and p1.promoter_id=#{userId} and DATE_FORMAT(p2.modify_time,'%Y-%m-%d') != DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+</mapper>

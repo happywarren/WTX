@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.promote.PromoterFeeConfigManageDao">
+
+	<insert id="insertPromoterFeeConfigs" parameterType="java.util.List">
+		INSERT INTO promoter_fee_config
+		(
+			level_id,
+			short_code,
+			first_commission_fee,
+			second_commission_fee,
+			create_time,
+			modify_time
+		)VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.levelId},
+				#{item.shortCode},
+				<if test="item.firstCommissionFee == null">0,</if>
+				<if test="item.firstCommissionFee != null">#{item.firstCommissionFee},</if>
+				<if test="item.secondCommissionFee == null">0,</if>
+				<if test="item.secondCommissionFee != null">#{item.secondCommissionFee},</if>
+				now(),
+				now()
+			)
+		</foreach>
+	</insert>
+	
+	<update id="updatePromoterFeeConfig" parameterType="com.lt.model.promote.PromoterFeeConfig">
+		UPDATE promoter_fee_config 
+		<set>
+			<if test="firstCommissionFee != null">
+				first_commission_fee=#{firstCommissionFee},
+			</if>
+			<if test="secondCommissionFee != null">
+				second_commission_fee=#{secondCommissionFee},
+			</if>
+			modify_time=now(),
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deletePromoterFeeConfig" parameterType="com.lt.model.promote.PromoterFeeConfig">
+		DELETE FROM promoter_fee_config
+		<where>
+			<if test="levelId != null">
+				and level_id=#{levelId}
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+		
+		
+	</delete>
+	
+	<select id="selectPromoterFeeConfigByLevelId" parameterType="String" resultType="com.lt.model.promote.PromoterFeeConfig">
+		select * from promoter_fee_config
+		where level_id=#{levelId}
+	</select>
+	
+	<select id="selectPromoterFeeConfigPage" resultType="com.lt.model.promote.PromoterFeeConfig" parameterType="com.lt.manager.bean.promote.PromoteParamVo">
+		select c.*,p.product_name from promoter_fee_config c JOIN 
+		(select DISTINCT short_code,product_name from product ) p on(c.short_code=p.short_code)
+		<where>
+			<if test="levelId != null">
+				and c.level_id=#{levelId}
+			</if>
+		</where>
+		order by c.modify_time desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectPromoterFeeConfigCount" parameterType="com.lt.manager.bean.promote.PromoteParamVo" resultType="Integer">
+		select count(c.id) from promoter_fee_config c JOIN 
+		(select DISTINCT short_code,product_name from product ) p on(c.short_code=p.short_code)
+		<where>
+			<if test="levelId != null">
+				and c.level_id=#{levelId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectProShortCode" parameterType="String" resultType="com.lt.model.product.Product">
+		select * from 
+		(select p.short_code,p.product_type_id,p.product_name,p.id,ei.plate from product p JOIN exchange_info ei on(p.exchange_id=ei.id)
+		GROUP BY p.short_code  ORDER BY modify_date desc) a where a.short_code not in(
+		select c.short_code from promoter_fee_config c LEFT JOIN promoter_level l on(c.level_id=l.id) where l.`level`=#{level})
+	</select>
+	
+	<select id="selectProShortCodeCount" parameterType="String" resultType="Integer">
+		select count(*) from 
+		(select p.short_code from product p JOIN exchange_info ei on(p.exchange_id=ei.id)
+		GROUP BY p.short_code  ORDER BY modify_date desc) a where a.short_code not in(
+		select c.short_code from promoter_fee_config c LEFT JOIN promoter_level l on(c.level_id=l.id) where l.`level`=#{level})
+	</select>
+</mapper>

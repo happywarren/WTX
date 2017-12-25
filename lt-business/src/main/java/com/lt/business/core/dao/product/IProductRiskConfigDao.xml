@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.product.IProductRiskConfigDao">
+
+	<select id="queryProductRiskConfig" resultType="com.lt.model.product.ProductRiskConfig">
+		select *
+		from 
+		product_risk_config
+		where 
+		product_id = #{productId}
+		and risk_level = #{riskLevel}
+	</select>
+
+	<select id="selectProductRiskConfigByUserId"  resultType="com.lt.model.product.ProductRiskConfig">
+
+		select prc.* from product_risk_config prc join user_base u
+		on(prc.risk_level= IFNULL(u.risk_level,4) ) where
+		u.user_id=#{userId} and prc.product_id=#{productId}
+	</select>
+</mapper>

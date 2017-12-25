@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserFeeCfgDao">
+	
+	   <!--  com.lt.user.core.dao.sqldb.IUserFeeCfgDao.selectInvestorFeeCfg -->
+	<select id="selectInvestorFeeCfg" resultType="com.lt.model.user.InvestorFeeCfg">
+		SELECT *,inva.id securityId from  product_account_mapper AS pac 
+	LEFT JOIN investor_account as inva on (inva.security_code = pac.security_code and inva.user_id = pac.user_id)
+	LEFT JOIN investor_fee_config as ifc on ifc.account_id = pac.user_id AND pac.product_id = ifc.product_id
+	   WHERE pac.product_id = #{productId}
+		 AND inva.plate_type = #{plateType}
+		 AND (pac.direct = 3 OR pac.direct = #{supportDirect})
+		  <!-- AND (ifc.direct = 3 OR ifc.direct = #{3}) -->
+		 AND ifc.is_mode = 1
+		 AND inva.online_status = 1
+		 AND inva.is_open = 1
+		 AND inva.force_status = 2
+		 <if test="userId != null and userId != ''">
+			AND inva.user_id = #{userId}
+		 </if>
+	</select>
+	
+	<select id="selectInvestorFeeCfgByProId" resultType="com.lt.model.user.InvestorFeeCfg">
+	   SELECT
+			account_id,
+			product_id,
+			investor_counterfee,
+			platform_counterfee,
+			investor_bouns,
+			platform_bouns, 
+			surcharge,
+			defer_fee,
+			defer_fund,
+			is_support_defer,
+			stop_profit_range,
+			stop_loss_range,
+			multiple_range,
+			default_count, 
+			default_stop_loss, 
+			default_stop_profit
+	   FROM investor_fee_config 
+      WHERE is_mode=1 
+      	and product_id = #{0}
+       	and account_id = #{1}
+	</select>
+
+	<select id="selectInvestorFeeCfgScore" resultType="com.lt.model.user.InvestorFeeCfg">
+		SELECT *,inva.id securityId from  product_account_mapper AS pac
+		LEFT JOIN investor_account as inva on (inva.security_code = pac.security_code and inva.user_id = pac.user_id)
+		LEFT JOIN investor_fee_config as ifc on ifc.account_id = pac.user_id AND pac.product_id = ifc.product_id
+		WHERE pac.product_id = #{productId}
+		AND inva.plate_type = #{plateType}
+		AND (pac.direct = 3 OR pac.direct = #{supportDirect})
+		AND ifc.is_mode = 1
+		AND inva.online_status = 1
+		AND inva.is_open = 1
+		AND inva.force_status = 2
+		AND inva.security_code in ('201', '202', '203')
+		<if test="investorId != null and investorId != ''">
+			AND inva.user_id = #{investorId}
+		</if>
+	</select>
+
+	<select id="selectInvestorFeeCfgBySecurityCode" resultType="com.lt.model.user.InvestorFeeCfg">
+		SELECT *,inva.id securityId from  product_account_mapper AS pac
+		LEFT JOIN investor_account as inva on (inva.security_code = pac.security_code and inva.user_id = pac.user_id)
+		LEFT JOIN investor_fee_config as ifc on ifc.account_id = pac.user_id AND pac.product_id = ifc.product_id
+		WHERE pac.product_id = #{productId}
+		AND (pac.direct = 3 OR pac.direct = #{supportDirect})
+		AND ifc.is_mode = 1
+		AND inva.online_status = 1
+		AND inva.is_open = 1
+		AND inva.force_status = 2
+		AND inva.security_code = #{securityCode}
+		<if test="investorId != null and investorId != ''">
+			AND inva.user_id = #{investorId}
+		</if>
+	</select>
+</mapper>

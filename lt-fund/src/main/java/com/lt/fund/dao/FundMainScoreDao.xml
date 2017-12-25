@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundMainScoreDao">
+
+	<!-- 初始化现金主账户 -->
+	<insert id="initFundMainScore" parameterType="String">
+		insert into fund_main_score (
+			   user_id, balance, hold_fund, defer_fund, total_counter_fee, total_exchange_amount, 
+	    	   total_consume_amount, total_present_amount, total_manualin_amount, total_manualout_amount, total_benefit_amount, 
+	    	   total_interest_amount, create_date, modify_date
+	    ) values (
+	    	   #{userId}, 10000.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,0.00, NOW(), NOW() 	  
+	    )
+	</insert>
+	
+	<!-- 删除现金主账户 -->
+	<delete id="deleteFundMainScore" parameterType="String">
+		delete from fund_main_score where user_id = #{userId}
+	</delete>
+	
+	<!-- 更新资金主账户 -->
+	<update id="updateFundMainScore" parameterType="com.lt.model.fund.FundMainScore">
+		update fund_main_score 
+		<set>
+			<if test="balance != null">balance = balance + #{balance}, </if>   			
+			<if test="holdFund != null">hold_fund = hold_fund + #{holdFund}, </if>
+			<if test="deferFund != null">defer_fund = defer_fund + #{deferFund}, </if>
+			<if test="totalCounterFee != null">total_counter_fee = total_counter_fee + #{totalCounterFee},</if>
+			<if test="totalExchangeAmount != null">total_exchange_amount = total_exchange_amount + #{totalExchangeAmount}, </if>
+			<if test="totalConsumeAmount != null">total_consume_amount = total_consume_amount + #{totalConsumeAmount}, </if>		
+			<if test="totalDonateAmount != null">total_present_amount = total_present_amount + #{totalDonateAmount}, </if>
+			<if test="totalManualinAmount != null">total_manualin_amount = total_manualin_amount + #{totalManualinAmount}, </if>
+			<if test="totalManualoutAmount != null">total_manualout_amount = total_manualout_amount + #{totalManualoutAmount}, </if>
+			<if test="totalBenefitAmount != null">total_benefit_amount = total_benefit_amount + #{totalBenefitAmount}, </if>
+			<if test="totalInterestAmount != null">total_interest_amount = total_interest_amount + #{totalInterestAmount}, </if>   
+			modify_date = NOW()	
+		 </set>
+		 where user_id = #{userId}
+	</update>
+
+	<!-- 查询用户的现金主账户 -->
+	<select id="queryFundMainScore" parameterType="String" resultType="com.lt.model.fund.FundMainScore">
+		select id, user_id, balance, hold_fund, defer_fund, total_counter_fee, total_exchange_amount, 
+	    	   total_consume_amount, total_present_amount, total_manualin_amount, total_manualout_amount, total_benefit_amount, 
+	    	   total_interest_amount, create_date, modify_date
+	      from fund_main_score
+	     where user_id = #{userId}
+	</select>
+	
+	<!-- 查询用户的现金主账户(行锁) -->
+	<select id="queryFundMainScoreForUpdate" parameterType="String" resultType="com.lt.model.fund.FundMainScore">
+		select id, user_id, balance, hold_fund, defer_fund, total_counter_fee, total_exchange_amount, 
+	    	   total_consume_amount, total_present_amount, total_manualin_amount, total_manualout_amount, total_benefit_amount, 
+	    	   total_interest_amount, create_date, modify_date
+	      from fund_main_score
+	     where user_id = #{userId} for update
+	</select>
+	
+	<!-- 查询现在账户余额是否可以下单 -->
+	<select id="queryFundMainScoreBalance" resultType="java.lang.Integer">
+		select count(id) from fund_main_score where user_id = #{userId} and balance >= #{amount};
+	</select>
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ExchangeRateManageDao">
+	<select id="selectExchangeRatePage" parameterType="com.lt.manager.bean.product.ExchangeParamVO" resultType="com.lt.model.product.ExchangeRate">
+	
+		SELECT * FROM exchange_rate
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+		ORDER BY create_time desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectExchangeRateCount" parameterType="com.lt.manager.bean.product.ExchangeParamVO" resultType="Integer">
+		SELECT count(id) FROM exchange_rate
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertExchangeRate" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		INSERT INTO exchange_rate
+		(
+			name,
+			currency,
+			rate,
+			sign,
+			unit,
+			create_time,
+			create_user
+		)VALUES
+		(
+			#{name},
+			#{currency},
+			#{rate},
+			#{sign},
+			#{unit},
+			now(),
+			#{createUser}
+		)
+	</insert>
+	
+	<update id="updateExchangeRate" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		UPDATE exchange_rate
+		<set>
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="code != null and code != ''">
+				currency=#{currency},
+			</if>
+			<if test="rate != null">
+				rate=#{rate},
+			</if>
+			<if test="sign != null and sign != ''">
+				sign=#{sign},
+			</if>
+			<if test="unit != null and unit != ''">
+				unit=#{unit},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteExchangeRate" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		DELETE FROM exchange_rate where id in(${ids})
+	</delete>
+</mapper>

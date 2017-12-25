@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.SwiftPassDao">
+
+
+    <!-- 插入威富通支付返回信息 -->
+    <insert id="insert" parameterType="com.lt.model.user.charge.FundSwiftPassResultModel">
+    insert into swift_pass_result (
+
+
+     code_img_url,
+     code_url,
+
+     err_code,
+     err_msg,
+
+     user_id,
+
+     content,
+     message,
+
+     bank_type,
+     buyer_logon_id,
+     buyer_user_id,
+     charset,
+
+     fee_type,
+
+     fund_bill_list,
+
+     gmt_create,
+
+     mch_id,
+
+     nonce_str,
+     openid,
+
+     out_trade_no,
+
+     out_transaction_id,
+
+     pay_result,
+
+     result_code,
+     sign,
+
+     sign_type,
+
+     status,
+
+     time_end,
+
+     total_fee,
+
+     trade_type,
+
+     transaction_id,
+
+     version)
+    values (
+     #{codeImgUrl},
+     #{codeUrl},
+
+     #{errCode},
+
+     #{errMsg},
+
+     #{userId},
+
+    #{content},
+
+    #{ message},
+
+    #{bankType},
+    #{buyerLogonId},
+    #{buyerUserId},
+
+     #{charset},
+
+     #{feeType},
+
+    #{ fundBillList},
+    #{ gmtCreate},
+
+    #{ mchId},
+    #{ nonceStr},
+     #{openid},
+    #{ outTradeNo},
+    #{outTransactionId},
+
+    #{ payResult},
+    #{ resultCode},
+     #{sign},
+    #{ signType},
+
+     #{status},
+     #{timeEnd},
+    #{ totalFee},
+
+     #{tradeType},
+     #{transactionId},
+
+     #{version}
+
+    )
+  </insert>
+
+
+</mapper>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.InvestorAccountManageDao">             
+	<insert id="insertInvestorAccount" parameterType="com.lt.manager.bean.user.InvestorAccount">
+		INSERT INTO investor_account
+		(
+			user_id,
+			account_name,
+			security_code,
+			passwd,
+			online_status,
+			force_status,
+			is_open,
+			weight,
+			plate_type,
+			server_ip,
+			server_port,
+			amount,
+			close_value,
+			open_value,
+			start_fund,
+			total_profit,
+			total_less,
+			total_in,
+			total_out,
+			create_date,
+			update_date,
+			remark
+		)VALUES	
+		(
+			#{userId},
+		    #{accountName},
+			#{securityCode},
+			#{passwd},
+			#{onlineStatus},
+			#{forceStatus},
+			#{isOpen},
+			#{weight},
+			#{plateType},
+			#{serverIp},
+		    #{serverPort},
+		    #{amount},
+			#{closeValue},
+		    #{openValue},
+			#{startFund},
+			#{totalProfit},
+			#{totalLess},
+			#{totalIn},
+			#{totalOut},
+			now(),
+			now(),
+			#{remark}
+		)
+	</insert>
+	
+	<update id="updateInvestorAccount" parameterType="com.lt.manager.bean.user.InvestorAccount">
+		UPDATE investor_account
+		<set>
+			<if test="userId != null">
+				user_id=#{userId},
+			</if>
+			<if test="accountName != null and accountName != ''">
+				account_name=#{accountName},
+			</if>
+			<if test="passwd != null and passwd != ''">
+				passwd=#{passwd},
+			</if>
+			<if test="securityCode != null and securityCode != ''">
+				security_code=#{securityCode},
+			</if>
+			<if test="forceStatus != null">
+				force_status=#{forceStatus},
+			</if>
+			<if test="onlineStatus != null and onlineStatus != ''">
+				online_status=#{onlineStatus},
+			</if>
+			<if test="isOpen != null">
+				is_open=#{isOpen},
+			</if>
+			<if test="weight != null">
+				weight=#{weight},
+			</if>
+			<if test="plateType != null and plateType != ''">
+				plate_type=#{plateType},
+			</if>
+			<if test="serverIp != null and serverIp != ''">
+				server_ip=#{serverIp},
+			</if>
+			<if test="amount != null">
+				amount=#{amount},
+			</if>
+			<if test="serverPort != null and serverPort != ''">
+				server_port=#{serverPort},
+			</if>
+			<if test="closeValue != null and closeValue != ''">
+				close_value=#{closeValue},
+			</if>
+			<if test="openValue != null and openValue != ''">
+				open_value=#{openValue},
+			</if>
+			<if test="startFund != null and startFund != ''">
+				start_fund=#{startFund},
+			</if>
+			<if test="totalProfit != null and totalProfit != ''">
+				total_profit=#{totalProfit},
+			</if>
+			<if test="totalLess != null and totalLess != ''">
+				total_less=#{totalLess},
+			</if>
+			<if test="totalIn != null">
+				total_in=#{totalIn},
+			</if>
+			<if test="totalOut != null">
+				total_out=#{totalOut},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark=#{remark} ,
+			</if>
+			update_date = now()
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteInvestorAccount" parameterType="com.lt.manager.bean.user.InvestorAccount">
+		DELETE FROM investor_account where id=#{id}
+	</delete>
+	
+	<select id="selectInvestoraccountPage" parameterType="com.lt.manager.bean.user.InvestorAccount"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			select
+			  *
+			from
+				investor_account 
+				
+			<where>
+			1=1
+			<if test="userId != null">
+				and user_id=#{userId}
+			</if>
+			<if test="accountName != null and accountName != ''">
+				and account_name=#{accountName}
+			</if>
+			<if test="passwd != null and passwd != ''">
+				and passwd=#{passwd}
+			</if>
+			<if test="forceStatus != null">
+				and force_status=#{forceStatus}
+			</if>
+			<if test="onlineStatus != null and onlineStatus != ''">
+				and online_status=#{onlineStatus}
+			</if>
+			<if test="isOpen != null and isOpen != ''">
+				and is_open=#{isOpen}
+			</if>
+			<if test="weight != null and weight != ''">
+				and weight=#{weight}
+			</if>
+			<if test="plateType != null and plateType != ''">
+				and plate_type=#{plateType}
+			</if>
+			<if test="serverIp != null and serverIp != ''">
+				and server_ip=#{serverIp}
+			</if>
+			<if test="serverPort != null and serverPort != ''">
+				and server_port=#{serverPort}
+			</if>
+			<if test="closeValue != null and closeValue != ''">
+				and close_value=#{closeValue}
+			</if>
+			<if test="openValue != null and openValue != ''">
+				and open_value=#{openValue}
+			</if>
+			<if test="startFund != null and startFund != ''">
+				and start_fund=#{startFund}
+			</if>
+			<if test="totalProfit != null and totalProfit != ''">
+				and total_profit=#{totalProfit}
+			</if>
+			<if test="totalLess != null and totalLess != ''">
+				and total_less=#{totalLess}
+			</if>
+			<if test="totalIn != null and totalIn != ''">
+				and total_in=#{totalIn}
+			</if>
+			<if test="totalOut != null and totalOut != ''">
+				and total_out=#{totalOut}
+			</if>
+			<if test="remark != null and remark != ''">
+				and total_in=#{remark}
+			</if>
+			ORDER BY  id desc
+			</where>
+			<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+			</if>
+		</select>
+		
+			
+	<select id="selectInvestorAccount" parameterType="com.lt.manager.bean.user.InvestorAccount"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			select
+			  *
+			from
+				investor_account 
+				
+			<where>
+			1=1
+			<if test="userId != null">
+				and user_id=#{userId}
+			</if>
+			<if test="accountName != null and accountName != ''">
+				and account_name=#{accountName}
+			</if>
+			<if test="passwd != null and passwd != ''">
+				and passwd=#{passwd}
+			</if>
+			<if test="forceStatus != null">
+				and force_status=#{forceStatus}
+			</if>
+			<if test="onlineStatus != null">
+				and online_status=#{onlineStatus}
+			</if>
+			<if test="isOpen != null">
+				and is_open=#{isOpen}
+			</if>
+			<if test="weight != null">
+				and weight=#{weight}
+			</if>
+			<if test="plateType != null">
+				and plate_type=#{plateType}
+			</if>
+			<if test="serverIp != null and serverIp != ''">
+				and server_ip=#{serverIp}
+			</if>
+			<if test="serverPort != null">
+				and server_port=#{serverPort}
+			</if>
+			<if test="closeValue != null ">
+				and close_value=#{closeValue}
+			</if>
+			<if test="openValue != null">
+				and open_value=#{openValue}
+			</if>
+			<if test="startFund != null ">
+				and start_fund=#{startFund}
+			</if>
+			<if test="totalProfit != null ">
+				and total_profit=#{totalProfit}
+			</if>
+			<if test="totalLess != null ">
+				and total_less=#{totalLess}
+			</if>
+			<if test="totalIn != null ">
+				and total_in=#{totalIn}
+			</if>
+			<if test="totalOut != null">
+				and total_out=#{totalOut}
+			</if>
+			<if test="remark != null and remark != ''">
+				and total_in=#{remark}
+			</if>
+			</where>
+		</select>
+		
+		<select id="selectInvestorAccountPage" parameterType="com.lt.manager.bean.user.InvestorAccount"  
+																	resultType="com.lt.manager.bean.user.InvestorAccount">
+			select ia.*,u.nick_name,fmc.total_recharge_amount totalIn,fmc.total_draw_amount totalOut from investor_account ia 
+			LEFT JOIN user_base u on(ia.user_id=u.user_id) left JOIN fund_main_cash fmc
+			on(ia.user_id=fmc.user_id)
+				
+			<where>
+				<if test="id != null and id != ''">
+					and ia.id=#{id}
+				</if>
+				<if test="accountName != null and accountName != ''">
+					and account_name=#{accountName}
+				</if>
+				<if test="onlineStatus != null">
+					and online_status=#{onlineStatus}
+				</if>
+				<if test="isOpen != null">
+					and is_open=#{isOpen}
+				</if>
+				<if test="minWeight != null">
+					and weight >= #{minWeight}
+				</if>
+				<if test="maxWeight != null">
+					and #{maxWeight} >= weight
+				</if>
+				<if test="userId != null and userId != '' ">
+					and ia.user_id=#{userId}
+				</if>
+				<if test="plateType != null">
+					and ia.plate_type=#{plateType}
+				</if>				
+			</where>
+			order by create_date desc
+			<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+			</if>
+		</select>
+		
+		<select id="selectInvestorInfo" parameterType="com.lt.manager.bean.user.InvestorAccount"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			select
+			   *
+			from
+				investor_account
+			<where>
+			1=1
+			<if test="userId != null">
+				and user_id=#{userId}
+			</if>
+			<if test="accountName != null and accountName != ''">
+				and account_name=#{accountName}
+			</if>
+			<if test="passwd != null and passwd != ''">
+				and passwd=#{passwd}
+			</if>
+			<if test="forceStatus != null">
+				and force_status=#{forceStatus}
+			</if>
+			<if test="onlineStatus != null and onlineStatus != ''">
+				and online_status=#{onlineStatus}
+			</if>
+			<if test="isOpen != null and isOpen != ''">
+				and is_open=#{isOpen}
+			</if>
+			<if test="weight != null and weight != ''">
+				and weight=#{weight}
+			</if>
+			<if test="plateType != null and plateType != ''">
+				and plate_type=#{plateType}
+			</if>
+			<if test="serverIp != null and serverIp != ''">
+				and server_ip=#{serverIp}
+			</if>
+			<if test="serverPort != null and serverPort != ''">
+				and server_port=#{serverPort}
+			</if>
+			<if test="closeValue != null and closeValue != ''">
+				and close_value=#{closeValue}
+			</if>
+			<if test="openValue != null and openValue != ''">
+				and open_value=#{openValue}
+			</if>
+			<if test="startFund != null and startFund != ''">
+				and start_fund=#{startFund}
+			</if>
+			<if test="totalProfit != null and totalProfit != ''">
+				and total_profit=#{totalProfit}
+			</if>
+			<if test="totalLess != null and totalLess != ''">
+				and total_less=#{totalLess}
+			</if>
+			<if test="totalIn != null and totalIn != ''">
+				and total_in=#{totalIn}
+			</if>
+			<if test="totalOut != null and totalOut != ''">
+				and total_out=#{totalOut}
+			</if>
+			<if test="remark != null and remark != ''">
+				and total_in=#{remark}
+			</if>
+			</where>
+			<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+			</if>
+		</select>
+		
+		<select id="selectInvestorAccountCount" parameterType="com.lt.manager.bean.user.InvestorAccount"  resultType="Integer">
+			select count(ia.id) from investor_account ia 
+			LEFT JOIN user_base u on(ia.user_id=u.user_id) left JOIN fund_main_cash fmc
+			on(ia.user_id=fmc.user_id)
+				
+			<where>
+				<if test="id != null and id != ''">
+					and ia.id=#{id}
+				</if>
+				<if test="accountName != null and accountName != ''">
+					and account_name=#{accountName}
+				</if>
+				<if test="onlineStatus != null">
+					and online_status=#{onlineStatus}
+				</if>
+				<if test="isOpen != null">
+					and is_open=#{isOpen}
+				</if>
+				<if test="minWeight != null">
+					and weight >= #{minWeight}
+				</if>
+				<if test="maxWeight != null">
+					and #{maxWeight} >= weight
+				</if>
+				<if test="userId != null and userId != '' ">
+					and ia.user_id=#{userId}
+				</if>
+				<if test="plateType != null">
+					and ia.plate_type=#{plateType}
+				</if>					
+			</where>
+		</select>
+		
+		<select id="selectInvestorAccountObj" parameterType="Integer"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			select
+			  *
+			from
+				investor_account
+			where
+			   id = #{0} 	
+		</select>
+		
+		<select id="selectInvestorAccountObjBySecurityCode" parameterType="String"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			select
+			  *
+			from
+				investor_account
+			where
+			   security_code = #{0} 
+		</select>
+		
+		<select id="selectInvestorAccountList" parameterType="String"  resultType="com.lt.manager.bean.user.InvestorAccount">
+			SELECT
+				ub.user_id as investorId,
+				ub.nick_name
+			FROM
+				(
+					SELECT
+						usm.*
+					FROM
+						user_service_mapper usm
+					WHERE
+						usm.service_code = #{serviceCode}
+				) u
+			JOIN user_base ub ON u.user_id = ub.user_id and ub.`status`!='-10';
+	</select>	
+</mapper>

@@ -1,0 +1,202 @@
+<services>
+    <!-- 0 不检测token 1 检测token -->
+    <!-- 版本检测 -->
+    <service cmd="order" token="1">
+    	<func name="findEntrustRecord" token="1"/>
+    </service>
+    <service cmd="account" token="1">
+    	<func name="accountInfo" token="1"/>
+    	<func name="addCard" token="1"/>
+    	<func name="bankCardInfo" token="1"/>
+    	<func name="deleteBankCard" token="1"/>
+    	<func name="addCardV1" token="1"/>
+    </service>
+    <service cmd="fund" token="1">
+    	<func name="reviceKQResponse"  token="0"/>
+    
+    	<func name="checkWithdrawApply" token="1"/>
+    	<func name="followList" token="1"/>
+    	<func name="rechargeForUnspay" token="1"/>
+    	<func name="withdrawApply" token="1"/>
+    	
+    	<func name="alipayTransfer" token="1"/>
+    	<func name="rechargeByPingAn" token="1"/>
+    	<func name="alipaygennerateUrl"  token="1"/>
+    	<func name="reviceZfbResponse"  token="1"/>
+    	<func name="rechargeDailyTopAmtChk"  token="1"/>
+    	<func name="rechargeByDinpay" token="1"/>
+    	<func name="dinpayAccept" token="0"/>
+    	<func name="queryRate" token="0"/>
+    	<func name="findOrderDeferredFee" token="1"/>
+    </service>
+    
+    <service cmd="promote" token="1">
+    	<func name="activatePromoter" token="1"/>
+    	<func name="addIPTele" token="0"/>
+    	<func name="balanceCommision" token="0"/>
+    	<func name="commisionWidthdrawApply" token="1"/>
+    	<func name="getBrancherInfos" token="1"/>
+    	<func name="getPromoterInfo" token="1"/>
+    	<func name="getPromoterUrl" token="1"/>
+    	<func name="isPromoter" token="1"/>
+    </service>
+    
+    <service cmd="user" token="1">
+    
+    	<func name="defer" token="0"/>
+    	<func name="getAttentionProductList" token="1"/>
+    	<func name="addAttention" token="1"/>
+    	<func name="deleteAttention" token="1"/>
+    	<func name="activeUserService" token="1"/>
+    	<func name="checkRegCode" token="0"/>
+    	<func name="checkUserPasswd" token="1"/>
+    	<func name="findUserPwd" token="0"/>
+    	<func name="getInvestorFeeCfg" token="1"/>
+    	<func name="getAccountAgreement" token="0"/>
+    	<func name="getBankInfo" token="0"/>
+    	<func name="getFeeRangeConfig" token="1"/>
+    	<func name="getInvestorFeeCfg" token="0"/>
+    	<func name="getUserSystemService" token="0"/>
+    	<func name="login" token="0"/>
+    	<func name="register" token="0"/>
+    	<func name="sendRegisterMessage" token="0"/>
+    	
+    	<func name="userCharge" token="1"/>
+    	<func name="qryUserChargeChannel" token="1"/>
+    	<func name="qryUserChargeMaxAmt" token="1"/>
+    	<func name="qryUserKQPayOrder" token="1"/>
+    	<func name="qryUserChargeBankList" token="1"/>
+    	<func name="userKQpayOrder" token="1"/>
+    	<func name="kqGetDynamicNum" token="1"/>
+    	<func name="getUserBankInfoList" token="1"/>
+    	<func name="getUserDefaultBankInfo" token="1"/>
+    	<func name="getUserAmt" token="1"/>
+    	<func name="getUserCashPage" token="1"/>
+    	<func name="getUserHomePage" token="1"/>
+    	<func name="isUserServiceActived" token="1"/>
+    	<func name="updateUserHeadPic" token="1"/>
+    	<func name="updateUserInfo" token="1"/>
+    	<func name="updUserLoginPassword" token="1"/>
+    	<func name="userActiveAccount" token="1"/>
+    	<func name="userActiveAccountV1" token="1"/><!-- 老开户 -->
+    	<func name="userWithDrawPhoUpload" token="1"/>
+    	<func name="qryUserRealNameStatus" token="1"/>
+    	<func name="qryUserIdBankPic" token="1"/>
+    	<func name="getActivityAccountStep" token="1"/><!-- 查询用户开户步骤 -->
+    	<func name="getUserOpeningCount" token="1"/><!-- 查询用户当日开红次数 -->
+    	<func name="getUserBaseInfoCountByIdCardNum" token="1"/><!--  查询此身份证是否已开开户 -->
+    	<func name="getUserFundInOutLimitInfo" token="1"/><!--  开出用户出入金限额信息-->
+    </service>
+    
+     <service cmd="news" token="1">
+    	 <func name="strategyList" token="1"/>
+    	 <func name="newsList" token="1"/>
+    	 <func name="detail" token="0"/>
+    	 <func name="newsArticleCmt" token="1"/>
+    	 <func name="addNewsArticleCmt" token="1"/>
+     </service>
+     
+     <service cmd="version" token="0">
+    	 <func name="getVersion" token="0"/>
+     </service>
+     
+     <service cmd="advertise" token="0">
+    	 <func name="getAdvertistment" token="0"/>
+     </service>
+
+	<!-- 反馈意见 -->
+	<service cmd="feedback" token="1">
+
+	</service>
+
+    <!-- 发送验证码 -->
+    <service cmd="3104" token="0">
+        <func name="register" token="0"/>
+        <func name="login" token="0"/>
+        <func name="bindMobile" token="1"/>
+        <func name="forgetPassword" token="0"/>
+    </service>
+
+    <!-- 校验验证码 -->
+    <service cmd="3105" token="0">
+        <func name="forgetPassword" token="0"/>
+    </service>
+
+
+    <!-- /////////////////////////////////////////////////////华丽的分割线 ///////////////////////////////////////////////////// -->
+
+    <!-- 拍卖相关 -->
+    <service cmd="3106" token="1">
+        <func name="apply" token="1"/>
+        <func name="attentionList" token="1"/>
+        <func name="auctionLogList" token="1"/>
+        <func name="auctionList" token="1"/>
+    </service>
+
+    <!-- 订单相关 -->
+    <service cmd="3107" token="1">
+        <func name="list" token="1"/>
+        <func name="pay" token="1"/>
+        <func name="confirm" token="1"/>
+    </service>
+
+    <!-- 地址相关 -->
+    <service cmd="3108" token="1">
+        <func name="list" token="1"/>
+        <func name="add" token="1"/>
+        <func name="del" token="1"/>
+        <func name="setDef" token="1"/>
+    </service>
+
+
+
+    <!-- 首页 -->
+    <service cmd="4100" token="0">
+        <func name="banner" token="0"/>
+        <func name="indexShop" token="0"/>
+        <func name="currGoods" token="0"/>
+        <func name="newGoods" token="0"/>
+    </service>
+
+    <!-- 店铺 -->
+    <service cmd="4101" token="1">
+        <func name="list" token="0"/>
+        <func name="item" token="1"/>
+        <func name="attention" token="1"/>
+    </service>
+
+    <!-- 拍场 -->
+    <service cmd="4102" token="1">
+        <func name="list" token="0"/>
+        <func name="item" token="0"/>
+        <func name="remind" token="1"/>
+        <func name="applyId" token="1"/>
+        <func name="getApplyId" token="1"/>
+        <func name="payPledge" token="1"/>
+    </service>
+
+    <!-- 拍品 -->
+    <service cmd="4103" token="1">
+        <func name="list" token="0"/>
+        <func name="item" token="1"/>
+        <func name="other" token="0"/>
+        <func name="remind" token="1"/>
+        <func name="payList" token="0"/>
+        <func name="pay" token="1"/>
+        <func name="proxyPay" token="1"/>
+    </service>
+
+    <!-- 消息 -->
+    <service cmd="4104" token="1">
+        <func name="listMarket" token="1"/>
+        <func name="listShop" token="1"/>
+        <func name="sendMarket" token="1"/>
+        <func name="sendShop" token="1"/>
+    </service>
+
+	<!-- 官网 -->
+	<service cmd="official" token="1">
+		<func name="userLogin"	token="0"/>
+	</service>
+
+</services>

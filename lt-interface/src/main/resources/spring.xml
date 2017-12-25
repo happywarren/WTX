@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	
+	
+	<!--Spring初始化Bean工具类-->
+    <bean id="springUtils" class="com.lt.util.utils.SpringUtils"/>
+    
+    <!-- 开启Service注解 -->
+	<context:component-scan
+		base-package="com.lt" />
+		
+	<import resource="app_consumer.xml"/>
+    <aop:aspectj-autoproxy/>
+    
+    <!-- 日期转换 -->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.lt.adapter.utils.String2DateConverter"/>
+            </set>
+        </property>      
+    </bean>
+    
+    <!-- spring的属性加载器，加载properties文件中的属性 -->
+	<bean id="propeConfig" class="com.lt.util.utils.prop.CustomerPropertiesConfig">
+		<property name="locations">
+			<list>
+				<value>classpath:config.properties</value>
+			</list>
+		</property>
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
+    
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<!-- 由于SpringMVC默认的字符串转换器编码是ISO8859-1，所以此处需要覆盖设置 -->
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="writeAcceptCharset" value="false"></property>
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+							<value>text/html;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>application/json;charset=UTF-8</value>
+							<value>application/x-www-form-urlencoded; charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+    
+    <!-- 支持上传文件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+	</bean>
+	
+<!-- 	<bean id = "OSSObjectSample" class="com.lt.util.utils.OSSObjectSample" init-method="init">
+	    <property name="access_id" value="QVnXfoPDZONogO78" />
+		<property name="access_key" value="OKvsD3ihBKj0wSAdXxkmHruDtRGPZM" />
+		<property name="bucketName" value="cainiu" />
+		<property name="url" value=".oss-cn-hangzhou.aliyuncs.com/" />
+		<property name="pkg" value="photo/" /> 
+	</bean> -->
+	
+	<!-- 讯达云 -->
+	<bean id = "SpeendyCloud" class="com.lt.util.utils.speedycloud.SpeedyCloudUtils" init-method="init">
+	    <property name="accessKey" value="D862B7822119A3D797CE47F1604AAE63" />
+		<property name="secretKey" value="d450ec3b19d40a6b0e738378548e18c9316f8c2e0bd6e4af00af8d008dc14d04" />
+		<property name="bucket" value="cainiu-lt" />
+		<property name="host" value="http://cos.speedycloud.org" />
+	</bean>	
+</beans>

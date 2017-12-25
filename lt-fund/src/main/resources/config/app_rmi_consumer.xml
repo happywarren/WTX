@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans        
+    http://www.springframework.org/schema/beans/spring-beans.xsd        
+    http://code.alibabatech.com/schema/dubbo        
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    
+    <!-- 用户服务接口 -->
+	<dubbo:reference check="false" id="userApiBussinessService" interface="com.lt.api.user.IUserApiBussinessService" />
+	
+	<!-- 进程锁服务 -->
+	<dubbo:reference check="false" id="threadLockService" interface="com.lt.api.sys.IThreadLockService" />    
+	
+	<!-- 短信预警接口 -->
+	 <dubbo:reference check="false" id="smsApiService" interface="com.lt.api.sms.ISmsApiService" />
+</beans>

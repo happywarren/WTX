@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.InvestorFeeCfgManageDao">
+	<insert id="insertInvestorFeeCfg" parameterType="com.lt.manager.bean.user.InvestorFeeCfg">
+		INSERT INTO investor_fee_config
+		(
+			account_id,
+			product_id,
+			investor_counterfee,
+			platform_counterfee,
+			platform_counterfee_target,
+			counterfee_type,
+			investor_bouns,
+			platform_bouns,
+			bouns_type,
+			platform_bouns_target,
+			stop_profit_range,
+			stop_loss_range,
+			multiple_range,
+			default_count,
+			default_stop_profit,
+			default_stop_loss,
+			support_direct,
+			surcharge,
+			is_support_defer,
+			defer_fund,
+			defer_fee,
+			create_date,
+			creater,
+			modify_date,
+			modify_id,
+			is_mode
+			
+		)VALUES	
+		(
+		    #{accountId},
+			#{productId},
+			#{investorCounterfee},
+			#{platformCounterfee},
+			#{platformCounterFeeTarget},
+			#{counterFeeType},
+			#{investorBouns},
+			#{platformBouns},
+			#{bounsType},
+			#{platformBounsTarget},
+			#{stopProfitRange},
+			#{stopLossRange},
+			#{multipleRange},
+			#{defaultCount},
+			#{defaultStopProfit},
+			#{defaultStopLoss},
+			#{supportDirect},
+			#{surcharge},
+			#{isSupportDefer},
+			#{deferFund},
+			#{deferFee},
+			#{createDate},
+			#{creater},
+			#{modifyDate},
+			#{modifyId},
+			#{isModel}
+		)
+	</insert>
+	
+	<update id="updateInvestorFeeCfg" parameterType="com.lt.manager.bean.user.InvestorFeeCfg">
+		UPDATE investor_fee_config
+		<set>
+			<if test="accountId != null">
+				account_id=#{accountId},
+			</if>
+			<if test="productId != null">
+				product_id=#{productId},
+			</if>
+			<if test="investorCounterfee != null">
+				investor_counterfee=#{investorCounterfee},
+			</if>
+			<if test="platformCounterfee != null ">
+				platform_counterfee=#{platformCounterfee},
+			</if>
+			<if test="platformCounterFeeTarget != null">
+				platform_counterfee_target=#{platformCounterFeeTarget},
+			</if>
+			<if test="counterFeeType != null">
+				counterfee_type=#{counterFeeType},
+			</if>
+			<if test="investorBouns != null">
+				investor_bouns=#{investorBouns},
+			</if>
+			<if test="platformBouns != null">
+				platform_bouns=#{platformBouns},
+			</if>
+			<if test="bounsType != null">
+				bouns_type=#{bounsType},
+			</if>
+			<if test="platformBounsTarget != null ">
+				platform_bouns_target=#{platformBounsTarget},
+			</if>
+			<if test="stopProfitRange != null and stopProfitRange != ''" >
+				stop_profit_range=#{stopProfitRange},
+			</if>
+			<if test="stopLossRange != null and stopLossRange != '' ">
+				stop_loss_range=#{stopLossRange},
+			</if>
+			<if test="multipleRange != null and multipleRange != ''">
+				multiple_range=#{multipleRange},
+			</if>
+			<if test="defaultCount != null  ">
+				default_count=#{defaultCount},
+			</if>
+			<if test="defaultStopProfit != null">
+				default_stop_profit=#{defaultStopProfit},
+			</if>
+			<if test="defaultStopLoss != null ">
+				default_stop_loss=#{defaultStopLoss},
+			</if>
+			<if test="isSupportDefer != null ">
+				is_support_defer=#{isSupportDefer},
+			</if>
+			<if test="surcharge != null ">
+				surcharge=#{surcharge},
+			</if>
+			<if test="deferFund != null">
+				defer_fund=#{deferFund},
+			</if>
+			<if test="deferFee != null ">
+				defer_fee=#{deferFee},
+			</if>
+			<if test="modifyDate != null and modifyDate != ''">
+				modify_date=#{modifyDate},
+			</if>
+			<if test="modifyId != null ">
+				modify_id=#{modifyId}
+			</if>
+		</set>
+		where id=#{id} 
+	</update>
+	
+	<delete id="deleteInvestorFeeCfg" parameterType="com.lt.manager.bean.user.InvestorFeeCfg">
+		DELETE FROM investor_fee_config where id=#{0}
+	</delete>
+	
+	<select id="selectInvestorFeeCfgPage" parameterType="com.lt.manager.bean.user.InvestorFeeCfg"  resultType="com.lt.manager.bean.user.InvestorFeeCfg">
+			select
+			
+            f.*,p.*,p.product_type_id as productType,e.plate as plate,e.id,ptc.min_surcharge,ptc.max_surcharge,
+            ptc.min_counter_fee,ptc.max_counter_fee,ptc.min_defer_fee,ptc.max_defer_fee,
+			ptc.min_defer_fund,ptc.max_defer_fund,er.currency,er.unit,er.sign
+			
+			from
+				investor_fee_config as f
+				
+			join product as p on f.product_id = p.id 
+			Left join exchange_info as e on e.id = p.exchange_id 
+			left join product_trade_config ptc on(ptc.product_id=f.product_id)
+			LEFT JOIN exchange_rate er on(p.current_rate_id=er.id)
+			<where>
+			1=1
+			<if test="accountId != null">
+				and f.account_id=#{accountId}
+			</if>
+			<if test="productId != null">
+				and f.product_id=#{productId}
+			</if>
+			<if test="shortCode != null">
+			    and p.short_code LIKE concat('%',#{shortCode},'%')
+			</if>
+			<if test="productCode != null">
+			    and p.product_code LIKE concat('%',#{productCode},'%')
+			</if>
+			<if test="productName != null">
+			    and p.product_name LIKE concat('%',#{productName},'%')
+			</if>
+			<if test="productType != null">
+				and p.product_type_id = #{productType}
+			</if>
+			<if test="platformCounterFeeTarget != null">
+				and f.platform_counterfee_target=#{platformCounterFeeTarget}
+			</if>
+			<if test="counterFeeType != null">
+				and f.counterfee_type=#{counterFeeType}
+			</if>
+			<if test="bounsType != null">
+				and f.bouns_type=#{bounsType}
+			</if>
+			<if test="platformBounsTarget != null ">
+				and f.platform_bouns_target=#{platformBounsTarget}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and f.create_date <![CDATA[ >= ]]>
+				#{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and f.create_date <![CDATA[ <= ]]>
+				#{endTime}
+			</if>
+			</where>
+			ORDER BY  f.id desc
+			<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+			</if>
+		</select>
+		
+		<select id="selectInvestorFeeCfgCount" parameterType="com.lt.manager.bean.user.InvestorFeeCfg"  resultType="Integer">
+			select
+			count(*)
+			from
+					investor_fee_config as f
+				
+			join product as p on f.product_id = p.id 
+			Left join exchange_info as e on e.id = p.exchange_id 
+			left join product_trade_config ptc on(ptc.product_id=f.product_id)
+			LEFT JOIN exchange_rate er on(p.current_rate_id=er.id)
+			<where>
+			1=1
+			<if test="accountId != null">
+				and f.account_id=#{accountId}
+			</if>
+			<if test="shortCode != null">
+			    and p.short_code LIKE concat('%',#{shortCode},'%')
+			</if>
+			<if test="productCode != null">
+			    and p.product_code LIKE concat('%',#{productCode},'%')
+			</if>
+			<if test="productName != null">
+			    and p.product_name LIKE concat('%',#{productName},'%')
+			</if>
+			<if test="productType != null">
+				and p.product_type_id = #{productType}
+			</if>
+			<if test="productId != null">
+				and f.product_id=#{productId}
+			</if>
+			<if test="platformCounterFeeTarget != null">
+				and f.platform_counterfee_target=#{platformCounterFeeTarget}
+			</if>
+			<if test="counterFeeType != null">
+				and f.counterfee_type=#{counterFeeType}
+			</if>
+			<if test="bounsType != null">
+				and f.bouns_type=#{bounsType}
+			</if>
+			<if test="platformBounsTarget != null ">
+				and f.platform_bouns_target=#{platformBounsTarget}
+			</if>
+			<if test="startTime != null and startTime != ''">
+				and f.create_date <![CDATA[ >= ]]>
+				#{startTime}
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and f.create_date <![CDATA[ <= ]]>
+				#{endTime}
+			</if>
+			</where>
+		</select>
+		
+		<select id="selectInvestorFeeCfg" parameterType="com.lt.manager.bean.user.InvestorFeeCfg"  resultType="com.lt.manager.bean.user.InvestorFeeCfg">
+			select
+			 *
+			from
+				investor_fee_config 
+			<where>
+			1=1
+				<if test="accountId != null">
+					and account_id=#{accountId}
+				</if>
+				<if test="productId != null">
+					and product_id = #{productId}
+				</if>
+			</where>
+		</select>
+		
+		<select id="selectInvestorFeeCfgVOByModel" parameterType="Integer"  resultType="com.lt.manager.bean.user.InvestorFeeCfg">
+			select
+			 *
+			from
+				investor_fee_config  where product_id = #{0} and is_mode = 1 
+		</select>
+		
+		<update id="updateDeferSattusByProducts" parameterType="map">
+			update investor_fee_config set is_support_defer=#{deferStatus} where product_id in(${ids})
+		</update>
+</mapper>

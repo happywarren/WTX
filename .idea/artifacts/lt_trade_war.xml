@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lt-trade:war">
+    <output-path>$PROJECT_DIR$/lt-trade/target</output-path>
+    <root id="archive" name="lt-trade.war">
+      <element id="artifact" artifact-name="lt-trade:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.MenusDao">
+	<!-- //menus 增删改查 -->
+	<insert id="insertInfo" parameterType="Menus">
+		insert into
+		menus(pid,name,menus.desc,create_user_id,url,msort,model)
+		values(#{pid},#{name},#{desc},#{createUserId},#{url},#{msort},#{model});
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from menus where id
+		= #{id}
+	</delete>
+	<update id="updateInfo" parameterType="Menus">
+		update menus set
+		pid = #{pid}, name = #{name}, menus.desc = #{desc}, modify_user_id =
+		#{modifyUserId},modify_date=now(),url = #{url},msort = #{msort},model = #{model}
+		where id = #{id};
+	</update>
+	<select id="selectById" parameterType="java.lang.Integer"
+		resultType="Menus">
+		select * from menus where id =#{id};
+	</select>
+	<select id="selectByName" parameterType="java.lang.String"
+		resultType="java.lang.Integer">
+		select id from menus where name like concat('%',#{name},'%');
+	</select>
+	<select id="selectByQuery" parameterType="java.util.Map"
+		resultType="Menus">
+		select * from menus
+		<where>
+			<if test="pid !=null and pid != ''">
+				and pid = #{pid}
+			</if>
+			<if test="model !=null and model != ''">
+				and model = #{model}
+			</if>
+			
+			<if test="createUserId !=null and createUserId != ''">
+				and create_user_id = #{createUserId}
+			</if>
+			<if test="name !=null and name != ''">
+				and menus.name like concat('%',#{name},'%')
+			</if>
+		</where>
+		order by menus.msort asc
+		limit #{limit1},#{limit2}
+	</select>
+	
+	<select id="selectByQueryCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(id) from menus
+		<where>
+			<if test="pid !=null and pid != ''">
+				and pid = #{pid}
+			</if>
+			<if test="model !=null and model != ''">
+				and model = #{model}
+			</if>
+			<if test="createUserId !=null and createUserId != ''">
+				and create_user_id = #{createUserId}
+			</if>
+			<if test="name !=null and name != ''">
+				and menus.name like concat('%',#{name},'%')
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectByPid" parameterType="java.lang.Integer"
+		resultType="Menus">
+		select * from menus where pid = #{pid} order by menus.msort asc
+	</select>
+	<!-- //MenusMap 增删改查 -->
+	<insert id="insertInfoForMenusMap" parameterType="MenusMap">
+		insert into menusmap(role_id,menus_id) values(#{roleId},#{menuId});
+	</insert>
+	<delete id="deleteMenusMapByRoleId">
+		delete from menusmap where role_id = #{roleId}
+	</delete>
+	<delete id="deleteForMenusMap">
+		delete from menusmap where ${field} = #{id}
+	</delete>
+	<select id="selectMenusMapById" parameterType="java.lang.Integer">
+		select * from
+		menusmap where id = #{id}; 
+	</select>
+	
+	<select id="selectMenusMapByRoleAndMenu" resultType="MenusMap">
+		select * from
+		menusmap where menus_id = #{menuId} and role_id = #{roleId} ;
+	</select>
+
+	<select id="selectByIdForMenusMap" resultType="MenusMap">
+		select * from
+		menusmap where ${field} = #{id};
+	</select>
+	<!-- //menus_auth 增删改查 -->
+	<insert id="insertInfoForMenusAuth" parameterType="MenusAuth">
+		insert into menus_auth(menus_id,auth_id) values(#{menusId},#{authId});
+	</insert>
+	<delete id="deleteForMenusAuth">
+		delete from menus_auth where ${field} = #{id}
+	</delete>
+	<select id="selectMenusAuthById" parameterType="java.lang.Integer"
+		resultType="Menus">
+		select * from menus_auth where id = #{id};
+	</select>
+	<select id="selectByIdForMenusAuth" resultType="com.lt.manager.bean.sys.MenusAuth">
+		select * from
+		menus_auth where ${field} = #{id};
+	</select>
+	<select id="selectByRoleId" parameterType="java.util.List" resultType="com.lt.manager.bean.sys.Menus">
+		select * from menus,menusmap
+		<where>
+		<foreach item="item" collection="list" open="(" close=")"
+			index="index">
+			<if test="index != 0">
+				or
+			</if>
+			role_id = #{item.roleId, jdbcType=NUMERIC}
+		</foreach>
+		<if test=" pid !=null and pid != '' ">
+			and pid = #{pid} 
+		</if>
+		and menus.id = menusmap.menus_id 
+		</where>
+		group by menus.id
+		 order by menusmap.menus_id,menus.msort asc;
+	</select>
+
+	<select id="selectAuthByMenusId" parameterType="java.lang.Integer"
+		resultType="AuthVO">
+		select * from auth,menus_auth
+		where
+		menus_auth.auth_id = auth.id
+		and
+		menus_auth.menus_id = #{id}
+	</select>
+
+
+	<select id="selectAuthByMenuAndAuthId" resultType="com.lt.manager.bean.sys.Auth">
+		select * from auth,menus_auth
+		where menus_auth.auth_id = auth.id
+		and menus_auth.menus_id = #{menuId} and menus_auth.auth_id = #{authId}
+	</select>
+	
+	<select id="selectAllSecondaryMenus" resultType="Menus">
+		select * from menus where pid in (select id from menus where pid = -1);
+	</select>
+	<select id="selectByMIdAndAId" resultType="MenusAuth">
+		select * from menus_auth where auth_id = #{authId} and menus_id = #{menusId}
+	</select>
+	
+</mapper>

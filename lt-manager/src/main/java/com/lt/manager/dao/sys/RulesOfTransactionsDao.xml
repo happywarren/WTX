@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.RulesOfTransactionsDao">
+	<!-- insert -->
+	<!-- 追加新员工权限 -->
+	<insert id="add" parameterType="com.lt.model.sys.RulesOfTransactions" useGeneratedKeys="true"  keyProperty="id">
+		INSERT INTO rules_of_transactions ( 
+		product_name,
+	    short_code,
+	    product_type_id,
+	    basic_info,
+	    desc_Info,
+	    create_date)
+		VALUES
+			(#{productName},
+			#{shortCode},
+			#{productTypeId},
+			#{basicInfo},
+			#{descInfo},
+			now())
+	</insert>
+
+
+	<!-- delete -->
+	<!-- 删除员工权限 -->
+	<delete id="delete" parameterType="java.lang.Integer">
+		DELETE FROM rules_of_transactions WHERE id = #{id}
+	</delete>
+	<!-- update -->
+	<update id="update">
+		update 
+			rules_of_transactions 
+		set 
+			<if test="productName !=null and productName != '' ">
+			product_name = #{productName},
+			</if>
+			<if test="shortCode !=null and shortCode != '' ">
+			short_code = #{shortCode},
+			</if>
+			<if test="productTypeId !=null and productTypeId != '' ">
+			product_type_id = #{productTypeId},
+			</if>
+			basic_info = #{basicInfo},
+			desc_Info = #{descInfo},
+			modify_date=now()
+		where
+			id = #{id}
+	</update>
+	<!-- select -->
+	<select id="select" parameterType="com.lt.model.sys.RulesOfTransactions" resultType="com.lt.model.sys.RulesOfTransactions">
+	select * from rules_of_transactions
+	<where>
+			1=1
+		<if test="productName !=null and productName != '' ">
+				and rules_of_transactions.product_name like concat('%',#{productName},'%')
+		</if>
+		<if test="shortCode !=null and shortCode != '' ">
+				and rules_of_transactions.short_code like concat('%',#{shortCode},'%')
+		</if>
+		<if test="productTypeId !=null and productTypeId != '' ">
+				and rules_of_transactions.product_type_id = #{productTypeId}
+		</if>
+	</where> 
+	</select>
+
+	<select id="selectByParam" parameterType="com.lt.model.sys.RulesOfTransactions" resultType="com.lt.model.sys.RulesOfTransactions">
+		select * from rules_of_transactions
+		<where>
+			1=1
+			<if test="productName !=null and productName != '' ">
+				and rules_of_transactions.product_name = #{productName}
+			</if>
+			<if test="shortCode !=null and shortCode != '' ">
+				and rules_of_transactions.short_code = #{shortCode}
+			</if>
+			<if test="productTypeId !=null and productTypeId != '' ">
+				and rules_of_transactions.product_type_id = #{productTypeId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCount" parameterType="com.lt.model.sys.RulesOfTransactions" resultType="java.lang.Integer">
+	select count(id) from rules_of_transactions
+	<where>
+			1=1
+		<if test="productName !=null and productName != '' ">
+				and rules_of_transactions.product_name like concat('%',#{productName},'%')
+		</if>
+		<if test="shortCode !=null and shortCode != '' ">
+				and rules_of_transactions.short_code like concat('%',#{shortCode},'%')
+		</if>
+		<if test="productTypeId !=null and productTypeId != '' ">
+				and rules_of_transactions.product_type_id = #{productTypeId}
+		</if>
+	</where> 
+	</select>
+
+
+</mapper>

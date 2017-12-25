@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.promote.dao.promote.ICommisionMainDao">
+
+	<insert id="initCommisionMain" parameterType="String">
+		INSERT INTO commision_main
+		(
+			user_id,
+			create_time,
+			modify_time
+		)VALUES
+		(
+			#{userId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<update id="updateCommisionMains" parameterType="java.util.List">
+		<foreach collection="list" separator=";" item="item">
+			UPDATE commision_main
+			<set>
+				<if test="item.commisionBalance != null">commision_balance=commision_balance+#{item.commisionBalance},</if>
+				<if test="item.withdrawCommision != null">withdraw_commision=withdraw_commision+#{item.withdrawCommision},</if>
+				modify_time=now(),
+			</set>
+			where user_id=#{item.userId}
+		</foreach>		
+	</update>
+	
+	<select id="selectCommisionMain" parameterType="String" resultType="com.lt.model.promote.CommisionMain">
+		SELECT * FROM commision_main WHERE user_id=#{userId}
+	</select>
+	
+	<update id="updateCommisionMain" parameterType="com.lt.model.promote.CommisionMain">
+		UPDATE commision_main
+		<set>
+			<if test="commisionBalance != null">commision_balance=commision_balance+#{commisionBalance},</if>
+			<if test="withdrawCommision != null">withdraw_commision=withdraw_commision+#{withdrawCommision},</if>
+			modify_time=now(),
+		</set>
+		where user_id=#{userId} 
+	</update>
+</mapper>

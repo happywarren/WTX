@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.DigitalCoinConfigManageDao">
+
+    <select id="selectCoinConfig" parameterType="com.lt.manager.bean.product.DigitalCoinConfigVO"
+            resultType="com.lt.manager.bean.product.DigitalCoinConfigVO">
+        SELECT * FROM digital_coin_config
+        <where>
+            <if test="productCode != null and productCode != ''">
+                AND product_code=#{productCode}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertCoinConfig" parameterType="com.lt.manager.bean.product.DigitalCoinConfigVO">
+        INSERT INTO digital_coin_config
+        (
+            spread,
+            contract_size,
+            max_lever,
+            max_single_open_position,
+            max_position_per_account,
+            product_code,
+            brand_position
+        ) VALUES
+            (
+                #{spread},
+                #{contractSize},
+                #{maxLever},
+                #{maxSingleOpenPosition},
+                #{maxPositionPerAccount},
+                #{productCode},
+                #{brandPosition}
+            )
+    </insert>
+
+    <update id="updateCoinConfig" parameterType="com.lt.manager.bean.product.DigitalCoinConfigVO">
+        UPDATE digital_coin_config
+        <set>
+            <if test="spread != null and spread != ''">
+                spread=#{spread},
+            </if>
+            <if test="contractSize != null and contractSize != ''">
+                contract_size=#{contractSize},
+            </if>
+            <if test="maxLever != null and maxLever != ''">
+                max_lever=#{maxLever},
+            </if>
+            <if test="maxSingleOpenPosition != null and maxSingleOpenPosition != ''">
+                max_single_open_position=#{maxSingleOpenPosition},
+            </if>
+            <if test="maxPositionPerAccount != null and maxPositionPerAccount != ''">
+                max_position_per_account=#{maxPositionPerAccount},
+            </if>
+            <if test="brandPosition != null and brandPosition != ''">
+                brand_position=#{brandPosition}
+            </if>
+        </set>
+        where product_code = #{productCode}
+    </update>
+
+    <delete id="deleteCoinConfig" parameterType="com.lt.manager.bean.product.DigitalCoinConfigVO">
+        DELETE FROM digital_coin_config
+        WHERE product_code = #{productCode}
+    </delete>
+
+    <delete id="deleteCoinConfigBatch">
+        DELETE FROM digital_coin_config
+        WHERE product_code in (${productCodes})
+    </delete>
+</mapper>

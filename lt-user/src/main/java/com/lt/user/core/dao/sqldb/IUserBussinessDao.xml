@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserBussinessDao">
+
+	<select id="getUserActivityAccountInfo" parameterType="com.lt.model.user.UserBussinessInfo" resultType="com.lt.model.user.UserBussinessInfo">
+		select ub.*,ubc.bank_name,ubc.bank_card_num
+		from user_base ub
+		left join (select user_id,bank_name,bank_card_num from user_bankcard where user_id =  #{userId} ORDER BY create_date DESC LIMIT 1) ubc
+		on ub.user_id=ubc.user_id where ub.user_id= #{userId}
+	</select>
+
+	<update id="updateUserBussinessInfo" parameterType="com.lt.model.user.UserBussinessInfo">
+	    update user_base
+	    <set>
+	    	<if test="userName != null and userName != ''"> user_name = #{userName},</if>
+	    	<if test="idCardNum != null and idCardNum != ''"> id_card_num = #{idCardNum},</if>
+	    	<if test="idPicReverse != null and idPicReverse != ''"> id_pic_reverse = #{idPicReverse}, </if>
+	    	<if test="idPicPositive != null and idPicPositive != ''"> id_pic_positive = #{idPicPositive}, </if>
+	    	<if test="facePicPath != null and facePicPath != ''"> face_pic_path = #{facePicPath}, </if>
+	    	<if test="bankcardPic != null and bankcardPic != ''"> bankcard_pic = #{bankcardPic}, </if>
+	    	<if test="realNameStatus != null and realNameStatus != ''"> real_name_status = #{realNameStatus}, </if>
+	    	<if test="applyTime != null and applyTime != ''"> apply_time = #{applyTime}, </if>
+	    	<if test="riskRet != null and riskRet != ''"> risk_ret = #{riskRet}, </if>
+	    	<if test="signPicPath != null and signPicPath != ''"> sign_pic_path = #{signPicPath}, </if>
+	    	<if test="riskLevel != null and riskLevel != ''"> risk_level = #{riskLevel}, </if>
+	    	modify_date = now()
+	  	</set>
+	   	where user_id = #{userId}
+	</update>
+
+	<select id="getUserUserIdCard" parameterType="com.lt.model.user.UserBussinessInfo" resultType="java.lang.Integer">
+	   select COUNT(id) from user_base
+	   <where>
+	   		status != -10
+	   		<if test="idCardNum != null and idCardNum != ''">
+	   			and id_card_num = #{idCardNum}
+	   		</if>
+		   <if test="brandId != null and brandId != ''">
+			   and brand_id = #{brandId}
+		   </if>
+	   </where>
+	</select>
+
+	<insert id="insertUserBankInfo" parameterType="com.lt.model.user.UserBankInfo" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	    insert into user_bankcard(
+	  	 user_id  ,bank_name, bank_code, bank_card_num,is_default,create_date,modify_date)values(
+	    #{userId},#{bankName},#{bankCode},#{bankCardNum},#{isDefault},now(),now())
+	</insert>
+
+	<select id="getUserBankInfo" parameterType="com.lt.model.user.UserBankInfo" resultType="com.lt.model.user.UserBankInfo">
+	    select * from user_bankcard
+	    <where>
+	    	<if test="userId != null and userId != ''">
+	    		and user_id =#{userId}
+	    	</if>
+
+	    	<if test="bankCardNum != null and bankCardNum != ''">
+	    		and bank_card_num =#{bankCardNum}
+	    	</if>
+
+	    	<if test="bankName != null and bankName != ''">
+	    		and bank_name =#{bankName}
+	    	</if>
+
+	    	<if test="bankCode != null and bankCode != ''">
+	    		and bank_code =#{bankCode}
+	    	</if>
+	    </where>
+	</select>
+
+	<select id="getUserService" parameterType="com.lt.model.user.UserService" resultType="com.lt.model.user.UserService">
+	   select * from user_service
+	   <where>
+	   		is_use = 1
+	   		<if test="serviceCode != null and serviceCode != ''">
+	   			and service_code = #{serviceCode}
+	   		</if>
+
+	   		<if test="defaultStatus != null and defaultStatus != ''">
+	   			and default_status = #{defaultStatus}
+	   		</if>
+	   </where>
+	</select>
+
+	<insert id="insertUserServiceMapper" parameterType="com.lt.model.user.UserServiceMapper" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	    insert into user_service_mapper(
+	  	 user_id  , service_code, status,open_time,create_date)values(
+	    #{userId},#{serviceCode},#{status},now(),now())
+	</insert>
+
+	<update id="activeUserAccount" parameterType="String">
+	    update user_base set open_account_status = 1,modify_date = now(),apply_time=now() where user_id = #{id}
+	</update>
+
+	<select id="getUserDefaultBankInfo" parameterType="com.lt.model.user.UserBankInfo" resultType="com.lt.model.user.UserBussinessInfo">
+	   select s.user_id,s.user_name,s.id_card_num,f.bank_name,f.bank_card_num,f.branch_id,f.city_code,f.province_code
+
+		from (select user_id,bank_name,bank_card_num,province_code,city_code,branch_id from user_bankcard
+
+		<where>
+			<if test="userId != null and userId != ''">
+	   			and user_id = #{userId}
+	   		</if>
+	   		<if test="bankCardNum != null and bankCardNum != ''">
+	   			and bank_card_num = #{bankCardNum}
+	   		</if>
+	   		<if test="id != null and id != ''">
+	   			and id = #{id}
+	   		</if>
+
+	   		and  is_default = 1
+		</where>
+		) f LEFT JOIN (select user_id,user_name,id_card_num from user_base
+		<where>
+			<if test="userId != null and userId != ''">
+	   			and user_id = #{userId}
+	   		</if>
+		</where>
+		) s on f.user_id = s.user_id
+	</select>
+
+	<select id="getUserDefaultBankInfoForDinpay" parameterType="com.lt.model.user.UserBankInfo" resultType="com.lt.model.user.UserBussinessInfo">
+		SELECT t1.user_id,t1.user_name,t1.id_card_num,t.bank_name,t.bank_card_num,t.branch_id,t.city_code,t.province_code,t2.dinpay_bank_code,t2.daddypay_bank_code,t1.tele
+		FROM user_bankcard t JOIN user_base t1 ON t.`user_id` = t1.`user_id` LEFT JOIN bank_info t2 ON t.`bank_code` = t2.`bank_code`
+		<where>
+			<if test="userId != null and userId != ''">
+				and t1.user_id = #{userId}
+			</if>
+			<if test="bankCardNum != null and bankCardNum != ''">
+				and t.bank_card_num = #{bankCardNum}
+			</if>
+			<if test="id != null and id != ''">
+				and t.id = #{id}
+			</if>
+			and  t.is_default = 1
+		</where>
+	</select>
+
+	<select id="getUserAccountServiceByUserId" parameterType="java.lang.String" resultType="com.lt.model.user.UserService">
+	   select f.user_id,f.service_code,service_pic_url,service_title from (select DISTINCT service_code,user_id from user_service_mapper where user_id = #{userId}) f
+		LEFT JOIN user_service s on s.service_code = f.service_code
+		where s.type = 1 and s.is_use = 1
+	</select>
+
+	<select id="getUserActivedService" parameterType="java.lang.String" resultType="com.lt.model.user.UserServiceMapper">
+	    select DISTINCT service_code,user_id from user_service_mapper where `status` = 1 and user_id = #{userId}
+	</select>
+
+	<select id="getBankInfo" resultType="com.lt.model.user.BankInfo">
+		select bank_code,bank_name,bank_pic,trans_action_limit,day_limit from bank_info
+	</select>
+	<select id="getBankInfoByCode" resultType="com.lt.model.user.BankInfo">
+		select * from bank_info where bank_code = #{bankCode}
+	</select>
+
+	<select id="getUserDetailInfo" parameterType="com.lt.model.user.UserBaseInfo" resultType="com.lt.model.user.UserBussinessInfo">
+	   select f.*,s.bank_card_num,s.bank_name from  (select user_id,user_name,id_card_num,tele,real_name_status,id_pic_positive,id_pic_reverse,bankcard_pic from user_base
+		   <where>
+		   		<if test="userId != null and userId != ''">
+	   				and user_id = #{userId}
+	   			</if>
+		   </where>
+	   ) f LEFT JOIN
+		(select t1.user_id,t2.bank_name,t1.bank_card_num from (SELECT user_id,bank_code,bank_card_num FROM user_bankcard where is_default = 1 ) t1 LEFT JOIN bank_info t2 on t1.bank_code = t2.bank_code) s
+		on f.user_id = s.user_id
+	</select>
+
+	<select id="selectWithdrawBankInfo" resultType="map" parameterType="String">
+		select b.bank_card_num bankCardNum,c.bank_name bankName,c.bank_pic bankcardPic,u.user_name userName,u.id_card_num idCardNum
+		from user_bankcard b LEFT JOIN user_base u on  b.user_id=u.user_id
+		LEFT JOIN bank_info c on b.bank_code = c.bank_code
+		where b.is_default=1 and b.user_id=#{userId}
+	</select>
+
+	<select id="getUserChargebankDetail" parameterType="map" resultType="com.lt.model.user.UserchargeBankDetailInfo">
+	  	SELECT f.*, s.* FROM (
+		SELECT user_id,tele FROM user_base WHERE user_id = #{userId} ) f
+		LEFT JOIN (SELECT s1.user_id,s1.id,SUBSTRING(s1.bank_card_num ,- 4) tailNumber,s1.bank_card_num, s2.*
+		FROM ( SELECT user_id,bank_card_num,id,bank_code FROM user_bankcard where is_default = 1 and user_id = #{userId}) s1
+	    LEFT JOIN ( SELECT bank_code,bank_name,day_limit,trans_action_limit,bank_pic FROM bank_info ) s2 ON s1.bank_code = s2.bank_code
+		) s on  s.user_id = f.user_id;
+	</select>
+
+	<select id="getUserChargeBankInfoList" parameterType="String" resultType="com.lt.model.user.UserChargeBankInfo">
+		select  t.*,s.bank_pic,s.day_limit,s.trans_action_limit,s.bank_name from
+	  	(select SUBSTRING(bank_card_num,-4) tailNumber,bank_card_num,bank_code,id from user_bankcard where user_id = #{userId}) t
+		LEFT JOIN bank_info s on t.bank_code = s.bank_code
+	</select>
+	<!-- 获取账户信息 -->
+	<select id="getUserAccountInfo" parameterType="String" resultType="com.lt.vo.user.UserAccountInfoVo">
+		select user_base.nick_name nickName,user_base.head_pic headPic, user_base.tele as tel,
+		user_base.user_name as `name`,user_base.id_card_num as idCard,fund_main_cash.balance,
+		user_base.risk_level,user_base.risk_ret
+		from user_base join fund_main_cash on fund_main_cash.user_id = user_base.user_id where user_base.user_id = #{userId}
+	</select>
+	<!-- 获取用户绑定的银行卡信息 -->
+	<select id="getBankcardVo" parameterType="String" resultType="com.lt.vo.user.BankcardVo">
+		select ub.id,bi.bank_name as bankName,ub.bank_card_num as num,ub.is_default as isDefault,ub.card_background as  cardBackground,bi.bank_pic as pic
+		from user_bankcard as ub
+		join bank_info bi on bi.bank_code = ub.bank_code
+		where ub.user_id = #{userId}
+	</select>
+	<!-- 删除用户银行卡 -->
+	<delete id="deleteBankCard">
+		delete from user_bankcard where user_bankcard.id = #{bankId} and user_bankcard.user_id = #{userId} and user_bankcard.is_default = 0
+	</delete>
+
+	<!--统计身份证号码开户成功  -->
+	<select id="getUserBaseCountByIdCardNum" parameterType="String" resultType="java.lang.Integer">
+		select
+			count(ub.id)
+		from
+			user_base ub
+		where
+			ub.id_card_num = #{idCardNum}
+		and
+			ub.status!='-10'
+	</select>
+	<!--统计身份证号码开户成功 品牌 id-->
+	<select id="getUserBaseCountByIdCardNumAndBrandId" parameterType="String" resultType="java.lang.Integer">
+        SELECT count(ub.id)
+        FROM
+            user_base ub
+        WHERE
+            ub.id_card_num = #{0}
+            AND
+            ub.brand_id = #{1}
+            AND
+            ub.status != '-10'
+    </select>
+
+    <select id="getUserBaseInfo" parameterType="String" resultType="com.lt.model.user.UserBaseInfo">
+		select * from user_base ub
+		where ub.user_id = #{userId}
+	</select>
+
+	<!-- 保存用户银行卡验证信息 -->
+	<insert id="insertUserBaseCardAuth" parameterType="com.lt.model.user.UserBankCardAuth" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	    insert into user_bank_card_auth(
+	  	 	user_id,user_name,bank_card_no,result_id,result_msg,req_id,res_id,create_date,last_modify_date)
+	  	values(
+	    	#{userId},#{userName},#{bankCardNo},#{resultId},#{resultMsg},#{reqId},#{resId},now(),now())
+	</insert>
+
+	<select id="getMaxChargeAmt" parameterType="String" resultType="java.lang.Double">
+		select MAX(single_limit) single_limit from bank_charge_mapper where bank_code = #{bankCode}
+		UNION ALL
+		select MAX(daily_limit) daily_limit from bank_charge_mapper where bank_code = #{bankCode} ;
+	</select>
+
+</mapper>

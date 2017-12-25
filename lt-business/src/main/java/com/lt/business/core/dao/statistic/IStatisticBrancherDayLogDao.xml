@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.statistic.IStatisticBrancherDayLogDao">
+	
+	<!-- 查询一层下线交易信息（查的是所有的商品==需求如此） -->
+	<select id="selectBrancherTradeInfo" parameterType="map" resultType="map">
+		select a.user_id,b.count hand_count,b.trade_amount,a.promoter_id from 
+		(select pum.user_id,pum.promoter_id from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) where p.flag=1 and pum.flag=1)
+		a LEFT JOIN
+		(select coi.user_id,sum(coi.buy_success_count) count,sum(coi.actual_counter_fee) trade_amount from v_order_cash_info coi 
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY coi.user_id) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectSecondBrancherTradeInfo" parameterType="map" resultType="map">
+		select a.user_id,sum(b.count) hand_count,sum(b.trade_amount) trade_amount,a.promoter_id from 
+		(select pum2.user_id user2,pum1.user_id,pum1.promoter_id from promoter_user_mapper pum1 
+		left JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1)
+		where pum1.flag=1) a LEFT JOIN
+		(select coi.user_id,sum(coi.buy_success_count) count,sum(coi.actual_counter_fee) trade_amount from v_order_cash_info coi 
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY coi.user_id) b on(a.user2=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.user_id
+	</select>
+	
+	<select id="selectBrancherRechargeInfo" parameterType="map" resultType="map">
+		select a.user_id,b.recharge_amount,a.promoter_id from 
+		(select pum.user_id,pum.promoter_id from promoter_user_mapper pum JOIN promoter p on(pum.promoter_id=p.user_id) where p.flag=1 and pum.flag=1) 
+		a LEFT JOIN
+		(select user_id,sum(actual_amount) recharge_amount from fund_io_cash_recharge 
+		where done_date >= #{beginTime} and #{endTime} >=done_date
+ 		GROUP BY user_id) b on(a.user_id=b.user_id)
+ 		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertBrancherDayLogs" parameterType="java.util.List">
+		INSERT INTO statistic_brancher_day_log
+		(
+			user_id,
+			promoter_user_id,
+			recharge_amount,
+			hand_count,
+			trade_amount,			
+			statistic_time,
+			create_time
+		)VALUES
+		<foreach collection="list" separator="," item="item">
+			(
+				#{item.userId},
+				#{item.promoterUserId},
+				<if test="item.rechargeAmount == null">0,</if>
+				<if test="item.rechargeAmount != null">#{item.rechargeAmount},</if>
+				<if test="item.handCount == null">0,</if>
+				<if test="item.handCount != null">#{item.handCount},</if>
+				<if test="item.tradeAmount == null">0,</if>
+				<if test="item.tradeAmount != null">#{item.tradeAmount},</if>
+				#{item.statisticTime},
+				now()
+			)
+		</foreach>
+	</insert>
+</mapper>

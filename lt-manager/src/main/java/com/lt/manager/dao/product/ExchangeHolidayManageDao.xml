@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ExchangeHolidayManageDao">
+	<select id="selectExchangeHolidayPage" parameterType="com.lt.manager.bean.product.ExchangeParamVO" 
+						resultType="com.lt.model.product.ExchangeHoliday">
+		SELECT eh.*,ei.`name` FROM exchange_holiday eh JOIN exchange_info ei
+		ON(eh.exchange_id=ei.id)
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and #{beginTime} >= begin_time
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and end_time >= #{endTime}
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+		order by create_date desc
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectExchangeHolidayCount" parameterType="com.lt.manager.bean.product.ExchangeParamVO"
+					resultType="Integer">
+		SELECT count(eh.id) FROM exchange_holiday eh JOIN exchange_info ei
+		ON(eh.exchange_id=ei.id)		
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="beginTime != null and beginTime != ''">
+				and #{beginTime} >= begin_time
+			</if>
+			<if test="endTime != null and endTime != ''">
+				and end_time >= #{endTime}
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertExchangeHolidays" parameterType="java.util.List">
+		INSERT INTO exchange_holiday
+		(
+			begin_time,
+			end_time,
+			remark,
+			create_date,
+			create_user,
+			exchange_id
+		)VALUES
+		 <foreach collection="list" item="item" index="index" separator="," >  
+	   (
+    		#{item.beginTime},
+			#{item.endTime},
+			#{item.remark},
+			now(),
+			#{item.createUser},
+			#{item.exchangeId}
+       )
+       </foreach>
+	</insert>
+	
+	<update id="updateExchangeHoliday" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		UPDATE exchange_holiday
+		<set>
+			<if test="beginTime != null and beginTime != ''">
+				begin_time=#{beginTime},
+			</if>
+			<if test="endTime != null and endTime != ''">
+				end_time=#{endTime},
+			</if>
+			<if test="remark != null">
+				remark=#{remark},
+			</if>
+			<if test="exchangeId != null">
+				exchange_id=#{exchangeId}
+			</if>
+		</set>
+		where id in(${ids})
+	</update>
+	
+	<delete id="deleteExchangeHoliday" parameterType="com.lt.manager.bean.product.ExchangeParamVO">
+		DELETE FROM exchange_holiday WHERE id in(${ids})
+	</delete>
+</mapper>

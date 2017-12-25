@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.news.NewsNoticeDao">
+	
+	<select id="queryNewsNoticeById" parameterType="int" resultType="com.lt.model.news.NewsNotice">
+		select *
+		  from news_notice
+		 where id = #{id}
+	</select>
+	
+	<select id="queryNewsNoticeVoList" parameterType="int"  resultType="com.lt.model.news.NewsNotice">
+		select id, middle_banner, url
+		  from news_notice
+		 where status = 1 
+		   and type = #{type}
+	  order by level desc
+	</select>
+	
+	<select id="queryNewsNoticeList" parameterType="int"  resultType="com.lt.model.news.NewsNotice">
+		select *
+		  from news_notice
+		 where status = 1 
+		   and type = #{type}
+	  order by level desc
+	</select>
+	
+</mapper>

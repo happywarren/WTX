@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.promote.dao.statistic.IStatisticPromoterDayLogDao">
+	
+	<insert id="insertPromoterDayLogs" parameterType="java.util.List">
+		INSERT INTO statistic_promoter_day_log
+		(
+			`user_id`,
+  			`first_register_count`,
+  			`second_register_count`,
+  			`first_trader_count`,
+ 			`second_trader_count`,
+ 			`first_hand_count`,
+ 			`second_hand_count` ,
+ 			`second_recharger_count`,
+  			`first_recharger_count` ,
+  			`first_commision` ,
+  			`second_commision` ,
+  			`first_recharge_amount` ,
+  			`second_recharge_amount` ,
+ 			`first_trade_amount` ,
+ 			`second_trade_amount` ,
+  			`balance_commision`,
+  			`create_time` ,
+  			 modify_time,
+  			`statistic_time`
+		)VALUES
+		<foreach collection="list" separator="," item="item">
+			(
+				#{item.userId},
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				0,
+				now(),
+				now(),
+				#{item.statisticTime}	
+			)			
+		</foreach>		
+	</insert>
+	
+	<insert id="insertPromoterDayLog" parameterType="com.lt.model.statistic.StatisticPromoterDayLog">
+		INSERT INTO statistic_promoter_day_log
+		(
+			`user_id`,
+  			`first_register_count`,
+  			`second_register_count`,
+  			`first_trader_count`,
+ 			`second_trader_count`,
+ 			`first_hand_count`,
+ 			`second_hand_count` ,
+ 			`second_recharger_count`,
+  			`first_recharger_count` ,
+  			`first_commision` ,
+  			`second_commision` ,
+  			`first_recharge_amount` ,
+  			`second_recharge_amount` ,
+ 			`first_trade_amount` ,
+ 			`second_trade_amount` ,
+  			`balance_commision`,
+  			`create_time` ,
+  			 modify_time,
+  			`statistic_time`
+		)VALUES
+		
+		(
+			#{userId},
+			#{firstRegisterCount},
+			#{secondRegisterCount},
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			0,
+			now(),
+			now(),
+			#{statisticTime}	
+		)				
+	</insert>
+	
+	<!-- 查询该用户一层推广员日报信息 -->
+	<select id="selectFirstPromoterDayLog" parameterType="String" resultType="com.lt.model.statistic.StatisticPromoterDayLog">
+		select l.* from promoter_user_mapper pum join statistic_promoter_day_log l on(pum.promoter_id=l.user_id) where pum.flag=1
+		and pum.user_id=#{userId} and l.statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+	
+	<!-- 查询该用户二层推广员日报信息 -->
+	<select id="selectSecondPromoterDayLog" parameterType="String" resultType="com.lt.model.statistic.StatisticPromoterDayLog">
+		select l.* from promoter_user_mapper p1 JOIN promoter_user_mapper p2 on(p1.user_id=p2.promoter_id) join statistic_promoter_day_log l
+		on(l.user_id=p1.promoter_id) where p1.flag=1 and p2.flag=1 and p2.user_id=#{userId} and l.statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+	
+	<!-- 查询用户是否初次交易 -->
+	<select id="selectOrderCountByUserId" parameterType="com.lt.vo.promote.BrancherVo" resultType="Integer">
+		select  count(o.id) from v_order_cash_info o join statistic_brancher_summary_log log on(o.user_id=log.user_id) 
+		where o.`status`=4  and o.entrust_sell_date >= log.create_time and #{dateTime} > entrust_sell_date  and log.user_id=#{userId}
+	</select>
+	
+	<!-- 查询用户是否是初次充值 -->
+	<select id="selectRechargeCountByUserId" parameterType="com.lt.vo.promote.BrancherVo" resultType="Integer">
+		select count(r.id) from fund_io_cash_recharge r join statistic_brancher_summary_log log on(r.user_id=log.user_id) 
+  		where r.`status`=1 and r.done_date >= log.create_time and #{dateTime} > done_date and log.user_id=#{userId}
+	</select>
+	
+	<!-- 查询该笔订单的一层佣金 -->
+	<select id="selectFirstCommissionByOrderId" parameterType="String" resultType="Double">
+		select c.first_commission_fee*o.buy_success_count first_commission from v_order_cash_info o 
+		join promoter_user_mapper pum on(pum.user_id=o.user_id) JOIN promoter p on(p.user_id=pum.promoter_id) 
+		JOIN promoter_fee_config c on(o.short_code=c.short_code and c.level_id=p.level_id) 
+ 		where order_id=#{orderId} and pum.flag=1
+	</select>
+	<!-- 查询该笔订单的二层佣金 -->
+	<select id="selectSecondCommissionByOrderId" parameterType="String" resultType="Double">
+		select c.second_commission_fee*o.buy_success_count second_commission from v_order_cash_info o 
+		join promoter_user_mapper pum on(pum.user_id=o.user_id) JOIN promoter p on(p.user_id=pum.promoter_id) 
+		JOIN promoter_fee_config c on(o.short_code=c.short_code and c.level_id=p.level_id) 
+ 		where order_id=#{orderId} and pum.flag=1
+	</select>
+	
+	<update id="updatePromoterDayLog" parameterType="com.lt.model.statistic.StatisticPromoterDayLog">
+		update statistic_promoter_day_log
+		<set>
+				<if test="firstRegisterCount != null">first_register_count=first_register_count+#{firstRegisterCount},</if>
+				<if test="secondRegisterCount != null">second_register_count=second_register_count+#{secondRegisterCount},</if>
+				<if test="firstTraderCount != null">first_trader_count=first_trader_count+#{firstTraderCount},</if>
+				<if test="secondTraderCount != null">second_trader_count=second_trader_count+#{secondTraderCount},</if>
+				<if test="firstHandCount != null">first_hand_count=first_hand_count+#{firstHandCount},</if>
+				<if test="secondHandCount != null">second_hand_count=second_hand_count+#{secondHandCount},</if>
+				<if test="secondRechargerCount != null">second_recharger_count=second_recharger_count+#{secondRechargerCount},</if>
+				<if test="firstRechargerCount != null">first_recharger_count=first_recharger_count+#{firstRechargerCount},</if>
+				<if test="firstCommision != null">first_commision=first_commision+#{firstCommision},</if>
+				<if test="secondCommision != null">second_commision=second_commision+#{secondCommision},</if>
+				<if test="firstRechargeAmount != null">first_recharge_amount=first_recharge_amount+#{firstRechargeAmount},</if>
+				<if test="secondRechargeAmount != null">second_recharge_amount=second_recharge_amount+#{secondRechargeAmount},</if>
+				<if test="firstTradeAmount != null">first_trade_amount=first_trade_amount+#{firstTradeAmount},</if>
+				<if test="secondTradeAmount != null">second_trade_amount=second_trade_amount+#{secondTradeAmount},</if>
+				<if test="balanceCommision != null">balance_commision=balance_commision+#{balanceCommision},</if>
+				modify_time=now(),
+		</set>
+		where id=#{id}
+	</update>
+	
+		
+	<select id="selectPromoterDayLogList" parameterType="map" resultType="com.lt.model.statistic.StatisticPromoterDayLog">
+		SELECT log.*,m.commision_balance FROM promoter p join commision_main m on(p.user_id=m.user_id )
+		JOIN statistic_promoter_day_log log on(p.user_id=log.user_id)
+		where  p.flag=1 and log.statistic_time=#{statisticTime}
+		<if test="userId != null and userId != ''">
+			and log.user_id=#{userId}
+		</if>
+	</select>
+	
+	<select id="selectPromoterDayLogCount" parameterType="com.lt.model.statistic.StatisticPromoterDayLog" resultType="Integer">
+		select count(id) from statistic_promoter_day_log where user_id=#{userId} and statistic_time=#{statisticTime}
+	</select>
+	
+	<select id="selectPromoterDayLogByUserId" parameterType="String" resultType="com.lt.model.statistic.StatisticPromoterDayLog">
+		select * from statistic_promoter_day_log where user_id=#{userId} and statistic_time=DATE_FORMAT(NOW(),'%Y-%m-%d')
+	</select>
+	
+	<!-- 查询所有推广员的一层佣金 -->
+	<select id="selectPromoterFirstCommission" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.first_commission_fee) first_commission from (select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1) a LEFT JOIN (select t.user_id user_id, pfc.level_id,sum(pfc.first_commission_fee*t.count) first_commission_fee,
+		sum(pfc.second_commission_fee*t.count) second_commission_fee
+		from promoter_fee_config pfc LEFT JOIN
+		(select u.user_id,sum(coi.buy_success_count) count,coi.short_code,sum(coi.actual_counter_fee) trade_amount
+		from user_base u LEFT JOIN v_order_cash_info coi on(u.user_id=coi.user_id)
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY u.user_id,coi.short_code
+		ORDER BY u.user_id ) t on(pfc.short_code=t.short_code) 
+		GROUP BY t.user_id,pfc.level_id
+		ORDER BY t.user_id) b on(a.user_id=b.user_id and a.level_id=b.level_id) GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询所有推广员的二层佣金 -->
+	<select id="selectPromoterSecondCommission" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.second_commission_fee) second_commission from (select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN 
+		(select t.user_id user_id, pfc.level_id,sum(pfc.first_commission_fee*t.count) first_commission_fee,
+		sum(pfc.second_commission_fee*t.count) second_commission_fee
+		from promoter_fee_config pfc LEFT JOIN
+		(select u.user_id,sum(coi.buy_success_count) count,coi.short_code,sum(coi.actual_counter_fee) trade_amount
+		from user_base u LEFT JOIN v_order_cash_info coi on(u.user_id=coi.user_id)
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY u.user_id,coi.short_code
+		ORDER BY u.user_id ) t on(pfc.short_code=t.short_code) 
+		GROUP BY t.user_id,pfc.level_id
+		ORDER BY t.user_id) b on(a.user_id=b.user_id and a.level_id=b.level_id) GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询所有推广员一层下线交易信息（包含所有品种，而非推广配置的品种，，，需求如此） -->
+	<select id="selectPromoterFirstTradeInfo" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) first_hand_count,sum(b.trade_amount) first_trade_amount from 
+		(select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1) a LEFT JOIN
+		(select u.user_id,sum(coi.buy_success_count) count,coi.short_code,sum(coi.actual_counter_fee) trade_amount
+		from user_base u LEFT JOIN v_order_cash_info coi on(u.user_id=coi.user_id)
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY u.user_id,coi.short_code
+		ORDER BY u.user_id ) b on(a.user_id=b.user_id) 
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>	
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询所有推广员二层下线交易信息（包含所有品种，而非推广配置的品种，，，需求如此）  -->
+	<select id="selectPromoterSecondTradeInfo" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) second_hand_count,sum(b.trade_amount) second_trade_amount from 
+		(select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN
+		(select u.user_id,sum(coi.buy_success_count) count,coi.short_code,sum(coi.actual_counter_fee) trade_amount
+		from user_base u LEFT JOIN v_order_cash_info coi on(u.user_id=coi.user_id)
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		GROUP BY u.user_id,coi.short_code
+		ORDER BY u.user_id ) b on(a.user_id=b.user_id) 
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询所有推广员一层下线充值金额 -->
+	<select id="selectPromoterFirstRechargeAmount" parameterType="map" resultType="map">
+		select a.promoter_id,b.recharge_amount first_recharge_amount from 
+		(select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1) a LEFT JOIN
+		(select user_id,sum(actual_amount) recharge_amount from fund_io_cash_recharge 
+		where `status`=1 and done_date >= #{beginTime} and #{endTime} >= done_date
+		GROUP BY user_id) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询所有推广员二层下线充值金额  -->
+	<select id="selectPromoterSecondRechargeAmount" parameterType="map" resultType="map">
+		select a.promoter_id,b.recharge_amount second_recharge_amount from 
+		(select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN
+		(select user_id,sum(actual_amount) recharge_amount from fund_io_cash_recharge 
+		where `status`=1 and done_date >= #{beginTime} and #{endTime} >= done_date
+		GROUP BY user_id) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 查询推广员一层下线交易用户数（包含所有品种，而非推广配置的品种，，，需求如此） -->
+	<select id="selectPromoterFirstTraderCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) first_trader_count from
+		(select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1 and pum.user_id not in(select user_id from history_trade_brancher)) a LEFT JOIN
+		(select  DISTINCT coi.user_id,'1' count from v_order_cash_info coi 
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		and coi.user_id not in 
+		(select DISTINCT v.user_id from v_order_cash_info v join promoter_user_mapper pum on(v.user_id=pum.user_id and pum.flag=1)
+	  	where v.`status`=4 and v.entrust_sell_date >= pum.create_time and #{beginTime} > v.entrust_sell_date)
+		) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询推广员二层下线交易用户数（包含所有品种，而非推广配置的品种，，，需求如此） -->
+	<select id="selectPromoterSecondTraderCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) second_trader_count from
+		(select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN
+		(select  DISTINCT coi.user_id,'1' count from v_order_cash_info coi 
+		where coi.`status`=4 and coi.entrust_sell_date >= #{beginTime} and #{endTime} >= coi.entrust_sell_date
+		and coi.user_id not in 
+		(select DISTINCT v.user_id from v_order_cash_info v join promoter_user_mapper pum on(v.user_id=pum.user_id and pum.flag=1)
+	  	where v.`status`=4 and v.entrust_sell_date >= pum.create_time and #{beginTime} > v.entrust_sell_date)
+		) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询推广员一层下线充值用户数 -->
+	<select id="selectPromoterFirstRechargerCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) first_recharger_count from 
+		(select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1) a LEFT JOIN
+		(select DISTINCT user_id,'1' count from fund_io_cash_recharge 
+		where `status`=1 and done_date >= #{beginTime} and #{endTime} >= done_date
+		and user_id not in(select DISTINCT r.user_id from fund_io_cash_recharge r join promoter_user_mapper pum on(r.user_id=pum.user_id and pum.flag=1)
+		where r.`status`=1 and r.done_date >= pum.create_time and #{beginTime} > r.done_date)
+		) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询推广员二层下线充值用户数 -->
+	<select id="selectPromoterSecondRechargerCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) second_recharger_count from 
+		(select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN
+		(select DISTINCT user_id,'1' count from fund_io_cash_recharge 
+		where `status`=1 and done_date >= #{beginTime} and #{endTime} >= done_date
+		and user_id not in(select DISTINCT r.user_id from fund_io_cash_recharge r join promoter_user_mapper pum on(r.user_id=pum.user_id and pum.flag=1)
+		where r.`status`=1 and r.done_date >= pum.create_time and #{beginTime} > r.done_date)
+		) b on(a.user_id=b.user_id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询推广员一层下线注册用户数 -->
+	<select id="selectPromoterFirstRegisterCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) first_register_count from
+		(select pum.user_id,p.level_id,p.user_id promoter_id from promoter p LEFT JOIN promoter_user_mapper pum on(p.user_id=pum.promoter_id and pum.flag=1 ) 
+		where  p.flag=1) a LEFT JOIN
+		(select user_id id,'1' count from promoter_user_mapper where flag=1 and create_time >= #{beginTime} and #{endTime} >= create_time) b
+		on(a.user_id=b.id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+	<!-- 查询推广员二层下线注册用户数 -->
+	<select id="selectPromoterSecondRegisterCount" parameterType="map" resultType="map">
+		select a.promoter_id,sum(b.count) second_register_count from
+		(select pum2.user_id, p.user_id promoter_id,p.level_id from promoter p LEFT JOIN promoter_user_mapper pum1 on(p.user_id=pum1.promoter_id and pum1.flag=1) 
+		LEFT JOIN  promoter_user_mapper pum2 on(pum1.user_id=pum2.promoter_id and pum2.flag=1) where p.flag=1) a LEFT JOIN
+		(select user_id id,'1' count from promoter_user_mapper where flag=1 and create_time >= #{beginTime} and #{endTime} >= create_time) b
+		on(a.user_id=b.id)
+		<where>
+			<if test="userId != null">
+				and a.promoter_id=#{userId}
+			</if>
+		</where>
+		GROUP BY a.promoter_id
+	</select>
+	
+</mapper>

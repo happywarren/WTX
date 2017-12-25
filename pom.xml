@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.lt</groupId>
+	<artifactId>lt-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-version>4.2.5.RELEASE</spring-version>
+	</properties>
+
+	<dependencies>
+		<!-- mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.9.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.18.2-GA</version>
+		</dependency>
+
+		<!-- mybatis相关 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.2.8</version>
+		</dependency>
+		
+		<!-- 数据库连接驱动-->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.34</version>
+		</dependency>
+
+		<!-- 数据库连接池-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+			<version>1.0.12</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.2.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-util</artifactId>
+			<version>5.1</version>
+		</dependency>
+		
+		<!-- 日志 -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.7</version>
+		</dependency>
+		
+		<!-- zookeeper-->
+		<dependency>
+			<groupId>org.apache.zookeeper</groupId>
+			<artifactId>zookeeper</artifactId>
+			<version>3.4.6</version>
+		</dependency>
+
+		<!-- 连接zookeeper的客户端 -->
+		<dependency>
+			<groupId>com.github.sgroschupf</groupId>
+			<artifactId>zkclient</artifactId>
+			<version>0.1</version>
+		</dependency>
+
+		<!-- dubbo -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.5.3</version>
+			<exclusions>  
+                <exclusion>  
+                    <artifactId>spring</artifactId>  
+                    <groupId>org.springframework</groupId>  
+                </exclusion>  
+                <exclusion>  
+					<artifactId>netty-all</artifactId>
+                   	<groupId>io.netty</groupId>
+                </exclusion>  
+            </exclusions> 
+		</dependency>
+
+		<dependency>
+			<groupId>bouncycastle</groupId>
+			<artifactId>bcprov-jdk14</artifactId>
+			<version>138</version>
+		</dependency>
+		<!-- AVTIVEMQ -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.10.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.etonepay.b2c</groupId>
+			<artifactId>etonepay_sdk</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>${project.name}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<distributionManagement>
+		<repository>
+			<id>user-release</id>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/releases</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>user-snapshot</id>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/snapshots/</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>nexus</id>
+			<name>Team Nexus Repository</name>
+			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+			<url>http://103.242.67.92:8081/nexus/content/groups/public/</url>
+		</repository>
+
+		<repository>
+			<id>nexus pri</id>
+			<name>Team Nexus Repository</name>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/releases/</url>
+		</repository>
+		<repository>
+			<id>thirdparty</id>
+			<name>Team Nexus Repository</name>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/thirdparty/</url>
+		</repository>
+	</repositories>
+	<modules>
+		<module>lt-api</module>
+		<module>lt-user</module>
+		<module>lt-trade</module>
+		<module>lt-business</module>
+		<!-- <module>lt-dispatcher</module> -->
+		<module>lt-task</module>
+		<!-- <module>lt-controller</module> -->
+		<module>lt-fund</module>
+		<module>lt-util</module>
+		<module>lt-manager</module>
+		<module>lt-interface</module>
+        <module>quota</module>
+        <!-- <module>lt-quota</module> -->
+		<!-- <module>lt-notification</module> -->
+	</modules>
+	
+	
+	
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.promote.ICommisionIoDao">
+
+	<insert id="insertCommisionIo" parameterType="com.lt.model.promote.CommisionIo">
+		INSERT INTO commision_io
+		(
+			`user_id` ,
+  			`flow_type` ,
+  			`first_optcode` ,
+  			`second_optcode`,
+  			`third_optcode` ,
+  			`amount` ,
+  			`balance` ,
+  			`create_date`,
+  			`audit_date` ,
+  			`modify_date`,
+  			`modify_user_id`,
+  			`remark` ,
+  			`status`
+		)VALUES
+		(
+			#{userId},
+			#{flowType},
+			#{firstOptcode},
+			#{secondOptcode},
+			#{thirdOptcode},
+			#{amount},
+			#{balance},
+			now(),
+			#{auditDate},
+			now(),
+			#{modifyUserId},
+			#{remark},
+			#{status}
+		)
+	</insert>
+	
+	<select id="selectCommisionIoById" parameterType="String" resultType="com.lt.model.promote.CommisionIo">
+		SELECT * FROM commision_io WHERE id=#{id}
+	</select>
+	
+	<update id="updateCommisionIoById" parameterType="com.lt.model.promote.CommisionIo">
+		UPDATE commision_io
+		<set>
+			<if test="status != null">status=#{status},</if>
+			<if test="modifyUserId != null">modify_user_id=#{modifyUserId},</if>
+			modify_date=now(),
+			audit_date=now()
+		</set>
+		where id=#{id}
+	</update>
+</mapper>

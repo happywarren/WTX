@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lt.manager.dao.feedback.FeedbackDao">
+
+    <select id="getFeedbackListPage" parameterType="com.lt.manager.bean.feedback.FeedbackParam" resultType="com.lt.manager.bean.feedback.FeedbackPage">
+        SELECT f.*,u.nick_name as nickName,b.brand_name as brandName FROM fb_feedback f,user_base u,brand_info b
+        <where>
+            f.user_id = u.user_id and u.brand_id = b.brand_id
+            <if test="userId !=null and userId != '' ">
+                and u.user_id = #{userId}
+            </if>
+            <if test="brandCode !=null and brandCode != '' ">
+                and b.brand_code = #{brandCode}
+            </if>
+            <if test="status !=null">
+                <if test="status == 0">
+                   and f.status = 1 and f.reply_status = 0
+                </if>
+                <if test="status == 1">
+                    and f.status = 0 and f.reply_status = 0
+                </if>
+                <if test="status == 2">
+                    and f.status = 0 and f.reply_status = 1
+                </if>
+                <if test="status == 3">
+                    and f.status = 0 and f.reply_status = 2
+                </if>
+            </if>
+            <if test="nickName !=null and nickName != '' ">
+                and u.nick_name LIKE concat('%',#{nickName},'%')
+            </if>
+
+            <if test="tele !=null and tele != '' ">
+                and u.tele LIKE concat('%',#{tele},'%')
+            </if>
+            <if test="beginTime != null and beginTime != ''">
+                and f.create_time >= #{beginTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and #{endTime} >= f.create_time
+            </if>
+        </where>
+        order by f.create_time desc
+        <if test="offset != null and limit != null">
+            limit ${offset},${limit}
+        </if>
+    </select>
+
+    <select id="getFeedbackListCount" parameterType="com.lt.manager.bean.feedback.FeedbackParam" resultType="java.lang.Integer">
+        SELECT count(*) FROM fb_feedback f,user_base u,brand_info b
+        <where>
+            f.user_id = u.user_id and u.brand_id = b.brand_id
+            <if test="userId !=null and userId != '' ">
+                and u.user_id = #{userId}
+            </if>
+            <if test="brandCode !=null and brandCode != '' ">
+                and b.brand_code = #{brandCode}
+            </if>
+            <if test="status !=null">
+                <if test="status == 0">
+                    and f.status = 1 and f.reply_status = 0
+                </if>
+                <if test="status == 1">
+                    and f.status = 0 and f.reply_status = 0
+                </if>
+                <if test="status == 2">
+                    and f.status = 0 and f.reply_status = 1
+                </if>
+                <if test="status == 3">
+                    and f.status = 0 and f.reply_status = 2
+                </if>
+            </if>
+            <if test="nickName !=null and nickName != '' ">
+                and u.nick_name LIKE concat('%',#{nickName},'%')
+            </if>
+
+            <if test="tele !=null and tele != '' ">
+                and u.tele LIKE concat('%',#{tele},'%')
+            </if>
+            <if test="beginTime != null and beginTime != ''">
+                and f.create_time >= #{beginTime}
+            </if>
+            <if test="endTime != null and endTime != ''">
+                and #{endTime} >= f.create_time
+            </if>
+        </where>
+    </select>
+
+    <select id="getDetailFeedbackPage" parameterType="com.lt.manager.bean.feedback.FeedbackParam" resultType="com.lt.manager.bean.feedback.FeedbackPage">
+        SELECT f.*,u.nick_name as nickName FROM fb_feedback f,user_base u where f.user_id = u.user_id and (f.parent_id = #{feedbackId} or f.feedback_id = #{feedbackId})
+        <if test="offset != null and limit != null">
+            limit ${offset},${limit}
+        </if>
+    </select>
+
+    <select id="getDetailFeedbackCount" parameterType="com.lt.manager.bean.feedback.FeedbackParam" resultType="java.lang.Integer">
+        SELECT count(*) FROM fb_feedback f,user_base u where f.user_id = u.user_id and u.user_id =#{userId} and (f.parent_id = #{feedbackId} or f.feedback_id = #{feedbackId})
+    </select>
+
+    <select id="getFeedback" parameterType="java.lang.String" resultType="com.lt.manager.bean.feedback.FeedbackVo">
+        SELECT * FROM fb_feedback f where f.feedback_id = #{feedbackId}
+    </select>
+
+    <update id="updateFeedback" parameterType="com.lt.manager.bean.feedback.FeedbackVo">
+        UPDATE fb_feedback
+        SET reply_content = #{replyContent}, reply_user = #{replyUser},status = 0,reply_status = #{replyStatus},reply_time = #{replyTime}
+        WHERE feedback_id = #{feedbackId};
+    </update>
+
+    <update id="updateFeedbackRead" parameterType="com.lt.manager.bean.feedback.FeedbackVo">
+        UPDATE fb_feedback SET status = 0 WHERE feedback_id = #{feedbackId} and status = 1;
+    </update>
+</mapper>

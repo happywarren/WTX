@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.order.dao.OrderScoreSuccessInfoDao">
+	
+	<!-- 添加积分订单成交记录 -->
+	<insert id="add" parameterType="com.lt.model.trade.OrderScoreSuccessInfo" keyProperty="id" useGeneratedKeys="true">
+		insert into order_score_success_info (
+			success_id,order_id,entrust_id,ex_success_id,ex_entrust_id,product_id,product_code,
+			product_name,exchange_code,plate,investor_id,account_id,security_code,
+			trade_type,trade_direction,act_trade_type,act_trade_direction,
+			entrust_count,success_count,total_success_count,success_price,
+			success_date,create_date,success_status
+		) values (
+			#{successId},#{orderId},#{entrustId},#{exSuccessId},#{exEntrustId},#{productId},#{productCode},
+			#{productName},#{exchangeCode},#{plate},#{investorId},#{accountId},#{securityCode},
+			#{tradeType},#{tradeDirection},#{actTradeType},#{actTradeDirection},
+			#{entrustCount},#{successCount},#{totalSuccessCount},#{successPrice},
+			#{successDate},#{createDate},#{successStatus}
+		)
+	</insert>
+
+	<!-- 更新现金订单成交记录 -->
+	<update id="update" parameterType="com.lt.model.trade.OrderScoreSuccessInfo">
+		update order_score_success_info 
+		<set>
+			<if test="orderId != null"> order_id = #{orderId}, </if>
+			<if test="entrustId != null"> entrust_id = #{entrustId}, </if>
+			<if test="entrustCode != null"> entrust_code = #{entrustCode}, </if>
+			<if test="productId != null"> product_id = #{productId}, </if>
+			<if test="productCode != null"> product_code = #{productCode}, </if>
+			<if test="productName != null"> product_name = #{productName}, </if>
+			<if test="exchangeCode != null"> exchange_code = #{exchangeCode}, </if>
+			<if test="plate != null"> plate = #{plate}, </if>
+			<if test="securityCode != null"> security_code = #{securityCode}, </if>
+			<if test="userTradeType != null"> user_trade_type = #{userTradeType}, </if>
+			<if test="sysTradeDirect != null"> sys_trade_direct = #{sysTradeDirect}, </if>
+			<if test="sysTradeOffset != null"> sys_trade_offset = #{sysTradeOffset}, </if>
+			<if test="entrustCount != null"> entrust_count = #{entrustCount}, </if>
+			<if test="exchgEntrustCode != null"> exchg_entrust_code = #{exchgEntrustCode}, </if>
+			<if test="totalTradeCount != null"> total_trade_count = #{totalTradeCount}, </if>
+			<if test="tradeCount != null"> trade_count = #{tradeCount}, </if>
+			<if test="tradePrice != null"> trade_price = #{tradePrice}, </if>
+			<if test="tradeDate != null"> trade_date = #{tradeDate}, </if>
+			<if test="tradeNo != null"> trade_no = #{tradeNo}, </if>
+			<if test="remark != null"> remark = #{remark}, </if>
+			<if test="status != null"> status = #{status}, </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 查询现金订单成交记录 -->
+	<select id="queryById" parameterType="Long" resultType="com.lt.model.trade.OrderScoreSuccessInfo">
+		select * from order_score_success_info where id = #{id}
+	</select>
+	
+	<!-- 查询现金订单成交记录 -->
+	<select id="queryByEntrustCode" parameterType="Integer" resultType="com.lt.model.trade.OrderScoreSuccessInfo">
+		select * from order_score_success_info where entrust_code = #{entrustCode}
+	</select>
+
+</mapper>

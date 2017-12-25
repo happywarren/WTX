@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.BankCardManageDao">
+	<insert id="insertBankCard" parameterType="com.lt.manager.bean.user.BankCard">
+		INSERT INTO user_bankcard
+		(
+			`user_id` ,
+  			`user_name` ,
+  			`bank_name`,
+  			`bank_card_num` ,
+ 			`province_code` ,
+  			`city_code`,
+  			`branch_id`,
+  			`bank_status`,
+  			`is_default`,
+  			`create_date`,
+  			`modify_date`,
+ 	 		`bank_code`,
+  			`card_background`
+		)VALUES	
+		(
+		    #{userId},
+			#{userName},
+			#{bankName},
+			#{bankCardNum},
+			#{provinceCode},
+			#{cityCode},
+			#{branchId},
+			#{bankStatus},
+			#{isDefault},
+			now(),
+			now(),
+			#{bankCode},
+			#{cardBackground}
+		)
+	</insert>
+	
+	<update id="updateBankCard" parameterType="com.lt.manager.bean.user.BankCard">
+		UPDATE user_bankcard
+		<set>
+			<if test="userId != null">
+				user_id=#{userId},
+			</if>
+			<if test="userName != null and userName != ''">
+				user_name=#{userName},
+			</if>
+			<if test="idCardNum != null and idCardNum != ''">
+				id_card_num=#{idCardNum},
+			</if>
+				<if test="status != null">
+				status=#{status},
+			</if>
+			<if test="bankCardNum != null and bankCardNum != ''">
+				bank_card_num=#{bankCardNum},
+			</if>
+			<if test="cardBackground != null and cardBackground != ''">
+				card_background=#{cardBackground},
+			</if>
+			<if test="provinceCode != null and provinceCode != ''">
+				province_code=#{provinceCode},
+			</if>
+			<if test="bankCode != null and bankCode != ''">
+				bank_code=#{bankCode},
+			</if>
+			<if test="cityCode != null and cityCode != ''">
+				city_code=#{cityCode},
+			</if>
+			<if test="branchId != null">
+				branch_id=#{branchId},
+			</if>
+			<if test="bankStatus != null">
+				bank_status=#{bankStatus},
+			</if>
+			<if test="isDefault != null">
+				is_default=#{isDefault},
+			</if>
+			<if test="modifyDate != null">
+				modify_date=#{modifyDate},
+			</if>
+			<if test="bankName != null and bankName != ''">bank_name=#{bankName}</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteBankCard" parameterType="com.lt.manager.bean.user.BankCard">
+		DELETE FROM user_bankcard where id=#{id}
+	</delete>
+	
+	<select id="selectBankCardByUserId" parameterType="String" resultType="com.lt.manager.bean.user.BankCard" >
+	
+	 SELECT
+		u.*,
+		b.bank_pic AS  bankPic,
+		b.card_background AS cardBackground
+	FROM
+		user_bankcard u
+	LEFT JOIN bank_info b ON b.bank_code = u.bank_code
+	WHERE
+	    u.user_id = #{userId}
+	 	
+	</select>
+	
+   <select id="selectBankInfo"  resultType="com.lt.manager.bean.user.BankCard" >
+	 SELECT
+			*
+	 FROM
+		bank_info
+	</select>
+	
+	 <select id="selectProv"  resultType="com.lt.manager.bean.user.BankCard" >
+	 SELECT  * FROM  area_province 
+	</select>
+	
+	 <select id="selectCity"  resultType="com.lt.manager.bean.user.BankCard" >
+	 SELECT  * FROM  area_city where father = #{0} 
+	</select>
+	
+   <select id="selectBranchBank"  resultType="com.lt.manager.bean.user.BankCard" >
+	 SELECT  * FROM  bank_branch where father = #{0}  and bank_code = #{1}
+	</select>
+	
+	<update id="updateBankCardDefaultByUserId" parameterType="java.lang.String">
+		UPDATE 
+			user_bankcard
+		SET
+			is_default = '0'
+		where 
+			user_id=#{userId}
+	</update>	
+</mapper>

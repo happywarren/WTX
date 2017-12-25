@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/lt-business" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-fund" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-interface" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-manager" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-quota" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-trade" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-trades" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-user" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/lt-trades/pom.xml" />
+        <option value="$PROJECT_DIR$/lt-quota/pom.xml" />
+        <option value="$PROJECT_DIR$/outer-quota/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+  <component name="SvnBranchConfigurationManager">
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
+</project>

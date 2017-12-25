@@ -1,0 +1,773 @@
+2017-12-24  15:33:45.584 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:33:45.622 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  15:36:05.721 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:36:05.794 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  15:38:56.851 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  15:38:56.858 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:45:40.148 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:45:40.177 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  15:51:09.232 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:51:09.276 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  15:53:29.621 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  15:53:29.656 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  16:00:24.063 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  16:00:24.098 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  16:05:05.659 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  16:05:05.728 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  16:13:02.066 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  16:13:02.110 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  16:31:13.533 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  16:31:13.549 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  16:31:14.067 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-24  16:31:14.067 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-24  16:31:16.271 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-24  16:31:16.272 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-24  16:31:21.294 [nioEventLoopGroup-5-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x0bbbb03e]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  16:31:21.294 [nioEventLoopGroup-6-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x3cf99375]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  16:31:21.296 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  16:31:21.300 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-24  16:31:23.507 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 10秒后重连...
+2017-12-24  16:31:23.507 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 10秒后重连...
+2017-12-24  16:36:31.125 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  16:36:31.168 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  20:14:09.477 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  20:14:09.487 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  20:15:01.068 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  20:15:01.115 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  20:44:53.282 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-24  20:44:55.488 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-24  20:45:00.509 [nioEventLoopGroup-5-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x2ae02d71]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:45:00.511 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  20:45:02.771 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 10秒后重连...
+2017-12-24  20:45:12.781 [nioEventLoopGroup-6-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xaae9e1ae]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:45:12.781 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  20:45:14.985 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 15秒后重连...
+2017-12-24  20:45:29.995 [nioEventLoopGroup-7-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xa11ff4b8]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:45:29.995 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  20:45:32.199 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 20秒后重连...
+2017-12-24  20:45:52.209 [nioEventLoopGroup-8-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xf45f396f]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:45:52.210 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  20:45:54.414 [Thread-13] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 25秒后重连...
+2017-12-24  20:46:42.249 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  20:46:42.284 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  20:46:42.806 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接出现异常, 异常信息 null 
+2017-12-24  20:46:42.810 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接出现异常, 异常信息 null 
+2017-12-24  20:46:42.813 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-24  20:46:43.872 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接出现异常, 异常信息 null 
+2017-12-24  20:46:43.873 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-24  20:46:45.014 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-24  20:46:46.077 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-24  20:46:50.037 [nioEventLoopGroup-5-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x7b3183f4]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:46:50.038 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  20:46:51.086 [nioEventLoopGroup-6-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x95fff279]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  20:46:51.087 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-24  20:46:52.243 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 10秒后重连...
+2017-12-24  20:47:41.144 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  20:47:41.183 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  21:32:03.630 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  21:32:03.657 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  21:32:04.647 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接出现异常, 异常信息 null 
+2017-12-24  21:32:04.650 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-24  21:32:04.687 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接出现异常, 异常信息 null 
+2017-12-24  21:32:04.687 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-24  21:32:06.852 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-24  21:32:06.891 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-24  21:32:11.875 [nioEventLoopGroup-5-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x20ddb5b0]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  21:32:11.875 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-24  21:32:11.901 [nioEventLoopGroup-6-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x67d55caa]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  21:32:11.902 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-24  21:32:14.081 [Thread-11] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 10秒后重连...
+2017-12-24  21:32:14.105 [Thread-12] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 10秒后重连...
+2017-12-24  21:35:47.138 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2017-12-24  21:35:47.156 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-24  21:35:47.175 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.lt.quota.core.Application.main(Application.java:24)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.NullPointerException: null
+	at com.lt.quota.core.comm.spring.SpringUtils.getBean(SpringUtils.java:37)
+	at com.lt.quota.core.client.QuotaListener.<init>(QuotaListener.java:32)
+	at com.lt.quota.core.client.TcpClientMain.startQuota(TcpClientMain.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 23 common frames omitted
+2017-12-24  21:43:34.469 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2017-12-24  21:43:34.485 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-24  21:43:34.504 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.lt.quota.core.Application.main(Application.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.NullPointerException: null
+	at com.lt.quota.core.comm.spring.SpringUtils.getBean(SpringUtils.java:38)
+	at com.lt.quota.core.client.QuotaListener.<init>(QuotaListener.java:32)
+	at com.lt.quota.core.client.TcpClientMain.startQuota(TcpClientMain.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 23 common frames omitted
+2017-12-24  21:44:22.207 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+2017-12-24  21:44:22.221 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-24  21:44:22.241 [restartedMain] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tcpClientMain': Invocation of init method failed; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:137)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:409)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:555)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:866)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:542)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:737)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:370)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:314)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1162)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1151)
+	at com.lt.quota.core.Application.main(Application.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: java.lang.NullPointerException: null
+	at com.lt.quota.core.comm.spring.SpringUtils.getBean(SpringUtils.java:39)
+	at com.lt.quota.core.client.QuotaListener.<init>(QuotaListener.java:32)
+	at com.lt.quota.core.client.TcpClientMain.startQuota(TcpClientMain.java:37)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:366)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:311)
+	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:134)
+	... 23 common frames omitted
+2017-12-24  21:47:39.044 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  21:47:39.055 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  21:49:38.951 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  21:49:41.970 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  21:51:46.860 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  21:51:46.875 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  21:53:38.850 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  21:53:38.870 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:17:56.183 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:17:56.208 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:21:28.324 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:21:28.364 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:21:28.902 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.903 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.904 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.916 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.925 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.926 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:28.947 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.673 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.681 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.686 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.691 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.692 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:29.703 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.439 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.445 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.485 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.487 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.933 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.941 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.949 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.950 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.959 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:31.966 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.628 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.644 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.664 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.673 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.824 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.838 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.851 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:32.863 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:33.213 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:33.218 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:33.252 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:33.257 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.204 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.219 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.231 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.243 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.395 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.407 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.408 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.429 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.711 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.718 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.726 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.731 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.737 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.742 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.750 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.754 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.759 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.765 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.771 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.777 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.958 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.972 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.986 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:34.998 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.007 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.018 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.029 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.041 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.068 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.095 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.156 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.157 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.160 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.246 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.247 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.251 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.757 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.765 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.772 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.863 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.868 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.880 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.967 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.971 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:35.982 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.046 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.055 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.064 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.142 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.198 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.198 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.243 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.249 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.297 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.333 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.339 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.345 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.352 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.359 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.364 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.370 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.375 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.382 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.388 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.626 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.636 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.643 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.732 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.742 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.752 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.808 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.808 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.812 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.812 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.812 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.814 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.814 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.814 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.816 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.816 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.816 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.818 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.818 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.822 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.823 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.828 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.828 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.828 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.830 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.832 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.912 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.917 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.924 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.929 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.934 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:36.939 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.069 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.075 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.076 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.085 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.085 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.095 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.096 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.108 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.112 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.118 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.124 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.129 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.130 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.137 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.142 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.274 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.274 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.279 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.797 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.798 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.810 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.810 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.821 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.821 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.959 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.966 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.967 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.977 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.985 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:37.987 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.000 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.013 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.027 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.038 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.039 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.051 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.060 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.069 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.069 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.078 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.079 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.082 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.095 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.096 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.101 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.115 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.115 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.127 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.145 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.154 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.182 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:38.279 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:39.141 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:39.148 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:39.159 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:39.164 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.045 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.053 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.059 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.064 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.068 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.078 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.295 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.303 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.303 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.313 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.315 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.325 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.788 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.794 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.799 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.805 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.805 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:40.816 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.001 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.005 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.011 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.014 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.021 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.024 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.172 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.189 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.204 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.204 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.213 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.213 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.233 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.244 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.262 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.263 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.272 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.290 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.291 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.310 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.321 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.332 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.449 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.460 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.470 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.470 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.476 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.476 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.476 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.478 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.478 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.480 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.490 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.501 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.516 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.528 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.660 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:41.661 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.852 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.868 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.883 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.894 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.906 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.910 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.912 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.924 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.926 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.946 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.948 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:42.975 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.337 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.338 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.339 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.339 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.340 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.341 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.341 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.341 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.343 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.343 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.343 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.345 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.345 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.345 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.347 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.347 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.347 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.349 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.349 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.349 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.351 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.351 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.351 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.353 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.353 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.353 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.355 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.355 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.817 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.826 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.833 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.840 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.846 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:21:43.852 [pool-3-thread-1] ERROR com.lt.quota.core.quota.CleanInstance - 处理行情出错
+2017-12-24  22:28:10.838 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:28:10.838 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:28:32.000 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:28:32.021 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:29:49.569 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:29:49.571 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:35:34.238 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:35:34.238 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:35:53.963 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:35:53.963 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:38:33.400 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:38:33.400 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:41:06.255 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  22:41:06.262 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:41:53.930 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  22:41:53.942 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  23:48:17.435 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-24  23:48:17.461 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  23:48:21.825 [nioEventLoopGroup-5-1] WARN  io.netty.util.concurrent.DefaultPromise - An exception was thrown by com.lt.quota.core.comm.netty.server.BaseServer$2.operationComplete()
+java.lang.NullPointerException: null
+	at com.lt.quota.core.comm.netty.server.BaseServer$2.operationComplete(BaseServer.java:126)
+	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:507)
+	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:481)
+	at io.netty.util.concurrent.DefaultPromise.access$000(DefaultPromise.java:34)
+	at io.netty.util.concurrent.DefaultPromise$1.run(DefaultPromise.java:431)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-24  23:50:08.653 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-24  23:50:08.656 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功

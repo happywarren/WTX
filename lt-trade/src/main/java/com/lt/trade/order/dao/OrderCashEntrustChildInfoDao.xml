@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.order.dao.OrderCashEntrustChildInfoDao">
+	
+	<!-- 添加现金订单委托单 -->
+	<insert id="add" parameterType="com.lt.model.trade.OrderCashEntrustInfo" keyProperty="id" useGeneratedKeys="true">
+		insert into order_cash_entrust_child_info (
+			entrust_id,order_id,ex_entrust_id,product_id,
+			product_code,product_name,exchange_code,plate,investor_id,
+			account_id,security_code,trigger_type,entrust_type,entrust_price,
+			trade_type,trade_direction,act_trade_type,act_trade_direction,
+			entrust_count,entrust_date,entrust_status,error_code,error_msg,create_date,modify_date
+		) values (
+			#{entrustId},#{orderId},#{exEntrustId},#{productId},
+			#{productCode},#{productName},#{exchangeCode},#{plate},#{investorId},
+			#{accountId},#{securityCode},#{triggerType},#{entrustType},#{entrustPrice},
+			#{tradeType},#{tradeDirection},#{actTradeType},#{actTradeDirection},
+			#{entrustCount},#{entrustDate},#{entrustStatus},#{errorCode},#{errorMsg},#{createDate},#{modifyDate}
+		)
+	</insert>
+
+	<!-- 更新现金订单委托单 -->
+	<update id="update" parameterType="com.lt.model.trade.OrderCashEntrustInfo">
+		update order_cash_entrust_child_info
+		<set>
+			<if test="orderId != null and orderId != ''">order_id=#{orderId},</if>
+			<if test="exEntrustId != null and exEntrustId != ''">ex_entrust_id=#{exEntrustId},</if>
+			<if test="productId != null">product_id=#{productId},</if>
+			<if test="productCode != null and productCode != ''">product_code=#{productCode},</if>
+			<if test="productName != null and productName != ''">product_name=#{productName},</if>
+			<if test="exchangeCode != null and exchangeCode != ''">exchange_code=#{exchangeCode},</if>
+			<if test="plate != null">plate=#{plate},</if>
+			<if test="investorId != null">investor_id=#{investorId},</if>
+			<if test="accountId != null">account_id=#{accountId},</if>
+			<if test="securityCode != null and securityCode != ''">security_code=#{securityCode},</if>
+			<if test="triggerType != null">trigger_type=#{triggerType},</if>
+			<if test="entrustType != null">entrust_type=#{entrustType},</if>
+			<if test="entrustPrice != null">entrust_price=#{entrustPrice},</if>
+			<if test="tradeType != null">trade_type=#{tradeType},</if>
+			<if test="tradeDirection != null">trade_direction=#{tradeDirection},</if>
+			<if test="actTradeType != null">act_trade_type=#{actTradeType},</if>
+			<if test="actTradeDirection != null">act_trade_direction=#{actTradeDirection},</if>
+			<if test="entrustCount != null">entrust_count=#{entrustCount},</if>
+			<if test="entrustDate != null">entrust_date=#{entrustDate},</if>
+			<if test="entrustStatus != null">entrust_status=#{entrustStatus},</if>
+			<if test="errorCode != null and errorCode != ''">error_code=#{errorCode},</if>
+			<if test="errorMsg != null and errorMsg != ''">error_msg=#{errorMsg},</if>
+			<if test="createDate != null">create_date=#{createDate},</if>
+			<if test="modifyDate != null">modify_date=#{modifyDate},</if>
+		</set>
+		where entrust_id=#{entrustId}
+	</update>
+	
+	
+	
+	<!-- 查询现金订单委托单 -->
+	<select id="queryByEntrustCode" parameterType="String" resultType="com.lt.model.trade.OrderCashEntrustInfo">
+		select * from order_cash_entrust_child_info where entrust_id = #{entrustCode}
+	</select>
+	
+	<!-- 查询最后一个委托单号(报给交易所的) -->
+	<select id="queryLastEntrustId" resultType="String">
+		select max(entrust_id) from order_cash_entrust_child_info
+	</select>
+	
+	
+</mapper>

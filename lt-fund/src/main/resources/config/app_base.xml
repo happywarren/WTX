@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 开启Service注解 -->
+    <context:component-scan base-package="com.lt.*" />
+    
+    <!-- 开启Dao注解 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">  
+		<property name="basePackage" value="com.lt.fund.dao"/>  
+	</bean>
+
+    <!-- spring的属性加载器，加载properties文件中的属性 -->
+    <bean id="propeConfig" class="com.lt.util.utils.prop.CustomerPropertiesConfig">
+        <property name="locations">
+            <list>
+                <value>classpath:config/config.properties</value>
+            </list>
+        </property>
+        <property name="fileEncoding" value="utf-8" />
+    </bean>
+
+    <!-- redis 相关 -->
+    <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxTotal" value="150"/>
+        <property name="maxIdle" value="30"/>
+        <property name="minIdle" value="10"/>
+        <!-- <property name="maxWaitMillis" value="1000l" /> -->
+    </bean>
+
+    <bean id="redisConnectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+          p:hostName="${redis_hostName}"
+          p:password="${redis_password}"
+          p:port="${redis_port}"
+          p:usePool="${redis_usePool}"
+          p:database="${redis_database}"
+          p:poolConfig-ref="jedisPoolConfig"/>
+
+    <!-- 序列化Java对象的方法 -->
+    <bean id="fastJsonSerializer" class="com.lt.util.utils.redis.RedisJsonSerializer"/>
+
+    <bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+          p:connectionFactory-ref="redisConnectionFactory"
+          p:defaultSerializer-ref="fastJsonSerializer"
+          p:keySerializer-ref="stringSerializer"/>
+
+</beans>   

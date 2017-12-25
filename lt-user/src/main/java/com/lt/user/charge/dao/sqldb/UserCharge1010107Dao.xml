@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserCharge1010107Dao">
+
+	<insert id="insertXDPayRecharge" parameterType="com.lt.model.user.charge.XDPayRecharge" useGeneratedKeys="true" keyProperty="id">
+	    insert into xd_pay_recharge
+	    (user_id,merchant_no,amount,order_no,order_type,sign,bg_url,goods,status,create_stamp)
+	    	values
+	    (#{userId},#{merchantNo},#{amount},#{orderNo},#{orderType},#{sign},#{bgUrl},#{goods},#{status},now())
+	</insert>
+	
+	<select id="selectXDPayRecharge" parameterType="java.lang.String" resultType="com.lt.model.user.charge.XDPayRecharge">
+		select * from xd_pay_recharge where order_no= #{orderNo}
+	</select>
+	
+	<select id="selectXDPayRechargeForUpdate" parameterType="java.lang.String" resultType="com.lt.model.user.charge.XDPayRecharge">
+		select * from xd_pay_recharge where order_no= #{orderNo} for update 
+	</select>
+	
+	<update id="updateXDPayRecharge" parameterType="com.lt.model.user.charge.XDPayRecharge">
+	    update xd_pay_recharge
+	    <set>
+	    	<if test="errCode != null and errCode != ''"> err_code = #{errCode},</if>
+	    	<if test="errMsg != null and errMsg != ''"> err_msg = #{errMsg},</if> 
+	    	<if test="hostOrderNo != null and hostOrderNo != ''"> host_order_no = #{hostOrderNo},</if> 
+	    	<if test="transAmount != null and transAmount != ''"> trans_amount = #{transAmount},</if> 
+	    	<if test="orderTime != null and orderTime != ''"> order_time = #{orderTime}, </if>
+	    	<if test="status != null and status != ''"> status = #{status}, </if>
+	    	<if test="notifyType != null and notifyType != ''"> notify_type = #{notifyType}, </if>
+	    	modify_stamp = now()
+	  	</set>  	
+	   	where order_no = #{orderNo}
+	</update>
+	
+	<select id="selectXDPayRechargeList" resultType="java.lang.String" parameterType="java.util.Map">
+		select order_no from xd_pay_recharge
+		<where>
+			<if test="status != null and status!='' "> status = #{status}</if>
+			<if test="beginDate != null and beginDate != ''">and create_stamp &gt;= #{beginDate}</if>
+		</where> 
+		<if test="limit != null and limit != ''">
+			limit ${limit}
+		</if>
+	</select>
+</mapper>

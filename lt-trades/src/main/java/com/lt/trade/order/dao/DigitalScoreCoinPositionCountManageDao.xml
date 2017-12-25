@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.order.dao.DigitalScoreCoinPositionCountManageDao">
+
+    <select id="selectCoinPosition" parameterType="com.lt.trade.tradeserver.bean.DigitalCoinPosition"
+            resultType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        SELECT * FROM digital_score_coin_position_count
+        <where>
+            <if test="userId != null and userId != ''">
+                AND user_id=#{userId}
+            </if>
+            <if test="productCode != null and productCode != ''">
+                AND product_code=#{productCode}
+            </if>
+            <if test="investorId != null and investorId != ''">
+                AND investor_id=#{investorId}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectCoinPositionForUpdate" parameterType="com.lt.trade.tradeserver.bean.DigitalCoinPosition"
+            resultType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        SELECT * FROM digital_score_coin_position_count
+        <where>
+            <if test="userId != null and userId != ''">
+                AND user_id=#{userId}
+            </if>
+            <if test="productCode != null and productCode != ''">
+                AND product_code=#{productCode}
+            </if>
+            <if test="investorId != null and investorId != ''">
+                AND investor_id=#{investorId}
+            </if>
+        </where>
+        FOR UPDATE
+    </select>
+
+    <select id="getAllBuySellPosition" resultType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        SELECT
+            product_code,investor_id,
+            SUM(buy_count) buy_count ,
+            SUM(sell_count) sell_count
+        FROM digital_score_coin_position_count
+        GROUP BY investor_id,product_code
+    </select>
+
+    <select id="getAllBuySellPositionByInvestorId" resultType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        SELECT investor_id, SUM(buy_count) buy_count,SUM(sell_count) sell_count
+        FROM digital_score_coin_position_count WHERE product_code=#{0} AND investor_id=#{1}
+    </select>
+
+    <insert id="insertCoinPosition" parameterType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        INSERT INTO digital_score_coin_position_count
+        (
+            user_id,
+            product_code,
+            buy_count,
+            sell_count,
+            investor_id
+        ) VALUES
+            (
+                #{userId},
+                #{productCode},
+                #{buyCount},
+                #{sellCount},
+                #{investorId}
+            )
+    </insert>
+
+    <update id="updateCoinPosition" parameterType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        UPDATE digital_score_coin_position_count
+        <set>
+            <if test="userId != null and userId != ''">
+                user_id=#{userId},
+            </if>
+            <if test="productCode != null and productCode != ''">
+                product_code=#{productCode},
+            </if>
+            <if test="buyCount != null">
+                buy_count=#{buyCount},
+            </if>
+            <if test="sellCount != null">
+                sell_count=#{sellCount},
+            </if>
+            <if test="investorId != null">
+                investor_id=#{investorId},
+            </if>
+        </set>
+        where product_code = #{productCode} and user_id = #{userId} and investor_id=#{investorId}
+    </update>
+
+    <delete id="deleteCoinPosition" parameterType="com.lt.trade.tradeserver.bean.DigitalCoinPosition">
+        DELETE FROM digital_score_coin_position_count
+        WHERE product_code = #{productCode} AND user_id = #{userId} AND investor_id = #{investorId}
+    </delete>
+</mapper>

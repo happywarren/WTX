@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+    
+    <!-- spring jms -->
+	<!-- JMS工厂 -->
+	<bean id="innerConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="${jms_stock.brokeUrl}" />
+		<property name="userName" value="${jms_stock.userName}" />
+		<property name="password" value="${jms_stock.password}" />
+	</bean>
+	<!-- JMS连接池 -->
+	<bean id="connectionFactory" class="org.apache.activemq.jms.pool.PooledConnectionFactory"
+		destroy-method="stop">
+		<property name="connectionFactory" ref="innerConnectionFactory" />
+	</bean>
+	<bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="connectionFactory" />
+	</bean>
+	
+	<!-- 推广生产者 -->
+	<bean class="com.lt.util.utils.jms.MessageQueueProducer" id="promoteProducer">
+		<property ref="jmsTemplate" name="jmsTemplate"/>
+		<property ref="promoteQueue" name="dest"/>
+	</bean>
+	
+	<bean class="org.apache.activemq.command.ActiveMQQueue" id="promoteQueue">
+		<property name="physicalName" value="send_promote_queue"/>
+	</bean>
+
+	<!-- 差价合约商品点差变化通知java行情 -->
+	<bean id="spreadModifyMsg" class="org.apache.activemq.command.ActiveMQTopic">
+		<property name="physicalName" value="topic.config.change" />
+	</bean>
+
+	<!-- 点差消息生产者 -->
+	<bean id="spreadModifyMsgProducer" class="com.lt.util.utils.jms.MessageQueueProducer">
+		<property name="jmsTemplate" ref="jmsTemplate" />
+		<property name="dest" ref="spreadModifyMsg" />
+	</bean>
+</beans>

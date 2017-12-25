@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.sys.RoleDao">
+<!-- //role 增删改查 -->
+	<insert id="insertInfo" parameterType="Role">
+		insert into role(name,role.desc,create_time,creator) values(#{name},#{desc},now(),#{creator});
+	</insert>
+	<delete id="deleteById" parameterType="java.lang.Integer">
+		delete from role where id =  #{id}
+	</delete>
+	<update id="updateInfo" parameterType="Role">
+		update role set 
+		 name = #{name}, role.desc = #{desc}
+		 where id = #{id};
+	</update>
+	<select id="selectById" parameterType="java.lang.Integer" resultType="Role">
+		select * from role where id =#{id};
+	</select>
+	<select id="selectByName" parameterType="java.lang.String" resultType="Role">
+		select * from role where name =#{name};
+	</select>
+	<select id="selectByQuery" parameterType="java.util.Map" resultType="RoleVo">
+		select role.*,staff.name as staffName from role ,staff
+		<where>
+		    staff.id = role.creator
+	    	<if test="name !=null and name != ''">
+	    		and role.name like concat('%',#{name},'%')
+	    	</if>
+    	</where>
+    	order by id desc 
+    	limit #{limit1},#{limit2}
+	</select>
+	<select id="selectAllRole" resultType="Role">
+		select * from role 
+	</select>
+	<select id="selectByQueryCount" parameterType="java.util.Map" resultType="Integer">
+		select count(id) from role 
+		<where>
+	    	<if test="name !=null and name != ''">
+	    		and name like concat('%',#{name},'%')
+	    	</if>
+    	</where>
+	</select>
+	
+	<!-- //rolemap 增删改查 -->
+	<insert id="insertInfoForRoleMap" parameterType="RoleMap">
+			insert into rolemap(role_id,staff_id) values(#{roleId},#{staffId});
+	</insert>
+	<delete id="deleteForRoleMap" >
+		delete from rolemap where ${field} = #{id}
+	</delete>
+	<select id="selectRoleMapById" parameterType="java.lang.Integer" resultType="RoleMap">
+		select * from rolemap where id = #{id};
+	</select>
+	
+	<select id="selectByIdForRoleMap" resultType="RoleMap">
+		select * from rolemap where ${field} = #{id};
+	</select>
+	<!-- //role_auth 增删改查 -->
+	<insert id="insertInfoForRoleAuth" parameterType="RoleAuth" >
+			insert into role_auth(role_id,auth_id) values(#{roleId},#{authId});
+	</insert>
+	<delete id="deleteForRoleAuth" >
+		delete from role_auth where ${field} = #{id}
+	</delete>
+	<select id="selectRoleAuthById" parameterType="java.lang.Integer" resultType="RoleAuth">
+		select * from role_auth where id = #{id};
+	</select>
+	<select id="selectByRoleId" parameterType="java.util.List" resultType="Auth">
+		
+		 select * from auth, role_auth
+		<!-- left join auth on auth.id = role_auth.auth_id -->
+		 where
+		 auth.id = role_auth.auth_id and
+		  <foreach item="item" collection="list"  open="(" close=")" index="index">  
+		  <if test="index != 0">
+		  or 
+		  </if>
+		  role_id = #{item.roleId} 
+		  </foreach>
+		 group by role_auth.auth_id;
+	</select>
+	
+	<select id="selectByIdForRoleAuth"  resultType="RoleAuth">
+		select * from role_auth where #{field} = #{id};
+	</select>
+	<select id="selectRoleAuthForId"  resultType="RoleAuth">
+		select * from role_auth where auth_id = #{id};
+	</select>
+	
+	<select id="selectRoleByStaffId" parameterType="java.lang.Integer" resultType="Role">
+		 select * from role,rolemap
+	
+		 where 
+		  rolemap.role_id = role.id 
+		and
+		  rolemap.staff_id =  #{staffId}
+	</select>
+	<select id="selectStaffListById" parameterType="java.lang.Integer" resultType="Staff">
+		  select *,role.`name` as deptName from staff,rolemap,role
+		 where 
+		  rolemap.staff_id = staff.id 
+      and rolemap.role_id = role.id
+		and
+		  rolemap.role_id =  #{roleId}
+	</select>
+	<select id="selectStaffListByIsNotId" parameterType="java.lang.Integer" resultType="Staff">
+		  select * from staff where id not in (SELECT staff_id from rolemap where role_id = #{roleId})
+	</select>
+	
+	<select id="selectRoleListById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		 select role_id from role_auth
+		 where 
+		  auth_id = #{authId}
+	</select>
+	
+</mapper>

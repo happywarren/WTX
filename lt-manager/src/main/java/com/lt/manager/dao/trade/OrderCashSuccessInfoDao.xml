@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.trade.OrderCashSuccessInfoDao">
+	<select id="selectSuccessTradeOrderPage" parameterType="com.lt.manager.bean.trade.OrderParamVO"
+											resultType="com.lt.manager.bean.trade.OrderParamVO">
+		select cotr.*
+		,(case when cotr.trade_direction = 1 then '看多' else '看空' end) trade_type_fmt
+		from order_cash_success_info cotr LEFT JOIN product p on(p.id=cotr.product_id) 
+		<where>
+			<if test="id != null and id != ''">
+				and cotr.id=#{id}
+			</if>
+			<if test="orderId != null and orderId != ''">
+				and cotr.order_id=#{orderId}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and p.short_code=#{shortCode}
+			</if>
+			<if test="productCode != null and productCode != ''">
+				and cotr.product_code=#{productCode}
+			</if>
+			<if test="tradeType != null">
+				and cotr.trade_type=#{tradeType}
+			</if>
+			<if test="tradeDirection != null">
+				and cotr.trade_direction=#{tradeDirection}
+			</if>	
+			<if test="entrustId != null and entrustId != ''">
+				and cotr.entrust_id=#{entrustId}
+			</if>		
+			<if test="successId !=null and successId != ''">
+				and cotr.success_id = #{successId}
+			</if>
+			<if test="exEntrustId != null and exEntrustId != ''">
+				and cotr.ex_entrust_id = #{exEntrustId}
+			</if>
+			<if test="exSuccessId != null and exSuccessId != ''">
+				and cotr.ex_success_id = #{exSuccessId}
+			</if>
+			<if test="beginSuccessDate != null and beginSuccessDate != ''">
+				and cotr.success_date >= #{beginSuccessDate}
+			</if>
+			<if test="endSuccessDate != null and endSuccessDate != ''">
+				and #{endSuccessDate} >= cotr.success_date
+			</if>
+		</where>
+		ORDER BY cotr.id desc
+	<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+	</if>
+	</select>
+	
+	<select id="selectSuccessTradeOrderCount" parameterType="com.lt.manager.bean.trade.OrderParamVO" resultType="Integer">
+		select count(cotr.id)
+		from order_cash_success_info cotr LEFT JOIN product p on(p.id=cotr.product_id) 
+		<where>
+			<if test="id != null and id != ''">
+				and cotr.id=#{id}
+			</if>
+			<if test="orderId != null and orderId != ''">
+				and cotr.order_id=#{orderId}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and p.short_code=#{shortCode}
+			</if>
+			<if test="productCode != null and productCode != ''">
+				and cotr.product_code=#{productCode}
+			</if>
+			<if test="tradeType != null">
+				and cotr.trade_type=#{tradeType}
+			</if>
+			<if test="tradeDirection != null">
+				and cotr.trade_direction=#{tradeDirection}
+			</if>	
+			<if test="entrustId != null and entrustId != ''">
+				and cotr.entrust_id=#{entrustId}
+			</if>		
+			<if test="successId !=null and successId != ''">
+				and cotr.success_id = #{successId}
+			</if>
+			<if test="exEntrustId != null and exEntrustId != ''">
+				and cotr.ex_entrust_id = #{exEntrustId}
+			</if>
+			<if test="exSuccessId != null and exSuccessId != ''">
+				and cotr.ex_success_id = #{exSuccessId}
+			</if>
+			<if test="beginSuccessDate != null and beginSuccessDate != ''">
+				and cotr.success_date >= #{beginSuccessDate}
+			</if>
+			<if test="endSuccessDate != null and endSuccessDate != ''">
+				and #{endSuccessDate} >= cotr.success_date
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectCashSuccOrderInfo" parameterType="Integer" resultType="com.lt.manager.bean.trade.OrderParamVO">
+		select id,order_id,entrust_id,product_id,product_code,product_name,security_code
+	,(case when trade_direction = 1 then '看多' else '看空' end) tradeTypeFmt
+	,(case when trade_type = 1 then '开仓' else '平仓' end) userTradeTypeFmt
+	,entrust_count,entrust_id,ex_success_id,ex_entrust_id,total_success_count,success_count,success_price
+	,success_date,create_date,success_status,account_id
+	from order_cash_success_info  where id=#{id}
+	</select>
+	
+	<!-- 添加现金订单成交记录 -->
+	<insert id="add" parameterType="com.lt.model.trade.OrderCashSuccessInfo" keyProperty="id" useGeneratedKeys="true">
+		insert into order_cash_success_info (
+			success_id,order_id,entrust_id,ex_success_id,ex_entrust_id,product_id,product_code,
+			product_name,exchange_code,plate,investor_id,account_id,security_code,
+			trade_type,trade_direction,act_trade_type,act_trade_direction,
+			entrust_count,success_count,total_success_count,success_price,
+			success_date,create_date,success_status
+		) values (
+			#{successId},#{orderId},#{entrustId},#{exSuccessId},#{exEntrustId},#{productId},#{productCode},
+			#{productName},#{exchangeCode},#{plate},#{investorId},#{accountId},#{securityCode},
+			#{tradeType},#{tradeDirection},#{actTradeType},#{actTradeDirection},
+			#{entrustCount},#{successCount},#{totalSuccessCount},#{successPrice},
+			#{successDate},#{createDate},#{successStatus}
+		)
+	</insert>
+</mapper>

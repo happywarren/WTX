@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="lt-api" />
+        <module name="lt-business" />
+        <module name="lt-fund" />
+        <module name="lt-interface" />
+        <module name="lt-manager" />
+        <module name="lt-quota" />
+        <module name="lt-task" />
+        <module name="lt-trade" />
+        <module name="lt-trades" />
+        <module name="lt-user" />
+        <module name="lt-util" />
+        <module name="outer-quota" />
+        <module name="quota" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="lt-api" target="1.8" />
+      <module name="lt-business" target="1.8" />
+      <module name="lt-code" target="1.8" />
+      <module name="lt-fund" target="1.8" />
+      <module name="lt-interface" target="1.7" />
+      <module name="lt-manager" target="1.7" />
+      <module name="lt-quota" target="1.8" />
+      <module name="lt-task" target="1.8" />
+      <module name="lt-trade" target="1.8" />
+      <module name="lt-trades" target="1.8" />
+      <module name="lt-user" target="1.8" />
+      <module name="lt-util" target="1.8" />
+      <module name="outer-quota" target="1.8" />
+      <module name="quota" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

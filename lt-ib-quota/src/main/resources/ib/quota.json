@@ -1,0 +1,371 @@
+[
+  {
+    "tickerId": 1000,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "700",
+    "productCode": "00700",
+    "secType": "STK",
+    "symbol": "700"
+  },
+  {
+    "tickerId": 1001,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1211",
+    "productCode": "01211",
+    "secType": "STK",
+    "symbol": "1211"
+  },
+  {
+    "tickerId": 1002,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1988",
+    "productCode": "01988",
+    "secType": "STK",
+    "symbol": "1988"
+  },
+  {
+    "tickerId": 2000,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "BIDU",
+    "productCode": "BIDU",
+    "secType": "STK",
+    "symbol": "BIDU"
+  },
+  {
+    "tickerId": 2001,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "BABA",
+    "productCode": "BABA",
+    "secType": "STK",
+    "symbol": "BABA"
+  },
+  {
+    "tickerId": 2002,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "GOOG",
+    "productCode": "GOOG",
+    "secType": "STK",
+    "symbol": "GOOG"
+  },
+  {
+    "tickerId": 2003,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "AMZN",
+    "productCode": "AMZN",
+    "secType": "STK",
+    "symbol": "AMZN"
+  },
+  {
+    "tickerId": 2004,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "TSLA",
+    "productCode": "TSLA",
+    "secType": "STK",
+    "symbol": "TSLA"
+  },
+  {
+    "tickerId": 2005,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "AAPL",
+    "productCode": "AAPL",
+    "secType": "STK",
+    "symbol": "AAPL"
+  },
+  {
+    "tickerId": 1004,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "5",
+    "productCode": "00005",
+    "secType": "STK",
+    "symbol": "5"
+  },
+  {
+    "tickerId": 1005,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "2888",
+    "productCode": "02888",
+    "secType": "STK",
+    "symbol": "2888"
+  },
+  {
+    "tickerId": 1006,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "11",
+    "productCode": "00011",
+    "secType": "STK",
+    "symbol": "11"
+  },
+  {
+    "tickerId": 1007,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "388",
+    "productCode": "00388",
+    "secType": "STK",
+    "symbol": "388"
+  },
+  {
+    "tickerId": 1008,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1",
+    "productCode": "00001",
+    "secType": "STK",
+    "symbol": "1"
+  },
+  {
+    "tickerId": 1009,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1928",
+    "productCode": "01928",
+    "secType": "STK",
+    "symbol": "1928"
+  },
+  {
+    "tickerId": 1010,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "941",
+    "productCode": "00941",
+    "secType": "STK",
+    "symbol": "941"
+  },
+  {
+    "tickerId": 1011,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "175",
+    "productCode": "00175",
+    "secType": "STK",
+    "symbol": "175"
+  },
+  {
+    "tickerId": 1012,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1357",
+    "productCode": "01357",
+    "secType": "STK",
+    "symbol": "1357"
+  },
+  {
+    "tickerId": 1013,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "3333",
+    "productCode": "03333",
+    "secType": "STK",
+    "symbol": "3333"
+  },
+  {
+    "tickerId": 1014,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1918",
+    "productCode": "01918",
+    "secType": "STK",
+    "symbol": "1918"
+  },
+  {
+    "tickerId": 1015,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "2007",
+    "productCode": "02007",
+    "secType": "STK",
+    "symbol": "2007"
+  },
+  {
+    "tickerId": 1016,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "981",
+    "productCode": "00981",
+    "secType": "STK",
+    "symbol": "981"
+  },
+  {
+    "tickerId": 1017,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "2319",
+    "productCode": "02319",
+    "secType": "STK",
+    "symbol": "2319"
+  },
+  {
+    "tickerId": 1018,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "656",
+    "productCode": "00656",
+    "secType": "STK",
+    "symbol": "656"
+  },
+  {
+    "tickerId": 1019,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "2318",
+    "productCode": "02318",
+    "secType": "STK",
+    "symbol": "2318"
+  },
+  {
+    "tickerId": 1020,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "1398",
+    "productCode": "01398",
+    "secType": "STK",
+    "symbol": "1398"
+  },
+  {
+    "tickerId": 1021,
+    "currency": "HKD",
+    "exchange": "SEHK",
+    "localSymbol": "939",
+    "productCode": "00939",
+    "secType": "STK",
+    "symbol": "939"
+  },
+  {
+    "tickerId": 2006,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "MSFT",
+    "productCode": "MSFT",
+    "secType": "STK",
+    "symbol": "MSFT"
+  },
+  {
+    "tickerId": 2007,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "INTC",
+    "productCode": "INTC",
+    "secType": "STK",
+    "symbol": "INTC"
+  },
+  {
+    "tickerId": 2008,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "FB",
+    "productCode": "FB",
+    "secType": "STK",
+    "symbol": "FB"
+  },
+  {
+    "tickerId": 2009,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "NTES",
+    "productCode": "NTES",
+    "secType": "STK",
+    "symbol": "NTES"
+  },
+  {
+    "tickerId": 2010,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "JD",
+    "productCode": "JD",
+    "secType": "STK",
+    "symbol": "JD"
+  },
+  {
+    "tickerId": 2011,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "SINA",
+    "productCode": "SINA",
+    "secType": "STK",
+    "symbol": "SINA"
+  },
+  {
+    "tickerId": 2012,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "WB",
+    "productCode": "WB",
+    "secType": "STK",
+    "symbol": "WB"
+  },
+  {
+    "tickerId": 2013,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "TAL",
+    "productCode": "TAL",
+    "secType": "STK",
+    "symbol": "TAL"
+  },
+  {
+    "tickerId": 2014,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "CTRP",
+    "productCode": "CTRP",
+    "secType": "STK",
+    "symbol": "CTRP"
+  },
+  {
+    "tickerId": 2015,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "MOMO",
+    "productCode": "MOMO",
+    "secType": "STK",
+    "symbol": "MOMO"
+  },
+  {
+    "tickerId": 2016,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "WUBA",
+    "productCode": "WUBA",
+    "secType": "STK",
+    "symbol": "WUBA"
+  },
+  {
+    "tickerId": 2017,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "IBM",
+    "productCode": "IBM",
+    "secType": "STK",
+    "symbol": "IBM"
+  },
+  {
+    "tickerId": 2018,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "TSM",
+    "productCode": "TSM",
+    "secType": "STK",
+    "symbol": "TSM"
+  },
+  {
+    "tickerId": 2019,
+    "currency": "USD",
+    "exchange": "SMART",
+    "localSymbol": "NVDA",
+    "productCode": "NVDA",
+    "secType": "STK",
+    "symbol": "NVDA"
+  }
+]

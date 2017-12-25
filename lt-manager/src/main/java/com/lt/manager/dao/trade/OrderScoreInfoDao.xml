@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.trade.OrderScoreInfoDao">
+	<select id="selectScoreTradeOrderPage" parameterType="com.lt.manager.bean.trade.OrderParamVO" resultType="com.lt.manager.bean.trade.OrderParamVO">
+		select coi.* from v_order_score_info coi
+		<where>
+			<if test="flag != null and flag == 'today'">
+				and coi.last_buy_date >= concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 00:00:00') 
+				and concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 23:59:59') >= coi.last_buy_date
+			</if>
+			<if test="id != null and id !=''">
+				and coi.id=#{id}
+			</if>
+			<if test="orderId != null and orderId != ''">
+				and coi.order_id=#{orderId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and coi.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and coi.nick_name=#{nickName}
+			</if>
+			<if test="tele != null and tele != ''">
+				and coi.tele=#{tele}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and coi.short_code=#{shortCode}
+			</if>
+			<if test="productCode != null and productCode != ''">
+				and coi.product_code=#{productCode}
+			</if>
+			<if test="tradeDirection != null">
+				and coi.trade_direction=#{tradeDirection}
+			</if>
+			<if test="status != null">
+				and coi.status=#{status}
+			</if>		
+			<if test="sellTriggerType != null">
+				and coi.sell_trigger_type=#{sellTriggerType}
+			</if>
+			<if test="deferStatus != null">
+				and coi.defer_status=#{deferStatus}
+			</if>
+			<if test="trailStopLoss != null">
+				and coi.trail_stop_loss=#{trailStopLoss}
+			</if>
+			<if test="accountId != null">
+				and coi.account_id=#{accountId}
+			</if>
+			<if test="investorId != null and investorId != '' ">
+				and coi.investor_id=#{investorId}
+			</if>			
+			<if test="minBuyPrice != null">
+				and coi.buy_avg_price >= #{minBuyPrice}
+			</if>
+			<if test="maxBuyPrice != null">
+				and #{maxBuyPrice} >= coi.buy_avg_price
+			</if>
+			<if test="minSellPrice != null">
+				and coi.sell_avg_price >= #{minSellPrice}
+			</if>
+			<if test="maxSellPrice != null">
+				and #{maxSellPrice} >= coi.sell_avg_price
+			</if>
+			<if test="minHoldFund != null">
+				and coi.actual_hold_fund >= #{minHoldFund}
+			</if>
+			<if test="maxHoldFund != null">
+				and #{maxHoldFund} >= coi.actual_hold_fund
+			</if>
+			<if test="minCounterFee != null">
+				and coi.actual_counter_fee >= #{minCounterFee}
+			</if>
+			<if test="maxCounterFee != null">
+				and #{maxCounterFee} >= coi.actual_counter_fee
+			</if>
+			<if test="beginBuyDate != null and beginBuyDate != ''">
+				and coi.entrust_buy_date >= #{beginBuyDate}
+			</if>
+			<if test="endBuyDate != null and endBuyDate != ''">
+				and #{endBuyDate} >= coi.entrust_buy_date
+			</if>
+			<if test="beginSellDate != null and beginSellDate != ''">
+				and coi.entrust_sell_date >= #{beginSellDate}
+			</if>
+			<if test="endSellDate != null and endSellDate != ''">
+				and #{endSellDate} >= coi.entrust_sell_date
+			</if>
+			<if test="minLossProfit != null">
+				and loss_profit >= #{minLossProfit}
+			</if>
+			<if test="maxLossProfit != null">
+				and #{maxLossProfit} >= loss_profit
+			</if>
+			<if test="minActualDeferFund != null">
+				and actual_defer_fund >= #{minActualDeferFund}
+			</if>
+			<if test="maxActualDeferFund != null">
+				and #{maxActualDeferFund} >= actual_defer_fund
+			</if>
+			<if test="minDeferInterest != null">
+				and defer_interest >= #{minDeferInterest}
+			</if>
+			<if test="maxDeferInterest != null">
+				and #{maxDeferInterest} >= defer_interest
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and coi.brand_id = #{brandId}
+			</if>
+			<if test="productTypeId !=null">
+				and coi.product_type_id = #{productTypeId}
+			</if>
+		</where>		
+		ORDER BY coi.id desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectScoreTradeOrderCount" parameterType="com.lt.manager.bean.trade.OrderParamVO" resultType="Integer">
+		select count(coi.id) from v_order_score_info coi
+		<where>
+			<if test="flag != null and flag == 'today'">
+				and coi.last_buy_date >= concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 00:00:00') 
+				and concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 23:59:59') >= coi.last_buy_date
+			</if>
+			<if test="id != null and id != ''">
+				and coi.id=#{id}
+			</if>
+			<if test="orderId != null and orderId != ''">
+				and coi.order_id=#{orderId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and coi.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and coi.nick_name=#{nickName}
+			</if>
+			<if test="tele != null and tele != ''">
+				and coi.tele=#{tele}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and coi.short_code=#{shortCode}
+			</if>
+			<if test="productCode != null and productCode != ''">
+				and coi.product_code=#{productCode}
+			</if>
+			<if test="tradeDirection != null">
+				and coi.trade_direction=#{tradeDirection}
+			</if>
+			<if test="status != null">
+				and coi.status=#{status}
+			</if>		
+			<if test="sellTriggerType != null">
+				and coi.sell_trigger_type=#{sellTriggerType}
+			</if>
+			<if test="deferStatus != null">
+				and coi.defer_status=#{deferStatus}
+			</if>
+			<if test="trailStopLoss != null">
+				and coi.trail_stop_loss=#{trailStopLoss}
+			</if>
+			<if test="accountId != null">
+				and coi.account_id=#{accountId}
+			</if>
+			<if test="investorId != null and investorId != '' ">
+				and coi.investor_id=#{investorId}
+			</if>			
+			<if test="minBuyPrice != null">
+				and coi.buy_avg_price >= #{minBuyPrice}
+			</if>
+			<if test="maxBuyPrice != null">
+				and #{maxBuyPrice} >= coi.buy_avg_price
+			</if>
+			<if test="minSellPrice != null">
+				and coi.sell_avg_price >= #{minSellPrice}
+			</if>
+			<if test="maxSellPrice != null">
+				and #{maxSellPrice} >= coi.sell_avg_price
+			</if>
+			<if test="minHoldFund != null">
+				and coi.actual_hold_fund >= #{minHoldFund}
+			</if>
+			<if test="maxHoldFund != null">
+				and #{maxHoldFund} >= coi.actual_hold_fund
+			</if>
+			<if test="minCounterFee != null">
+				and coi.actual_counter_fee >= #{minCounterFee}
+			</if>
+			<if test="maxCounterFee != null">
+				and #{maxCounterFee} >= coi.actual_counter_fee
+			</if>
+			<if test="beginBuyDate != null and beginBuyDate != ''">
+				and coi.entrust_buy_date >= #{beginBuyDate}
+			</if>
+			<if test="endBuyDate != null and endBuyDate != ''">
+				and #{endBuyDate} >= coi.entrust_buy_date
+			</if>
+			<if test="beginSellDate != null and beginSellDate != ''">
+				and coi.entrust_sell_date >= #{beginSellDate}
+			</if>
+			<if test="endSellDate != null and endSellDate != ''">
+				and #{endSellDate} >= coi.entrust_sell_date
+			</if>
+			<if test="minLossProfit != null">
+				and loss_profit >= #{minLossProfit}
+			</if>
+			<if test="maxLossProfit != null">
+				and #{maxLossProfit} >= loss_profit
+			</if>
+			<if test="minActualDeferFund != null">
+				and actual_defer_fund >= #{minActualDeferFund}
+			</if>
+			<if test="maxActualDeferFund != null">
+				and #{maxActualDeferFund} >= actual_defer_fund
+			</if>
+			<if test="minDeferInterest != null">
+				and defer_interest >= #{minDeferInterest}
+			</if>
+			<if test="maxDeferInterest != null">
+				and #{maxDeferInterest} >= defer_interest
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and coi.brand_id = #{brandId}
+			</if>
+			<if test="productTypeId !=null">
+				and coi.product_type_id = #{productTypeId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectScoreTradeOrderDateMap" parameterType="com.lt.manager.bean.trade.OrderParamVO" resultType="map">
+		select sum(coi.buy_success_count) orderCount,sum(case when coi.trade_direction=1 then coi.buy_success_count else 0 end) moreCount,
+ 		sum(case when coi.trade_direction=2 then coi.buy_success_count else 0 end) lessCount,
+		sum(case when coi.`status`=3 then coi.hold_count else 0 end) holdCount,
+		sum(coi.actual_counter_fee) actualCounterFee,sum(ifnull(coi.loss_profit,0)) lossProfit,
+		sum(coi.defer_interest) deferInterest,COUNT(DISTINCT coi.user_id) userCount,
+		sum(case when coi.trade_direction=1 and coi.status=3 then coi.buy_success_count else 0 end) longPosition,
+		sum(case when coi.trade_direction=2 and coi.status=3 then coi.buy_success_count else 0 end) shortPosition,
+		ABS(sum(case when coi.trade_direction=1 and coi.status=3 then coi.buy_success_count else 0 end)-
+		sum(case when coi.trade_direction=2 and coi.status=3 then coi.buy_success_count else 0 end)) netPosition
+ 		from v_order_score_info coi
+		<where>
+			<if test="flag != null and flag == 'today'">
+				and coi.last_buy_date >= concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 00:00:00') 
+				and concat(DATE_FORMAT(NOW(),'%Y-%m-%d'),' 23:59:59') >= coi.last_buy_date
+			</if>
+			<if test="id != null and id != ''">
+				and coi.id=#{id}
+			</if>
+			<if test="orderId != null and orderId != ''">
+				and coi.order_id=#{orderId}
+			</if>
+			<if test="userId != null and userId != ''">
+				and coi.user_id=#{userId}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				and coi.nick_name=#{nickName}
+			</if>
+			<if test="tele != null and tele != ''">
+				and coi.tele=#{tele}
+			</if>
+			<if test="shortCode != null and shortCode != ''">
+				and coi.short_code=#{shortCode}
+			</if>
+			<if test="productCode != null and productCode != ''">
+				and coi.product_code=#{productCode}
+			</if>
+			<if test="tradeDirection != null">
+				and coi.trade_direction=#{tradeDirection}
+			</if>
+			<if test="status != null">
+				and coi.status=#{status}
+			</if>		
+			<if test="sellTriggerType != null">
+				and coi.sell_trigger_type=#{sellTriggerType}
+			</if>
+			<if test="deferStatus != null">
+				and coi.defer_status=#{deferStatus}
+			</if>
+			<if test="trailStopLoss != null">
+				and coi.trail_stop_loss=#{trailStopLoss}
+			</if>
+			<if test="investorId != null and investorId != '' ">
+				and coi.investor_id=#{investorId}
+			</if>
+			<if test="accountId != null">
+				and coi.account_id=#{accountId}
+			</if>
+			<if test="minBuyPrice != null">
+				and coi.buy_avg_price >= #{minBuyPrice}
+			</if>
+			<if test="maxBuyPrice != null">
+				and #{maxBuyPrice} >= coi.buy_avg_price
+			</if>
+			<if test="minSellPrice != null">
+				and coi.sell_avg_price >= #{minSellPrice}
+			</if>
+			<if test="maxSellPrice != null">
+				and #{maxSellPrice} >= coi.sell_avg_price
+			</if>
+			<if test="minHoldFund != null">
+				and coi.actual_hold_fund >= #{minHoldFund}
+			</if>
+			<if test="maxHoldFund != null">
+				and #{maxHoldFund} >= coi.actual_hold_fund
+			</if>
+			<if test="minCounterFee != null">
+				and coi.actual_counter_fee >= #{minCounterFee}
+			</if>
+			<if test="maxCounterFee != null">
+				and #{maxCounterFee} >= coi.actual_counter_fee
+			</if>
+			<if test="beginBuyDate != null and beginBuyDate != ''">
+				and coi.entrust_buy_date >= #{beginBuyDate}
+			</if>
+			<if test="endBuyDate != null and endBuyDate != ''">
+				and #{endBuyDate} >= coi.entrust_buy_date
+			</if>
+			<if test="beginSellDate != null and beginSellDate != ''">
+				and coi.entrust_sell_date >= #{beginSellDate}
+			</if>
+			<if test="endSellDate != null and endSellDate != ''">
+				and #{endSellDate} >= coi.entrust_sell_date
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and coi.brand_id = #{brandId}
+			</if>
+			<if test="productTypeId !=null">
+				and coi.product_type_id = #{productTypeId}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectScoreOrderInfo" resultType="com.lt.manager.bean.trade.OrderParamVO" parameterType="java.lang.String">
+	select vo.*,(case when vo.defer_status = 1 then '已开启' else '未开启' end) defer_status_fmt
+	,(case when vo.trail_stop_loss = 1 then '开' else '关' end) trail_stop_loss_fmt,vo.user_commit_buy_date,vo.user_commit_sell_date
+	,vo.order_id,vo.sys_set_sell_date,vo.user_id,vo.investor_id
+	,(case when vo.sell_trigger_type = 100 then '用户平仓' when vo.sell_trigger_type = 101 then '人工结算' when vo.sell_trigger_type = 102 then '系统清仓' 
+	when vo.sell_trigger_type = 103 then '风控触发' end) balance_type_fmt
+	,concat(LEFT(vo.security_code,1),'*****',RIGHT(vo.security_code,1)) security_code
+	,(case when vo.trade_direction = 1 then '看多' else '看空' end) trade_type_fmt
+	,(case when vo.display = 0 then '隐藏' else '显示' end) display_fmt,vo.rate,er.currency,vo.actual_hold_fund,vo.actual_defer_fund,vo.defer_interest
+	,er.sign
+ 	from v_order_score_info vo  JOIN exchange_rate er on(vo.current_rate_id=er.id)
+ 	where vo.order_id=#{id}
+	</select>
+	
+	<select id="selectScoreOrderBuyOrSaleList" resultType="map" parameterType="java.lang.String">
+	select DISTINCT coi.id, coi.user_commit_buy_date date,'用户提交买入' commitType
+	,(case when coi.buy_entrust_type = 1 then '市价' else '限价' end) priceType
+	,coi.user_commit_buy_price price
+	from order_score_info  coi 
+	where coi.order_id=#{id}
+
+	UNION ALL
+
+	select DISTINCT coi.id,coi.entrust_buy_date date,'系统提交买入' commitType
+	,(case when coer.entrust_type = 1 then '市价' else '限价' end) priceType
+	,coi.entrust_buy_price price
+	from order_score_info  coi join order_score_entrust_info coer on(coi.order_id=coer.order_id)
+	where coer.trade_type=1 and coi.order_id=#{id}
+
+	UNION ALL
+
+	select DISTINCT coi.id,max(cotr.success_date) date,'系统开仓完成' commitType
+	,(case when coer.entrust_type = 1 then '市价' else '限价' end) priceType
+	,cotr.success_price price
+	from order_score_info  coi join order_score_success_info cotr on(coi.order_id=cotr.order_id)
+	JOIN order_score_entrust_info coer on(coi.order_id=coer.order_id)
+	where cotr.trade_type = 1 and coi.order_id=#{id}
+
+	UNION ALL
+
+	select DISTINCT coi.id,coi.user_commit_sell_date date,'用户提交卖出' commitType
+	,(case when coi.sell_entrust_type = 1 then '市价' else '限价' end) priceType
+	,coi.user_commit_sell_price price
+	from order_score_info  coi 
+	where coi.order_id=#{id}
+
+	UNION ALL
+
+	select DISTINCT coi.id,coi.entrust_sell_date date,'系统提交卖出' commitType
+	,(case when coer.entrust_type = 1 then '市价' else '限价' end) priceType
+	,coi.entrust_sell_price price
+	from order_score_info  coi join order_score_entrust_info coer on(coi.order_id=coer.order_id)
+	where coer.trade_type=2 and coi.order_id=#{id}
+
+	UNION ALL
+
+	select DISTINCT coi.id,max(cotr.success_date) date,'系统平仓完成' commitType
+	,(case when coer.entrust_type = 1 then '市价' else '限价' end) priceType
+	,cotr.success_price price
+	from order_score_info  coi join order_score_success_info cotr on(coi.order_id=cotr.order_id)
+	JOIN order_score_entrust_info coer on(coi.order_id=coer.order_id)
+	where cotr.trade_type = 2 and coi.order_id=#{id}
+	</select>
+	
+	<select id="selectOrderScoreInfoOne" parameterType="com.lt.manager.bean.trade.OrderParamVO" resultType="com.lt.model.trade.OrderScoreInfo">
+		select * from order_score_info
+		<where>
+			<if test="orderId != null and orderId != ''">
+				and order_id = #{orderId}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 现金订单流水 -->
+	<update id="updateScore" parameterType="com.lt.model.trade.OrderScoreInfo">
+		update order_score_info
+		<set>
+			<if test="conditionId != null and conditionId != ''">condition_id=#{conditionId},</if>
+			<if test="userId != null">user_id=#{userId},</if>
+			<if test="nickName != null and nickName != ''">nick_name=#{nickName},</if>
+			<if test="investorId != null">investor_id=#{investorId},</if>
+			<if test="accountId != null">account_id=#{accountId},</if>
+			<if test="securityCode != null and securityCode != ''">security_code=#{securityCode},</if>
+			<if test="perStopProfit != null">per_stop_profit=#{perStopProfit},</if>
+			<if test="perStopLoss != null">per_stop_loss=#{perStopLoss},</if>
+			<if test="perCounterFee != null">per_counter_fee=#{perCounterFee},</if>
+			<if test="perSurcharge != null">per_surcharge=#{perSurcharge},</if>
+			<if test="perDeferFund != null">per_defer_fund=#{perDeferFund},</if>
+			<if test="perDeferInterest != null">per_defer_interest=#{perDeferInterest},</if>
+			<if test="productId != null">product_id=#{productId},</if>
+			<if test="productCode != null and productCode != ''">product_code=#{productCode},</if>
+			<if test="productName != null and productName != ''">product_name=#{productName},</if>
+			<if test="currency != null and currency != ''">currency=#{currency},</if>
+			<if test="unit != null and unit != ''">unit=#{unit},</if>
+			<if test="rate != null">rate=#{rate},</if>
+			<if test="plate != null">plate=#{plate},</if>
+			<if test="exchangeCode != null and exchangeCode != ''">exchange_code=#{exchangeCode},</if>
+			<if test="display != null">display=#{display},</if>
+			<if test="deferStatus != null">defer_status=#{deferStatus},</if>
+			<if test="trailStopLoss != null">trail_stop_loss=#{trailStopLoss},</if>
+			<if test="balanceStatus != null">balance_status=#{balanceStatus},</if>
+			<if test="buyTriggerType != null">buy_trigger_type=#{buyTriggerType},</if>
+			<if test="buyEntrustType != null">buy_entrust_type=#{buyEntrustType},</if>
+			<if test="userCommitBuyDate != null">user_commit_buy_date=#{userCommitBuyDate},</if>
+			<if test="entrustBuyDate != null">entrust_buy_date=#{entrustBuyDate},</if>
+			<if test="lastBuyDate != null">last_buy_date=#{lastBuyDate},</if>
+			<if test="userCommitBuyPrice != null">user_commit_buy_price=#{userCommitBuyPrice},</if>
+			<if test="entrustBuyPrice != null">entrust_buy_price=#{entrustBuyPrice},</if>
+			<if test="buyAvgPrice != null">buy_avg_price=#{buyAvgPrice},</if>
+			<if test="sellTriggerType != null">sell_trigger_type=#{sellTriggerType},</if>
+			<if test="sellEntrustType != null">sell_entrust_type=#{sellEntrustType},</if>
+			<if test="userCommitSellDate != null">user_commit_sell_date=#{userCommitSellDate},</if>
+			<if test="entrustSellDate != null">entrust_sell_date=#{entrustSellDate},</if>
+			<if test="lastSellDate != null">last_sell_date=#{lastSellDate},</if>
+			<if test="userCommitSellPrice != null">user_commit_sell_price=#{userCommitSellPrice},</if>
+			<if test="entrustSellPrice != null">entrust_sell_price=#{entrustSellPrice},</if>
+			<if test="sellAvgPrice != null">sell_avg_price=#{sellAvgPrice},</if>
+			<if test="tradeDirection != null">trade_direction=#{tradeDirection},</if>
+			<if test="sysSetSellDate != null">sys_set_sell_date=#{sysSetSellDate},</if>
+			<if test="buyEntrustCount != null">buy_entrust_count=#{buyEntrustCount},</if>
+			<if test="buySuccessCount != null">buy_success_count=#{buySuccessCount},</if>
+			<if test="buyFailCount != null">buy_fail_count=#{buyFailCount},</if>
+			<if test="holdCount != null">hold_count=#{holdCount},</if>
+			<if test="sellEntrustCount != null">sell_entrust_count=#{sellEntrustCount},</if>
+			<if test="sellSuccessCount != null">sell_success_count=#{sellSuccessCount},</if>
+			<if test="stopLossPrice != null">stop_loss_price=#{stopLossPrice},</if>
+			<if test="stopLoss != null">stop_loss=#{stopLoss},</if>
+			<if test="stopProfitPrice != null">stop_profit_price=#{stopProfitPrice},</if>
+			<if test="stopProfit != null">stop_profit=#{stopProfit},</if>
+			<if test="sysLossProfit != null">sys_loss_profit=#{sysLossProfit},</if>
+			<if test="lossProfit != null">loss_profit=#{lossProfit},</if>
+			<if test="deferInterest != null">defer_interest=#{deferInterest},</if>
+			<if test="deferTimes != null">defer_times=#{deferTimes},</if>
+			<if test=" shouldHoldFund!= null">should_hold_fund=#{shouldHoldFund},</if>
+			<if test="shouldDeferFund != null">should_defer_fund=#{shouldDeferFund},</if>
+			<if test="shouldCounterFee != null">should_counter_fee=#{shouldCounterFee},</if>
+			<if test="shouldCouponFund != null">should_coupon_fund=#{shouldCouponFund},</if>
+			<if test="actualHoldFund != null">actual_hold_fund=#{actualHoldFund},</if>
+			<if test="actualDeferFund != null">actual_defer_fund=#{actualDeferFund},</if>
+			<if test="actualCounterFee != null">actual_counter_fee=#{actualCounterFee},</if>
+			<if test="actualCouponFund != null">actual_coupon_fund=#{actualCouponFund},</if>
+			<if test="createDate != null">create_date=#{createDate},</if>
+			modify_date= now()		
+		</set>
+		where order_id = #{orderId}
+	</update>
+	
+	<update id="updateScoreSellInfoForNull" parameterType="String">
+		update order_score_info set entrust_sell_date=null,user_commit_sell_date=null,sell_entrust_type=null,
+		sell_trigger_type=null,user_commit_sell_price=null,entrust_sell_price=null
+		where  order_id = #{orderId}
+	</update>
+</mapper>

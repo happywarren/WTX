@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="smtpAuthenticator" class="com.lt.manager.mail.SmtpAuthenticator">
+        <property name="username" value="${MAIL.USERNAME}"/>
+        <property name="password" value="${MAIL.PASSWORD}"/>
+    </bean>
+
+    <bean id="mailSession" class="javax.mail.Session" factory-method="getInstance">
+        <constructor-arg>
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.socketFactory.fallback">false</prop>
+                <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>
+            </props>
+        </constructor-arg>
+        <constructor-arg ref="smtpAuthenticator"/>
+    </bean>
+
+    <!-- 邮件发送器  -->
+    <bean id="javaMailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="${MAIL.HOST}"/>
+        <property name="port" value="${MAIL.PORT}"/>
+        <property name="session" ref="mailSession"/>
+    </bean>
+
+
+    <bean id="mailEngine" class="com.lt.manager.mail.MailEngine">
+        <property name="javaMailSender" ref="javaMailSender"/>
+        <property name="from" value="${MAIL.DEFAULT.FROM}"/>
+    </bean>
+</beans>

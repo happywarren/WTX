@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.core.dao.sqldb.IUserDao">
+	
+	<select id="queryUserBuyId" parameterType="String" resultType="com.lt.model.user.UserBaseInfo">
+		select * from user_base where user_id = #{id}
+	</select>	
+	
+	<select id="getTeleMsgCount" resultType="java.lang.Integer">
+	    select count(id) from sys_short_msg 
+	     where destination = #{0} 
+	    <![CDATA[
+		   and create_date >= #{1} 
+		   and create_date <= #{2} 
+		   and sms_type = #{3}
+		   and brand_id = #{4}
+	    ]]>
+	</select>
+	
+	<select id="getAuthCodeByBrand"  resultType="java.lang.String">
+	    select content from sys_short_msg 
+	     where destination = #{0}
+	       and brand_id = #{1}
+	       and sms_type = #{4}
+	       and priority = ${0}  
+	   <![CDATA[    
+	       and create_date >= #{2}
+	       and create_date <= #{3}
+	   ]]>     
+	  order by id desc limit ${0},${1}
+	</select>
+
+	<select id="getAuthCode"  resultType="java.lang.String">
+		select content from sys_short_msg
+		where destination = #{0}
+		and sms_type = #{3}
+		and priority = ${0}
+		<![CDATA[
+	       and create_date >= #{1}
+	       and create_date <= #{2}
+	   ]]>
+		order by id desc limit ${0},${1}
+	</select>
+	
+	<select id="getBaseUserInfo" parameterType="com.lt.model.user.UserBaseInfo" resultType="com.lt.model.user.UserBaseInfo">
+	    select * from user_base 
+	    <where>
+	    	 <if test="tele != null and tele != ''"> 
+	        	and tele = #{tele}
+	        </if>
+	        
+	        <if test="nickName != null and nickName != ''"> 
+	        	and nick_name =#{nickName}
+	        </if>
+	        
+	        <if test="userId != null and userId != ''"> 
+	        	and user_id =#{userId}
+	        </if>
+	        
+	        <if test="status != null and status != ''"> 
+	        	and status =#{status}
+	        </if>
+	        
+	        <if test="teleStatus != null and teleStatus != ''"> 
+	        	and tele_status =#{teleStatus}
+	        </if>
+	    </where>
+	</select>
+	
+	<select id="getBaseUserInfoNoCancel" parameterType="com.lt.model.user.UserBaseInfo" resultType="com.lt.model.user.UserBaseInfo">
+	    select * from user_base 
+	    <where>
+	    	status != -10
+	    	 <if test="tele != null and tele != ''"> 
+	        	and tele = #{tele}
+	        </if>
+			<if test="brandId != null and brandId != ''">
+				and brand_id = #{brandId}
+			</if>
+	        <if test="nickName != null and nickName != ''"> 
+	        	and nick_name =#{nickName}
+	        </if>
+	        
+	        <if test="userId != null"> 
+	        	and user_id =#{userId}
+	        </if>
+	        
+	        <if test="teleStatus != null and teleStatus != ''"> 
+	        	and tele_status =#{teleStatus}
+	        </if>
+	    </where>
+	</select>
+	
+	<insert id="insertUserBaseInfo" parameterType="com.lt.model.user.UserBaseInfo" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.String" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+	    insert into user_base(user_id,
+	  	 nick_name  , tele, tele_status,passwd,reg_source,device_model,device_version ,
+	  	 device_imei  ,version   ,ip   ,last_login_date ,last_login_imei  ,create_date,modify_date   ,reg_mode,reg_carrieroperator
+	    ,system_name,daily_top_in_amt,brand_id,investor_account_id)values(#{userId},
+	    #{nickName},#{tele},#{teleStatus},#{passwd},#{regSource},#{deviceModel},#{deviceVersion},#{deviceImei}
+	    ,#{version},#{ip},now(),#{deviceImei},now(),now(),#{regMode},#{regCarrieroperator},#{systemName},50000,#{brandId},#{investorAccountId}
+	    )
+	</insert>
+	
+	<update id="updateUserBaseInfo" parameterType="com.lt.model.user.UserBaseInfo">
+	    update user_base
+	    <set>
+	    	<if test="nickName != null and nickName != ''"> nick_name = #{nickName},</if>
+	    	<if test="passwd != null and passwd != ''"> passwd = #{passwd},</if> 
+	    	<if test="personalSign != null"> personal_sign = #{personalSign}, </if>
+	    	<if test="lastLoginDate != null"> last_login_date = #{lastLoginDate}, </if>
+	    	<if test="lastLoginImei != null"> last_login_imei = #{lastLoginImei}, </if>
+	    	<if test="headPic != null"> head_pic = #{headPic}, </if>
+			<if test="investorAccountId != null and investorAccountId != ''"> investor_account_id = #{investorAccountId}, </if>
+			modify_date = now()
+	  	</set>  	
+	   	where user_id = #{userId}
+	</update>
+	
+	<select id="selectCertificationStatus" parameterType="String" resultType="Integer">
+		select real_name_status certificationStatus from user_base where user_id=#{userId}
+	</select>	
+	
+	<select id="selectUserId" parameterType="String" resultType="String">
+		select user_id userId from user_base where id=#{id}
+	</select>
+	
+	<select id="selectUserBaseCountByNickName" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select 
+			count(id) 
+		from
+			user_base 
+		where 
+			nick_name=#{nickName}
+	</select>
+</mapper>

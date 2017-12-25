@@ -1,0 +1,1174 @@
+2017-12-25  18:27:59.627 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  18:28:00.120 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  18:28:01.831 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  18:28:02.322 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  18:28:06.853 [nioEventLoopGroup-7-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xe6123d11]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:06.854 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:28:07.333 [nioEventLoopGroup-8-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x58b051ec]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:07.334 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:28:09.061 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 10秒后重连...
+2017-12-25  18:28:09.540 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 10秒后重连...
+2017-12-25  18:28:19.070 [nioEventLoopGroup-9-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x33041fa8]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:19.071 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:28:19.548 [nioEventLoopGroup-10-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x0e9b6887]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:19.549 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:28:21.275 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 15秒后重连...
+2017-12-25  18:28:21.761 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 15秒后重连...
+2017-12-25  18:28:36.284 [nioEventLoopGroup-11-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x075f45a5]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:36.285 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:28:36.770 [nioEventLoopGroup-12-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xd4eb569e]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:36.771 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:28:38.488 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 20秒后重连...
+2017-12-25  18:28:38.974 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 20秒后重连...
+2017-12-25  18:28:58.497 [nioEventLoopGroup-13-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x6705cb9c]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:58.498 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:28:58.982 [nioEventLoopGroup-14-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x09cc12f4]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:28:58.983 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:29:00.701 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 25秒后重连...
+2017-12-25  18:29:01.186 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 25秒后重连...
+2017-12-25  18:29:25.708 [nioEventLoopGroup-15-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x84d1e5f1]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:29:25.709 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:29:26.194 [nioEventLoopGroup-16-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xaa53527a]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:29:26.195 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:29:27.913 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 30秒后重连...
+2017-12-25  18:29:28.398 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 30秒后重连...
+2017-12-25  18:29:57.920 [nioEventLoopGroup-17-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x7527b72e]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:29:57.921 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:29:58.407 [nioEventLoopGroup-18-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x309ac8f2]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:29:58.408 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:30:00.125 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 35秒后重连...
+2017-12-25  18:30:00.611 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 35秒后重连...
+2017-12-25  18:30:35.132 [nioEventLoopGroup-19-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x7d230738]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:30:35.133 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:30:35.619 [nioEventLoopGroup-20-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x025972ae]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:30:35.620 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:30:37.336 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 40秒后重连...
+2017-12-25  18:30:37.823 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 40秒后重连...
+2017-12-25  18:31:17.343 [nioEventLoopGroup-21-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x2bb070bf]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:31:17.344 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:31:17.830 [nioEventLoopGroup-22-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xbc3e15a0]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:31:17.831 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:31:19.547 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 45秒后重连...
+2017-12-25  18:31:20.034 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 45秒后重连...
+2017-12-25  18:32:04.555 [nioEventLoopGroup-23-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xd809c2f0]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:32:04.555 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:32:05.042 [nioEventLoopGroup-24-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x2b5da8b6]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:32:05.043 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:32:06.758 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 50秒后重连...
+2017-12-25  18:32:07.247 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 50秒后重连...
+2017-12-25  18:32:56.766 [nioEventLoopGroup-25-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xf1b15116]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:32:56.767 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:32:57.254 [nioEventLoopGroup-26-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xe358a2d6]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:32:57.254 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:32:58.970 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 55秒后重连...
+2017-12-25  18:32:59.467 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 55秒后重连...
+2017-12-25  18:33:53.978 [nioEventLoopGroup-27-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x0e95c400]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:33:53.978 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:33:54.475 [nioEventLoopGroup-28-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xc52be232]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:33:54.475 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:33:56.181 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 60秒后重连...
+2017-12-25  18:33:56.679 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 60秒后重连...
+2017-12-25  18:34:56.189 [nioEventLoopGroup-29-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xbf41a5be]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:34:56.189 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:34:56.687 [nioEventLoopGroup-30-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xaedab574]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:34:56.688 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:34:58.393 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 65秒后重连...
+2017-12-25  18:34:58.891 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 65秒后重连...
+2017-12-25  18:36:03.401 [nioEventLoopGroup-31-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x87b67bba]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:36:03.401 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:36:03.898 [nioEventLoopGroup-32-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xd78e5d16]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:36:03.899 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:36:05.604 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 70秒后重连...
+2017-12-25  18:36:06.102 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 70秒后重连...
+2017-12-25  18:37:15.611 [nioEventLoopGroup-33-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x47c19f39]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:37:15.612 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:37:16.110 [nioEventLoopGroup-34-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xf259afd1]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:37:16.110 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:37:17.815 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 75秒后重连...
+2017-12-25  18:37:18.313 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 75秒后重连...
+2017-12-25  18:38:32.822 [nioEventLoopGroup-35-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xff134257]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:38:32.823 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:38:33.320 [nioEventLoopGroup-36-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xb698e04a]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:38:33.321 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:38:35.026 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 80秒后重连...
+2017-12-25  18:38:35.524 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 80秒后重连...
+2017-12-25  18:39:55.033 [nioEventLoopGroup-37-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xa7e0dcae]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:39:55.034 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:39:55.531 [nioEventLoopGroup-38-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x4fb36e69]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:39:55.531 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:39:57.237 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 85秒后重连...
+2017-12-25  18:39:57.734 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 85秒后重连...
+2017-12-25  18:41:22.244 [nioEventLoopGroup-39-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xb0e8f706]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:41:22.244 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:41:22.741 [nioEventLoopGroup-40-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x4c0ab7d0]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:41:22.742 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:41:24.447 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 90秒后重连...
+2017-12-25  18:41:24.945 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 90秒后重连...
+2017-12-25  18:42:54.454 [nioEventLoopGroup-41-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xc2addf5d]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:42:54.454 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:42:54.952 [nioEventLoopGroup-42-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x11f4151d]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:42:54.953 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:42:56.657 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 95秒后重连...
+2017-12-25  18:42:57.156 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 95秒后重连...
+2017-12-25  18:44:31.664 [nioEventLoopGroup-43-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0xc2157a70]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:44:31.664 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:44:32.163 [nioEventLoopGroup-44-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x6428f244]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:44:32.164 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:44:33.876 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 100秒后重连...
+2017-12-25  18:44:34.367 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 100秒后重连...
+2017-12-25  18:46:13.883 [nioEventLoopGroup-45-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x03cecb6f]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:46:13.883 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000异常...
+2017-12-25  18:46:14.375 [nioEventLoopGroup-46-1] WARN  io.netty.channel.ChannelInitializer - Failed to initialize a channel. Closing: [id: 0x92960c42]
+io.netty.channel.ChannelPipelineException: com.lt.quota.core.client.QuotaClientHandler is not a @Sharable handler, so can't be added or removed multiple times.
+	at io.netty.channel.DefaultChannelPipeline.checkMultiplicity(DefaultChannelPipeline.java:588)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:199)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:392)
+	at io.netty.channel.DefaultChannelPipeline.addLast(DefaultChannelPipeline.java:379)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:94)
+	at com.lt.quota.core.comm.netty.client.BaseClient$1.initChannel(BaseClient.java:85)
+	at io.netty.channel.ChannelInitializer.initChannel(ChannelInitializer.java:113)
+	at io.netty.channel.ChannelInitializer.handlerAdded(ChannelInitializer.java:105)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAdded0(DefaultChannelPipeline.java:597)
+	at io.netty.channel.DefaultChannelPipeline.access$000(DefaultChannelPipeline.java:44)
+	at io.netty.channel.DefaultChannelPipeline$PendingHandlerAddedTask.execute(DefaultChannelPipeline.java:1387)
+	at io.netty.channel.DefaultChannelPipeline.callHandlerAddedForAllHandlers(DefaultChannelPipeline.java:1122)
+	at io.netty.channel.DefaultChannelPipeline.invokeHandlerAddedIfNeeded(DefaultChannelPipeline.java:647)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register0(AbstractChannel.java:506)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.access$200(AbstractChannel.java:419)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$1.run(AbstractChannel.java:478)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:163)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:403)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:442)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:144)
+	at java.lang.Thread.run(Thread.java:748)
+2017-12-25  18:46:14.375 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000异常...
+2017-12-25  18:46:16.086 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 105秒后重连...
+2017-12-25  18:46:16.578 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 105秒后重连...
+2017-12-25  18:47:51.532 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  18:47:51.608 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:16:53.262 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:16:53.285 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:17:26.030 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:17:26.037 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:17:47.404 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:17:47.436 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:26:01.085 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:26:04.105 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:27:12.126 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:27:15.157 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:28:03.375 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:28:03.409 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:28:19.179 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:28:19.190 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:29:54.146 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:29:54.197 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:30:30.299 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:30:30.321 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  19:31:14.939 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:31:31.701 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  19:31:31.734 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:24:10.934 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:24:13.135 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:24:18.090 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:24:20.294 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:24:20.331 [nioEventLoopGroup-7-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:24:27.271 [nioEventLoopGroup-8-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:24:46.363 [nioEventLoopGroup-8-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:24:48.186 [nioEventLoopGroup-7-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:24:48.569 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:24:50.393 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:24:54.374 [nioEventLoopGroup-9-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:24:56.079 [nioEventLoopGroup-10-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:25:36.522 [nioEventLoopGroup-10-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:25:38.723 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:25:47.310 [nioEventLoopGroup-11-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:27:18.208 [nioEventLoopGroup-9-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:27:20.409 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:27:26.315 [nioEventLoopGroup-12-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:28:20.793 [nioEventLoopGroup-11-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:28:22.997 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:28:28.998 [nioEventLoopGroup-13-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:29:11.047 [nioEventLoopGroup-12-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:29:13.249 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:29:15.647 [nioEventLoopGroup-13-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:29:17.850 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:29:18.805 [nioEventLoopGroup-14-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:29:23.621 [nioEventLoopGroup-15-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:30:06.295 [nioEventLoopGroup-15-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:30:08.500 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:30:14.956 [nioEventLoopGroup-16-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:31:10.525 [nioEventLoopGroup-16-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:31:12.728 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:31:18.575 [nioEventLoopGroup-17-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:32:06.318 [nioEventLoopGroup-14-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:32:08.521 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:32:15.718 [nioEventLoopGroup-18-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:32:18.484 [nioEventLoopGroup-17-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:32:20.687 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:32:29.066 [nioEventLoopGroup-19-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:32:30.876 [nioEventLoopGroup-18-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  22:32:33.080 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  22:32:42.849 [nioEventLoopGroup-20-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  22:32:43.438 [nioEventLoopGroup-19-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:32:45.641 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:32:51.328 [nioEventLoopGroup-21-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:43:50.862 [nioEventLoopGroup-21-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:43:53.065 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:43:58.501 [nioEventLoopGroup-22-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  22:45:17.464 [nioEventLoopGroup-22-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  22:45:19.667 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  22:45:25.224 [nioEventLoopGroup-23-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:18:07.097 [nioEventLoopGroup-23-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:18:09.300 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:18:20.358 [nioEventLoopGroup-24-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:18:21.215 [nioEventLoopGroup-20-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:18:23.421 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:18:31.131 [nioEventLoopGroup-25-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:18:54.769 [nioEventLoopGroup-24-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:18:55.607 [nioEventLoopGroup-25-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:18:56.972 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:18:57.810 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:19:05.749 [nioEventLoopGroup-27-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:19:05.751 [nioEventLoopGroup-26-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:20:17.827 [nioEventLoopGroup-26-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:20:20.076 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:20:25.574 [nioEventLoopGroup-28-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:20:28.136 [nioEventLoopGroup-27-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:20:30.339 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:20:36.494 [nioEventLoopGroup-29-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:33:28.822 [nioEventLoopGroup-28-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:33:29.871 [nioEventLoopGroup-29-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:33:31.025 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:33:32.075 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:33:37.911 [nioEventLoopGroup-30-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:33:38.483 [nioEventLoopGroup-31-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:34:20.389 [nioEventLoopGroup-30-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:34:22.592 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:34:28.311 [nioEventLoopGroup-32-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:36:55.543 [nioEventLoopGroup-32-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:36:57.747 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:37:04.192 [nioEventLoopGroup-33-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:48:57.875 [nioEventLoopGroup-31-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:49:00.078 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:49:14.030 [nioEventLoopGroup-34-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:49:14.792 [nioEventLoopGroup-34-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接出现异常, 异常信息 远程主机强迫关闭了一个现有的连接。 
+2017-12-25  23:49:14.792 [nioEventLoopGroup-34-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:49:15.069 [nioEventLoopGroup-33-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:49:16.996 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:49:17.274 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:49:25.036 [nioEventLoopGroup-35-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:49:25.096 [nioEventLoopGroup-36-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:49:48.853 [nioEventLoopGroup-35-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:49:51.059 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:49:57.400 [nioEventLoopGroup-37-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:50:49.053 [nioEventLoopGroup-37-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:50:51.255 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:50:56.120 [nioEventLoopGroup-36-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:50:58.322 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:50:59.234 [nioEventLoopGroup-38-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2017-12-25  23:51:10.593 [nioEventLoopGroup-39-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:51:13.084 [nioEventLoopGroup-39-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接出现异常, 异常信息 远程主机强迫关闭了一个现有的连接。 
+2017-12-25  23:51:13.084 [nioEventLoopGroup-39-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2017-12-25  23:51:15.287 [Thread-15] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2017-12-25  23:51:19.780 [nioEventLoopGroup-38-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2017-12-25  23:51:21.032 [nioEventLoopGroup-40-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2017-12-25  23:51:21.983 [Thread-14] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2017-12-25  23:51:27.664 [nioEventLoopGroup-41-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功

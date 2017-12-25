@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lt.manager.dao.user.ProductAccountMapperDao">
+	<!-- 查询条件 -->
+	<select id="selectProductAccountMapper" parameterType="com.lt.manager.bean.user.ProductAccountMapper"   resultType="com.lt.manager.bean.user.ProductAccountMapper">
+	SELECT
+		*
+	FROM
+		product_account_mapper where security_code =  #{securityCode}
+		<if test="userId != null and userId != ''" >
+			and user_id =  #{userId}
+		</if>
+	</select>
+  
+<select id="selectProductAccountMapperCount" parameterType="com.lt.manager.bean.user.ProductAccountMapper"   resultType="Integer">
+select
+				count(*)
+				from product_account_mapper 
+				
+where 1=1
+<trim  suffixOverrides="," >
+	<if test="id != null and id != ''" >
+	    and id =  #{id}
+	</if>
+	<if test="productId != null and productId != ''" >
+	    and product_id =  #{productId}
+	</if>
+	<if test="securityCode != null and securityCode != ''" >
+	    and security_code =  #{securityCode}
+	</if>
+	<if test="userId != null and userId != ''" >
+	    and user_id =  #{userId}
+	</if>
+</trim>
+</select>
+ 
+
+<!-- 插入记录 -->
+<insert id="insertProductAccountMapper" parameterType="com.lt.manager.bean.user.ProductAccountMapper" >
+  insert into product_account_mapper(id,product_id,security_code,user_id,direct)
+ values(#{id},#{productId},#{securityCode},#{userId},#{direct})
+</insert>
+
+<!-- 根据id，修改记录-->  
+ <update id="updateProductAccountMapper" parameterType="com.lt.manager.bean.user.ProductAccountMapper" >
+  update product_account_mapper set product_id=#{productId},security_code=#{securityCode},direct=#{direct},user_id=#{userId} where (product_id=#{productId} and security_code=#{securityCode} and user_id=#{userId})
+ </update>
+
+
+<!-- 根据id，修改记录-->  
+ <update id="updateProductAccountMapperBySecurityCode" parameterType="String" >
+  update product_account_mapper set security_code=#{securityCodeNew}  where security_code=#{securityCodeOld} and user_id = #{investorId}
+ </update>
+
+
+<!-- 删除记录 -->
+<delete id="deleteProductAccountMapper" parameterType="com.lt.manager.bean.user.ProductAccountMapper">
+	delete 	 from product_account_mapper where id = #{id}
+</delete>
+ 
+<!-- 用户 列表总数-->
+<select id="queryProductAccountMapperByCount" resultType="Integer"  parameterType="com.lt.manager.bean.user.ProductAccountMapper">
+	select count(*) from product_account_mapper 
+</select>
+
+  <!-- 用户 列表总数-->
+<select id="selectProductAccountMapperBySecodeProId" resultType="com.lt.manager.bean.user.ProductAccountMapper">
+	select * from product_account_mapper  where product_id = #{0} and security_code = #{1} and user_id = #{2}
+</select>	
+  	
+ <insert id="insertProAccMappers" parameterType="java.util.List">
+ 	insert into product_account_mapper
+ 	(
+ 		product_id,
+ 		security_code,
+ 		user_id,
+ 		direct
+ 	)values
+ 	<foreach collection="list" item="item" separator=",">
+ 		(
+ 			#{item.productId},
+ 			#{item.securityCode},
+ 			#{item.userId},
+ 			#{item.direct}
+ 		)
+ 	</foreach>
+ </insert>
+
+	<!-- 删除记录 -->
+	<delete id="deleteMapperBySecurityCodeAndInvestorId" parameterType="java.lang.String">
+		delete from product_account_mapper where security_code = #{0} and user_id = #{1}
+	</delete>
+</mapper>   

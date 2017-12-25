@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lt-quota:war">
+    <output-path>$PROJECT_DIR$/lt-quota/target</output-path>
+    <root id="archive" name="lt-quota.war">
+      <element id="artifact" artifact-name="lt-quota:war exploded" />
+    </root>
+  </artifact>
+</component>

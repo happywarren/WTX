@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.fund.FundScoreManageDao">
+	
+	<!-- 积分流水明细列表fund_flow_cash -->
+	<!-- 
+	select m.* from (SELECT f.user_id,f.flow_type,f.first_optcode,f.second_optcode,f.create_date end_date,t.second_optname,t.first_optname,f.amount,f.balance,f.remark,f.external_id,s.nick_name,s.user_name,s.tele from fund_flow_score f 
+		LEFT JOIN user_base s on f.user_id = s.user_id LEFT JOIN fund_optcode t on f.third_optcode = t.third_optcode) m	
+	 -->
+	<select id="selectFundFlowList" resultType="com.lt.manager.bean.fund.FundFlowVO" parameterType="com.lt.manager.bean.fund.FundFlowVO">
+		select m.* from fund_flow_score_view_1 m JOIN user_base ub ON m.user_id=ub.user_id
+		<where>
+			<if test="userId != null and userId != ''">
+				and m.user_id = #{userId}
+			</if>
+			
+			<if test="remark != null and remark != ''">
+				and m.remark like concat('%',#{remark},'%')
+			</if>
+			
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and m.first_optcode = #{firstOptcode}
+			</if>
+			
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and m.second_optcode = #{secondOptcode}
+			</if>
+			
+			<if test="nickName != null and nickName != ''">
+				and m.nick_name = #{nickName}
+			</if>
+			
+			<if test="flowType != null and flowType != ''">
+				and m.flow_type = #{flowType}
+			</if>
+			
+			<if test="tele != null and tele != ''">
+				and m.tele like concat('%',#{tele},'%')
+			</if>
+			
+			<if test="userName != null and userName != ''">
+				and m.user_name = #{userName}
+			</if>
+			
+			<if test="startDate != null and startDate != ''">
+				and m.end_date &gt;= #{startDate}
+			</if>
+			
+			<if test="endDate != null and endDate != ''">
+				and m.end_date &lt;= #{endDate}
+			</if>
+			
+			<if test="externalId !=null and externalId !=''">
+				and m.external_id like  concat('%',#{externalId},'%')
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and ub.brand_id = #{brandId}
+			</if>
+		</where>
+		
+		order by m.end_date desc 
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<!-- 
+	select count(m.user_id) from (SELECT f.user_id,f.flow_type,f.first_optcode,f.second_optcode,f.create_date end_date,f.amount,f.balance,f.remark,f.external_id,s.nick_name,s.user_name,s.tele from fund_flow_score f 
+		LEFT JOIN user_base s on f.user_id = s.user_id) m	
+	 -->
+	<select id="selectFundFlowListCount" resultType="java.lang.Integer" parameterType="com.lt.manager.bean.fund.FundFlowVO">
+		select count(m.user_id) from fund_flow_score_view_1 m JOIN user_base ub ON m.user_id=ub.user_id
+		
+			<where>
+			<if test="userId != null and userId != ''">
+				and m.user_id = #{userId}
+			</if>
+			
+			<if test="remark != null and remark != ''">
+				and m.remark like concat('%',#{remark},'%')
+			</if>
+			
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and m.first_optcode = #{firstOptcode}
+			</if>
+			
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and m.second_optcode = #{secondOptcode}
+			</if>
+			
+			<if test="nickName != null and nickName != ''">
+				and m.nick_name  like concat('%',#{nickName},'%')
+			</if>
+			
+			<if test="flowType != null and flowType != ''">
+				and m.flow_type = #{flowType}
+			</if>
+			
+			<if test="tele != null and tele != ''">
+				and m.tele like concat('%',#{tele},'%')
+			</if>
+			
+			<if test="userName != null and userName != ''">
+				and m.user_name like concat('%',#{userName},'%')
+			</if>
+			
+			<if test="startDate != null and startDate != ''">
+				and m.end_date &gt;= #{startDate}
+			</if>
+			
+			<if test="endDate != null and endDate != ''">
+				and m.end_date &lt;= #{endDate}
+			</if>
+			
+			<if test="externalId !=null and externalId !=''">
+				and m.external_id like  concat('%',#{externalId},'%')
+			</if>
+			<if test="brandId !=null and brandId !=''">
+				and ub.brand_id = #{brandId}
+			</if>
+			</where>
+	</select>
+	
+	<!-- 积分流水明细列表fund_flow_cash -->
+	<!-- 
+	select m.* from (SELECT f.user_id,f.flow_type,f.first_optcode,f.second_optcode,f.create_date end_date,f.amount,f.balance,f.remark,f.external_id,s.nick_name,s.user_name,s.tele from fund_flow_score f 
+		LEFT JOIN user_base s on f.user_id = s.user_id) m	
+	 -->
+	<select id="selectFundFlowTotalAmt" resultType="com.lt.manager.bean.fund.FundFlowVO" parameterType="com.lt.manager.bean.fund.FundFlowVO">
+		select m.* from fund_flow_score_view_2 m JOIN user_base ub ON m.user_id=ub.user_id
+		<where>
+			<if test="userId != null and userId != ''">
+				and m.user_id = #{userId}
+			</if>
+			
+			<if test="remark != null and remark != ''">
+				and m.remark like concat('%',#{remark},'%')
+			</if>
+			
+			<if test="firstOptcode != null and firstOptcode != ''">
+				and m.first_optcode = #{firstOptcode}
+			</if>
+			
+			<if test="secondOptcode != null and secondOptcode != ''">
+				and m.second_optcode = #{secondOptcode}
+			</if>
+			
+			<if test="nickName != null and nickName != ''">
+				and m.nick_name = #{nickName}
+			</if>
+			
+			<if test="flowType != null and flowType != ''">
+				and m.flow_type = #{flowType}
+			</if>
+			
+			<if test="tele != null and tele != ''">
+				and m.tele like concat('%',#{tele},'%')
+			</if>
+			
+			<if test="userName != null and userName != ''">
+				and m.user_name = #{userName}
+			</if>
+			
+			<if test="startDate != null and startDate != ''">
+				and m.end_date &gt;= #{startDate}
+			</if>
+			
+			<if test="endDate != null and endDate != ''">
+				and m.end_date &lt;= #{endDate}
+			</if>
+			
+			<if test="externalId !=null and externalId !=''">
+				and m.external_id like  concat('%',#{externalId},'%')
+			</if>
+
+			<if test="brandId !=null and brandId !=''">
+				and ub.brand_id = #{brandId}
+			</if>
+		</where>
+		
+		order by m.end_date desc 
+	</select>
+	
+	<select id="qryFundInnerInOutPageDetail" resultType="com.lt.manager.bean.fund.FundIoCashInnerVO" parameterType="com.lt.manager.bean.fund.FundIoCashInnerVO">
+		select t.* ,sf.modify_user_name from (select f.*,s.nick_name,s.user_name,s.tele,fo.third_optname detail from (SELECT id io_id,user_id,create_date,audit_date,1 type,flow_type,`status`,modify_user_id,remark,amount,third_optcode,order_id FROM fund_io_score_inner
+			<where>
+				<if test="userId != null and userId != ''">
+					and user_id = #{userId}
+				</if>
+				
+				<if test="startDate != null and startDate != ''">
+					and create_date &gt;= #{startDate}
+				</if>
+			
+				<if test="endDate != null and endDate != ''">
+					and create_date &lt;= #{endDate}
+				</if>
+				
+				<if test="remark != null and remark != ''">
+					and remark like concat('%',#{remark},'%')
+				</if>
+				
+				<if test="status != null">
+					and status = #{status}
+				</if>
+				
+				<if test="flowType != null and flowType != ''">
+					and flow_type = #{flowType}
+				</if>
+				
+				<if test="level0 != null and level0 != ''">
+					and first_optcode = #{level0}
+				</if>
+				
+				<if test="level1 != null and level1 != ''">
+					and second_optcode = #{level1}
+				</if>
+				
+				<if test="level2 != null and level2 != ''">
+					and third_optcode = #{level2}
+				</if>
+				
+			</where>		
+		) f
+		LEFT JOIN user_base s on f.user_id = s.user_id
+		LEFT JOIN fund_optcode fo on f.third_optcode = fo.third_optcode) t
+		left JOIN (SELECT `id` as staff_id,`name` as modify_user_name FROM staff) sf on sf.staff_id=t.modify_user_id
+		JOIN user_base ub ON t.user_id=ub.user_id
+
+		<where>
+			
+				<if test="userName != null and userName != ''">
+					and t.user_name like concat('%',#{userName},'%')
+				</if>
+				
+				<if test="nickName != null and nickName != ''">
+					and t.nick_name  like concat('%',#{nickName},'%')
+				</if>
+				
+				<if test="tele != null and tele != ''">
+					and t.tele like concat('%',#{tele},'%')
+				</if>
+				<if test="brandId !=null and brandId !=''">
+					and ub.brand_id = #{brandId}
+				</if>
+		</where>
+		
+		order by t.create_date desc
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="qryFundInnerInOutDetailList" resultType="com.lt.manager.bean.fund.FundIoCashInnerVO" parameterType="com.lt.manager.bean.fund.FundIoCashInnerVO">
+		select t.* from (select f.*,s.nick_name,s.user_name,s.tele from (SELECT user_id,audit_date,0 type,flow_type,`status`,modify_user_id,remark,amount,create_date,id io_id FROM fund_io_score_inner
+			<where>
+				<if test="userId != null and userId != ''">
+					and user_id = #{userId}
+				</if>
+				
+				<if test="startDate != null and startDate != ''">
+					and create_date &gt;= #{startDate}
+				</if>
+			
+				<if test="endDate != null and endDate != ''">
+					and create_date &lt;= #{endDate}
+				</if>
+				
+				<if test="remark != null and remark != ''">
+					and remark like concat('%',#{remark},'%')
+				</if>
+				
+				<if test="status != null">
+					and status = #{status}
+				</if>
+				
+				<if test="modifyUserId != null and modifyUserId != ''">
+					and modify_user_id = #{modifyUserId}
+				</if>
+				
+				<if test="flowType != null and flowType != ''">
+					and flow_type = #{flowType}
+				</if>
+			</where>		
+		) f
+		LEFT JOIN user_base s on f.user_id = s.user_id) t
+			<where>
+			
+				<if test="userName != null and userName != ''">
+					and user_name like concat('%',#{userName},'%')
+				</if>
+				
+				<if test="nickName != null and nickName != ''">
+					and nick_name  like concat('%',#{nickName},'%')
+				</if>
+				
+				<if test="tele != null and tele != ''">
+					and tele like concat('%',#{tele},'%')
+				</if>
+			</where>	
+		
+		order by t.audit_date
+	</select>
+	
+	<select id="qryFundInnerInOutDetailCount" resultType="java.lang.Integer" parameterType="com.lt.manager.bean.fund.FundIoCashInnerVO">
+		select count(t.user_id) from (select f.*,s.nick_name,s.user_name,s.tele from (SELECT user_id,audit_date,0 type,flow_type,`status`,modify_user_id,remark,amount FROM fund_io_score_inner
+			<where>
+				<if test="userId != null and userId != ''">
+					and user_id = #{userId}
+				</if>
+				
+				<if test="startDate != null and startDate != ''">
+					and audit_date &gt;= #{startDate}
+				</if>
+			
+				<if test="endDate != null and endDate != ''">
+					and audit_date &lt;= #{endDate}
+				</if>
+				
+				<if test="remark != null and remark != ''">
+					and remark like concat('%',#{remark},'%')
+				</if>
+				
+				<if test="status != null">
+					and status = #{status}
+				</if>
+				
+				<if test="modifyUserId != null and modifyUserId != ''">
+					and modify_user_id = #{modifyUserId}
+				</if>
+				
+				<if test="flowType != null and flowType != ''">
+					and flow_type = #{flowType}
+				</if>
+				
+				<if test="level0 != null and level0 != ''">
+					and first_optcode = #{level0}
+				</if>
+				
+				<if test="level1 != null and level1 != ''">
+					and second_optcode = #{level1}
+				</if>
+				
+				<if test="level2 != null and level2 != ''">
+					and third_optcode = #{level2}
+				</if>
+				
+			</where>		
+		) f
+		LEFT JOIN user_base s on f.user_id = s.user_id) t
+			<where>
+			
+				<if test="userName != null and userName != ''">
+					and user_name like concat('%',#{userName},'%')
+				</if>
+				
+				<if test="nickName != null and nickName != ''">
+					and nick_name  like concat('%',#{nickName},'%')
+				</if>
+				
+				<if test="tele != null and tele != ''">
+					and tele like concat('%',#{tele},'%')
+				</if>
+			</where>	
+		
+	</select>
+	
+</mapper>

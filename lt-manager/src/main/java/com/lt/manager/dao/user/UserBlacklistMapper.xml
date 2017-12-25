@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lt.manager.dao.user.UserBlacklistDao">
+	<!-- 查询条件 -->
+	<select id="selectUserBlacklistPage" parameterType="com.lt.manager.bean.user.UserBlacklist"
+		resultType="com.lt.manager.bean.user.UserBlacklist">
+		select
+		*
+		from blacklist
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="regIp != null and regIp != ''">
+				and reg_ip = #{regIp}
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				and login_ip = #{loginIp}
+			</if>
+			<if test="regImei != null and regImei != ''">
+				and reg_imei = #{regImei}
+			</if>
+			<if test="loginImei != null and loginImei != ''">
+				and login_imei = #{loginImei}
+			</if>
+		</trim>
+		ORDER BY id desc
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+
+	<select id="selectUserBlacklistCount" parameterType="com.lt.manager.bean.user.UserBlacklist"
+		resultType="Integer">
+		select
+		count(*)
+		from blacklist
+
+		where 1=1
+		<trim suffixOverrides=",">
+			<if test="id != null and id != ''">
+				and id = #{id}
+			</if>
+			<if test="regIp != null and regIp != ''">
+				and reg_ip = #{regIp}
+			</if>
+			<if test="loginIp != null and loginIp != ''">
+				and login_ip = #{loginIp}
+			</if>
+			<if test="regImei != null and regImei != ''">
+				and reg_imei = like concat('%', #{regImei},'%')
+			</if>
+			<if test="loginImei != null and loginImei != ''">
+				and login_imei = like concat('%', #{loginImei},'%')
+			</if>
+		</trim>
+	</select>
+
+
+	<!-- 插入记录 -->
+	<insert id="insertUserBlacklist" parameterType="com.lt.manager.bean.user.UserBlacklist">
+		insert into
+		blacklist(id,reg_ip,login_ip,reg_imei,login_imei,create_date)
+		values(#{id},#{regIp},#{loginIp},#{regImei},#{loginImei},#{createDate})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="updateUserBlacklist" parameterType="com.lt.manager.bean.user.UserBlacklist">
+		update blacklist set
+		reg_ip=#{regIp},login_ip=#{loginIp},reg_imei=#{regImei},login_imei=#{loginImei}
+		where id=#{id}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="deleteUserBlacklist" parameterType="com.lt.manager.bean.user.UserBlacklist">
+		delete from blacklist where id = #{id}
+	</delete>
+
+	<!-- 用户 列表总数 -->
+	<select id="queryUserBlacklistByCount" resultType="Integer"
+		parameterType="com.lt.manager.bean.user.UserBlacklist">
+		select count(*) from blacklist
+	</select>
+
+
+</mapper>   

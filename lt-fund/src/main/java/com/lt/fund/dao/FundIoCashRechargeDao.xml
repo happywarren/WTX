@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundIoCashRechargeDao">	
+	<insert id="insertFundIoRecharge" parameterType="com.lt.model.fund.FundIoCashRecharge">
+		INSERT INTO fund_io_cash_recharge
+		(
+			user_id,
+			pay_id,
+			first_optcode,
+			second_optcode,
+			third_optcode,
+			amount,
+			actual_amount,
+			balance,
+			external_id,
+			transfer_number,
+			bank_code,
+			alipay_num,
+			create_date,
+			modify_date,
+			modify_user_id,
+			remark,
+			fail_reason,
+			status,
+			recharge_identification,
+			rmb_amt,
+			rate
+		)VALUES
+		(
+			#{userId},
+			#{payId},
+			#{firstOptcode},
+			#{secondOptcode},
+			#{thirdOptcode},
+			#{amount},
+			#{actualAmount},
+			#{balance},
+			#{externalId},
+			#{transferNumber},
+			#{bankCode},
+			#{alipayNum},
+			now(),
+			now(),
+			#{modifyUserId},
+			#{remark},
+			#{failReason},
+			#{status},
+			#{rechargeIdentification},
+			#{rmbAmt},
+			#{rate}
+		)
+	</insert>
+	
+	<insert id="insertBankChargeDetail" parameterType="com.lt.model.user.charge.BankChargeDetail">
+		INSERT INTO bank_charge_detail
+		(
+			user_id,
+			channel_id,
+			bank_code,
+			bank_card_num,
+			amount,
+			create_time,
+			update_time
+		)VALUES
+		(
+			#{userId},
+			#{channelId},
+			#{bankCode},
+			#{bankCardNum},
+			#{amount},
+			#{createTime},
+			now()
+		)
+	</insert>
+	
+	<select id="qryBankChargeDetailByCondition" parameterType="com.lt.model.user.charge.BankChargeDetail" resultType="com.lt.model.user.charge.BankChargeDetail">
+		SELECT * FROM bank_charge_detail where user_id = #{userId} and bank_card_num = #{bankCardNum} and create_time = #{createTime} and channel_id = #{channelId}
+	</select>
+	
+	<select id="selectRechargeIoById" resultType="com.lt.model.fund.FundIoCashRecharge" parameterType="java.lang.String">
+		select * from fund_io_cash_recharge where id= #{id} for update
+	</select>
+	
+	<update id="updateBankChargeAmountByCondition" parameterType="com.lt.model.user.charge.BankChargeDetail">
+		UPDATE bank_charge_detail set amount = amount + #{amount} where user_id = #{userId} and bank_card_num = #{bankCardNum} and create_time = #{createTime} and channel_id = #{channelId}
+	</update>
+	
+	<select id="selectFundIoRechargeOne" parameterType="String" resultType="com.lt.model.fund.FundIoCashRecharge">
+		SELECT * FROM fund_io_cash_recharge where pay_id=#{payId}
+	</select>
+
+	<select id="selectFundIoRechargeForUpdate" parameterType="String" resultType="com.lt.model.fund.FundIoCashRecharge">
+		SELECT * FROM fund_io_cash_recharge where pay_id=#{payId} for update
+	</select>
+
+	<update id="updateFundIoRecharge" parameterType="com.lt.model.fund.FundIoCashRecharge">
+		UPDATE fund_io_cash_recharge
+		<set>
+			<if test="userId != null">
+				user_id=#{userId},
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				first_optcode=#{firstOptcode},
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				second_optcode=#{secondOptcode},
+			</if>
+			<if test="thirdOptcode != null and thirdOptcode != ''">
+				third_optcode=#{thirdOptcode},
+			</if>
+			<if test="amount != null">
+				amount=#{amount},
+			</if>
+			<if test="actualAmount != null">
+				actual_amount=#{actualAmount},
+			</if>
+			<if test="balance != null">
+				balance=#{balance},
+			</if>
+			<if test="externalId != null and externalId != ''">
+				external_id=#{externalId},
+			</if>
+			<if test="transferNumber != null and transferNumber != ''">
+				transfer_number=#{transferNumber},
+			</if>
+			<if test="doneDate != null and doneDate != ''">
+				done_date=#{doneDate},
+			</if>			
+				modify_date=NOW(),
+			<if test="modifyUserId != null">
+				modify_user_id=#{modifyUserId},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark=#{remark},
+			</if>
+			<if test="failReason != null and failReason != ''">
+				fail_reason=#{failReason},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+			
+			<if test="rmbAmt != null">
+				rmb_amt=#{rmbAmt},
+			</if>
+			
+			<if test="actualRmbAmount != null and actualRmbAmount != ''">
+				actual_rmb_amount=#{actualRmbAmount},
+			</if>
+		</set>
+		WHERE id=#{id}
+	</update>
+	
+	<update id="updateFundIoRechargeByPayId" parameterType="com.lt.model.fund.FundIoCashRecharge">
+		UPDATE fund_io_cash_recharge
+		<set>
+			<if test="userId != null">
+				user_id=#{userId},
+			</if>
+			<if test="firstOptcode != null and firstOptcode != ''">
+				first_optcode=#{firstOptcode},
+			</if>
+			<if test="secondOptcode != null and secondOptcode != ''">
+				second_optcode=#{secondOptcode},
+			</if>
+			<if test="thirdOptcode != null and thirdOptcode != ''">
+				third_optcode=#{thirdOptcode},
+			</if>
+			<if test="amount != null">
+				amount=#{amount},
+			</if>
+			<if test="actualAmount != null">
+				actual_amount=#{actualAmount},
+			</if>
+			<if test="balance != null">
+				balance=#{balance},
+			</if>
+			<if test="externalId != null and externalId != ''">
+				external_id=#{externalId},
+			</if>
+			<if test="transferNumber != null and transferNumber != ''">
+				transfer_number=#{transferNumber},
+			</if>
+			<if test="doneDate != null and doneDate != ''">
+				done_date=#{doneDate},
+			</if>			
+				modify_date=NOW(),
+			<if test="modifyUserId != null">
+				modify_user_id=#{modifyUserId},
+			</if>
+			<if test="remark != null and remark != ''">
+				remark=#{remark},
+			</if>
+			<if test="failReason != null and failReason != ''">
+				fail_reason=#{failReason},
+			</if>
+			<if test="status != null">
+				status=#{status},
+			</if>
+		</set>
+		WHERE pay_id=#{payId}
+	</update>
+	
+	<select id="selectRechargeIdentification" resultType="String">
+		select recharge_identification rechargeIdentification from fund_io_cash_recharge 
+		where user_id=#{0} and third_optcode=#{1} and `status`=1 LIMIT 0,1
+	</select>
+	
+	<select id="selectFundIoRecharge" parameterType="com.lt.model.fund.FundIoCashRecharge" resultType="com.lt.model.fund.FundIoCashRecharge">
+		select * from fund_io_cash_recharge
+		<where>
+			<if test="userId != null and userId != '' ">
+				and user_id=#{userId}
+			</if>
+			<if test="thirdOptcode != null and thirdOptcode != ''">
+				and third_optcode=#{thirdOptcode}
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="transferNumber != null and transferNumber!='' ">
+				and transfer_number=#{transferNumber}
+			</if>
+		</where>
+		ORDER BY create_date desc
+	</select>
+	
+	<select id="selectFundIoRechargeList" parameterType="map" resultType="com.lt.model.fund.FundIoCashRecharge">
+		select * from fund_io_cash_recharge
+		<where>
+			<if test="thirdOptcode != null and thirdOptcode != ''">
+				and third_optcode=#{thirdOptcode}
+			</if>
+			<if test="status != null">
+				and status=#{status}
+			</if>
+			<if test="createDate != null and createDate!='' ">
+				and create_date &gt;#{createDate}
+			</if>
+		</where>
+		order by
+			create_date asc
+			<if test="queryNum!=null and queryNum!='' ">
+				limit #{queryNum}
+			</if>
+		
+	</select>	
+	
+	<insert id="insertUserChannelTrans" parameterType="com.lt.model.user.charge.UserChannelTrans" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>	
+		INSERT INTO user_channel_trans
+		(
+			user_id,
+			channel_id,
+			create_time,
+			create_date
+		)VALUES
+		(
+			#{userId},
+			#{channelId},
+			now(),
+			#{createDate}
+		)		
+	</insert>
+</mapper>

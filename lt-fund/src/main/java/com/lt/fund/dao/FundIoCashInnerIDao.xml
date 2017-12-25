@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundIoCashInnerlDao">	
+	
+	<select id="queryFundIoCashInnerlById" parameterType="java.lang.Long" resultType="com.lt.model.fund.FundIoCashInner">
+		SELECT * FROM fund_io_cash_inner where status =0 and id = #{id};
+	</select>
+	
+	<select id="queryFundIoScoreInnerlById" parameterType="java.lang.Long" resultType="com.lt.model.fund.FundIoCashInner">
+		SELECT * FROM fund_io_score_inner where status =0 and id = #{id};
+	</select>
+	
+	<insert id="addFundIoCashInnerl" parameterType="com.lt.model.fund.FundIoCashInner" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO fund_io_cash_inner
+		(
+			user_id,
+			flow_type,
+			first_optcode,
+			second_optcode,
+			third_optcode,
+			amount,
+			balance,
+			create_date,
+			modify_date,
+			modify_user_id,
+			remark,
+			status,
+			rmb_amt,
+			order_id
+		)VALUES
+		(
+			#{userId},
+			#{flowType},
+			#{firstOptCode},
+			#{secondOptCode},
+			#{thirdOptCode},
+			#{amount},
+			#{balance},
+			now(),
+			now(),
+			#{modifyUserId},
+			#{remark},
+			#{status},
+			#{rmbAmt},
+			#{orderId}
+		)
+	</insert>
+	
+	<insert id="addFundIoScoreInnerl" parameterType="com.lt.model.fund.FundIoCashInner" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO fund_io_score_inner
+		(
+			user_id,
+			flow_type,
+			first_optcode,
+			second_optcode,
+			third_optcode,
+			amount,
+			balance,
+			create_date,
+			modify_date,
+			modify_user_id,
+			remark,
+			status,
+			order_id
+		)VALUES
+		(
+			#{userId},
+			#{flowType},
+			#{firstOptCode},
+			#{secondOptCode},
+			#{thirdOptCode},
+			#{amount},
+			#{balance},
+			now(),
+			now(),
+			#{modifyUserId},
+			#{remark},
+			#{status},
+			#{orderId}
+		)
+	</insert>
+	
+	<update id="updateFundIoCashInnerl" parameterType="com.lt.model.fund.FundIoCashInner">
+		update fund_io_cash_inner 
+		 <set>
+			<if test="status != null">status = #{status}, </if>   
+			<if test="modifyUserId != null">modify_user_id =  #{modifyUserId}, </if>
+			<if test="remark != null">remark =  #{remark}, </if>
+			<if test="orderId != null">order_id =  #{orderId}, </if>
+			<if test="auditDate != null">audit_date =  #{auditDate}, </if>
+			<if test="modifyUserId != null">modify_user_id =  #{modifyUserId}, </if>
+			modify_date = NOW()
+		</set>
+		 where id = #{id}
+	</update>
+	
+	<update id="updateFundIoScoreInnerl" parameterType="com.lt.model.fund.FundIoCashInner">
+		update fund_io_score_inner 
+		 <set>
+			<if test="status != null">status = #{status}, </if>   
+			<if test="modifyUserId != null">modify_user_id =  #{modifyUserId}, </if>
+			<if test="remark != null">remark =  #{remark}, </if>
+			<if test="orderId != null">order_id =  #{orderId}, </if>
+			<if test="auditDate != null">audit_date =  #{auditDate}, </if>
+			<if test="modifyUserId != null">modify_user_id =  #{modifyUserId}, </if>
+			modify_date = NOW()
+		</set>
+		 where id = #{id}
+	</update>
+	
+</mapper>

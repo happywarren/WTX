@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserRechargeIapppayDao">
+	<resultMap id="BaseResultMap" type="com.lt.model.user.charge.FundIapppayRecharge">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="appid" jdbcType="VARCHAR" property="appid" />
+		<result column="waresid" jdbcType="INTEGER" property="waresid" />
+		<result column="waresname" jdbcType="VARCHAR" property="waresname" />
+		<result column="cporderid" jdbcType="VARCHAR" property="cporderid" />
+		<result column="price" jdbcType="DOUBLE" property="price" />
+		<result column="currency" jdbcType="VARCHAR" property="currency" />
+		<result column="appuserid" jdbcType="VARCHAR" property="appuserid" />
+		<result column="cpprivateinfo" jdbcType="VARCHAR" property="cpprivateinfo" />
+		<result column="notifyurl" jdbcType="VARCHAR" property="notifyurl" />
+		<result column="sign" jdbcType="VARCHAR" property="sign" />
+		<result column="signtype" jdbcType="VARCHAR" property="signtype" />
+		<result column="biz_code" jdbcType="VARCHAR" property="bizCode" />
+		<result column="create_stamp" jdbcType="TIMESTAMP" property="createStamp" />
+		<result column="update_stamp" jdbcType="TIMESTAMP" property="updateStamp" />
+		<result column="req_transdata" jdbcType="VARCHAR" property="reqTransdata" />
+		<result column="res_transdata" jdbcType="VARCHAR" property="resTransdata" />
+		<result column="result_id" jdbcType="VARCHAR" property="resultId" />
+		<result column="result_desc" jdbcType="VARCHAR" property="resultDesc" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, user_id, appid, waresid, waresname, cporderid, price, currency, appuserid, cpprivateinfo,
+		notifyurl,
+		sign, signtype, biz_code, create_stamp, update_stamp, req_transdata, res_transdata,
+		result_id, result_desc
+	</sql>
+	<select id="selectFundIapppayRechargeList" parameterType="java.util.Map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		fund_iapppay_recharge
+		where
+		<if test="createStamp!=null">
+			create_stamp > #{createStamp}
+		</if>
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+
+	<select id="selectFundIapppayRechargeByCporderid" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		fund_iapppay_recharge
+		where
+		cporderid = #{cporderid}
+	</select>
+
+	<select id="selectFundIapppayRechargeByCporderidForUpdate" parameterType="java.lang.String" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from
+		fund_iapppay_recharge
+		where
+		cporderid = #{cporderid}
+		for update
+	</select>
+
+	<insert id="insertFundIapppayRecharge" parameterType="com.lt.model.user.charge.FundIapppayRecharge">
+		insert into fund_iapppay_recharge
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="userId != null">
+				user_id,
+			</if>
+			<if test="appid != null">
+				appid,
+			</if>
+			<if test="waresid != null">
+				waresid,
+			</if>
+			<if test="waresname != null">
+				waresname,
+			</if>
+			<if test="cporderid != null">
+				cporderid,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="currency != null">
+				currency,
+			</if>
+			<if test="appuserid != null">
+				appuserid,
+			</if>
+			<if test="cpprivateinfo != null">
+				cpprivateinfo,
+			</if>
+			<if test="notifyurl != null">
+				notifyurl,
+			</if>
+			<if test="sign != null">
+				sign,
+			</if>
+			<if test="signtype != null">
+				signtype,
+			</if>
+			<if test="bizCode != null">
+				biz_code,
+			</if>
+			<if test="createStamp != null">
+				create_stamp,
+			</if>
+			<if test="updateStamp != null">
+				update_stamp,
+			</if>
+			<if test="reqTransdata != null">
+				req_transdata,
+			</if>
+			<if test="resTransdata != null">
+				res_transdata,
+			</if>
+			<if test="resultId != null">
+				result_id,
+			</if>
+			<if test="resultDesc != null">
+				result_desc,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="appid != null">
+				#{appid,jdbcType=VARCHAR},
+			</if>
+			<if test="waresid != null">
+				#{waresid,jdbcType=INTEGER},
+			</if>
+			<if test="waresname != null">
+				#{waresname,jdbcType=VARCHAR},
+			</if>
+			<if test="cporderid != null">
+				#{cporderid,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DOUBLE},
+			</if>
+			<if test="currency != null">
+				#{currency,jdbcType=VARCHAR},
+			</if>
+			<if test="appuserid != null">
+				#{appuserid,jdbcType=VARCHAR},
+			</if>
+			<if test="cpprivateinfo != null">
+				#{cpprivateinfo,jdbcType=VARCHAR},
+			</if>
+			<if test="notifyurl != null">
+				#{notifyurl,jdbcType=VARCHAR},
+			</if>
+			<if test="sign != null">
+				#{sign,jdbcType=VARCHAR},
+			</if>
+			<if test="signtype != null">
+				#{signtype,jdbcType=VARCHAR},
+			</if>
+			<if test="bizCode != null">
+				#{bizCode,jdbcType=VARCHAR},
+			</if>
+			<if test="createStamp != null">
+				#{createStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="updateStamp != null">
+				#{updateStamp,jdbcType=TIMESTAMP},
+			</if>
+			<if test="reqTransdata != null">
+				#{reqTransdata,jdbcType=VARCHAR},
+			</if>
+			<if test="resTransdata != null">
+				#{resTransdata,jdbcType=VARCHAR},
+			</if>
+			<if test="resultId != null">
+				#{resultId,jdbcType=VARCHAR},
+			</if>
+			<if test="resultDesc != null">
+				#{resultDesc,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="updateFundIapppayRecharge" parameterType="com.lt.model.user.charge.FundIapppayRecharge">
+		update fund_iapppay_recharge
+		<set>
+			<if test="updateStamp != null">
+				update_stamp = #{updateStamp},
+			</if>
+			<if test="resultId != null">
+				result_id = #{resultId},
+			</if>
+			<if test="resultDesc != null">
+				result_desc = #{resultDesc},
+			</if>
+		</set>
+		where cporderid = #{cporderid}
+	</update>
+
+</mapper>

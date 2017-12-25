@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.promote.dao.statistic.IStatisticPromoterSummaryLogDao">
+	
+	<insert id="initPromoterSummaryLog" parameterType="com.lt.model.statistic.StatisticPromoterSummaryLog">
+		INSERT INTO statistic_promoter_summary_log
+		(
+			user_id,
+			create_time,
+			modify_time
+		)VALUES
+		(
+			#{userId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<update id="updatePromoterSummaryLogs" parameterType="java.util.List">		
+		<foreach collection="list" item="item" separator=";">
+			UPDATE statistic_promoter_summary_log
+			<set>
+				<if test="item.firstRegisterCount != null">first_register_count=first_register_count+#{item.firstRegisterCount},</if>
+				<if test="item.secondRegisterCount != null">second_register_count=second_register_count+#{item.secondRegisterCount},</if>
+				<if test="item.firstTraderCount != null">first_trader_count=first_trader_count+#{item.firstTraderCount},</if>
+				<if test="item.secondTraderCount != null">second_trader_count=second_trader_count+#{item.secondTraderCount},</if>
+				<if test="item.firstHandCount != null">first_hand_count=first_hand_count+#{item.firstHandCount},</if>
+				<if test="item.secondHandCount != null">second_hand_count=second_hand_count+#{item.secondHandCount},</if>
+				<if test="item.secondRechargerCount != null">second_recharger_count=second_recharger_count+#{item.secondRechargerCount},</if>
+				<if test="item.firstRechargerCount != null">first_recharger_count=first_recharger_count+#{item.firstRechargerCount},</if>
+				<if test="item.firstCommision != null">first_commision=first_commision+#{item.firstCommision},</if>
+				<if test="item.secondCommision != null">second_commision=second_commision+#{item.secondCommision},</if>
+				<if test="item.firstRechargeAmount != null">first_recharge_amount=first_recharge_amount+#{item.firstRechargeAmount},</if>
+				<if test="item.secondRechargeAmount != null">second_recharge_amount=second_recharge_amount+#{item.secondRechargeAmount},</if>
+				<if test="item.firstTradeAmount != null">first_trade_amount=first_trade_amount+#{item.firstTradeAmount},</if>
+				<if test="item.secondTradeAmount != null">second_trade_amount=second_trade_amount+#{item.secondTradeAmount},</if>
+				<if test="item.balanceCommision != null">balance_commision=balance_commision+#{item.balanceCommision},</if>
+				modify_time=now(),				
+			</set>
+			where user_id=#{item.userId}
+		</foreach>		
+	</update>
+	
+	
+	<select id="selectPromoterSummaryInfo" resultType="com.lt.promote.vo.PromoteVo" parameterType="String">
+		select cm.commision_balance,sp.first_register_count,sp.first_trader_count,sp.first_hand_count from promoter p LEFT JOIN statistic_promoter_summary_log sp 
+		on(p.user_id=sp.user_id ) LEFT JOIN commision_main cm on(p.user_id=cm.user_id)
+		where p.user_id=#{userId} and p.flag=1
+	</select>
+	
+	<select id="selectSummaryCount" parameterType="String" resultType="Integer">
+		select count(id) from statistic_promoter_summary_log where user_id=#{userId}
+	</select>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.product.IProductTypeDao">
+	<select id="selectProductTypes" resultType="com.lt.model.product.ProductType" parameterType="com.lt.vo.product.ProductVo">
+		select * from product_type 
+		<where>
+			<if test="productTypeId != null">
+				id=#{productTypeId}
+			</if>
+		</where>
+		ORDER BY sort_num
+	</select>
+	
+	<select id="selectProductTypesByCondition" resultType="com.lt.model.product.ProductType" parameterType="java.lang.String">
+		select * from product_type 
+		<where>
+			<if test="excludeProductTypeCode != null and excludeProductTypeCode !='' ">
+				code != #{excludeProductTypeCode}
+			</if>
+		</where>
+		ORDER BY sort_num
+	</select>
+	
+	<select id="selectProductTypeListByCondition" resultType="com.lt.model.product.ProductType">
+		SELECT
+			DISTINCT(pt.`code`),pt.`name`,pt.`id`
+		FROM
+			investor_product_config AS upc
+		LEFT JOIN product ON product.short_code = upc.product_code
+		JOIN product_type pt ON pt.id = product.product_type_id
+		<where>
+			upc.investor_account_id = #{investorId}
+			<if test="excludeProductTypeCode != null and excludeProductTypeCode !='' ">
+			and	pt.`code` != #{excludeProductTypeCode}
+			</if>
+		</where>
+		ORDER BY product.sort_num 
+	</select>
+		
+	<select id="selectProductByTypeId" resultType="com.lt.vo.user.UserProductSelectListVo"
+		parameterType="Integer">
+		select product.*,pt.`name` AS typeName from product 
+		JOIN product_type pt on pt.id = product.product_type_id
+		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2)
+		and pt.id = #{id}
+		ORDER BY product.sort_num
+	</select>
+	
+	<select id="selectProductForTypeId" resultType="com.lt.vo.user.UserProductSelectListVo">
+		select pt.`name` ,product.* from investor_product_config as upc
+		left JOIN product on product.short_code = upc.product_code
+	    JOIN product_type pt on pt.id = product.product_type_id
+		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
+		and product.status in (1,2)
+		and upc.investor_account_id = #{investorId} and pt.id=#{id}
+		ORDER BY product.sort_num
+	</select>
+</mapper>

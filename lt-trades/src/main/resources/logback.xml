@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="120 seconds" debug="false">
+	<property name="logDir" value="/data/server/logs/lt-trade" />
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{MM-dd HH:mm:ss.SSS} %-5level %msg [%thread] %logger:%L %n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- DEBUG日志 -->
+	<appender name="DEBUG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>${logDir}/log_debug.log</file>
+
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>DEBUG</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logDir}/log_debug/log_debug.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+			<maxFileSize>10MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{MM-dd HH:mm:ss.SSS} %-5level %msg [%thread] %logger:%L %n</pattern>
+		</encoder>
+
+	</appender>
+
+	<!-- INFO日志 -->
+	<appender name="INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>${logDir}/log_info.log</file>
+
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logDir}/log_info/log_info.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+			<maxFileSize>10MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{MM-dd HH:mm:ss.SSS} %-5level %msg [%thread] %logger:%L %n</pattern>
+		</encoder>
+
+	</appender>
+
+	<!-- ERROR日志 -->
+	<appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+		<file>${logDir}/log_error.log</file>
+
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+			<fileNamePattern>${logDir}/log_error/log_error.%d{yyyy-MM-dd}-%i.log</fileNamePattern>
+			<maxFileSize>10MB</maxFileSize>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<pattern>%d{MM-dd HH:mm:ss.SSS} %-5level %msg [%thread] %logger:%L %n</pattern>
+		</encoder>
+
+	</appender>
+	<logger name="com.lt.trade.order.dao" level="INFO"/>
+	<logger name="com.lt.trade" level="INFO" />
+	<root>
+		<!-- 日志级别 -->
+		<level value="INFO" />
+
+		<!-- 文件输出 -->
+		<appender-ref ref="DEBUG" />
+		<appender-ref ref="INFO" />
+		<appender-ref ref="ERROR" />
+
+		<!-- 控制台输出 -->
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

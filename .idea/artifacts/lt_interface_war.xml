@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lt-interface:war">
+    <output-path>$PROJECT_DIR$/lt-interface/target</output-path>
+    <root id="archive" name="lt-interface.war">
+      <element id="artifact" artifact-name="lt-interface:war exploded" />
+    </root>
+  </artifact>
+</component>

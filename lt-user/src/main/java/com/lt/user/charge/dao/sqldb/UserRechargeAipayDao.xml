@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.user.charge.dao.sqldb.UserRechargeAlipayDao">
+
+	<insert id="insertAlipayApply" parameterType="com.lt.model.user.charge.FundAlipayRecharge" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into fund_alipay_recharge
+		(user_id,alipay_id,amount,merid,send_msg,send_date,biz_code)
+		values
+		(#{userId},#{alipayId},#{amount},#{merid},#{sendMsg},#{sendDate},#{bizCode})
+	</insert>
+
+	<select id="getAlipayRecharge" parameterType="java.lang.String" resultType="com.lt.model.user.charge.FundAlipayRecharge">
+		select
+		user_id,alipay_id,amount,merid,send_msg,pay_result,biz_code from fund_alipay_recharge where alipay_id= #{orderId}
+	</select>
+
+	<select id="getAlipayFByIdLock" parameterType="java.lang.String" resultType="com.lt.model.user.charge.FundAlipayRecharge">
+		select
+		user_id,alipay_id,amount,merid,send_msg,pay_result,biz_code from fund_alipay_recharge where alipay_id= #{orderId} for
+		update
+	</select>
+
+	<update id="updateAlipayBackInfo" parameterType="com.lt.model.user.charge.FundAlipayRecharge">
+		update fund_alipay_recharge
+		<set>
+			<if test="payResult != null and payResult != ''"> pay_result = #{payResult},</if>
+			<if test="orderNo != null and orderNo != ''"> order_no = #{orderNo},</if>
+			<if test="factAmount != null and factAmount != ''"> fact_amount = #{factAmount},</if>
+			<if test="payMsg != null and payMsg != ''"> pay_msg = #{payMsg}, </if>
+			<if test="payBackTime != null and payBackTime != ''"> pay_back_time = #{payBackTime}, </if>
+		</set>
+		where alipay_id = #{alipayId} and pay_result = 2
+	</update>
+
+	<select id="getAlipayFWaitDataIds" resultType="java.lang.String">
+		select alipay_id from fund_alipay_recharge
+		<where>
+			<if test="status != null and status != ''">and pay_result = #{status}</if>
+			<if test="beginDate != null and beginDate != ''">and send_date &gt;= #{beginDate}</if>
+			<if test="merid != null and merid != ''">and merid = #{merid}</if>
+			<if test="bizCode != null and bizCode != ''">
+				and biz_code in ${bizCode}
+			</if>
+		</where>
+		<if test="limit != null and limit != ''">
+			limit ${limit}
+		</if>
+	</select>
+</mapper>

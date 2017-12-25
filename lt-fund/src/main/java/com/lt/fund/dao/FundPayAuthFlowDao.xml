@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundPayAuthFlowDao">
+	
+	<!-- 在用户首次支付成功后，保存鉴权记录 -->
+	<insert id="addFinancyPayAuthFlow" parameterType="com.lt.model.fund.FundPayAuthFlow">
+		insert
+			into
+			fund_pay_auth_flow
+			(
+				customer_id,
+				storable_pan,
+				merchant_id,
+				flag,
+				modify_time,
+				create_time
+			)
+			values
+			(
+				#{customerId},
+				#{storablePan},
+				#{merchantId},
+				'0',
+				now(),
+				now()
+			)
+	</insert>
+	
+	<!-- 查询用户鉴权记录，用以确定是否是首次支付.以客户号+短卡号作为组合键 -->
+	<select id="getFinancyPayAuthFlow" parameterType="com.lt.model.fund.FundPayAuthFlow"
+		resultType="com.lt.model.fund.FundPayAuthFlow">
+		
+		select *
+		from
+			fund_pay_auth_flow
+		where
+			flag='0'
+		and
+			customer_id =#{customerId}
+		and
+			storable_pan=#{storablePan}
+	
+	</select>
+	
+	<update id="updateFinancyPayAuthFlow" parameterType="com.lt.model.fund.FundPayAuthFlow"
+		>
+		update
+			fund_pay_auth_flow
+		set
+		<if test="tel != null and tel != ''">
+			tel=#{tel},
+		</if>
+			modify_time=now()
+		where
+			flag='0'
+		and
+			customer_id =#{customerId}
+		and
+			storable_pan=#{storablePan}
+	</update>
+</mapper>

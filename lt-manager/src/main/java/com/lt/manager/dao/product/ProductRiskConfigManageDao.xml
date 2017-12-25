@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductRiskConfigManageDao">
+
+	<sql id="whereSql">
+		<where>
+			<if test="vo !=null">
+				<if test="vo.productId != null">and rsk.product_id=#{vo.productId}</if>
+				<if test="vo.riskLevel != null">and rsk.risk_level=#{vo.riskLevel}</if>
+				<if test="vo.surcharge != null">and rsk.surcharge=#{vo.surcharge}</if>
+				<if test="vo.deferFund != null">and rsk.defer_fund=#{vo.deferFund}</if>
+				<if test="vo.deferFee != null">and rsk.defer_fee=#{vo.deferFee}</if>
+				<if test="vo.stopProfitRange != null">and rsk.stop_profit_range=#{vo.stopProfitRange}</if>
+				<if test="vo.stopLossRange != null">and rsk.stop_loss_range=#{vo.stopLossRange}</if>
+				<if test="vo.multipleRange != null">and rsk.multiple_range=#{vo.multipleRange}</if>
+				<if test="vo.defaultCount != null">and rsk.default_count=#{vo.defaultCount}</if>
+				<if test="vo.defaultStopProfit != null">and rsk.default_stop_profit=#{vo.defaultStopProfit}</if>
+				<if test="vo.defaultStopLoss != null">and rsk.default_stop_loss=#{vo.defaultStopLoss}</if>
+				<if test="vo.isDefer != null">and rsk.is_defer=#{vo.isDefer},</if>
+				<if test="vo.modifyUserId != null">and rsk.modify_user_id=#{vo.modifyUserId}</if>
+				<if test="vo.id!=null">and rsk.id = #{vo.id}
+				</if>
+			</if>
+		</where>
+	</sql>
+
+	<select id="count" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO" resultType="java.lang.Integer">
+		SELECT count(*) FROM product_risk_config rsk JOIN product pro ON (rsk.product_id = pro.id)
+		<include refid="whereSql"/>
+	</select>
+
+	<select id="query" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO" resultType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		SELECT *,(case when rsk.is_defer = 0 then '关闭' when rsk.is_defer = 1 then '开启' end) is_defer_display,
+		(case when rsk.risk_level = 5 then '极高' when rsk.risk_level = 4 then '高' when rsk.risk_level = 3 then '中'
+		when rsk.risk_level = 2 then '低' when rsk.risk_level = 1 then '极低' end) risk_level_display
+		FROM product_risk_config rsk JOIN product pro ON (rsk.product_id = pro.id)
+		<include refid="whereSql"/>
+	</select>
+
+	<select id="queryPage" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO" resultType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		SELECT *,(case when rsk.is_defer = 0 then '关闭' when rsk.is_defer = 1 then '开启' end) is_defer_display,
+		(case when rsk.risk_level = 5 then '极高' when rsk.risk_level = 4 then '高' when rsk.risk_level = 3 then '中'
+		when rsk.risk_level = 2 then '低' when rsk.risk_level = 1 then '极低' end) risk_level_display
+		FROM product_risk_config rsk JOIN product pro ON (rsk.product_id = pro.id)
+		<include refid="whereSql"/>
+		ORDER BY rsk.id desc
+		<if test="vo.offset != null and vo.limit != null">
+			limit ${vo.offset},${vo.limit}
+		</if>
+	</select>
+
+	<select id="load" resultType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		select
+		*
+		from product_risk_config
+		where ROW_ID=#{rowId}
+	</select>
+
+	<update id="update" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		update product_risk_config
+		<set>
+			<if test="vo.productId != null">product_id=#{vo.productId},</if>
+			<if test="vo.riskLevel != null">risk_level=#{vo.riskLevel},</if>
+			<if test="vo.surcharge != null">surcharge=#{vo.surcharge},</if>
+			<if test="vo.deferFund != null">defer_fund=#{vo.deferFund},</if>
+			<if test="vo.deferFee != null">defer_fee=#{vo.deferFee},</if>
+			<if test="vo.stopProfitRange != null">stop_profit_range=#{vo.stopProfitRange},</if>
+			<if test="vo.stopLossRange != null">stop_loss_range=#{vo.stopLossRange},</if>
+			<if test="vo.multipleRange != null">multiple_range=#{vo.multipleRange},</if>
+			<if test="vo.defaultCount != null">default_count=#{vo.defaultCount},</if>
+			<if test="vo.defaultStopProfit != null">default_stop_profit=#{vo.defaultStopProfit},</if>
+			<if test="vo.defaultStopLoss != null">default_stop_loss=#{vo.defaultStopLoss},</if>
+			<if test="vo.isDefer != null">is_defer=#{vo.isDefer},</if>
+			<if test="vo.modifyUserId != null">modify_user_id=#{vo.modifyUserId},</if>
+			modify_date=now()
+		</set>
+		where id=#{vo.id}
+	</update>
+
+	<insert id="insert" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		INSERT INTO product_risk_config
+		(   product_id,
+			risk_level,
+			surcharge,
+			defer_fund,
+			defer_fee,
+			stop_profit_range,
+			stop_loss_range,
+			multiple_range,
+			default_count,
+			default_stop_profit,
+			default_stop_loss,
+			is_defer,
+			create_date,
+			create_user_id,
+			modify_date,
+			modify_user_id
+		)VALUES
+		(
+		    #{vo.productId},
+			#{vo.riskLevel},
+			#{vo.surcharge},
+			#{vo.deferFund},
+			#{vo.deferFee},
+			#{vo.stopProfitRange},
+			#{vo.stopLossRange},
+			#{vo.multipleRange},
+			#{vo.defaultCount},
+			#{vo.defaultStopProfit},
+			#{vo.defaultStopLoss},
+			#{vo.isDefer},
+			now(),
+			#{vo.createUserId},
+			now(),
+			#{vo.modifyUserId}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="com.lt.manager.bean.product.ProductRiskConfigVO">
+		INSERT INTO product_risk_config
+		(   product_id,
+			risk_level,
+			surcharge,
+			defer_fund,
+			defer_fee,
+			stop_profit_range,
+			stop_loss_range,
+			multiple_range,
+			default_count,
+			default_stop_profit,
+			default_stop_loss,
+			is_defer,
+			create_date,
+			create_user_id,
+			modify_date,
+			modify_user_id
+		)VALUES
+		<foreach collection="list" item="item" index="index" separator="," >
+			(
+			#{item.productId},
+			#{item.riskLevel},
+			#{item.surcharge},
+			#{item.deferFund},
+			#{item.deferFee},
+			#{item.stopProfitRange},
+			#{item.stopLossRange},
+			#{item.multipleRange},
+			#{item.defaultCount},
+			#{item.defaultStopProfit},
+			#{item.defaultStopLoss},
+			#{item.isDefer},
+			now(),
+			#{item.createUserId},
+			now(),
+			#{item.modifyUserId}
+			)
+		</foreach>
+	</insert>
+
+	<delete id="delete">
+		delete from product_risk_config
+		where id=#{id}
+	</delete>
+
+	<delete id="deleteBatch">
+		DELETE FROM product_risk_config WHERE product_id in(${ids})
+	</delete>
+</mapper>

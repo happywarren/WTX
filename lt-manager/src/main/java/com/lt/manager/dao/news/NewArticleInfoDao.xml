@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.news.NewArticleInfoDao">
+
+	<select id="getNewsSectionByName" parameterType="java.lang.String" resultType="com.lt.model.news.NewsSection">
+		select * from news_section where name = #{name}
+	</select>
+	
+	<insert id="addNewsSection" parameterType="java.lang.String">
+		INSERT INTO news_section
+		(
+			name,
+			create_date
+		)VALUES	
+		(
+			#{name},
+			now()
+		)
+	</insert>
+	
+	<update id="uptNewsSection" parameterType="com.lt.model.news.NewsSection">
+		UPDATE news_section set name = #{name} where id = #{id} 
+	</update>
+	
+	<select id="qryAllSection"  resultType="com.lt.model.news.NewsSection">
+		select * from news_section
+	</select>
+	
+	<delete id="deleteSectionById" parameterType="java.lang.Integer" >
+		delete from news_section where id=#{id} and id not in (select DISTINCT(section) section from news_article)
+	</delete>
+	
+	<select id="getNewstagByName" parameterType="java.lang.String" resultType="com.lt.model.news.NewsPlate">
+		select * from news_plate where name = #{name}
+	</select>
+	
+	<insert id="addNewsTag" parameterType="java.lang.String">
+		INSERT INTO news_plate
+		(
+			name,
+			create_date
+		)VALUES	
+		(
+			#{name},
+			now()
+		)
+	</insert>
+	
+	<update id="uptNewsTag" parameterType="com.lt.model.news.NewsPlate">
+		UPDATE news_plate set name = #{name} where id = #{id} 
+	</update>
+	
+	<select id="qryAllTag"  resultType="com.lt.model.news.NewsPlate">
+		select * from news_plate
+	</select>
+	
+	<delete id="deleteTagByName" parameterType="java.lang.Integer" >
+		delete from news_plate where id=#{id} and id not in (select DISTINCT(plate_id) plate_id from news_plate_relation)
+	</delete>
+	
+	 <insert id="insetPlateRalation" parameterType="java.util.List">
+	   INSERT INTO news_plate_relation (
+  			news_id,
+  			plate_id,
+  			create_date,
+  			modify_date,
+  			create_staff_name
+    	)values
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (#{item.newsId},
+  			#{item.plateId},
+  			now(),
+  			now(),
+  			#{item.createStaffName}
+    	)
+	    </foreach>  
+    </insert>
+    
+    <delete id="deletePlateRelation">
+		DELETE FROM news_plate_relation WHERE news_id in
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<select id="qryAllReadUser"  resultType="com.lt.manager.bean.user.UserBase" parameterType="java.lang.String">
+		select s.nick_name,s.head_pic,s.id from (select user_id from news_act_info_log WHERE log_type = '3' and news_article_id=#{newId} ORDER BY create_date) f
+		LEFT JOIN user_base s on f.user_id = s.user_id
+	</select>
+	
+	<insert id="addComment" parameterType="com.lt.model.news.NewsComment">
+		INSERT INTO news_comment
+		(
+			news_name,
+			news_id,
+			content,
+			user_id,
+			status,
+			create_date
+		)VALUES	
+		(
+			#{newsName},
+			#{newsId},
+			#{content},
+			#{userId},
+			0,
+			now()
+		)
+	</insert>
+	
+	<insert id="addNewsActLog" parameterType="com.lt.model.news.NewsActInfoLog">
+		INSERT INTO news_act_info_log
+		(
+			user_id,
+			log_type,
+			news_article_id,
+			create_date
+		)VALUES	
+		(
+			#{userId},
+			#{logType},
+			#{newsArticleId},
+			now()
+		)
+	</insert>
+	
+	<update id="addNewsActInfo" parameterType="com.lt.model.news.NewsActInfo">
+		UPDATE news_act_info 
+		<set>
+			<if test="realCommentCount != null">
+				real_comment_count = real_comment_count +1 ,
+			</if>
+			
+			<if test="realReplyCount != null">
+				real_reply_count = real_reply_count +1 ,
+			</if>
+			
+			<if test="initReadCount != null ">
+				init_read_count = #{initReadCount},
+			</if>
+			
+			<if test="initLikeCount != null">
+				init_like_count = #{initLikeCount} ,
+			</if>
+			
+		</set>
+		where target_id = #{targetId} 
+	</update>
+	
+	<insert id="addNewCmtReply" parameterType="com.lt.model.news.NewsCmtReply">
+		INSERT INTO news_cmt_reply
+		(
+			news_name,
+			news_id,
+			reply_content,
+			reply_user_id,
+			cmt_id,
+			reply_id,
+			status,
+			create_date
+		)VALUES	
+		(
+			#{newsName},
+			#{newsId},
+			#{replyContent},
+			#{replyUserId},
+			#{cmtId},
+			#{replyId},
+			0,
+			now()
+		)
+	</insert>
+	
+	<update id="checkNewsComment" parameterType="java.lang.String">
+		UPDATE news_comment  set status = #{status}  where id = #{id} 
+	</update>
+	
+	<update id="checkNewsReply" parameterType="java.lang.String">
+		UPDATE news_cmt_reply  set status = #{status}  where id = #{id} 
+	</update>
+	
+	<update id="updateNewsReply" parameterType="com.lt.model.news.NewsCmtReply">
+		UPDATE news_cmt_reply set reply_content = #{replyContent},modify_date = now()  where id = #{id} 
+	</update>
+	
+	<update id="updateNewsComment" parameterType="com.lt.model.news.NewsComment">
+		UPDATE news_comment set content = #{content},modify_date = now()  where id = #{id} 
+	</update>
+	
+	<update id="checkCommentMutil" >
+		UPDATE news_comment set status = #{status},modify_date = now()  where id in 
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach> 
+	</update>
+	
+	<update id="checkReplyMutil">
+		UPDATE news_cmt_reply set status = #{status},modify_date = now()  where id in 
+		<foreach collection="list" item="id" index="index" open="(" separator="," close=")">
+			#{id}
+		</foreach> 
+	</update>
+	
+	<insert id="insertArticleInfo" parameterType="com.lt.model.news.NewsActInfo">
+		INSERT INTO news_act_info
+		(
+			target_id,
+  			init_read_count,
+  			init_collect_count,
+  			init_like_count,
+  			init_share_count,
+  			real_read_count,
+  			real_collect_count,
+  			real_like_count,
+ 			real_comment_count,
+  			real_reply_count,
+  			real_share_count
+		)VALUES	
+		(
+			#{targetId},
+  			#{initReadCount},
+  			#{initCollectCount},
+  			#{initLikeCount},
+  			#{initShareCount},
+  			#{realReadCount},
+  			#{realCollectCount},
+  			#{realLikeCount},
+ 			#{realCommentCount},
+  			#{realReplyCount},
+  			#{realShareCount}
+		)
+	</insert>
+</mapper>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductQuotaConfigManageDao">
+	<insert id="insertProQuotaConfig" parameterType="com.lt.model.product.ProductQuotaConfig">
+		INSERT INTO product_quota_config
+		(   num,
+			baseline,
+			is_double,
+			interval_float,
+			product_id,
+			create_date,
+			modify_date
+		)VALUES
+		(
+		    #{num},
+			#{baseline},
+			#{isDouble},
+			#{intervalFloat},
+			#{productId},
+			now(),
+			now()
+		)
+	</insert>
+	
+	<update id="updateProQuotaConfigs" parameterType="com.lt.model.product.ProductQuotaConfig">
+		UPDATE product_quota_config
+		<set>
+			<if test="baseline != null">
+				baseline=#{baseline},
+			</if>
+			<if test="num != null">
+				num=#{num},
+			</if>
+			<if test="isDouble != null">
+				is_double=#{isDouble},
+			</if>
+			<if test="intervalFloat != null">
+				interval_float=#{intervalFloat},
+			</if>
+			modify_date=now(),
+		</set>
+		where product_id in(${ids})
+	</update>
+	
+	<delete id="deleteProQuotaCfgs" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		DELETE FROM product_quota_config WHERE product_id in(${ids})
+	</delete>
+	
+	<select id="selectProQuotaCfg" parameterType="com.lt.manager.bean.product.ProductParamVO" 
+											resultType="com.lt.model.product.ProductQuotaConfig">
+		SELECT * from product_quota_config where product_id =#{id}
+	</select>
+</mapper>

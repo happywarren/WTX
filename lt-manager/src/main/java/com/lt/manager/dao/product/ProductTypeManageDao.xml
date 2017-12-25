@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.product.ProductTypeManageDao">
+	<select id="selectProductTypePage" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.model.product.ProductType">
+		SELECT * FROM product_type
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="sortNum != null">
+				and sort_num=#{sortNum}
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+		ORDER BY sort_num
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+	</select>
+	
+	<select id="selectProductTypeCount" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="Integer">
+		SELECT COUNT(id) FROM product_type
+		<where>
+			<if test="name != null and name != ''">
+				and name like concat('%',#{name},'%')
+			</if>
+			<if test="sortNum != null">
+				and sort_num=#{sortNum}
+			</if>
+			<if test="id != null">
+				and id=#{id}
+			</if>
+		</where>
+	</select>
+	
+	<insert id="insertProductType" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		INSERT INTO product_type
+		(
+			name,
+			sort_num,
+			create_date,
+			remark
+		)VALUES	
+		(
+			#{name},
+			1,
+			now(),
+			#{remark}
+		)
+	</insert>
+	
+	<update id="updateProductType" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		UPDATE product_type
+		<set>
+			<if test="name != null and name != ''">
+				name=#{name},
+			</if>
+			<if test="sortNum != null">
+				sort_num=#{sortNum},
+			</if>
+			<if test="remark != null">
+				remark=#{remark},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<update id="updateSort" parameterType="map">
+		UPDATE product_type SET sort_num=sort_num+1
+	</update>
+	
+	<!-- 大改小 -->
+	<update id="updateSortForGTL" parameterType="map">
+		UPDATE product_type SET sort_num=sort_num+1	
+		where sort_num >= #{newSort} and #{oldSort} > sort_num
+	</update>
+	
+	<!-- 小改大 -->
+	<update id="updateSortForLTG" parameterType="map">
+		UPDATE product_type SET sort_num=sort_num-1	
+		where sort_num > #{oldSort} and #{newSort} >= sort_num
+	</update>
+	
+	<delete id="deleteProductType" parameterType="com.lt.manager.bean.product.ProductParamVO">
+		DELETE FROM product_type where id in (${ids})
+	</delete>
+	
+	<select id="selectProductTypeOne" parameterType="com.lt.manager.bean.product.ProductParamVO" resultType="com.lt.model.product.ProductType">
+		SELECT * FROM product_type WHERE id=#{id}
+	</select>
+	
+	<update id="updateSortToL" parameterType="String">
+		update product_type set sort_num = sort_num-1 
+		where  sort_num > #{oldSort}
+	</update>
+	
+	<update id="test">
+		update product_type set sort_num=14 where id=61 and sort_num=1
+	</update>
+	
+	<select id="test1" resultType="Integer">
+		select count(id) from product_type where sort_num in(1,2) for update
+	</select>
+</mapper>

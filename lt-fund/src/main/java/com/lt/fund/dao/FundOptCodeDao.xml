@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.fund.dao.FundOptCodeDao">
+
+	<!-- 查询订单流水数量 -->
+	<select id="queryFundOptCodeByCode" resultType="com.lt.model.fund.FundOptCode">
+		select * from fund_optcode 
+		<where>
+			<if test="first != null and first != ''">
+				and first_optcode = #{first}
+			</if>
+			<if test="second != null and second != ''">
+				and second_optcode = #{second}
+			</if>
+			<if test="third != null and third != ''">
+				and third_optcode = #{third}
+			</if>
+		</where>
+	</select>
+	
+	
+	<select id="selectFundOptCodes" parameterType="com.lt.model.fund.FundOptCode" 
+												resultType="com.lt.model.fund.FundOptCode">
+		select * from fund_optcode
+		<where>
+			<if test="firstOptCode != null and firstOptCode != ''">
+				and first_optcode = #{firstOptCode}
+			</if>
+			<if test="secondOptCode != null and secondOptCode != ''">
+				and second_optcode = #{secondOptCode}
+			</if>
+			<if test="thirdOptCode != null and thirdOptCode != ''">
+				and third_optcode = #{thirdOptCode}
+			</if>
+		</where>
+	</select>
+</mapper>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:redis="http://www.springframework.org/schema/redis"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/redis
+       http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
+       
+	<!-- redis 相关 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="150" />
+		<property name="maxIdle" value="30" />
+		<property name="minIdle" value="10" />
+		<!-- <property name="maxWaitMillis" value="1000l" /> -->
+	</bean>
+
+	<bean id="redisConnectionFactory"
+		class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		p:hostName="${redis_stock.hostName}"
+		p:password="${redis_stock.password}"
+		p:port="${redis_stock.port}"
+		p:usePool="${redis_stock.usePool}"
+		p:database="0"
+		p:poolConfig-ref="jedisPoolConfig" />
+
+	<!-- 序列化Java对象的方法 -->
+	<bean id="fastJsonSerializer" class="com.lt.util.utils.redis.RedisJsonSerializer" />
+	
+	<bean id="stringSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+	
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate"
+		p:connectionFactory-ref="redisConnectionFactory"
+		p:defaultSerializer-ref="fastJsonSerializer"
+		p:keySerializer-ref="stringSerializer" />
+	
+    <!-- 消費端 Pub/Sub配置  对于Spring还有传统风格的配置方式,实现的功能和下面一模一样.  -->
+   <!--  <bean id="listener" class="com.lt.manager.listener.redis.RedisMessageServiceListener" /> -->
+    
+	<!-- 监控适配器 -->
+    <!-- <bean id="messageListener" class="org.springframework.data.redis.listener.adapter.MessageListenerAdapter">  
+        <property name="delegate" ref="listener" />  
+        <property name="serializer" ref="stringSerializer" />  
+    </bean> -->
+    
+    <!-- 封装监控容器, 封装了自动加载监控产品类型 -->
+    <!-- <bean id="redisContainer" class="com.lt.util.utils.redis.LTRedisMessageListenerContainer">
+  		 <property name="connectionFactory" ref="redisConnectionFactory"/>
+  		 <property name="redisTemplate" ref="redisTemplate"/>
+  		 <property name="messageListener" ref="messageListener"/>
+  	</bean> -->
+  
+     <!-- 如下面的配置
+		Method属性是配置订阅系统接收消息的方法,默认也是"handleMessage" 
+		topic就是订阅的channel频道,是有发布到java这个channel的消息才会被接收.  -->
+
+ <!-- 
+	<redis:listener-container connection-factory="redisConnectionFactory">
+	<redis:listener ref="listener" method="handleMessage"
+			topic="SR705 pp1705 au1706 ag1706 CL1702 ru1705 cu1703 ni1705 GC1702 rb1705 ru1705 HSI1701 MHI1701" />
+	</redis:listener-container>
+  -->
+</beans>    

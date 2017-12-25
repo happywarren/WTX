@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.trade.settle.dao.SettleDao">
+	<!-- 查询现金订单持仓数量信息 -->
+	<select id="querySettleCfgById" parameterType="java.lang.Integer" resultType="com.lt.model.settle.SettleTypeInfo">
+		select * from settle_type where id = #{id}
+	</select>
+	
+	<!-- 添加现金订单流水 -->
+	<insert id="insertSettleTmp" parameterType="java.util.List" >
+		<selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                 order= "AFTER">
+                SELECT LAST_INSERT_ID()
+       </selectKey >
+		INSERT INTO settle_temp (user_id,amt,extern_id,remark,create_time,status,balance_type) values
+	    <foreach collection="list" item="item" index="index" separator="," >  
+	        (
+	        #{item.userId},#{item.amt},#{item.externId},#{item.remark},now(),#{item.status},#{item.balanceType}
+	        )    
+	    </foreach>
+	</insert>
+</mapper>

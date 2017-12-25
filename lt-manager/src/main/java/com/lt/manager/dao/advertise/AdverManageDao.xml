@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.advertise.AdverManageDao">
+
+	 <insert id="insertAdvertisement"	parameterType="com.lt.model.advertise.Advertisement">
+		insert into
+			advertisement
+			(adver_id,adver_type,title,h5_url,banner_url,content_type,content,weight,creater_user_id,create_date,update_user_id,update_date,is_show_content)
+		values
+			(#{adverId},#{adverType},#{title},#{h5Url},#{bannerUrl},#{contentType},#{content},#{weight},#{createrUserId},now(),#{updateUserId},now(),#{isShowContent})
+	</insert>
+	
+	<select id="getHighWeight"	parameterType="java.lang.String" resultType="java.lang.Integer">
+		select
+			max(weight)
+		from
+			advertisement
+		where adver_type = #{adverType}
+	</select>
+	
+	<update id="updateAdvertisementWeight"	parameterType="com.lt.model.advertise.Advertisement">
+		update
+			advertisement
+		<set>
+			weight = #{weight},
+		    update_user_id = #{updateUserId},
+			update_date=now()
+		</set>
+		<where>
+			adver_id=#{adverId}
+		</where>
+	</update>
+	
+	<update id="updateAdvertisementShow"	parameterType="com.lt.model.advertise.Advertisement">
+		update
+			advertisement
+		<set>
+			is_show = #{isShow},
+		    update_user_id = #{updateUserId},
+			update_date=now()
+		</set>
+		<where>
+			adver_id=#{adverId}
+		</where>
+	</update>
+	
+	<select id="qryAdverMentById"	parameterType="java.lang.String" resultType="com.lt.model.advertise.Advertisement">
+		select * from advertisement where adver_id = #{adverId}
+	</select>
+	
+	<select id="selectAdvertisementList"	parameterType="com.lt.manager.bean.advertise.AdvertisementVo" resultType="com.lt.model.advertise.Advertisement">
+		select * from advertisement 
+		<where>
+			<if test="adverId !=null and adverId != '' ">
+				and adver_id=#{adverId}
+			</if>
+			
+			<if test="adverType !=null and adverType != '' ">
+				and adver_type=#{adverType}
+			</if>
+			
+			<if test="weight !=null and weight != '' ">
+				and weight = #{weight}
+			</if>
+		</where>
+			
+	</select>
+	
+	<delete id="deleteAdvertisement" parameterType="java.lang.String">
+		DELETE FROM advertisement where adver_id=#{adverId}
+	</delete>
+	
+	<update id="updateAdvertisement"	parameterType="com.lt.model.advertise.Advertisement">
+		update
+			advertisement
+		set
+			adver_type =#{adverType},
+			title=#{title},
+			banner_url=#{bannerUrl},
+			content_type=#{contentType},
+			content=#{content},
+			h5_url=#{h5Url},
+			weight= #{weight},
+			update_user_id = #{updateUserId},
+			update_date = now(),
+			is_show_content = #{isShowContent}
+		where
+			adver_id=#{adverId}
+	</update>
+	
+	<select id="qryAdvertisementPage"	parameterType="com.lt.manager.bean.advertise.AdvertisementVo" resultType="com.lt.manager.bean.advertise.AdvertisementPage">
+		select t.* from (select  f.*,s.`name` create_user_name from ( select creater_user_id , create_date,adver_id,adver_type,banner_url,title,is_show,weight from advertisement 
+		
+		<where>
+			<if test="title !=null and title != '' ">
+				and title like concat('%',#{title},'%')
+			</if>
+			
+			<if test="isShow !=null and isShow != '' ">
+				and is_show = #{isShow}
+			</if>
+			
+			<if test="adverType !=null and adverType != '' ">
+				and adver_type = #{adverType}
+			</if>
+			
+			<if test="createBeginDate !=null and createBeginDate != '' ">
+				and create_date &gt;= #{createBeginDate}
+			</if>
+			
+			<if test="createEndDate !=null and createEndDate != '' ">
+				and create_date &lt;= #{createEndDate}
+			</if>
+		</where>
+		
+		) f
+
+		LEFT JOIN staff s on f.creater_user_id = s.id ) t 
+		<where>
+				<if test="createUserName !=null and createUserName != '' ">
+					 t.create_user_name like concat('%',#{createUserName},'%')
+				</if>
+		</where>
+		
+		order by t.create_date desc 
+		
+		<if test="offset != null and limit != null">
+			limit ${offset},${limit}
+		</if>
+		
+	</select>
+	
+	<select id="qryAdvertisementCount"	parameterType="com.lt.manager.bean.advertise.AdvertisementVo" resultType="java.lang.Integer">
+		select count(t.adver_id) from (select  f.*,s.`name` from ( select creater_user_id , create_date,adver_id,adver_type,banner_url,title,is_show from advertisement 
+		
+		<where>
+			<if test="title !=null and title != '' ">
+				and title like concat('%',#{title},'%')
+			</if>
+			
+			<if test="isShow !=null and isShow != '' ">
+				and is_show = #{isShow}
+			</if>
+			
+			<if test="adverType !=null and adverType != '' ">
+				and adver_type = #{adverType}
+			</if>
+			
+			<if test="createBeginDate !=null and createBeginDate != '' ">
+				and create_date &gt;= #{createBeginDate}
+			</if>
+			
+			<if test="createEndDate !=null and createEndDate != '' ">
+				and create_date &lt;= #{createEndDate}
+			</if>
+		</where>
+		
+		) f
+
+		LEFT JOIN staff s on f.creater_user_id = s.id ) t 
+		<where>
+				<if test="createUserName !=null and createUserName != '' ">
+					 t.`name` like concat('%',#{createUserName},'%')
+				</if>
+		</where>
+		
+	</select>
+</mapper>

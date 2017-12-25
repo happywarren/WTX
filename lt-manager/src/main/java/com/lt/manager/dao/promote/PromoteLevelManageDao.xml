@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.promote.PromoteLevelManageDao">
+
+	<insert id="insertPromoterLevel" parameterType="String">
+		INSERT INTO promoter_level
+		(
+			level,
+			create_time
+		)VALUES
+		(
+			#{level},
+			now()
+		)
+	</insert>
+	
+	<select id="selectPromoterLevelOne" parameterType="String" resultType="com.lt.model.promote.PromoterLevel">
+		SELECT * FROM promoter_level WHERE level=#{level}
+	</select>
+	
+	<delete id="deletePromoteLevel" parameterType="Integer">
+		DELETE FROM promoter_level WHERE id=#{id}
+	</delete>
+	
+	<select id="selectPromoterLevels" resultType="com.lt.model.promote.PromoterLevel">
+		select * from promoter_level order by level
+	</select>
+</mapper>

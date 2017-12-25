@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.news.NewsArticleDao">
+
+	<insert id="insertNewsCmt" parameterType="com.lt.model.news.NewsComment" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into news_comment (
+			news_id, news_name, content, user_id, status, 
+			create_date, verify_staff_id, verify_staff_name, modify_date
+		) values (
+			#{newsId}, #{newsName}, #{content}, #{userId}, #{status}, 
+			now(), #{verifyStaffId}, #{verifyStaffName}, now()
+		)
+	</insert>
+	
+	<insert id="insertNewsCmtReply" parameterType="com.lt.model.news.NewsCmtReply" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into news_cmt_reply (
+			news_id, news_name, reply_content, reply_user_id,  
+			cmt_id, reply_id, status, verify_staff_id, verify_staff_name, create_date, modify_date
+		) values (
+			#{newsId}, #{newsName}, #{replyContent}, #{replyUserId},
+			#{cmtId}, #{replyId}, #{status}, #{verifyStaffId}, #{verifyStaffName}, now(), now()
+		)
+	</insert>
+		
+	<update id="newsInfoPlusIncrement">
+		update news_act_info set ${columnName} = ${columnName} + 1 where target_id = #{newsId} 
+	</update>
+	
+	<insert id="insertNewsActInfoLog" parameterType="com.lt.model.news.NewsActInfoLog" useGeneratedKeys="true" keyProperty="id">
+	    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+			SELECT LAST_INSERT_ID() AS id
+		</selectKey>
+		insert into news_act_info_log (
+			user_id, log_type, news_article_id, ip, create_date, modify_date
+		) VALUES (
+			#{userId}, #{logType}, #{newsArticleId}, #{ip}, now(), now()
+		)
+	</insert>
+	
+	<select id="selectNewsArticleById" parameterType="java.lang.Integer" resultType="com.lt.model.news.NewsArticle">
+		select * from news_article where id = #{id}
+	</select>
+	
+	<select id="selectNewsArticleCmtByNewsIdList" parameterType="java.lang.Integer" resultType="com.lt.model.news.NewsComment">
+		select * 
+		  from news_comment 
+		 where news_id in
+		<foreach collection="list" open="(" close=")" item="newsId" separator=",">
+			#{newsId}
+		</foreach>
+	  order by create_date desc
+	</select>
+	
+	<select id="selectNewsArticleCmtByUserId" parameterType="map" resultType="com.lt.model.news.NewsComment">
+		SELECT nc.id, nc.news_id, nc.news_name, nc.content, nc.user_id, ud.nick_name user_nick, ud.head_pic as user_head, nc.create_date
+          FROM news_comment as nc 
+     left join user_base as ud 
+     		on nc.user_id = ud.user_id
+		 where nc.news_id = #{newsId}
+		<if test="userId !=null">
+		   and ( nc.status=1 or  nc.user_id=#{userId})
+		 </if>
+		 <if test="userId ==null">
+		   and nc.status=1
+		 </if>
+		 order by nc.create_date desc
+	<if test="pageNo != null and pageSize != null">
+		limit ${pageNo},${pageSize}
+	</if>
+		 
+	</select>
+	
+	<select id="selectNewsArticleCmtCountByUserId" parameterType="String" resultType="java.lang.Integer">
+		SELECT count(nc.id) 
+          FROM news_comment as nc 
+     left join user_base as ud 
+     		on nc.user_id = ud.user_id
+		 where nc.news_id = #{newsId}
+	<if test="userId !=null">
+		   and ( nc.status=1 or  nc.user_id=#{userId})
+		 </if>
+		 <if test="userId ==null">
+		   and nc.status=1
+		 </if>
+		 order by nc.create_date desc
+	</select>
+	
+	<select id="selectNewsArticleCmtReplyByCmtId"  resultType="com.lt.model.news.NewsCmtReply">
+		SELECT nc.id, nc.news_id, nc.news_name, nc.reply_content, nc.reply_user_id,
+			   ud.head_pic as reply_user_head, ud.nick_name as reply_user_nick, nc.cmt_id, nc.reply_id, 
+			   nc2.nick_name as up_user_nick, nc.create_date, nc.modify_date
+	      FROM news_cmt_reply as nc 
+	 left join user_base as ud 
+	 		on nc.reply_user_id=ud.user_id
+	 left join (select f.id,s.nick_name from news_cmt_reply f left join user_base s on f.reply_user_id = s.user_id ) as nc2
+	 		on nc.reply_id = nc2.id
+		 where nc.cmt_id=#{cmtId} 
+		<if test="userId !=null">
+		   and (nc.status=1 or nc.reply_user_id=#{userId})
+		</if>
+		<if test="userId ==null">
+		   and nc.status=1
+		</if>
+	  order by nc.create_date asc
+	</select>
+	
+	<select id="selectNewsCmtReplyByIdList" parameterType="java.lang.Integer" resultType="com.lt.model.news.NewsCmtReply">
+		select * from news_cmt_reply where id in 
+		<foreach collection="idList" close=")" item="idItem" open="(" separator=",">#{idItem}</foreach>
+	</select>
+	
+	
+	<select id="selectNewsArticleCmtByIdList" parameterType="java.lang.Integer"  resultType="com.lt.model.news.NewsComment">
+	    select * from news_comment where id in
+		<foreach collection="list" open="(" close=")" item="idItem" separator=",">
+			#{idItem}
+		</foreach>	
+		order by create_date desc
+	</select>
+	
+	<select id="selectLastCmtByUserId" parameterType="String"  resultType="com.lt.model.news.NewsComment">
+		select * from news_comment where user_id=#{userId} order by create_date desc limit 0,1   
+	</select>
+	
+	<select id="selectLastReplyByUserId"  parameterType="String" resultType="com.lt.model.news.NewsCmtReply">
+    	select * from news_cmt_reply  where reply_user_id=#{userId} order by create_date desc limit 0,1   
+    </select>
+    
+    <select id="getLastTopNews" resultType="com.lt.vo.news.NewsArticleVo">
+    	SELECT na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary, 
+			   out_source_name, out_source_url, source_type, banner_url, permit_comment, '' as content, 
+			   (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+			   COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count , 
+			   COALESCE(nai.init_share_count +nai.real_share_count, 0) as share_count , 
+			   (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+			   na.modify_date as modify_date, publish_date as create_date, top, hot, hot_end_time, pic_flag
+		  FROM news_article na  
+	 left join news_section ns on na.`section` = ns.id  
+	 left join news_act_info nai on na.id = nai.target_id
+		 where top=1 and na.status = 2  
+		   and section = 55 
+	  order by na.publish_date desc limit 1
+    </select>
+    
+    <select id="getNewsBySection" resultType="com.lt.vo.news.NewsArticleVo">
+    	SELECT na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary, 
+			   out_source_name, out_source_url, source_type, banner_url, permit_comment, '' as content, 
+			   (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+			   COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count, 
+			   COALESCE(nai.init_share_count + nai.real_share_count, 0) as share_count,  
+			   (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+			   na.modify_date as modify_date, publish_date as create_date, top, hot, hot_end_time, pic_flag
+		  FROM news_article na  
+	 left join news_section ns on na.`section` = ns.id  
+	 left join news_act_info nai on na.id = nai.target_id
+		 where na.status = 2 
+		   and section = #{section}
+		<if test="topId != null">
+		   and na.id != #{topId}
+		</if>
+	  order by na.publish_date desc limit #{index},#{size}
+    </select>
+
+	<select id="getNewsByBrandIdSection" resultType="com.lt.vo.news.NewsArticleVo">
+    	SELECT na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary,
+			   out_source_name, out_source_url, source_type, banner_url, permit_comment, '' as content,
+			   (select count(1) from news_comment where news_id = na.id and status  =1 ) as cmt_count,
+			   COALESCE( nai.init_read_count + nai.real_read_count, 0) as read_count,
+			   COALESCE(nai.init_share_count + nai.real_share_count, 0) as share_count,
+			   (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+			   na.modify_date as modify_date, publish_date as create_date, top, hot, hot_end_time, pic_flag,na.creater
+		  FROM news_article na
+	 left join news_section ns on na.`section` = ns.id
+	 left join news_act_info nai on na.id = nai.target_id
+		 where na.status = 2
+		   and section = #{section}
+		<if test="brandId != null">
+			and na.brand_id like CONCAT('%', #{brandId}, '%')
+		</if>
+		<if test="topId != null">
+		   and na.id != #{topId}
+		</if>
+	  order by na.publish_date desc limit #{index},#{size}
+    </select>
+
+    
+    <select id="getNewsArticleVoById" resultType="com.lt.vo.news.NewsArticleVo">
+		select na.id as id, title, sub_title, section, ns.name as section_name, keyword, summary, 
+			   out_source_name, out_source_url, source_type, banner_url, permit_comment, content, 
+			   (select count(1) from news_comment where news_id = na.id and status=1 ) as cmt_count,
+			   coalesce(nai.init_read_count + nai.real_read_count, 0) as read_count , 
+			   coalesce(nai.init_share_count + nai.real_share_count, 0) as share_count , 
+			   (select group_concat(name) from news_plate where id in (select plate_id from news_plate_relation where news_id = na.id))as plate_name ,
+			   na.modify_date as modify_date, publish_date as `create_date`, top, hot, hot_end_time, pic_flag,nab.creater as out_source_name
+		  from news_article na
+		  LEFT join news_article_brand nab on nab.news_article_id = na.id
+	 left join news_section ns on na.`section` = ns.id  
+	 left join news_act_info nai on na.id = nai.target_id
+		 where na.id = #{newsId}
+    </select>
+    
+    <select id="getNewsJin10Page" resultType="com.lt.model.news.NewsJin10">
+    	select * from news_jin10 where status = 1 order by modify_date desc
+    </select>
+    
+</mapper>

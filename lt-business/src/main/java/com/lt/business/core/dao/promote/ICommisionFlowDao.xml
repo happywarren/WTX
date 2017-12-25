@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.business.core.dao.promote.ICommisionFlowDao">
+	
+	<insert id="insertCommisionFlows" parameterType="java.util.List">
+		INSERT INTO commision_flow
+		(
+			`user_id` ,
+  			`flow_type` ,
+  			`first_optcode`,
+  			`second_optcode`,
+  			`third_optcode`,
+  			`amount`,
+  			`balance` ,
+  			`remark`,
+  			`create_date` ,
+  			`modify_date`
+		)VALUES
+		<foreach collection="list" item="item" separator=",">
+			(
+				#{item.userId},
+				#{item.flowType},
+				#{item.firstOptcode},
+				#{item.secondOptcode},
+				#{item.thirdOptcode},
+				#{item.amount},
+				#{item.balance},
+				#{item.remark},
+				now(),
+				now()
+			)			
+		</foreach>			
+	</insert>
+	
+	<insert id="insertCommisionFlow" parameterType="com.lt.model.promote.CommisionFlow">
+		INSERT INTO commision_flow
+		(
+			`user_id` ,
+  			`flow_type` ,
+  			`first_optcode`,
+  			`second_optcode`,
+  			`third_optcode`,
+  			`amount`,
+  			`balance` ,
+  			`remark`,
+  			`create_date` ,
+  			`modify_date`
+		)VALUES
+		(
+			#{userId},
+			#{flowType},
+			#{firstOptcode},
+			#{secondOptcode},
+			#{thirdOptcode},
+			#{amount},
+			#{balance},
+			#{remark},
+			now(),
+			now()
+		)
+	</insert>
+</mapper>

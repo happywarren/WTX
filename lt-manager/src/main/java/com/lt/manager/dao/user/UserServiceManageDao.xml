@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lt.manager.dao.user.UserServiceManageDao">
+	<insert id="insertUserService" parameterType="com.lt.manager.bean.user.UserService">
+		INSERT INTO user_service
+		(
+			service_code,
+			service_name,
+			type,
+			is_use,
+			create_date,
+			default_status
+		)VALUES	
+		(
+		    #{serviceCode},
+			#{serviceName},
+			#{type},
+			#{isUse},
+			now(),
+			#{defaultStatus}
+		)
+	</insert>
+	
+	<update id="updateUserService" parameterType="com.lt.manager.bean.user.UserService">
+		UPDATE user_service
+		<set>
+			<if test="serviceCode != null and serviceCode != ''">
+				service_code=#{serviceCode},
+			</if>
+			<if test="serviceName != null and serviceName != ''">
+				service_name=#{serviceName},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+				<if test="isUse != null">
+				is_use=#{isUse},
+			</if>
+			<if test="defaultStatus != null ">
+				default_status=#{defaultStatus},
+			</if>
+		</set>
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteUserService" parameterType="com.lt.manager.bean.user.UserService">
+		DELETE FROM user_service where id=#{id}
+	</delete>
+	
+	<select id="selectUserServiceById" parameterType="String" resultType="com.lt.manager.bean.user.UserService" >
+		select * from  user_service where id=#{id}
+	</select>
+	
+	<update id="updateUserDailyTopAmt" parameterType="java.util.Map">
+		update user_base set daily_top_in_amt = #{amt} where user_id = #{userId}
+	</update>
+	
+	
+	<select id="getUserDailyTopAmt" parameterType="String" resultType="java.lang.Double" >
+		select daily_top_in_amt from  user_base where user_id=#{id}
+	</select>
+	
+	<select id="getUserRechargeAmt" parameterType="String" resultType="com.lt.manager.bean.fund.FundIoCashRechargeVO" >
+		SELECT SUM(actual_amount) actual_amount,SUM(actual_rmb_amount) actual_rmb_amount FROM `fund_io_cash_recharge` where `status` = 1 
+		and to_days(done_date) = to_days(now()) and user_id = #{userId};
+	</select>
+	
+	<select id="getUserChannel" parameterType="String" resultType="String" >
+		select channel_id from  user_charge_mapper where user_id=#{userId}
+	</select>
+	
+	<select id="getUserBankChannelAmt" parameterType="com.lt.model.user.charge.BankChargeMapper" resultType="com.lt.model.user.charge.BankChargeMapper" >
+		select single_limit,daily_limit from  bank_charge_mapper where bank_code=#{bankCode} and channel_id = #{channelId}
+	</select>
+	
+</mapper>

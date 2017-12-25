@@ -1,0 +1,345 @@
+2017-12-21  21:51:24.547 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 2752 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  21:51:24.574 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  21:51:24.855 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4ebce2d9: startup date [Thu Dec 21 21:51:24 CST 2017]; root of context hierarchy
+2017-12-21  21:51:26.400 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  21:52:45.530 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 3780 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  21:52:45.535 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  21:52:45.752 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@7cdcbba0: startup date [Thu Dec 21 21:52:45 CST 2017]; root of context hierarchy
+2017-12-21  21:52:46.051 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  21:52:48.712 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$556a8256] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.761 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$9e7cb874] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.777 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$$EnhancerBySpringCGLIB$$92f07d18] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.804 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties' of type [org.springframework.boot.autoconfigure.cache.CacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.812 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManagerCustomizers' of type [org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.815 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration' of type [org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration$$EnhancerBySpringCGLIB$$43821972] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.823 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration$$EnhancerBySpringCGLIB$$9b0d07e3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.831 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:48.837 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$e964a965] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:49.175 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:49.226 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:49.239 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManager' of type [org.springframework.data.redis.cache.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:49.240 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheAutoConfigurationValidator' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$CacheManagerValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:52:49.829 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  21:52:49.851 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  21:52:49.852 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  21:52:50.028 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  21:52:50.028 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 4276 ms
+2017-12-21  21:52:50.238 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  21:52:50.244 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  21:52:50.244 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  21:52:50.244 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  21:52:50.245 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  21:52:50.349 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  21:52:50.352 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  21:52:50.492 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  21:52:50.510 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  21:52:50.517 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  21:55:23.302 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 5484 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  21:55:23.307 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  21:55:23.511 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  21:55:23.663 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5839bce6: startup date [Thu Dec 21 21:55:23 CST 2017]; root of context hierarchy
+2017-12-21  21:55:25.275 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$99bb002] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.309 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$52ade620] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.325 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$$EnhancerBySpringCGLIB$$4721aac4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.346 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties' of type [org.springframework.boot.autoconfigure.cache.CacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.356 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManagerCustomizers' of type [org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.359 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration' of type [org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration$$EnhancerBySpringCGLIB$$f7b3471e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.366 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration$$EnhancerBySpringCGLIB$$4f3e358f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.374 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.381 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$9d95d711] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.409 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.430 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.438 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManager' of type [org.springframework.data.redis.cache.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.439 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheAutoConfigurationValidator' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$CacheManagerValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  21:55:25.816 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  21:55:25.825 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  21:55:25.825 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  21:55:25.931 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  21:55:25.931 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2268 ms
+2017-12-21  21:55:26.087 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  21:55:26.091 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  21:55:26.092 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  21:55:26.092 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  21:55:26.092 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  21:55:26.149 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  21:55:26.151 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  21:55:26.163 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  21:55:26.173 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  21:55:26.180 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  22:01:47.996 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  22:01:48.099 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 2660 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  22:01:48.100 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  22:01:48.192 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@5839bce6: startup date [Thu Dec 21 22:01:48 CST 2017]; root of context hierarchy
+2017-12-21  22:01:49.800 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a8827eb6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.835 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$f194b4d4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.850 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$$EnhancerBySpringCGLIB$$e6087978] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.872 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties' of type [org.springframework.boot.autoconfigure.cache.CacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.881 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManagerCustomizers' of type [org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.884 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration' of type [org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration$$EnhancerBySpringCGLIB$$969a15d2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.891 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration$$EnhancerBySpringCGLIB$$ee250443] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.901 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.912 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$3c7ca5c5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.942 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.965 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.974 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManager' of type [org.springframework.data.redis.cache.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:49.975 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheAutoConfigurationValidator' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$CacheManagerValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:01:50.307 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  22:01:50.316 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  22:01:50.317 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  22:01:50.425 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  22:01:50.425 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2233 ms
+2017-12-21  22:01:50.586 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  22:01:50.590 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  22:01:50.591 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  22:01:50.591 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  22:01:50.591 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  22:01:50.647 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  22:01:50.649 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  22:01:50.661 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  22:01:50.670 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  22:01:50.693 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  22:02:08.369 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 3784 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  22:02:08.373 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  22:02:08.424 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  22:02:08.453 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@42ab764c: startup date [Thu Dec 21 22:02:08 CST 2017]; root of context hierarchy
+2017-12-21  22:02:09.862 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c1823ba7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:10.218 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  22:02:10.226 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  22:02:10.228 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  22:02:10.367 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  22:02:10.367 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1914 ms
+2017-12-21  22:02:10.520 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  22:02:10.525 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  22:02:10.525 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  22:02:10.525 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  22:02:10.525 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  22:02:10.572 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  22:02:10.573 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  22:02:10.585 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  22:02:10.595 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  22:02:10.601 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  22:02:39.720 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 6052 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  22:02:39.724 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  22:02:39.895 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@452c44ba: startup date [Thu Dec 21 22:02:39 CST 2017]; root of context hierarchy
+2017-12-21  22:02:40.020 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  22:02:41.152 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:02:41.194 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:02:41.242 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:02:41.760 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2c15b778] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.794 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$7527ed96] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.810 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$$EnhancerBySpringCGLIB$$699bb23a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.832 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.cache-org.springframework.boot.autoconfigure.cache.CacheProperties' of type [org.springframework.boot.autoconfigure.cache.CacheProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.840 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManagerCustomizers' of type [org.springframework.boot.autoconfigure.cache.CacheManagerCustomizers] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.843 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration' of type [org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration$$EnhancerBySpringCGLIB$$1a2d4e94] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.850 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConfiguration$$EnhancerBySpringCGLIB$$71b83d05] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.858 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.865 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration$RedisConnectionConfiguration$$EnhancerBySpringCGLIB$$c00fde87] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.894 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.jedis.JedisConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.914 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.923 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheManager' of type [org.springframework.data.redis.cache.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:41.924 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'cacheAutoConfigurationValidator' of type [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration$CacheManagerValidator] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:02:42.271 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  22:02:42.286 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  22:02:42.287 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  22:02:42.426 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  22:02:42.426 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2531 ms
+2017-12-21  22:02:42.582 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  22:02:42.588 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  22:02:42.589 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  22:02:42.589 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  22:02:42.589 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  22:02:42.639 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  22:02:42.642 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  22:02:42.653 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  22:02:42.676 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  22:02:42.682 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  22:03:56.770 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 3312 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  22:03:56.774 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  22:03:57.050 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1744a9df: startup date [Thu Dec 21 22:03:57 CST 2017]; root of context hierarchy
+2017-12-21  22:03:57.377 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  22:03:58.461 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:03:58.509 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:03:58.550 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:03:59.043 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9af96393] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:03:59.387 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  22:03:59.394 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  22:03:59.395 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  22:03:59.483 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  22:03:59.483 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2433 ms
+2017-12-21  22:03:59.616 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  22:03:59.620 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  22:03:59.621 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  22:03:59.621 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  22:03:59.621 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  22:03:59.670 [restartedMain] WARN  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'inMemoryDatabaseShutdownExecutor' defined in class path resource [org/springframework/boot/devtools/autoconfigure/DevToolsDataSourceAutoConfiguration.class]: Unsatisfied dependency expressed through method 'inMemoryDatabaseShutdownExecutor' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Tomcat.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.tomcat.jdbc.pool.DataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Cannot determine embedded database driver class for database type NONE. If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+2017-12-21  22:03:59.672 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service Tomcat
+2017-12-21  22:03:59.684 [localhost-startStop-1] WARN  org.apache.catalina.loader.WebappClassLoaderBase - The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.cj.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2017-12-21  22:03:59.693 [restartedMain] INFO  o.s.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2017-12-21  22:03:59.700 [restartedMain] ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Cannot determine embedded database driver class for database type NONE
+
+Action:
+
+If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).
+
+2017-12-21  22:05:17.189 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on PC201703231224 with PID 6564 (D:\code\lt-code\quota\target\classes started by Administrator in D:\code\lt-code)
+2017-12-21  22:05:17.193 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2017-12-21  22:05:17.271 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1a70fc1: startup date [Thu Dec 21 22:05:17 CST 2017]; root of context hierarchy
+2017-12-21  22:05:17.768 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2017-12-21  22:05:18.714 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:05:18.746 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2017-12-21  22:05:19.171 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f5f44389] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2017-12-21  22:05:19.526 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2017-12-21  22:05:19.534 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2017-12-21  22:05:19.535 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2017-12-21  22:05:19.629 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2017-12-21  22:05:19.629 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2360 ms
+2017-12-21  22:05:19.764 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2017-12-21  22:05:19.768 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-12-21  22:05:19.768 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-12-21  22:05:19.768 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-12-21  22:05:19.769 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2017-12-21  22:05:21.085 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1a70fc1: startup date [Thu Dec 21 22:05:17 CST 2017]; root of context hierarchy
+2017-12-21  22:05:21.141 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-12-21  22:05:21.142 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-12-21  22:05:21.173 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-21  22:05:21.174 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-21  22:05:21.215 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-12-21  22:05:21.375 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.client.QuotaListener - 已连接java行情服务器
+2017-12-21  22:05:21.422 [nioEventLoopGroup-2-1] INFO  com.lt.tradeclient.tcp.client.listener.NettyClientListener - 未连接到服务器
+2017-12-21  22:05:21.532 [nioEventLoopGroup-2-1] INFO  com.lt.tradeclient.tcp.client.listener.NettyClientListener - 向服务器 /120.55.46.85:50000 发送信息 {"DATA":"","CMD":"2000","version":"1.0.0","token":""} 成功...
+2017-12-21  22:05:21.532 [nioEventLoopGroup-2-1] INFO  com.lt.tradeclient.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2017-12-21  22:05:22.336 [nioEventLoopGroup-2-1] INFO  com.lt.tradeclient.mdata.clean.MarketDataSend - 启动行情下发线程成功
+2017-12-21  22:05:22.878 [restartedMain] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2017-12-21  22:05:23.668 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2017-12-21  22:05:23.746 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2017-12-21  22:05:23.766 [restartedMain] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+2017-12-21  22:05:23.793 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9999"]
+2017-12-21  22:05:23.812 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-9999]
+2017-12-21  22:05:23.814 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2017-12-21  22:05:23.830 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9999 (http)
+2017-12-21  22:05:23.834 [restartedMain] INFO  com.lt.quota.core.Application - Started Application in 7.042 seconds (JVM running for 8.429)
+2017-12-21  22:05:23.949 [cluster-ClusterId{value='5a3bbfa287580519a46699d6', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:62)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:107)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:111)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.waitForConnect(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:85)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:59)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:57)
+	... 3 common frames omitted
+2017-12-21  22:05:24.698 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.client.QuotaListener - 已连接java行情服务器
+2017-12-21  22:05:24.699 [nioEventLoopGroup-3-1] INFO  com.lt.tradeclient.tcp.client.listener.NettyClientListener - 向服务器 /118.31.11.71:50000 发送信息 {"DATA":"","CMD":"2000","version":"1.0.0","token":""} 成功...
+2017-12-21  22:05:24.709 [nioEventLoopGroup-3-1] INFO  com.lt.tradeclient.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2017-12-21  22:05:24.710 [nioEventLoopGroup-2-1] INFO  com.lt.tradeclient.tcp.client.listener.NettyClientListener - 向服务器 /120.55.46.85:50000 发送信息 {"DATA":"","CMD":"2000","version":"1.0.0","token":""} 成功...
