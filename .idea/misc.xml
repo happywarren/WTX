@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/lt-trades/pom.xml" />
         <option value="$PROJECT_DIR$/lt-quota/pom.xml" />
         <option value="$PROJECT_DIR$/outer-quota/pom.xml" />
+        <option value="$PROJECT_DIR$/inner-quota/pom.xml" />
       </list>
     </option>
   </component>

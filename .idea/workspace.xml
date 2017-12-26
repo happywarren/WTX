@@ -63,6 +63,7 @@
     <ignored path="$PROJECT_DIR$/lt-trades/target/" />
     <ignored path="$PROJECT_DIR$/quota/target/" />
     <ignored path="$PROJECT_DIR$/outer-quota/target/" />
+    <ignored path="$PROJECT_DIR$/inner-quota/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,17 +84,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BaseTrade.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/tradeserver/BaseTrade.java">
+      <file leaf-file-name="OrderApiServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/OrderApiServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1285">
-              <caret line="711" column="25" lean-forward="true" selection-start-line="711" selection-start-column="25" selection-end-line="711" selection-end-column="25" />
-              <folding>
-                <element signature="e#22190#22191#0" expanded="true" />
-                <element signature="e#22251#22252#0" expanded="true" />
-                <element signature="e#28675#28676#0" expanded="true" />
-                <element signature="e#28709#28710#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="634">
+              <caret line="416" column="41" lean-forward="false" selection-start-line="416" selection-start-column="34" selection-end-line="416" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,41 +97,18 @@
       <file leaf-file-name="BuyFunc.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="208" column="31" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="31" />
+            <state relative-caret-position="499">
+              <caret line="211" column="31" lean-forward="false" selection-start-line="211" selection-start-column="28" selection-end-line="211" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductApiServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductApiServiceImpl.java">
+      <file leaf-file-name="SellFunc.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/SellFunc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="44" />
-              <folding>
-                <element signature="e#2053#2054#0" expanded="true" />
-                <element signature="e#2105#2106#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProductServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OrderApiServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/OrderApiServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="227" column="46" lean-forward="false" selection-start-line="227" selection-start-column="41" selection-end-line="227" selection-end-column="46" />
+            <state relative-caret-position="55">
+              <caret line="52" column="48" lean-forward="true" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -144,43 +117,88 @@
       <file leaf-file-name="CashOrderBuyTradeServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="147" column="45" lean-forward="false" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="45" />
+            <state relative-caret-position="319">
+              <caret line="310" column="25" lean-forward="true" selection-start-line="310" selection-start-column="25" selection-end-line="310" selection-end-column="25" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TradeUtils.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/utils/TradeUtils.java">
+      <file leaf-file-name="AbstractCashOrderTradeSerivce.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/AbstractCashOrderTradeSerivce.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="585" column="47" lean-forward="false" selection-start-line="585" selection-start-column="47" selection-end-line="585" selection-end-column="47" />
+            <state relative-caret-position="277">
+              <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OrderVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java">
+      <file leaf-file-name="OrderCashInfoDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="73" column="30" lean-forward="false" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="30" />
+            <state relative-caret-position="252">
+              <caret line="24" column="33" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OrderCashInfoDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1759">
+              <caret line="184" column="24" lean-forward="false" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="24" />
               <folding>
-                <element signature="e#12048#12049#0" expanded="true" />
-                <element signature="e#12066#12067#0" expanded="true" />
-                <element signature="e#12104#12105#0" expanded="true" />
-                <element signature="e#12127#12128#0" expanded="true" />
+                <marker date="1514235352986" expanded="true" signature="341:2863" ph="insert into order_cash_info... " />
+                <marker date="1514235352986" expanded="true" signature="2966:8211" ph="update order_cash_info... " />
+                <marker date="1514235352986" expanded="true" signature="8348:8742" ph="select id,or... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="8874:8929" ph="select * fro... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="9069:9473" ph="select * fro... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="9624:9767" ph="select * fro... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="9905:11148" ph="select `o`.`... " />
+                <marker date="1514235352986" expanded="true" signature="11301:12556" ph="select `o`.`... " />
+                <marker date="1514235352986" expanded="true" signature="13323:13857" ph="select ptc.j... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="13959:14057" ph="select count... v_order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="14176:14810" ph="select * fro... user_commit_buy_price" />
+                <marker date="1514235352986" expanded="true" signature="14194:14476" ph="select user_... v_order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="14491:14779" ph="select user_... v_order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="14924:14985" ph="select count... order_cash_info" />
+                <marker date="1514235352986" expanded="true" signature="15140:16005" ph="SELECT o.*,p... " />
+                <marker date="1514235352986" expanded="true" signature="16154:16402" ph="SELECT * fro... order_cash_entrust_info" />
+                <marker date="1514235352986" expanded="true" signature="16497:17684" ph="select (case... trade_type" />
+                <marker date="1514235352986" expanded="true" signature="16799:17636" ph="select trade... " />
+                <marker date="1514235352986" expanded="true" signature="17732:17886" ph="update order_cash_info... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AbstractCashOrderBaseService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/AbstractCashOrderBaseService.java">
+      <file leaf-file-name="FundTradeApiServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundTradeApiServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="44" />
+            <state relative-caret-position="474">
+              <caret line="101" column="47" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FundCashServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundCashServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="224" column="43" lean-forward="false" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FundScoreServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundScoreServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="205" column="40" lean-forward="false" selection-start-line="205" selection-start-column="40" selection-end-line="205" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -198,9 +216,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>qtc_sys_config</find>
-      <find>InnerTcpClientThread</find>
-      <find>setClient</find>
       <find>InnerClientBox</find>
       <find>getQuotaCoreConfigModelByName</find>
       <find>sys.config.app.port</find>
@@ -223,11 +238,14 @@
       <find>PRODUCT_INFO</find>
       <find>insertUserOrderLossProfitDefLog</find>
       <find>findInvestorProductConfig</find>
-      <find>queryProductRiskConfig</find>
       <find>orderInsertMessageHandler</find>
       <find>fillOrderInsertParams</find>
       <find>接受交易数据</find>
       <find>委托失败发生, 计算退款金额</find>
+      <find>queryProductRiskConfig</find>
+      <find>addFundFlowScoreList</find>
+      <find>getOrderCashInfoDao</find>
+      <find>OrderCashInfoDao</find>
     </findStrings>
   </component>
   <component name="GradleLocalSettings">
@@ -238,10 +256,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/constant/IConstants.java" />
-        <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/comm/netty/server/BaseServer.java" />
-        <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/comm/config/SysConfig.java" />
-        <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/client/TcpClientMain.java" />
         <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/core/ProductTimeCache/ProductTimeCache.java" />
         <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/core/client/TcpClientMain.java" />
         <option value="$PROJECT_DIR$/quota/src/main/java/com/lt/quota/core/comm/redis/RedisConfig.java" />
@@ -286,9 +300,13 @@
         <option value="$PROJECT_DIR$/inner-quota/src/main/java/com/lt/quota/core/comm/redis/RedisConfig.java" />
         <option value="$PROJECT_DIR$/inner-quota/src/main/java/com/lt/quota/core/quota/ProductTimeCache.java" />
         <option value="$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/tradeserver/BaseTrade.java" />
-        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java" />
         <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/utils/TradeUtils.java" />
+        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/trade/OrderCashInfo.java" />
         <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java" />
+        <option value="$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundCashServiceImpl.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.xml" />
       </list>
     </option>
   </component>
@@ -307,17 +325,7 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="quota" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="quota" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-      </expand>
+      <expand />
       <select />
     </treeState>
   </component>
@@ -358,6 +366,133 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="adapter" type="462c0819:PsiDirectoryNode" />
+              <item name="order" type="462c0819:PsiDirectoryNode" />
+              <item name="func" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trade" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WTX" type="462c0819:PsiDirectoryNode" />
+              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trade" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -419,123 +554,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="order" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-              <item name="cash" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trade" type="462c0819:PsiDirectoryNode" />
-              <item name="tradeserver" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lt-code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lt-code" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trades" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/outer-quota/pom.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/inner-quota/pom.xml" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -769,11 +794,12 @@
       <workItem from="1514085034419" duration="1469000" />
       <workItem from="1514086875664" duration="297000" />
       <workItem from="1514088591794" duration="44212000" />
+      <workItem from="1514228808433" duration="9137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69038000" />
+    <option name="totallyTimeSpent" value="78175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1928" height="1036" extended-state="6" />
@@ -781,7 +807,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20111111" sideWeight="0.36634716" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.047916666" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14270833" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -790,16 +816,15 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38646287" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.060215052" sideWeight="0.6336528" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06979167" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14635417" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -809,6 +834,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38646287" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -823,222 +849,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lt-manager/src/main/resources/config/app_root.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/redis/RedisJsonSerializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inner-quota/src/main/java/com/lt/quota/core/comm/redis/RedisConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="471">
-          <caret line="57" column="10" lean-forward="false" selection-start-line="57" selection-start-column="10" selection-end-line="57" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-manager/src/main/resources/config/app_redis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="32" column="85" lean-forward="false" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="42" column="20" lean-forward="false" selection-start-line="42" selection-start-column="20" selection-end-line="42" selection-end-column="20" />
-          <folding>
-            <element signature="e#4904#4905#0" expanded="false" />
-            <element signature="e#4923#4924#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/inner-quota/src/main/java/com/lt/quota/core/quota/ProductTimeCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="83" column="32" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/constant/LTConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="25" column="32" lean-forward="false" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserLogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/InvestorProductConfigApiServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="28" column="43" lean-forward="false" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorFeeCfg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="134" column="27" lean-forward="false" selection-start-line="134" selection-start-column="19" selection-end-line="134" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductRiskConfigServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/bean/ProductPriceBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="16" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="189" column="49" lean-forward="false" selection-start-line="189" selection-start-column="49" selection-end-line="189" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/TradeServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="75" column="29" lean-forward="false" selection-start-line="75" selection-start-column="29" selection-end-line="75" selection-end-column="29" />
-          <folding>
-            <element signature="e#2802#2803#0" expanded="false" />
-            <element signature="e#2841#2842#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaOperator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="75" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="75" />
-          <folding>
-            <element signature="e#1917#1918#0" expanded="false" />
-            <element signature="e#1966#1967#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/trade/OrderCashEntrustInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="65" column="19" lean-forward="false" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="19" />
-          <folding>
-            <element signature="e#3665#3666#0" expanded="false" />
-            <element signature="e#3691#3692#0" expanded="false" />
-            <element signature="e#4510#4511#0" expanded="false" />
-            <element signature="e#4535#4536#0" expanded="false" />
-            <element signature="e#4658#4659#0" expanded="false" />
-            <element signature="e#4684#4685#0" expanded="false" />
-            <element signature="e#5113#5114#0" expanded="false" />
-            <element signature="e#5139#5140#0" expanded="false" />
-            <element signature="e#6449#6450#0" expanded="false" />
-            <element signature="e#6480#6481#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundCashServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="920">
-          <caret line="294" column="43" lean-forward="false" selection-start-line="294" selection-start-column="24" selection-end-line="294" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/cache/OrderCashEntrustInfoCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="657">
-          <caret line="70" column="32" lean-forward="false" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/cache/OrderCashInfoCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="27" column="60" lean-forward="false" selection-start-line="27" selection-start-column="60" selection-end-line="27" selection-end-column="60" />
-          <folding>
-            <element signature="e#761#784#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/enums/trade/EntrustPriceTypeEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundTradeApiServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="97" column="46" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/trade/OrderCashInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="309" column="47" lean-forward="true" selection-start-line="309" selection-start-column="47" selection-end-line="309" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/bean/FutureOrderWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/utils/LTConstants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/OuterFutureTrade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="596">
@@ -1051,7 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
           <caret line="29" column="16" lean-forward="false" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1063,19 +872,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/AbstractCashOrderTradeSerivce.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="179" column="20" lean-forward="true" selection-start-line="179" selection-start-column="20" selection-end-line="179" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/netty/ClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
           <caret line="44" column="38" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1091,7 +891,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="189" column="49" lean-forward="false" selection-start-line="189" selection-start-column="49" selection-end-line="189" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1127,20 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="781">
           <caret line="154" column="18" lean-forward="false" selection-start-line="154" selection-start-column="18" selection-end-line="154" selection-end-column="18" />
-          <folding>
-            <element signature="e#2583#2584#0" expanded="true" />
-            <element signature="e#2610#2611#0" expanded="true" />
-            <element signature="e#2984#2985#0" expanded="true" />
-            <element signature="e#3008#3009#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/BaseTrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="695" column="33" lean-forward="false" selection-start-line="695" selection-start-column="33" selection-end-line="695" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,13 +939,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/tradeserver/BaseTrade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1285">
-          <caret line="711" column="25" lean-forward="true" selection-start-line="711" selection-start-column="25" selection-end-line="711" selection-end-column="25" />
+        <state relative-caret-position="13461">
+          <caret line="711" column="25" lean-forward="false" selection-start-line="711" selection-start-column="25" selection-end-line="711" selection-end-column="25" />
           <folding>
-            <element signature="e#22190#22191#0" expanded="true" />
-            <element signature="e#22251#22252#0" expanded="true" />
-            <element signature="e#28675#28676#0" expanded="true" />
-            <element signature="e#28709#28710#0" expanded="true" />
+            <element signature="e#22190#22191#0" expanded="false" />
+            <element signature="e#22251#22252#0" expanded="false" />
+            <element signature="e#28675#28676#0" expanded="false" />
+            <element signature="e#28709#28710#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1175,39 +960,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductApiServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="735">
           <caret line="65" column="44" lean-forward="false" selection-start-line="65" selection-start-column="30" selection-end-line="65" selection-end-column="44" />
           <folding>
-            <element signature="e#2053#2054#0" expanded="true" />
-            <element signature="e#2105#2106#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="208" column="31" lean-forward="false" selection-start-line="208" selection-start-column="28" selection-end-line="208" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="75" column="22" lean-forward="false" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="22" />
-          <folding>
-            <element signature="e#4800#4801#0" expanded="true" />
-            <element signature="e#4827#4828#0" expanded="true" />
-            <element signature="e#5097#5098#0" expanded="true" />
-            <element signature="e#5128#5129#0" expanded="true" />
+            <element signature="e#2053#2054#0" expanded="false" />
+            <element signature="e#2105#2106#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/AbstractCashOrderBaseService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
+        <state relative-caret-position="819">
           <caret line="55" column="44" lean-forward="false" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="44" />
           <folding />
         </state>
@@ -1215,30 +979,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="546">
+          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/OrderApiServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="227" column="46" lean-forward="false" selection-start-line="227" selection-start-column="41" selection-end-line="227" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="73" column="30" lean-forward="false" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="30" />
-          <folding>
-            <element signature="e#12048#12049#0" expanded="true" />
-            <element signature="e#12066#12067#0" expanded="true" />
-            <element signature="e#12104#12105#0" expanded="true" />
-            <element signature="e#12127#12128#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1246,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-105">
           <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1258,26 +1000,628 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/TradeServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="147" column="45" lean-forward="false" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="45" />
+        <state relative-caret-position="189">
+          <caret line="38" column="13" lean-forward="false" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/StringTools.java">
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/ProductRiskConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/TradeDirectVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="60" column="49" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductRiskConfigServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="32" column="58" lean-forward="false" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/DoubleTools.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="1144" column="25" lean-forward="false" selection-start-line="1144" selection-start-column="25" selection-end-line="1144" selection-end-column="25" />
+          <caret line="75" column="25" lean-forward="false" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/utils/TradeUtils.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="508">
+          <caret line="596" column="75" lean-forward="false" selection-start-line="596" selection-start-column="75" selection-end-line="596" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="53" column="19" lean-forward="false" selection-start-line="53" selection-start-column="19" selection-end-line="53" selection-end-column="19" />
+          <folding>
+            <element signature="e#7936#7937#0" expanded="true" />
+            <element signature="e#7960#7961#0" expanded="true" />
+            <element signature="e#12046#12047#0" expanded="true" />
+            <element signature="e#12064#12065#0" expanded="true" />
+            <element signature="e#12101#12102#0" expanded="true" />
+            <element signature="e#12124#12125#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/StringTools.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="1445" column="25" lean-forward="false" selection-start-line="1445" selection-start-column="25" selection-end-line="1445" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserFeeCfgApiServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="36" column="26" lean-forward="false" selection-start-line="36" selection-start-column="26" selection-end-line="36" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorFeeCfg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1067">
+          <caret line="36" column="31" lean-forward="false" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="31" />
+          <folding>
+            <element signature="e#2969#2970#0" expanded="false" />
+            <element signature="e#3020#3021#0" expanded="false" />
+            <element signature="e#4452#4453#0" expanded="false" />
+            <element signature="e#4479#4480#0" expanded="false" />
+            <element signature="e#4533#4534#0" expanded="false" />
+            <element signature="e#4574#4575#0" expanded="false" />
+            <element signature="e#4857#4858#0" expanded="false" />
+            <element signature="e#4900#4901#0" expanded="false" />
+            <element signature="e#5438#5439#0" expanded="false" />
+            <element signature="e#5461#5462#0" expanded="false" />
+            <element signature="e#5507#5508#0" expanded="false" />
+            <element signature="e#5540#5541#0" expanded="false" />
+            <element signature="e#5641#5642#0" expanded="false" />
+            <element signature="e#5674#5675#0" expanded="false" />
+            <element signature="e#5771#5772#0" expanded="false" />
+            <element signature="e#5802#5803#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="70" column="19" lean-forward="false" selection-start-line="70" selection-start-column="19" selection-end-line="70" selection-end-column="19" />
+          <folding>
+            <element signature="e#4535#4536#0" expanded="false" />
+            <element signature="e#4558#4559#0" expanded="false" />
+            <element signature="e#4800#4801#0" expanded="false" />
+            <element signature="e#4827#4828#0" expanded="false" />
+            <element signature="e#5097#5098#0" expanded="false" />
+            <element signature="e#5128#5129#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4137">
+          <caret line="224" column="43" lean-forward="true" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/BaseTrade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-618">
+          <caret line="491" column="53" lean-forward="false" selection-start-line="491" selection-start-column="28" selection-end-line="491" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/InnerFutureTrade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1701">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/bean/RiskControlBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-698">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlQueue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="341" column="8" lean-forward="true" selection-start-line="341" selection-start-column="8" selection-end-line="341" selection-end-column="8" />
+          <folding>
+            <element signature="e#13700#13717#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaOperator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-365">
+          <caret line="16" column="75" lean-forward="false" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-651">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/trade/OrderCashInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="654">
+          <caret line="840" column="0" lean-forward="false" selection-start-line="840" selection-start-column="0" selection-end-line="840" selection-end-column="0" />
+          <folding>
+            <element signature="e#9872#9873#0" expanded="true" />
+            <element signature="e#9888#9889#0" expanded="true" />
+            <element signature="e#9921#9922#0" expanded="true" />
+            <element signature="e#9940#9941#0" expanded="true" />
+            <element signature="e#9972#9973#0" expanded="true" />
+            <element signature="e#9993#9994#0" expanded="true" />
+            <element signature="e#10035#10036#0" expanded="true" />
+            <element signature="e#10064#10065#0" expanded="true" />
+            <element signature="e#10098#10099#0" expanded="true" />
+            <element signature="e#10123#10124#0" expanded="true" />
+            <element signature="e#10173#10174#0" expanded="true" />
+            <element signature="e#10210#10211#0" expanded="true" />
+            <element signature="e#10242#10243#0" expanded="true" />
+            <element signature="e#10264#10265#0" expanded="true" />
+            <element signature="e#10308#10309#0" expanded="true" />
+            <element signature="e#10339#10340#0" expanded="true" />
+            <element signature="e#10373#10374#0" expanded="true" />
+            <element signature="e#10397#10398#0" expanded="true" />
+            <element signature="e#10446#10447#0" expanded="true" />
+            <element signature="e#10481#10482#0" expanded="true" />
+            <element signature="e#10515#10516#0" expanded="true" />
+            <element signature="e#10538#10539#0" expanded="true" />
+            <element signature="e#10585#10586#0" expanded="true" />
+            <element signature="e#10618#10619#0" expanded="true" />
+            <element signature="e#10653#10654#0" expanded="true" />
+            <element signature="e#10679#10680#0" expanded="true" />
+            <element signature="e#10731#10732#0" expanded="true" />
+            <element signature="e#10770#10771#0" expanded="true" />
+            <element signature="e#10806#10807#0" expanded="true" />
+            <element signature="e#10833#10834#0" expanded="true" />
+            <element signature="e#10887#10888#0" expanded="true" />
+            <element signature="e#10928#10929#0" expanded="true" />
+            <element signature="e#10962#10963#0" expanded="true" />
+            <element signature="e#10987#10988#0" expanded="true" />
+            <element signature="e#11037#11038#0" expanded="true" />
+            <element signature="e#11074#11075#0" expanded="true" />
+            <element signature="e#11110#11111#0" expanded="true" />
+            <element signature="e#11137#11138#0" expanded="true" />
+            <element signature="e#11191#11192#0" expanded="true" />
+            <element signature="e#11232#11233#0" expanded="true" />
+            <element signature="e#11269#11270#0" expanded="true" />
+            <element signature="e#11295#11296#0" expanded="true" />
+            <element signature="e#11347#11348#0" expanded="true" />
+            <element signature="e#11386#11387#0" expanded="true" />
+            <element signature="e#11421#11422#0" expanded="true" />
+            <element signature="e#11447#11448#0" expanded="true" />
+            <element signature="e#11499#11500#0" expanded="true" />
+            <element signature="e#11538#11539#0" expanded="true" />
+            <element signature="e#11577#11578#0" expanded="true" />
+            <element signature="e#11607#11608#0" expanded="true" />
+            <element signature="e#11667#11668#0" expanded="true" />
+            <element signature="e#11714#11715#0" expanded="true" />
+            <element signature="e#11747#11748#0" expanded="true" />
+            <element signature="e#11770#11771#0" expanded="true" />
+            <element signature="e#11817#11818#0" expanded="true" />
+            <element signature="e#11850#11851#0" expanded="true" />
+            <element signature="e#11884#11885#0" expanded="true" />
+            <element signature="e#11909#11910#0" expanded="true" />
+            <element signature="e#11959#11960#0" expanded="true" />
+            <element signature="e#11996#11997#0" expanded="true" />
+            <element signature="e#12030#12031#0" expanded="true" />
+            <element signature="e#12055#12056#0" expanded="true" />
+            <element signature="e#12105#12106#0" expanded="true" />
+            <element signature="e#12142#12143#0" expanded="true" />
+            <element signature="e#12173#12174#0" expanded="true" />
+            <element signature="e#12195#12196#0" expanded="true" />
+            <element signature="e#12239#12240#0" expanded="true" />
+            <element signature="e#12270#12271#0" expanded="true" />
+            <element signature="e#12297#12298#0" expanded="true" />
+            <element signature="e#12315#12316#0" expanded="true" />
+            <element signature="e#12351#12352#0" expanded="true" />
+            <element signature="e#12374#12375#0" expanded="true" />
+            <element signature="e#12401#12402#0" expanded="true" />
+            <element signature="e#12419#12420#0" expanded="true" />
+            <element signature="e#12455#12456#0" expanded="true" />
+            <element signature="e#12478#12479#0" expanded="true" />
+            <element signature="e#12507#12508#0" expanded="true" />
+            <element signature="e#12526#12527#0" expanded="true" />
+            <element signature="e#12565#12566#0" expanded="true" />
+            <element signature="e#12590#12591#0" expanded="true" />
+            <element signature="e#12625#12626#0" expanded="true" />
+            <element signature="e#12651#12652#0" expanded="true" />
+            <element signature="e#12703#12704#0" expanded="true" />
+            <element signature="e#12742#12743#0" expanded="true" />
+            <element signature="e#12773#12774#0" expanded="true" />
+            <element signature="e#12794#12795#0" expanded="true" />
+            <element signature="e#12837#12838#0" expanded="true" />
+            <element signature="e#12866#12867#0" expanded="true" />
+            <element signature="e#12901#12902#0" expanded="true" />
+            <element signature="e#12926#12927#0" expanded="true" />
+            <element signature="e#12977#12978#0" expanded="true" />
+            <element signature="e#13014#13015#0" expanded="true" />
+            <element signature="e#13051#13052#0" expanded="true" />
+            <element signature="e#13078#13079#0" expanded="true" />
+            <element signature="e#13133#13134#0" expanded="true" />
+            <element signature="e#13174#13175#0" expanded="true" />
+            <element signature="e#13211#13212#0" expanded="true" />
+            <element signature="e#13238#13239#0" expanded="true" />
+            <element signature="e#13293#13294#0" expanded="true" />
+            <element signature="e#13334#13335#0" expanded="true" />
+            <element signature="e#13373#13374#0" expanded="true" />
+            <element signature="e#13401#13402#0" expanded="true" />
+            <element signature="e#13458#13459#0" expanded="true" />
+            <element signature="e#13501#13502#0" expanded="true" />
+            <element signature="e#13539#13540#0" expanded="true" />
+            <element signature="e#13570#13571#0" expanded="true" />
+            <element signature="e#13630#13631#0" expanded="true" />
+            <element signature="e#13679#13680#0" expanded="true" />
+            <element signature="e#13714#13715#0" expanded="true" />
+            <element signature="e#13742#13743#0" expanded="true" />
+            <element signature="e#13796#13797#0" expanded="true" />
+            <element signature="e#13839#13840#0" expanded="true" />
+            <element signature="e#13871#13872#0" expanded="true" />
+            <element signature="e#13896#13897#0" expanded="true" />
+            <element signature="e#13944#13945#0" expanded="true" />
+            <element signature="e#13981#13982#0" expanded="true" />
+            <element signature="e#14022#14023#0" expanded="true" />
+            <element signature="e#14054#14055#0" expanded="true" />
+            <element signature="e#14118#14119#0" expanded="true" />
+            <element signature="e#14169#14170#0" expanded="true" />
+            <element signature="e#14207#14208#0" expanded="true" />
+            <element signature="e#14236#14237#0" expanded="true" />
+            <element signature="e#14294#14295#0" expanded="true" />
+            <element signature="e#14339#14340#0" expanded="true" />
+            <element signature="e#14373#14374#0" expanded="true" />
+            <element signature="e#14398#14399#0" expanded="true" />
+            <element signature="e#14448#14449#0" expanded="true" />
+            <element signature="e#14485#14486#0" expanded="true" />
+            <element signature="e#14525#14526#0" expanded="true" />
+            <element signature="e#14554#14555#0" expanded="true" />
+            <element signature="e#14613#14614#0" expanded="true" />
+            <element signature="e#14658#14659#0" expanded="true" />
+            <element signature="e#14697#14698#0" expanded="true" />
+            <element signature="e#14729#14730#0" expanded="true" />
+            <element signature="e#14791#14792#0" expanded="true" />
+            <element signature="e#14842#14843#0" expanded="true" />
+            <element signature="e#14878#14879#0" expanded="true" />
+            <element signature="e#14907#14908#0" expanded="true" />
+            <element signature="e#14963#14964#0" expanded="true" />
+            <element signature="e#15008#15009#0" expanded="true" />
+            <element signature="e#15041#15042#0" expanded="true" />
+            <element signature="e#15067#15068#0" expanded="true" />
+            <element signature="e#15117#15118#0" expanded="true" />
+            <element signature="e#15156#15157#0" expanded="true" />
+            <element signature="e#15198#15199#0" expanded="true" />
+            <element signature="e#15231#15232#0" expanded="true" />
+            <element signature="e#15297#15298#0" expanded="true" />
+            <element signature="e#15350#15351#0" expanded="true" />
+            <element signature="e#15389#15390#0" expanded="true" />
+            <element signature="e#15419#15420#0" expanded="true" />
+            <element signature="e#15479#15480#0" expanded="true" />
+            <element signature="e#15526#15527#0" expanded="true" />
+            <element signature="e#15561#15562#0" expanded="true" />
+            <element signature="e#15587#15588#0" expanded="true" />
+            <element signature="e#15639#15640#0" expanded="true" />
+            <element signature="e#15678#15679#0" expanded="true" />
+            <element signature="e#15718#15719#0" expanded="true" />
+            <element signature="e#15746#15747#0" expanded="true" />
+            <element signature="e#15803#15804#0" expanded="true" />
+            <element signature="e#15846#15847#0" expanded="true" />
+            <element signature="e#15881#15882#0" expanded="true" />
+            <element signature="e#15909#15910#0" expanded="true" />
+            <element signature="e#15963#15964#0" expanded="true" />
+            <element signature="e#16006#16007#0" expanded="true" />
+            <element signature="e#16045#16046#0" expanded="true" />
+            <element signature="e#16074#16075#0" expanded="true" />
+            <element signature="e#16133#16134#0" expanded="true" />
+            <element signature="e#16178#16179#0" expanded="true" />
+            <element signature="e#16217#16218#0" expanded="true" />
+            <element signature="e#16246#16247#0" expanded="true" />
+            <element signature="e#16305#16306#0" expanded="true" />
+            <element signature="e#16350#16351#0" expanded="true" />
+            <element signature="e#16386#16387#0" expanded="true" />
+            <element signature="e#16412#16413#0" expanded="true" />
+            <element signature="e#16465#16466#0" expanded="true" />
+            <element signature="e#16504#16505#0" expanded="true" />
+            <element signature="e#16537#16538#0" expanded="true" />
+            <element signature="e#16560#16561#0" expanded="true" />
+            <element signature="e#16607#16608#0" expanded="true" />
+            <element signature="e#16640#16641#0" expanded="true" />
+            <element signature="e#16680#16681#0" expanded="true" />
+            <element signature="e#16710#16711#0" expanded="true" />
+            <element signature="e#16771#16772#0" expanded="true" />
+            <element signature="e#16818#16819#0" expanded="true" />
+            <element signature="e#16858#16859#0" expanded="true" />
+            <element signature="e#16888#16889#0" expanded="true" />
+            <element signature="e#16949#16950#0" expanded="true" />
+            <element signature="e#16996#16997#0" expanded="true" />
+            <element signature="e#17032#17033#0" expanded="true" />
+            <element signature="e#17059#17060#0" expanded="true" />
+            <element signature="e#17113#17114#0" expanded="true" />
+            <element signature="e#17154#17155#0" expanded="true" />
+            <element signature="e#17185#17186#0" expanded="true" />
+            <element signature="e#17207#17208#0" expanded="true" />
+            <element signature="e#17251#17252#0" expanded="true" />
+            <element signature="e#17282#17283#0" expanded="true" />
+            <element signature="e#17320#17321#0" expanded="true" />
+            <element signature="e#17349#17350#0" expanded="true" />
+            <element signature="e#17407#17408#0" expanded="true" />
+            <element signature="e#17452#17453#0" expanded="true" />
+            <element signature="e#17485#17486#0" expanded="true" />
+            <element signature="e#17509#17510#0" expanded="true" />
+            <element signature="e#17557#17558#0" expanded="true" />
+            <element signature="e#17592#17593#0" expanded="true" />
+            <element signature="e#17628#17629#0" expanded="true" />
+            <element signature="e#17655#17656#0" expanded="true" />
+            <element signature="e#17709#17710#0" expanded="true" />
+            <element signature="e#17778#17779#0" expanded="true" />
+            <element signature="e#17811#17812#0" expanded="true" />
+            <element signature="e#17835#17836#0" expanded="true" />
+            <element signature="e#17883#17884#0" expanded="true" />
+            <element signature="e#17946#17947#0" expanded="true" />
+            <element signature="e#17982#17983#0" expanded="true" />
+            <element signature="e#18009#18010#0" expanded="true" />
+            <element signature="e#18063#18064#0" expanded="true" />
+            <element signature="e#18132#18133#0" expanded="true" />
+            <element signature="e#18166#18167#0" expanded="true" />
+            <element signature="e#18190#18191#0" expanded="true" />
+            <element signature="e#18239#18240#0" expanded="true" />
+            <element signature="e#18274#18275#0" expanded="true" />
+            <element signature="e#18311#18312#0" expanded="true" />
+            <element signature="e#18339#18340#0" expanded="true" />
+            <element signature="e#18503#18504#0" expanded="true" />
+            <element signature="e#18532#18533#0" expanded="true" />
+            <element signature="e#18701#18702#0" expanded="true" />
+            <element signature="e#18731#18732#0" expanded="true" />
+            <element signature="e#18904#18905#0" expanded="true" />
+            <element signature="e#18934#18935#0" expanded="true" />
+            <element signature="e#19105#19106#0" expanded="true" />
+            <element signature="e#19133#19134#0" expanded="true" />
+            <element signature="e#19297#19298#0" expanded="true" />
+            <element signature="e#19326#19327#0" expanded="true" />
+            <element signature="e#19495#19496#0" expanded="true" />
+            <element signature="e#19525#19526#0" expanded="true" />
+            <element signature="e#19698#19699#0" expanded="true" />
+            <element signature="e#19728#19729#0" expanded="true" />
+            <element signature="e#19896#19897#0" expanded="true" />
+            <element signature="e#19920#19921#0" expanded="true" />
+            <element signature="e#19966#19967#0" expanded="true" />
+            <element signature="e#20001#20002#0" expanded="true" />
+            <element signature="e#20032#20033#0" expanded="true" />
+            <element signature="e#20056#20057#0" expanded="true" />
+            <element signature="e#20102#20103#0" expanded="true" />
+            <element signature="e#20137#20138#0" expanded="true" />
+            <element signature="e#20177#20178#0" expanded="true" />
+            <element signature="e#20205#20206#0" expanded="true" />
+            <element signature="e#20262#20263#0" expanded="true" />
+            <element signature="e#20305#20306#0" expanded="true" />
+            <element signature="e#20344#20345#0" expanded="true" />
+            <element signature="e#20373#20374#0" expanded="true" />
+            <element signature="e#20432#20433#0" expanded="true" />
+            <element signature="e#20477#20478#0" expanded="true" />
+            <element signature="e#20510#20511#0" expanded="true" />
+            <element signature="e#20535#20536#0" expanded="true" />
+            <element signature="e#20583#20584#0" expanded="true" />
+            <element signature="e#20620#20621#0" expanded="true" />
+            <element signature="e#20655#20656#0" expanded="true" />
+            <element signature="e#20681#20682#0" expanded="true" />
+            <element signature="e#20733#20734#0" expanded="true" />
+            <element signature="e#20772#20773#0" expanded="true" />
+            <element signature="e#20812#20813#0" expanded="true" />
+            <element signature="e#20843#20844#0" expanded="true" />
+            <element signature="e#20905#20906#0" expanded="true" />
+            <element signature="e#20954#20955#0" expanded="true" />
+            <element signature="e#20984#20985#0" expanded="true" />
+            <element signature="e#21004#21005#0" expanded="true" />
+            <element signature="e#21045#21046#0" expanded="true" />
+            <element signature="e#21072#21073#0" expanded="true" />
+            <element signature="e#21113#21114#0" expanded="true" />
+            <element signature="e#21144#21145#0" expanded="true" />
+            <element signature="e#21321#21322#0" expanded="true" />
+            <element signature="e#21349#21350#0" expanded="true" />
+            <element signature="e#21519#21520#0" expanded="true" />
+            <element signature="e#21550#21551#0" expanded="true" />
+            <element signature="e#21614#21615#0" expanded="true" />
+            <element signature="e#21663#21664#0" expanded="true" />
+            <element signature="e#21701#21702#0" expanded="true" />
+            <element signature="e#21729#21730#0" expanded="true" />
+            <element signature="e#21786#21787#0" expanded="true" />
+            <element signature="e#21829#21830#0" expanded="true" />
+            <element signature="e#21865#21866#0" expanded="true" />
+            <element signature="e#21891#21892#0" expanded="true" />
+            <element signature="e#21944#21945#0" expanded="true" />
+            <element signature="e#21983#21984#0" expanded="true" />
+            <element signature="e#22020#22021#0" expanded="true" />
+            <element signature="e#22047#22048#0" expanded="true" />
+            <element signature="e#22102#22103#0" expanded="true" />
+            <element signature="e#22143#22144#0" expanded="true" />
+            <element signature="e#22181#22182#0" expanded="true" />
+            <element signature="e#22209#22210#0" expanded="true" />
+            <element signature="e#22266#22267#0" expanded="true" />
+            <element signature="e#22309#22310#0" expanded="true" />
+            <element signature="e#22344#22345#0" expanded="true" />
+            <element signature="e#22369#22370#0" expanded="true" />
+            <element signature="e#22420#22421#0" expanded="true" />
+            <element signature="e#22457#22458#0" expanded="true" />
+            <element signature="e#22493#22494#0" expanded="true" />
+            <element signature="e#22519#22520#0" expanded="true" />
+            <element signature="e#22572#22573#0" expanded="true" />
+            <element signature="e#22611#22612#0" expanded="true" />
+            <element signature="e#22642#22643#0" expanded="true" />
+            <element signature="e#22663#22664#0" expanded="true" />
+            <element signature="e#22706#22707#0" expanded="true" />
+            <element signature="e#22735#22736#0" expanded="true" />
+            <element signature="e#22763#22764#0" expanded="true" />
+            <element signature="e#22781#22782#0" expanded="true" />
+            <element signature="e#22818#22819#0" expanded="true" />
+            <element signature="e#22841#22842#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/cache/OrderCashInfoCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1084">
+          <caret line="70" column="39" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/cache/OrderCashEntrustInfoCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="44" column="57" lean-forward="false" selection-start-line="44" selection-start-column="45" selection-end-line="44" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/dao/FundFlowScoreDao.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="585" column="47" lean-forward="false" selection-start-line="585" selection-start-column="47" selection-end-line="585" selection-end-column="47" />
+          <caret line="41" column="16" lean-forward="false" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/enums/fund/FundScoreOptCodeEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="50" column="4" lean-forward="false" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundScoreServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="205" column="40" lean-forward="false" selection-start-line="205" selection-start-column="40" selection-end-line="205" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundCashServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="224" column="43" lean-forward="false" selection-start-line="224" selection-start-column="43" selection-end-line="224" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundTradeApiServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="101" column="47" lean-forward="false" selection-start-line="101" selection-start-column="42" selection-end-line="101" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="24" column="33" lean-forward="false" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1759">
+          <caret line="184" column="24" lean-forward="false" selection-start-line="184" selection-start-column="9" selection-end-line="184" selection-end-column="24" />
+          <folding>
+            <marker date="1514235352986" expanded="true" signature="341:2863" ph="insert into order_cash_info... " />
+            <marker date="1514235352986" expanded="true" signature="2966:8211" ph="update order_cash_info... " />
+            <marker date="1514235352986" expanded="true" signature="8348:8742" ph="select id,or... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="8874:8929" ph="select * fro... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="9069:9473" ph="select * fro... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="9624:9767" ph="select * fro... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="9905:11148" ph="select `o`.`... " />
+            <marker date="1514235352986" expanded="true" signature="11301:12556" ph="select `o`.`... " />
+            <marker date="1514235352986" expanded="true" signature="13323:13857" ph="select ptc.j... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="13959:14057" ph="select count... v_order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="14176:14810" ph="select * fro... user_commit_buy_price" />
+            <marker date="1514235352986" expanded="true" signature="14194:14476" ph="select user_... v_order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="14491:14779" ph="select user_... v_order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="14924:14985" ph="select count... order_cash_info" />
+            <marker date="1514235352986" expanded="true" signature="15140:16005" ph="SELECT o.*,p... " />
+            <marker date="1514235352986" expanded="true" signature="16154:16402" ph="SELECT * fro... order_cash_entrust_info" />
+            <marker date="1514235352986" expanded="true" signature="16497:17684" ph="select (case... trade_type" />
+            <marker date="1514235352986" expanded="true" signature="16799:17636" ph="select trade... " />
+            <marker date="1514235352986" expanded="true" signature="17732:17886" ph="update order_cash_info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/AbstractCashOrderTradeSerivce.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="76" column="16" lean-forward="false" selection-start-line="76" selection-start-column="16" selection-end-line="76" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="310" column="25" lean-forward="true" selection-start-line="310" selection-start-column="25" selection-end-line="310" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="211" column="31" lean-forward="false" selection-start-line="211" selection-start-column="28" selection-end-line="211" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/OrderApiServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="634">
+          <caret line="416" column="41" lean-forward="false" selection-start-line="416" selection-start-column="34" selection-end-line="416" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/SellFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="52" column="48" lean-forward="true" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
           <folding />
         </state>
       </provider>

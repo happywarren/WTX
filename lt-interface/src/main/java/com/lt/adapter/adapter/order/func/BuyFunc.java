@@ -15,6 +15,7 @@ import com.lt.enums.trade.TradeDirectionEnum;
 import com.lt.model.user.UserBaseInfo;
 import com.lt.util.error.LTException;
 import com.lt.util.error.LTResponseCode;
+import com.lt.util.utils.DoubleTools;
 import com.lt.util.utils.StringTools;
 import com.lt.util.utils.model.Response;
 import com.lt.vo.product.ProductVo;
@@ -94,7 +95,7 @@ public class BuyFunc extends BaseFunction {
         String externalId = (String) paraMap.get("externalId");
 
         //是否是迷你盘
-        Integer mini = Integer.parseInt(paraMap.get("mini") == null? "1":paraMap.get("mini").toString());
+        Double mini = StringTools.formatDouble(paraMap.get("mini") == null? "1":paraMap.get("mini").toString(),1.0);
 
 
         //记录下单方式：0:市价单 1:条件单 2:闪电单
@@ -190,6 +191,8 @@ public class BuyFunc extends BaseFunction {
             throw new LTException(LTResponseCode.TD00003);
         }
 
+        //处理角模式下的最小变动价格
+        productVo.setJumpPrice(DoubleTools.mul(productVo.getJumpPrice(),mini));
         //订单买入参数
         OrderVo orderVo = new OrderVo(productCode, productVo.getProductName(),
                 productTypeId, userId, investorId, count,

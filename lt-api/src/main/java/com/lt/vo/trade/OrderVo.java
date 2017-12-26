@@ -89,7 +89,7 @@ public class OrderVo implements Serializable {
 	/**用户所属品牌 id*/
 	private String brandId;
 	/**迷你单的倍数*/
-	private Integer mini;
+	private Double mini;
 
 	/**
 	 * 构造
@@ -588,11 +588,11 @@ public class OrderVo implements Serializable {
 		this.brandId = brandId;
 	}
 
-	public Integer getMini() {
+	public Double getMini() {
 		return mini;
 	}
 
-	public void setMini(Integer mini) {
+	public void setMini(Double mini) {
 		this.mini = mini;
 	}
 }

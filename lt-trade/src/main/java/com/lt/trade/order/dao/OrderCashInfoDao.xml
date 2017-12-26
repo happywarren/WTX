@@ -18,7 +18,7 @@
 			stop_loss,stop_profit_price,stop_profit,sys_loss_profit,loss_profit,defer_interest,
 			defer_times,should_hold_fund,should_defer_fund,should_counter_fee,should_coupon_fund,
 			actual_hold_fund,actual_defer_fund,actual_counter_fee,actual_coupon_fund,create_date,modify_date,modify_user_id,
-			loss_profit_rate,purchase_order_type
+			loss_profit_rate,purchase_order_type,mini
 		) values (
 			#{orderId},#{conditionId},#{userId},#{nickName}, #{investorId},#{accountId},#{securityCode}, 
 			#{perStopProfit},#{perStopLoss} ,#{perCounterFee},#{perSurcharge},#{perDeferFund},
@@ -38,7 +38,7 @@
 			<if test="modifyUserId != null and modifyUserId != ''">
 				#{modifyUserId},
 			</if>		
-			#{lossProfitRate},#{purchaseOrderType}
+			#{lossProfitRate},#{purchaseOrderType},#{mini}
 		)
 	</insert>
 
@@ -123,7 +123,7 @@
 	<select id="queryById" parameterType="java.lang.String" resultType="com.lt.model.trade.OrderCashInfo">
 		select id,order_id,user_id,security_code,exchange_code,hold_count,sell_entrust_count,create_date,stop_loss_price,stop_profit_price,
 		plate,trade_direction,rate,product_id,product_code,investor_id,product_name,sys_set_sell_date,actual_defer_fund,per_defer_fund,
-		buy_avg_price,stop_loss,stop_profit,defer_status,trail_stop_loss,actual_hold_fund from order_cash_info where order_id = #{id} 
+		buy_avg_price,stop_loss,stop_profit,defer_status,trail_stop_loss,actual_hold_fund,mini from order_cash_info where order_id = #{id}
 	</select>
 	
 	<!-- 查询现金订单 -->

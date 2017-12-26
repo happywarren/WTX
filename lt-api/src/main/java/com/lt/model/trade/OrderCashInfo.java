@@ -174,6 +174,8 @@ public class OrderCashInfo implements Serializable{
 	private Double sellMinPrice;
 	/***品牌 id*/
 	private String brandId;
+	/***角模式**/
+	private Double mini;
 
 	@Override
 	public String toString() {
@@ -259,6 +261,7 @@ public class OrderCashInfo implements Serializable{
 				", buyMinPrice=" + buyMinPrice +
 				", sellMinPrice=" + sellMinPrice +
 				", brandId='" + brandId + '\'' +
+				", mini='" + mini + '\'' +
 				'}';
 	}
 
@@ -834,5 +837,13 @@ public class OrderCashInfo implements Serializable{
 
 	public void setBrandId(String brandId) {
 		this.brandId = brandId;
+	}
+
+	public Double getMini() {
+		return mini;
+	}
+
+	public void setMini(Double mini) {
+		this.mini = mini;
 	}
 }

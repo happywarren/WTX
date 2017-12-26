@@ -109,10 +109,6 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
         long startTime = System.currentTimeMillis();
         ProductVo product = orderVo.getProductVo();//商品信息
 
-       // if(orderVo.getMini() == 1){
-        //迷你单缩小迷你倍
-        product.setJumpPrice(DoubleUtils.div(product.getJumpPrice(),orderVo.getMini()));
-       // }
         //1.证券账号
         logger.info("查询证券账户 入参：orderVo.getInvestorId()={}, product.getId()={}, product.getPlate()={}, orderVo.getTradeDirection()={}", orderVo.getInvestorId(), product.getId(), product.getPlate(), orderVo.getTradeDirection());
         InvestorFeeCfg investorFeeCfg = investorFeeCfgApiService.getInvestorFeeCfg(orderVo.getInvestorId(), product.getId(), product.getPlate(), orderVo.getTradeDirection());
@@ -126,9 +122,9 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
         //获取商品手续费
         InvestorProductConfig config = investorProductConfigApiService.findInvestorProductConfig(orderVo.getInvestorId(), product.getProductCode());
         if (config != null && config.getCounterFee() != null) {//如果费用配不为空则取
-            //investorFeeCfg.setInvestorCounterfee(DoubleTools.parseDoulbe(config.getCounterFee()));
+            investorFeeCfg.setInvestorCounterfee(DoubleTools.parseDoulbe(config.getCounterFee()));
             //设置相应的手续费缩小响应的倍数
-            investorFeeCfg.setInvestorCounterfee(DoubleUtils.div(DoubleTools.parseDoulbe(config.getCounterFee()),orderVo.getMini()));
+            //investorFeeCfg.setInvestorCounterfee(DoubleUtils.div(DoubleTools.parseDoulbe(config.getCounterFee()),orderVo.getMini()));
         }
 
         //获取商品区间配置
@@ -142,6 +138,9 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
             investorFeeCfg.setDeferFund(productRiskConfig.getDeferFund() == null ? investorFeeCfg.getDeferFund() : productRiskConfig.getDeferFund());
             investorFeeCfg.setIsSupportDefer(productRiskConfig.getIsDefer());
         }
+        //处理角模式
+        changeInvestorFeeCfg(investorFeeCfg,orderVo);
+
         logger.info("============费用配置，investorFeeCfg={}============", JSONObject.toJSONString(investorFeeCfg));
 
         //1.1检查止盈止损是否符合范围
@@ -169,6 +168,8 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
         cashOrder.setEntrustBuyPrice(entrustRecord.getEntrustPrice());
         //品牌 id
         cashOrder.setBrandId(info.getBrandId());
+        //角模式
+        cashOrder.setMini(orderVo.getMini());
 
         //6.订单存入缓存
         OrderCashInfoCache.put(cashOrder);
@@ -521,6 +522,56 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
         //下单触发方式
         orderCashEntrustInfo.setTriggerType(cashOrder.getBuyTriggerType());
         return orderCashEntrustInfo;
+    }
+
+    /**
+     * 按照对应的倍数 进行相应的转换
+     * @param investorFeeCfg
+     * @param orderVo
+     */
+    private void changeInvestorFeeCfg(InvestorFeeCfg investorFeeCfg,OrderVo orderVo){
+
+        //修改止损
+        String stopLossRanges =  StringTools.formatStr(investorFeeCfg.getStopLossRange());
+        String [] stopLossRangeArray  =  stopLossRanges.split(",");
+        stopLossRanges = "";
+        for(int i=0;i<stopLossRangeArray.length;i++){
+            Double stopLoss =  StringTools.formatDouble(stopLossRangeArray[i]);
+            if(i == stopLossRangeArray.length -1){
+                stopLossRanges = stopLossRanges+String.valueOf(DoubleTools.mul(stopLoss,orderVo.getMini()));
+            }else{
+                stopLossRanges = stopLossRanges+String.valueOf(DoubleTools.mul(stopLoss,orderVo.getMini()))+",";
+            }
+
+        }
+        investorFeeCfg.setStopLossRange(stopLossRanges);
+
+        //修改止赢
+        String stopProfitRanges =  StringTools.formatStr(investorFeeCfg.getStopProfitRange());
+        String [] stopProfitRangeArray = stopProfitRanges.split(",");
+        stopProfitRanges = "";
+        for(int i=0;i<stopProfitRangeArray.length; i++){
+            Double stopProfit = StringTools.formatDouble(stopProfitRangeArray[i]);
+            if(i == stopProfitRangeArray.length -1){
+                stopProfitRanges = stopProfitRanges+String.valueOf(DoubleTools.mul(stopProfit,orderVo.getMini()));
+            }else{
+                stopProfitRanges = stopProfitRanges+String.valueOf(DoubleTools.mul(stopProfit,orderVo.getMini()))+",";
+            }
+        }
+        investorFeeCfg.setStopProfitRange(stopProfitRanges);
+
+        //修改保证金
+        investorFeeCfg.setSurcharge(DoubleTools.mul(investorFeeCfg.getSurcharge(),orderVo.getMini()));
+        //递延费
+        investorFeeCfg.setDeferFee(DoubleTools.mul(investorFeeCfg.getDeferFee(),orderVo.getMini()));
+        //递延保证金
+        investorFeeCfg.setDeferFund(DoubleTools.mul(investorFeeCfg.getDeferFund(),orderVo.getMini()));
+        //修改保证金
+        investorFeeCfg.setInvestorCounterfee(DoubleTools.mul(investorFeeCfg.getInvestorCounterfee(),orderVo.getMini()));
+        //默认止损
+        investorFeeCfg.setDefaultStopLoss(DoubleTools.mul(investorFeeCfg.getDefaultStopLoss(),orderVo.getMini()));
+        //默认止赢
+        investorFeeCfg.setDefaultStopProfit(DoubleTools.mul(investorFeeCfg.getDefaultStopProfit(),orderVo.getMini()));
     }
 
     /**

@@ -222,7 +222,7 @@ public class FundCashServiceImpl implements IFundCashService {
      */
     public boolean doBuy(String productName, String orderId, String userId, double holdFund, double deferFund,
                          double actualCounterFee) throws LTException {
-        // TODO Auto-generated method stub
+        // TODO Auto-generated method stubo
 
         long startTime1 = System.currentTimeMillis();
 
