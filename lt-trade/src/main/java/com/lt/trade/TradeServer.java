@@ -151,6 +151,7 @@ public class TradeServer implements InitializingBean {
     }
 
     private void startupNext(BaseTrade baseTrade, InvestorAccount investorAccount) {
+        LOGGER.info("clientMap:"+baseTrade.getClientMap());
         //初始化各盘参数
         if (baseTrade.getClientMap().size() == 0) {
             baseTrade.setRedisTemplate(redisTemplate);
@@ -179,6 +180,7 @@ public class TradeServer implements InitializingBean {
         //初始化风控队列、加载数据、执行清仓调度器（各盘分别只触发一次）
         if (baseTrade.getClientMap().size() == 1
                 || PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())) {
+            LOGGER.info("开始启动风控模块！");
             startupRiskControl(baseTrade);
             startupLoadRuntimeData(baseTrade);
             startupClearScheduler(baseTrade);

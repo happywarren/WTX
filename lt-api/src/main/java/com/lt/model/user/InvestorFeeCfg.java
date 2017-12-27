@@ -340,7 +340,43 @@ public class InvestorFeeCfg implements Serializable {
 	public void setSecurityId(Integer securityId) {
 		this.securityId = securityId;
 	}
-	
- }
+
+	@Override
+	public String toString() {
+		return "InvestorFeeCfg{" +
+				"id=" + id +
+				", accountId='" + accountId + '\'' +
+				", productId=" + productId +
+				", securityCode='" + securityCode + '\'' +
+				", securityId=" + securityId +
+				", serverIp='" + serverIp + '\'' +
+				", serverPort='" + serverPort + '\'' +
+				", passwd='" + passwd + '\'' +
+				", weight=" + weight +
+				", investorCounterfee=" + investorCounterfee +
+				", platformCounterfee=" + platformCounterfee +
+				", platformCounterFeeTarget=" + platformCounterFeeTarget +
+				", counterFeeType=" + counterFeeType +
+				", investorBouns=" + investorBouns +
+				", platformBouns=" + platformBouns +
+				", bounsType=" + bounsType +
+				", platformBounsTarget=" + platformBounsTarget +
+				", stopProfitRange='" + stopProfitRange + '\'' +
+				", stopLossRange='" + stopLossRange + '\'' +
+				", multipleRange='" + multipleRange + '\'' +
+				", defaultCount=" + defaultCount +
+				", defaultStopProfit=" + defaultStopProfit +
+				", defaultStopLoss=" + defaultStopLoss +
+				", surcharge=" + surcharge +
+				", isSupportDefer=" + isSupportDefer +
+				", deferFund=" + deferFund +
+				", deferFee=" + deferFee +
+				", createDate=" + createDate +
+				", creater='" + creater + '\'' +
+				", modifyDate=" + modifyDate +
+				", modifyId=" + modifyId +
+				'}';
+	}
+}
 
 

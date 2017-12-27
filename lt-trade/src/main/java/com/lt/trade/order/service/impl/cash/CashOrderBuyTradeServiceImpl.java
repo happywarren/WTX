@@ -531,8 +531,10 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
      */
     private void changeInvestorFeeCfg(InvestorFeeCfg investorFeeCfg,OrderVo orderVo){
 
+        logger.info("修改模式参数:investorFeeCfg={}",investorFeeCfg.toString());
         //修改止损
         String stopLossRanges =  StringTools.formatStr(investorFeeCfg.getStopLossRange());
+
         String [] stopLossRangeArray  =  stopLossRanges.split(",");
         stopLossRanges = "";
         for(int i=0;i<stopLossRangeArray.length;i++){

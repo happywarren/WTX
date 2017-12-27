@@ -74,6 +74,9 @@
     <orderEntry type="library" name="Maven: org.javolution:javolution:5.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.itrus:dinpayRsaSignAPI:2.7.10" level="project" />
     <orderEntry type="library" name="Maven: com.pay:qiantong:1.0.2" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.5.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.5.0" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.4.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-mongodb:1.9.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.2.5.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.2.5.RELEASE" level="project" />
