@@ -23,7 +23,7 @@ public class QuotaListener implements MarketDataListener {
 
     @Override
     public void onMarketData(String message) {
-//        LOGGER.info("收到行情: {} ", message);
+        LOGGER.info("收到行情: {} ", message);
         JSONObject jsonData = JSON.parseObject(message);
         if (jsonData.getDouble("lastPrice") == null || jsonData.getDouble("bidPrice1") == null
                 || jsonData.getDouble("askPrice1") == null) {

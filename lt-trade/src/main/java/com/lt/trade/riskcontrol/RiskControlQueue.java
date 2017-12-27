@@ -417,10 +417,12 @@ public class RiskControlQueue {
         }
     	// 空方向 止盈队列
         Iterator<Map.Entry<Double, Set<String>>> emptyAboveEntries = emptyabovePriceQueue.entrySet().iterator();
+    	logger.info("..............................风控检测开始................................");
         while (emptyAboveEntries.hasNext()) {
             Map.Entry<Double, Set<String>> entry = emptyAboveEntries.next();
             Double priceKey = entry.getKey();
             //价格  小于 止盈价  触发风控
+            logger.info("priceKey="+priceKey+",askPrice="+askPrice);
             if (askPrice <= priceKey ) {
             	//收集触发平仓单
                 Set<String> listValue = entry.getValue();
@@ -445,6 +447,7 @@ public class RiskControlQueue {
 				break;
 			} 
         }
+        logger.info(".........................风控检测结束.....................................");
 
         // 空方向 止损队列 
         Iterator<Map.Entry<Double, Set<String>>> emptyBelowEntries = emptybelowPriceQueue.entrySet().iterator();

@@ -1,6 +1,7 @@
 package com.lt.trade.riskcontrol;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lt.enums.trade.PlateEnum;
 import com.lt.model.dispatcher.enums.DispatcherRedisKey;
 import com.lt.model.dispatcher.enums.RedisQuotaObject;
 import com.lt.trade.ProductTimeCache;
@@ -199,6 +200,8 @@ public class RiskControlServer implements Runnable {
                 final ProductPriceBean productPrice = QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).take();
                 final String productName = productPrice.getProductName();
                 final RiskControlQueue riskControlQueue = riskControlQueueMap_.get(productName);
+                LOGGER.info("有行情过来 productPrice:{}",productPrice.toString());
+
 
                 if (riskControlQueue == null) {
                     LOGGER.error("商品不存在:{} ", productName);
@@ -208,6 +211,7 @@ public class RiskControlServer implements Runnable {
                     @Override
                     public void run() {
                         List<FutureOrderBean> orders = riskControlQueue.risk(productPrice);
+                        LOGGER.info("...........orders={}",orders);
                         if (orders != null) {
                             LOGGER.info("------------------行情信息:{}", JSONObject.toJSONString(productPrice));
                             LOGGER.info("productName {}  风控处理订单详情:{} ", productName, JSONObject.toJSON(orders));

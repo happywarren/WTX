@@ -172,6 +172,7 @@ public class TradeServer implements InitializingBean {
         if(!PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())){
             if (!serverMap.containsKey(investorAccount.getServerIp() + ":" + investorAccount.getServerPort())) {
                 startupTrade(baseTrade, investorAccount, false);
+                baseTrade.getClientMap().put(investorAccount.getSecurityCode(), serverMap.get(investorAccount.getServerIp() + ":" + investorAccount.getServerPort()));
             } else {
                 baseTrade.getClientMap().put(investorAccount.getSecurityCode(), serverMap.get(investorAccount.getServerIp() + ":" + investorAccount.getServerPort()));
             }
@@ -180,7 +181,14 @@ public class TradeServer implements InitializingBean {
         //初始化风控队列、加载数据、执行清仓调度器（各盘分别只触发一次）
         if (baseTrade.getClientMap().size() == 1
                 || PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())) {
-            LOGGER.info("开始启动风控模块！");
+            if(PlateEnum.OUTER_PLATE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启外盘风控模块！..........");
+            }else if(PlateEnum.INNER_PLATE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启内盘风控模块！...........");
+            }else if(PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启数字合约风控模块！..........");
+            }
+            LOGGER.info("开启风控模块");
             startupRiskControl(baseTrade);
             startupLoadRuntimeData(baseTrade);
             startupClearScheduler(baseTrade);
