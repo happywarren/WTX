@@ -95,7 +95,7 @@ public class BuyFunc extends BaseFunction {
         String externalId = (String) paraMap.get("externalId");
 
         //是否是迷你盘
-        Double mini = StringTools.formatDouble(paraMap.get("mini") == null? "1":paraMap.get("mini").toString(),1.0);
+        Double mini = StringTools.formatDouble(paraMap.get("mini") == null? "0.1":paraMap.get("mini").toString(),1.0);
 
 
         //记录下单方式：0:市价单 1:条件单 2:闪电单

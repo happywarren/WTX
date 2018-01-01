@@ -694,6 +694,7 @@ public abstract class BaseTrade implements Runnable {
                 orderWrapper.CMDID = LTConstants.FRAME_TYPE_ORDER_INSERT_REQ;
                 orderWrapper.DATA = futureOrder;
                 String msg = JSON.toJSONString(orderWrapper);
+                /*
                 BaseClient client = clientMap.get(futureOrder.getInvestorId());
                 if (client != null) {
                     client.sendMessage(msg, new ResultListener<String>() {
@@ -711,7 +712,9 @@ public abstract class BaseTrade implements Runnable {
                     });
                 } else {
                     LOGGER.info("报单出错：订单{}未找到连接c++交易模块通道", futureOrder.getUniqueOrderId());
-                }
+                }*/
+                orderInsertSuccess(msg);
+                //orderInsertFailure(msg);
 
             } catch (Exception e) {
                 LOGGER.error("报单出错, 异常信息: " + e.getMessage());

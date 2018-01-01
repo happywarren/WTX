@@ -203,6 +203,7 @@ public class TradeServer implements InitializingBean {
      * @param apiFlag         是否接口调方法
      */
     private void startupTrade(final BaseTrade baseTrade, final InvestorAccount investorAccount, boolean apiFlag) {
+
         LOGGER.info("1.开始连接【" + baseTrade.getPlateName() + "】c++交易模块...");
         final CountDownLatch signal0 = new CountDownLatch(1);
         baseTrade.startupFutureTrade(investorAccount.getServerIp(), Integer.parseInt(investorAccount.getServerPort()), new OnClientStartupListener() {

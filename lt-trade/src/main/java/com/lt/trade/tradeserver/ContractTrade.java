@@ -52,7 +52,7 @@ public class ContractTrade extends BaseTrade {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                LOGGER.info("差价合约-虚拟报单成功 返回信息 result : {}", result);
+                LOGGER.info("外盘合约-报单成功 返回信息 result : {}", result);
                 JSONObject jsonData = JSON.parseObject(result);
                 String message = jsonData.getString("DATA");
 

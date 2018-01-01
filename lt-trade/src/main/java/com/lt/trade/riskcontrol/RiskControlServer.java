@@ -194,8 +194,12 @@ public class RiskControlServer implements Runnable {
     @Override
     public void run() {
         // fixme: 循环显式退出?
-        for (; ; ) {
+        LOGGER.info("【"+trade_.getPlateName()+"】开始进入风控处理模块");
+        while (true) {
             try {
+                if(trade_.getPlateName().equals(PlateEnum.OUTER_PLATE.getName())){
+                    LOGGER.info("外盘开始获取行情：{}",QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).size());
+                }
                 // 有行情数据过来就执行一次风控
                 final ProductPriceBean productPrice = QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).take();
                 final String productName = productPrice.getProductName();
@@ -233,6 +237,7 @@ public class RiskControlServer implements Runnable {
 
 
             } catch (Exception e) {
+                e.printStackTrace();
                 LOGGER.error("风控服务出错, 异常信息: " + e.getMessage());
             }
         }

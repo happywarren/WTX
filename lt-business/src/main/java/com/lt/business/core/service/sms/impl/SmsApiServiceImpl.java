@@ -2,6 +2,8 @@ package com.lt.business.core.service.sms.impl;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.commons.httpclient.NameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -77,7 +79,7 @@ public class SmsApiServiceImpl implements ISmsApiService {
 	 * 调用云信留客短信配置 发送短信
 	 * @param destination 目的地
 	 * @param context 内容 （含尾缀）
-	 * @param Channel 渠道
+	 * @param channel 渠道
 	 * @return
 	 * @throws LTException    
 	 * @return:       String    
@@ -93,16 +95,12 @@ public class SmsApiServiceImpl implements ISmsApiService {
 			String user_pass = sysCfgRedis.get(UserContant.SYSCONFIG_SMS_USER_PASS) ;//"CAsfgy125";
 			String url = sysCfgRedis.get(UserContant.SYSCONFIG_SMS_SERVICE_URL);
 			NameValuePair[] params = {
-					//登录名称
-					new NameValuePair("userCode", user_code),
 					//登录密码
-					new NameValuePair("userPass", user_pass),
+					new NameValuePair("apikey", user_pass),
 					//手机号码
-					new NameValuePair("DesNo", destination),
+					new NameValuePair("mobile", destination),
 					//短信内容
-					new NameValuePair("Msg", context),
-					//通道号
-					new NameValuePair("Channel", channel), };
+					new NameValuePair("content", context) };
 			final NameValuePair[] param =  params;
 			logger.info("进入SendSMSUtils方法中");
 			/*"http://h.1069106.com:1210/services/msgsend.asmx/SendMsg"/*url*/
@@ -113,8 +111,14 @@ public class SmsApiServiceImpl implements ISmsApiService {
 			e.printStackTrace();
 			throw new LTException(LTResponseCode.US00004);
 		}
-		
-		return str;
+
+		if(str != null){
+			JSONObject jsonObject =  (JSONObject) JSONObject.parse(str);
+			if(jsonObject.getInteger("code") == 1){
+				return "消息短信发送成功！";
+			}
+		}
+		return null;
 	}
 
 	@Override
