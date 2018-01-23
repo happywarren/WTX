@@ -41,7 +41,7 @@ public class Product implements Serializable{
 	private Integer fundType;//资金类型：0现金，1虚拟 2all
 	private Integer isOperate;//是否允许行情触发开市0:否 1：是(达望用)	
 	private Integer plate;//0：内盘 1：外盘'
-	private String openTimeSummer;//开市时间夏令时
+	private String openTimeSummer;//开市时间夏令时closeTimeWinter
 	private String closeTimeSummer;//闭市时间夏令时
 	private String openTimeWinter;//开市时间冬令时
 	private String closeTimeWinter;//闭市时间冬令时

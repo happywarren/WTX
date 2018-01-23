@@ -135,6 +135,18 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.lt</groupId>
+            <artifactId>lt-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>com.otod</groupId>
+            <artifactId>VCQuoteClient</artifactId>
+            <version>1.0.1</version>
+        </dependency> -->
     </dependencies>
 
 

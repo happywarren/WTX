@@ -127,6 +127,5 @@
     <orderEntry type="library" name="Maven: org.apache.activemq:activemq-jms-pool:5.10.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jta_1.0.1B_spec:1.0.1" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.6" level="project" />
-    <orderEntry type="library" name="Maven: com.etonepay.b2c:etonepay_sdk:1.0.1" level="project" />
   </component>
 </module>

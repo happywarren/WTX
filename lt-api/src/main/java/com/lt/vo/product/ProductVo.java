@@ -85,6 +85,11 @@ public class ProductVo extends Product implements Serializable{
 	 */
 	private Integer dayPoints;
 
+	/**
+	 * 内外胖标识
+	 */
+	private Integer plate;
+
 
 
 	public Integer getDayPoints() {

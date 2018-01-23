@@ -20,7 +20,7 @@ public class RfTcpClientMain {
     @Autowired
     private RfTcpClient rfTcpClient;
 
-    @PostConstruct
+   // @PostConstruct
     public void init() {
         List<QuotaCoreConfigModel> dataList = quotaCoreConfigService.getQuotaCoreConfigModelByName("RF");
         if (null == dataList || dataList.isEmpty()) {

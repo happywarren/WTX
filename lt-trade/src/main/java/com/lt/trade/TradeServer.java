@@ -168,6 +168,8 @@ public class TradeServer implements InitializingBean {
             baseTrade.setProductTimeCache(productTimeCache);
         }
 
+        /*
+
         //连接c++交易模块(差价合约不需要连接)
         if(!PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())){
             if (!serverMap.containsKey(investorAccount.getServerIp() + ":" + investorAccount.getServerPort())) {
@@ -176,7 +178,7 @@ public class TradeServer implements InitializingBean {
             } else {
                 baseTrade.getClientMap().put(investorAccount.getSecurityCode(), serverMap.get(investorAccount.getServerIp() + ":" + investorAccount.getServerPort()));
             }
-        }
+        }*/
 
         //初始化风控队列、加载数据、执行清仓调度器（各盘分别只触发一次）
         if (baseTrade.getClientMap().size() == 1
@@ -205,6 +207,8 @@ public class TradeServer implements InitializingBean {
     private void startupTrade(final BaseTrade baseTrade, final InvestorAccount investorAccount, boolean apiFlag) {
 
         LOGGER.info("1.开始连接【" + baseTrade.getPlateName() + "】c++交易模块...");
+        serverMap.put("127.0.0.1:9999",new BaseClient("127.0.0.1",9999,null,null));
+        /*
         final CountDownLatch signal0 = new CountDownLatch(1);
         baseTrade.startupFutureTrade(investorAccount.getServerIp(), Integer.parseInt(investorAccount.getServerPort()), new OnClientStartupListener() {
             @Override
@@ -237,7 +241,7 @@ public class TradeServer implements InitializingBean {
             if (!apiFlag) {
                 System.exit(1);
             }
-        }
+        }*/
 
     }
 

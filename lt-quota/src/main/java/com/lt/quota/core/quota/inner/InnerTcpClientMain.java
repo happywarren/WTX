@@ -20,7 +20,7 @@ public class InnerTcpClientMain {
     @Autowired
     private InnerTcpClient innerTcpClient;
 
-    @PostConstruct
+ //   @PostConstruct
     public void init() {
         List<QuotaCoreConfigModel> dataList = quotaCoreConfigService.getQuotaCoreConfigModelByName("INNER");
         if (null == dataList || dataList.isEmpty()) {

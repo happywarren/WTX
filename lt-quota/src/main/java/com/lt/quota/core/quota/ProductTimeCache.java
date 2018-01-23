@@ -1,13 +1,17 @@
 package com.lt.quota.core.quota;
 
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.constant.redis.RedisUtil;
 import com.lt.quota.core.utils.DateUtils;
 import com.lt.quota.core.utils.Utils;
+import com.lt.vo.product.ProductVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -26,12 +30,19 @@ public class ProductTimeCache {
 
     private final String PRODUCT_TIME_CONFIG = "PRODUCT_TIME_CONFIG";
 
+    private final String PRODUCT_INFO ="PRODUCT_INFO";
+
     private long timestamp = 0L;
 
     /**
      * 商品行情时间
      */
     public final Map<String, Map<String, String>> PRODUCT_QUOTA_MAP = new ConcurrentHashMap<String, Map<String, String>>();
+
+    /**
+     * 商品信息
+     */
+    public final Map<String,ProductVo> PRODUCT_INFO_MAP =new ConcurrentHashMap<String,ProductVo>();
 
     ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -59,6 +70,18 @@ public class ProductTimeCache {
             }
             PRODUCT_QUOTA_MAP.put(productCode, quotaMap);
         }
+
+        BoundHashOperations<String, String, String> productInfo = redisTemplate.boundHashOps(RedisUtil.PRODUCT_INFO);
+        Map<String, String> entries = productInfo.entries();
+        for (String productCode : entries.keySet()){
+            String value = productInfo.get(productCode);
+            ProductVo productVo = (ProductVo) JSON.parse(value);
+            if(productVo.getPlate() == 0){
+                //内盘
+                PRODUCT_INFO_MAP.put(productCode,productVo);
+            }
+        }
+
     }
 
 
@@ -107,5 +130,15 @@ public class ProductTimeCache {
 
     private boolean isBetween(Date date, Date from, Date to) {
         return from.getTime() <= date.getTime() && to.getTime() >= date.getTime();
+    }
+
+    public String getContract(String name){
+        Set<String> keys = PRODUCT_INFO_MAP.keySet();
+        for(String key : keys){
+            if(key.contains(name)){
+                return key;
+            }
+        }
+        return null;
     }
 }

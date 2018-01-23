@@ -20,7 +20,7 @@ public class IbTcpClientMain {
     @Autowired
     private IbTcpClient ibTcpClient;
 
-    @PostConstruct
+//    @PostConstruct
     public void init() {
         List<QuotaCoreConfigModel> dataList = quotaCoreConfigService.getQuotaCoreConfigModelByName("IB");
         if (null == dataList || dataList.isEmpty()) {

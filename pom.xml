@@ -170,11 +170,12 @@
 			<artifactId>activemq-pool</artifactId>
 			<version>5.10.1</version>
 		</dependency>
+		<!--
 		<dependency>
 			<groupId>com.etonepay.b2c</groupId>
 			<artifactId>etonepay_sdk</artifactId>
 			<version>1.0.1</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -205,8 +206,8 @@
 		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-			<url>http://103.242.67.92:8081/nexus/content/groups/public/</url>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<!-- <url>http://103.242.67.92:8081/nexus/content/groups/public/</url> -->
 		</repository>
 
 		<repository>
@@ -232,7 +233,7 @@
 		<module>lt-util</module>
 		<module>lt-manager</module>
 		<module>lt-interface</module>
-        <module>quota</module>
+        <module>inner-quota</module>
         <!-- <module>lt-quota</module> -->
 		<!-- <module>lt-notification</module> -->
 	</modules>

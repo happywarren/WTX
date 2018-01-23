@@ -50,6 +50,7 @@ public class RfClientListener implements OnMessageListener {
             BigDecimal changeRate = NumberUtil.formatBigDecimal(new BigDecimal(changeRateStr),2);
             quotaBean.setChangeRate(NumberUtil.toStr(changeRate));
             quotaBean.setPlate(1);
+            System.out.println(quotaBean.toString());
             CleanInstance.getInstance().setMarketDataQueue(quotaBean);
         } else if ("1111".equals(cmd)) {
             Channel channel = ctx.channel();

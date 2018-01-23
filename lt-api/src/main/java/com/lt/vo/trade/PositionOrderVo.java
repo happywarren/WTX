@@ -114,6 +114,11 @@ public class PositionOrderVo implements Serializable{
 	 * 单手止损
 	 */
 	private Double perStopLoss;
+
+	/**
+	 *
+	 * @return
+	 */
 	
 	
 	public String getAskPrice() {

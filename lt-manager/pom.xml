@@ -243,17 +243,17 @@
 		<repository>
 			<id>nexus</id>
 			<name>Team Nexus Repository</name>
-			<url>http://192.168.1.242:8081/nexus/content/groups/public/</url>
+			<url>http://103.242.67.92:8081/nexus/content/groups/public/</url>
 		</repository>
 		<repository>
 			<id>nexus pri</id>
 			<name>Team Nexus Repository</name>
-			<url>http://192.168.1.242:8081/nexus/content/repositories/releases/</url>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<repository>
 			<id>thirdparty</id>
 			<name>Team Nexus Repository</name>
-			<url>http://192.168.1.242:8081/nexus/content/repositories/thirdparty/</url>
+			<url>http://103.242.67.92:8081/nexus/content/repositories/thirdparty/</url>
 		</repository>
 	</repositories>
 
