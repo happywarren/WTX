@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/lt-fund/lt-fund.iml" filepath="$PROJECT_DIR$/lt-fund/lt-fund.iml" />
       <module fileurl="file://$PROJECT_DIR$/lt-interface/lt-interface.iml" filepath="$PROJECT_DIR$/lt-interface/lt-interface.iml" />
       <module fileurl="file://$PROJECT_DIR$/lt-manager/lt-manager.iml" filepath="$PROJECT_DIR$/lt-manager/lt-manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lt-promote/lt-promote.iml" filepath="$PROJECT_DIR$/lt-promote/lt-promote.iml" />
       <module fileurl="file://$PROJECT_DIR$/lt-quota/lt-quota.iml" filepath="$PROJECT_DIR$/lt-quota/lt-quota.iml" />
       <module fileurl="file://$PROJECT_DIR$/lt-task/lt-task.iml" filepath="$PROJECT_DIR$/lt-task/lt-task.iml" />
       <module fileurl="file://$PROJECT_DIR$/lt-trade/lt-trade.iml" filepath="$PROJECT_DIR$/lt-trade/lt-trade.iml" />

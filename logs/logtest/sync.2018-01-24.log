@@ -1,0 +1,207 @@
+2018-01-24  17:34:24.327 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on lixiaoyangs-MacBook-Pro.local with PID 1513 (/Users/lixiaoyang00/Desktop/code/WTX/inner-quota/target/classes started by lixiaoyang00 in /Users/lixiaoyang00/Desktop/code/WTX)
+2018-01-24  17:34:24.351 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2018-01-24  17:34:24.473 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@15d5f53a: startup date [Wed Jan 24 17:34:24 PHT 2018]; root of context hierarchy
+2018-01-24  17:34:24.878 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2018-01-24  17:34:26.286 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-01-24  17:34:26.330 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-01-24  17:34:26.959 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c4b620f2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  17:34:27.013 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.lt.quota.core.comm.redis.RedisConfig$$EnhancerBySpringCGLIB$$77c7819f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  17:34:27.018 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$dc85710] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  17:34:27.440 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2018-01-24  17:34:27.453 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2018-01-24  17:34:27.455 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-01-24  17:34:27.526 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-01-24  17:34:27.526 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3054 ms
+2018-01-24  17:34:27.699 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-01-24  17:34:27.705 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-01-24  17:34:27.706 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-01-24  17:34:27.706 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-01-24  17:34:27.706 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-01-24  17:34:28.223 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  17:34:28.223 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  17:34:28.223 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  17:34:28.224 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  17:34:28.320 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  17:34:28.320 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  17:34:28.415 [pool-1-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:34:28.622 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@15d5f53a: startup date [Wed Jan 24 17:34:24 PHT 2018]; root of context hierarchy
+2018-01-24  17:34:28.691 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-24  17:34:28.697 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-24  17:34:28.850 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  17:34:28.850 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  17:34:28.878 [pool-2-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:34:28.953 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  17:34:29.483 [restartedMain] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2018-01-24  17:34:29.531 [cluster-ClusterId{value='5a685325ecf1d905e9743220', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+2018-01-24  17:34:30.372 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-01-24  17:34:30.529 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-01-24  17:34:30.563 [restartedMain] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+2018-01-24  17:34:30.612 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9999"]
+2018-01-24  17:34:30.648 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-9999]
+2018-01-24  17:34:30.653 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-01-24  17:34:30.712 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9999 (http)
+2018-01-24  17:34:30.722 [restartedMain] INFO  com.lt.quota.core.Application - Started Application in 7.149 seconds (JVM running for 10.626)
+2018-01-24  17:34:32.995 [Thread-35] INFO  com.lt.quota.core.comm.netty.server.BaseServer - netty start
+2018-01-24  17:35:28.420 [pool-1-thread-2] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:36:28.427 [pool-1-thread-3] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:37:28.428 [pool-1-thread-4] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:38:28.458 [pool-1-thread-5] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:39:28.485 [pool-1-thread-6] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:40:47.455 [pool-1-thread-7] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:42:10.080 [pool-1-thread-8] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:42:12.101 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/118.31.11.71:50000失去连接
+2018-01-24  17:42:12.104 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2018-01-24  17:42:13.423 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/120.55.46.85:50000失去连接
+2018-01-24  17:42:13.425 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2018-01-24  17:42:14.326 [Thread-19] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2018-01-24  17:42:15.644 [Thread-18] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2018-01-24  17:42:19.360 [nioEventLoopGroup-7-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  17:42:19.360 [nioEventLoopGroup-7-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  17:42:19.362 [nioEventLoopGroup-7-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  17:42:20.676 [nioEventLoopGroup-8-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  17:42:20.677 [nioEventLoopGroup-8-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  17:42:20.678 [nioEventLoopGroup-8-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  17:43:10.081 [pool-1-thread-9] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:44:10.184 [pool-1-thread-10] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:45:10.186 [pool-1-thread-11] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:46:10.303 [pool-1-thread-12] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:47:10.309 [pool-1-thread-13] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:48:10.313 [pool-1-thread-14] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:49:14.140 [pool-1-thread-15] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:49:24.341 [nioEventLoopGroup-7-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/118.31.11.71:50000失去连接
+2018-01-24  17:49:24.342 [nioEventLoopGroup-7-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2018-01-24  17:49:26.561 [Thread-19] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2018-01-24  17:49:37.521 [nioEventLoopGroup-9-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  17:49:37.522 [nioEventLoopGroup-9-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  17:49:37.524 [nioEventLoopGroup-9-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  17:49:43.105 [nioEventLoopGroup-8-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/120.55.46.85:50000失去连接
+2018-01-24  17:49:43.107 [nioEventLoopGroup-8-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2018-01-24  17:49:45.325 [Thread-18] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2018-01-24  17:49:50.522 [nioEventLoopGroup-10-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  17:49:50.523 [nioEventLoopGroup-10-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  17:49:50.524 [nioEventLoopGroup-10-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  17:50:14.145 [pool-1-thread-16] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:51:16.124 [pool-1-thread-17] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:51:31.983 [nioEventLoopGroup-10-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/120.55.46.85:50000失去连接
+2018-01-24  17:51:31.983 [nioEventLoopGroup-10-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2018-01-24  17:51:33.988 [nioEventLoopGroup-9-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/118.31.11.71:50000失去连接
+2018-01-24  17:51:33.989 [nioEventLoopGroup-9-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2018-01-24  17:51:34.192 [Thread-18] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2018-01-24  17:51:36.204 [Thread-19] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2018-01-24  17:51:39.448 [nioEventLoopGroup-11-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  17:51:39.448 [nioEventLoopGroup-11-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  17:51:39.449 [nioEventLoopGroup-11-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  17:51:43.761 [nioEventLoopGroup-12-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  17:51:43.761 [nioEventLoopGroup-12-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  17:51:43.762 [nioEventLoopGroup-12-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  17:52:16.307 [pool-1-thread-18] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:53:16.336 [pool-1-thread-19] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:54:16.338 [pool-1-thread-20] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:55:16.348 [pool-1-thread-21] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:56:16.731 [pool-1-thread-22] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:57:16.735 [pool-1-thread-23] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:58:16.739 [pool-1-thread-24] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  17:59:16.883 [pool-1-thread-25] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:00:16.896 [pool-1-thread-26] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:01:16.997 [pool-1-thread-27] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:02:11.559 [nioEventLoopGroup-12-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/118.31.11.71:50000失去连接
+2018-01-24  18:02:11.560 [nioEventLoopGroup-12-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 断线
+2018-01-24  18:02:11.590 [nioEventLoopGroup-11-1] INFO  com.lt.quota.core.client.QuotaClientHandler - 与服务器:/120.55.46.85:50000失去连接
+2018-01-24  18:02:11.591 [nioEventLoopGroup-11-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 断线
+2018-01-24  18:02:13.779 [Thread-19] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器118.31.11.71:50000连接已断开, 5秒后重连...
+2018-01-24  18:02:13.808 [Thread-18] ERROR com.lt.quota.core.comm.netty.client.BaseClient - 与服务器120.55.46.85:50000连接已断开, 5秒后重连...
+2018-01-24  18:02:18.812 [nioEventLoopGroup-13-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  18:02:18.813 [nioEventLoopGroup-13-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  18:02:18.813 [nioEventLoopGroup-13-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  18:02:18.838 [nioEventLoopGroup-14-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  18:02:18.839 [nioEventLoopGroup-14-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  18:02:18.839 [nioEventLoopGroup-14-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  18:02:18.892 [pool-1-thread-28] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:03:18.899 [pool-1-thread-29] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:04:19.000 [pool-1-thread-30] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:05:19.003 [pool-1-thread-31] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:06:19.040 [pool-1-thread-32] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:07:19.041 [pool-1-thread-33] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:08:19.100 [pool-1-thread-34] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:09:19.129 [pool-1-thread-35] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:09:49.995 [Thread-30] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@15d5f53a: startup date [Wed Jan 24 17:34:24 PHT 2018]; root of context hierarchy
+2018-01-24  18:09:50.008 [Thread-30] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2018-01-24  18:09:50.021 [Thread-30] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-01-24  18:10:09.528 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on lixiaoyangs-MacBook-Pro.local with PID 1701 (/Users/lixiaoyang00/Desktop/code/WTX/inner-quota/target/classes started by lixiaoyang00 in /Users/lixiaoyang00/Desktop/code/WTX)
+2018-01-24  18:10:09.554 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2018-01-24  18:10:09.681 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6ce2bc74: startup date [Wed Jan 24 18:10:09 PHT 2018]; root of context hierarchy
+2018-01-24  18:10:09.937 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2018-01-24  18:10:11.024 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-01-24  18:10:11.088 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-01-24  18:10:11.748 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c6389c64] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  18:10:11.815 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.lt.quota.core.comm.redis.RedisConfig$$EnhancerBySpringCGLIB$$7949fd11] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  18:10:11.818 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$f4ad282] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-24  18:10:12.155 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2018-01-24  18:10:12.165 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2018-01-24  18:10:12.166 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-01-24  18:10:12.221 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-01-24  18:10:12.222 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 2542 ms
+2018-01-24  18:10:12.349 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-01-24  18:10:12.353 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-01-24  18:10:12.353 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-01-24  18:10:12.354 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-01-24  18:10:12.354 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-01-24  18:10:12.728 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-01-24  18:10:12.730 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-01-24  18:10:12.730 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-01-24  18:10:12.730 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-01-24  18:10:12.841 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-01-24  18:10:12.841 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-01-24  18:10:13.027 [pool-1-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:10:13.135 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6ce2bc74: startup date [Wed Jan 24 18:10:09 PHT 2018]; root of context hierarchy
+2018-01-24  18:10:13.185 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-24  18:10:13.186 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-24  18:10:13.223 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  18:10:13.224 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  18:10:13.266 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-24  18:10:13.532 [pool-2-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:10:13.810 [restartedMain] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2018-01-24  18:10:13.849 [cluster-ClusterId{value='5a685b85ecf1d906a5b48f04', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+2018-01-24  18:10:14.332 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-01-24  18:10:14.387 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-01-24  18:10:14.394 [restartedMain] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+2018-01-24  18:10:14.408 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9999"]
+2018-01-24  18:10:14.415 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-9999]
+2018-01-24  18:10:14.418 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-01-24  18:10:14.429 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9999 (http)
+2018-01-24  18:10:14.434 [restartedMain] INFO  com.lt.quota.core.Application - Started Application in 5.301 seconds (JVM running for 7.363)
+2018-01-24  18:10:17.602 [Thread-30] INFO  com.lt.quota.core.comm.netty.server.BaseServer - netty start
+2018-01-24  18:11:13.049 [pool-1-thread-2] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-01-24  18:11:25.084 [Thread-25] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@6ce2bc74: startup date [Wed Jan 24 18:10:09 PHT 2018]; root of context hierarchy
+2018-01-24  18:11:25.089 [Thread-25] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2018-01-24  18:11:25.094 [Thread-25] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown

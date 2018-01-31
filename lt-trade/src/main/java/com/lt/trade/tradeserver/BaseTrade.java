@@ -565,6 +565,7 @@ public abstract class BaseTrade implements Runnable {
      * 获取行情数据
      */
     public ProductPriceBean getQuotePrice(String productName) {
+        LOGGER.info("riskControl:{}",riskControl);
         return riskControl.getQuotePrice(productName);
     }
 

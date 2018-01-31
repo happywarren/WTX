@@ -24,7 +24,7 @@ public class BtcMain {
     @Autowired
     private GadxRunner gadxRunner;
 
-    @PostConstruct
+    //@PostConstruct
     private void BtcMain() {
 
         bitstampClient.connect();

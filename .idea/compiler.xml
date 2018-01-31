@@ -12,6 +12,7 @@
         <module name="lt-fund" />
         <module name="lt-interface" />
         <module name="lt-manager" />
+        <module name="lt-promote" />
         <module name="lt-quota" />
         <module name="lt-task" />
         <module name="lt-trade" />
@@ -30,6 +31,7 @@
       <module name="lt-fund" target="1.8" />
       <module name="lt-interface" target="1.7" />
       <module name="lt-manager" target="1.7" />
+      <module name="lt-promote" target="1.8" />
       <module name="lt-quota" target="1.8" />
       <module name="lt-task" target="1.8" />
       <module name="lt-trade" target="1.8" />

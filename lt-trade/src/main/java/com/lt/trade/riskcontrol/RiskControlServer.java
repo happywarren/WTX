@@ -197,14 +197,11 @@ public class RiskControlServer implements Runnable {
         LOGGER.info("【"+trade_.getPlateName()+"】开始进入风控处理模块");
         while (true) {
             try {
-                if(trade_.getPlateName().equals(PlateEnum.OUTER_PLATE.getName())){
-                    LOGGER.info("外盘开始获取行情：{}",QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).size());
-                }
                 // 有行情数据过来就执行一次风控
                 final ProductPriceBean productPrice = QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).take();
                 final String productName = productPrice.getProductName();
                 final RiskControlQueue riskControlQueue = riskControlQueueMap_.get(productName);
-                LOGGER.info("有行情过来 productPrice:{}",productPrice.toString());
+                //LOGGER.info("有行情过来 productPrice:{}",productPrice.toString());
 
 
                 if (riskControlQueue == null) {
@@ -215,7 +212,6 @@ public class RiskControlServer implements Runnable {
                     @Override
                     public void run() {
                         List<FutureOrderBean> orders = riskControlQueue.risk(productPrice);
-                        LOGGER.info("...........orders={}",orders);
                         if (orders != null) {
                             LOGGER.info("------------------行情信息:{}", JSONObject.toJSONString(productPrice));
                             LOGGER.info("productName {}  风控处理订单详情:{} ", productName, JSONObject.toJSON(orders));

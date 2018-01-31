@@ -85,12 +85,6 @@ public class ProductVo extends Product implements Serializable{
 	 */
 	private Integer dayPoints;
 
-	/**
-	 * 内外胖标识
-	 */
-	private Integer plate;
-
-
 
 	public Integer getDayPoints() {
 		return dayPoints;
@@ -355,4 +349,5 @@ public class ProductVo extends Product implements Serializable{
 	public void setLimitedPriceValue(Double limitedPriceValue) {
 		this.limitedPriceValue = limitedPriceValue;
 	}
+
 }

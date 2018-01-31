@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.lt.util.utils.crypt.MD5Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -364,13 +365,22 @@ public class MainOperator {
             }
 
             //特殊标记用于自测，正式环境去掉
+            //去掉签名验证，改用数据加密
+            logger.info("data:{}",data+KEY);
             if (!"test".equals(md5)) {
                 // 签名验证
-                if (!md5.equalsIgnoreCase(Md5Encrypter.MD5(data + KEY))) {
+
+               /* if (!md5.equalsIgnoreCase(Md5Encrypter.MD5(data + KEY))) {
                     logger.info("============后加密数据为：{}", data + KEY);
                     logger.info("预先加密数据：{} 和 后加密数据：{}", md5, Md5Encrypter.MD5(data + KEY));
                     throw new LTException(LTResponseCode.SIGN_FAILED);
-                }
+                }*/
+               /*
+                if (!md5.equalsIgnoreCase(MD5Util.md5(data + KEY))) {
+                    logger.info("============后加密数据为：{}", data + KEY);
+                    logger.info("预先加密数据：{} 和 后加密数据：{}", md5, MD5Util.md5(data + KEY));
+                    throw new LTException(LTResponseCode.SIGN_FAILED);
+                }*/
             }
 
             Token tk = TokenTools.parseToken(token);

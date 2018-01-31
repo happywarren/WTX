@@ -73,7 +73,7 @@ public class DeferInterestScheduTask implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         logger.info("执行递延定时任务");
-        startUpDeferTimerLoop();
+        //startUpDeferTimerLoop();
     }
 
     public class DeferTimerLoopTask implements Runnable {

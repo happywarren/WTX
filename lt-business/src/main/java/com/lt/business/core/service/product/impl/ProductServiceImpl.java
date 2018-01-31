@@ -153,6 +153,7 @@ public class ProductServiceImpl implements IProductService {
 			}
 			ProductQuotaVo vo = new ProductQuotaVo(productCode, obj.getBidPrice1(), obj.getAskPrice1(),
 					obj.getLastPrice(), obj.getChangeRate());
+			vo.setChangeValue(obj.getChangeValue());
 			return vo;
 		} catch (Exception e) {
 			logger.error("查询单个大厅商品异常 . productCode:" + productCode, e);

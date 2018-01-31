@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="lt-promote:war">
+    <output-path>$PROJECT_DIR$/lt-promote/target</output-path>
+    <root id="archive" name="lt-promote.war">
+      <element id="artifact" artifact-name="lt-promote:war exploded" />
+    </root>
+  </artifact>
+</component>

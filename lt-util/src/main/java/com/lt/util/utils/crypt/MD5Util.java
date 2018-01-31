@@ -89,7 +89,7 @@ public class MD5Util {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s1 = "MerNo=40256&BillNo=1470020263957&Amount=50.00&OrderTime=20160801105743&ReturnURL=http://stock.xjdrxx.com/financy/ecpsspay/returnNotify2&AdviceURL=http://stock.xjdrxx.com/financy/ecpsspay/adviceNotify2&xjdrxxfw18689210389";
+		String s1 = "{\"recordCarrierOperator\":\"\",\"recordIP\":\"192.168.125.100\",\"regSource\":\"88888\",\"recordDevice\":\"MI 6\",\"deviceVersion\":\"8.0.0\",\"clientVersion\":\"2.1.2\",\"recordAccessMode\":\"WIFI\",\"recordImei\":\"DEVICE_ID_863254036386844\",\"password\":\"E10ADC3949BA59ABBE56E057F20F883E\",\"recordVersion\":\"2.1.2\",\"deviceImei\":\"DEVICE_ID_863254036386844\",\"systemName\":\"1\",\"loginName\":\"17789851177\",\"deviceModel\":\"MI 6\",\"carrieroperator\":\"\",\"recordLoginMode\":\"手机号登录\"}LT7";
 		
 		String md5 = MD5Util.md5(s1);
 		System.out.println(md5);

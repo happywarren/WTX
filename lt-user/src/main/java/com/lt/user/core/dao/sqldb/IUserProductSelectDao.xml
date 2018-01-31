@@ -17,9 +17,10 @@
 	
 	<!-- 根据条件查询用户自选股 -->
 	<select id="selectObjectByCondition" resultType="com.lt.vo.user.UserProductSelectListVo">
-		select product.*,pt.`name` AS typeName from product 
+			select product.*,pt.`name` AS typeName,ex.plate AS plate from product
 		JOIN product_type pt on pt.id = product.product_type_id
 		JOIN user_product_select as	ps on product.short_code = ps.product_short_code
+		JOIN exchange_info as ex on product.exchange_id=ex.id
 		where 
 		ps.user_id = #{userId}
 		and NOW() > product.expiration_begin_time and product.expiration_time >= NOW()

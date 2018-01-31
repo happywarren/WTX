@@ -25,6 +25,7 @@
     <ignored path="$PROJECT_DIR$/quota/target/" />
     <ignored path="$PROJECT_DIR$/outer-quota/target/" />
     <ignored path="$PROJECT_DIR$/inner-quota/target/" />
+    <ignored path="$PROJECT_DIR$/lt-promote/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,41 +46,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GetFeeRangeConfigFunc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetFeeRangeConfigFunc.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1218">
-              <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InvestorFeeCfg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorFeeCfg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2625">
-              <caret line="126" column="36" lean-forward="false" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QueryStatusAndTimePeriodFunc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/QueryStatusAndTimePeriodFunc.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="62" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ProductApiServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductApiServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2058">
-              <caret line="129" column="51" lean-forward="false" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="51" />
+            <state relative-caret-position="201">
+              <caret line="97" column="55" lean-forward="false" selection-start-line="97" selection-start-column="30" selection-end-line="97" selection-end-column="55" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GetAttentionProductListFunc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetAttentionProductListFunc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app_jms_receiver.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/app_jms_receiver.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mybatis-config.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/mybatis-config.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserApiServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserApiServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="446" column="57" lean-forward="true" selection-start-line="446" selection-start-column="57" selection-end-line="446" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FundProductQuotaVoFunc.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/FundProductQuotaVoFunc.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -88,59 +109,70 @@
       <file leaf-file-name="ProductServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8001">
-              <caret line="425" column="58" lean-forward="false" selection-start-line="425" selection-start-column="37" selection-end-line="425" selection-end-column="58" />
+            <state relative-caret-position="284">
+              <caret line="153" column="63" lean-forward="false" selection-start-line="153" selection-start-column="63" selection-end-line="153" selection-end-column="63" />
+              <folding>
+                <element signature="e#5908#5924#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RedisQuotaObject.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/dispatcher/enums/RedisQuotaObject.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/ProductType.java">
+      <file leaf-file-name="ProductQuotaVo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductQuotaVo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1176">
-              <caret line="71" column="13" lean-forward="false" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="1080">
+              <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+              <folding>
+                <element signature="e#527#528#0" expanded="true" />
+                <element signature="e#551#552#0" expanded="true" />
+                <element signature="e#599#600#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#661#662#0" expanded="true" />
+                <element signature="e#679#680#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
+                <element signature="e#738#739#0" expanded="true" />
+                <element signature="e#771#772#0" expanded="true" />
+                <element signature="e#793#794#0" expanded="true" />
+                <element signature="e#837#838#0" expanded="true" />
+                <element signature="e#868#869#0" expanded="true" />
+                <element signature="e#899#900#0" expanded="true" />
+                <element signature="e#921#922#0" expanded="true" />
+                <element signature="e#965#966#0" expanded="true" />
+                <element signature="e#996#997#0" expanded="true" />
+                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1097#1098#0" expanded="true" />
+                <element signature="e#1130#1131#0" expanded="true" />
+                <element signature="e#1190#1191#0" expanded="true" />
+                <element signature="e#1241#1242#0" expanded="true" />
+                <element signature="e#1278#1279#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetProductListFunc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/GetProductListFunc.java">
+      <file leaf-file-name="IProductSelectDao.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/dao/product/IProductSelectDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuotaListener.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="673">
-              <caret line="72" column="33" lean-forward="true" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserProductSelectListVo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/user/UserProductSelectListVo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetProductKindsFunc.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/GetProductKindsFunc.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="60" />
-              <folding />
+            <state relative-caret-position="120">
+              <caret line="8" column="64" lean-forward="false" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+              <folding>
+                <marker date="1517387660000" expanded="true" signature="330:760" ph="select produ... product" />
+                <marker date="1517387660000" expanded="true" signature="893:1451" ph="select pt.`n... investor_product_config" />
+                <marker date="1517387660000" expanded="true" signature="2019:2169" ph="insert into user_product_select" />
+                <marker date="1517387660000" expanded="true" signature="2232:2288" ph="delete from user_product_select... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -157,37 +189,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fast</find>
-      <find>Product_info</find>
-      <find>PRODUCT</find>
+      <find>eton</find>
+      <find>selectInvestorFeeCfg</find>
+      <find>PRODUCT_INFO</find>
+      <find>loadProAndTimeToRedis</find>
+      <find>doBuy</find>
+      <find>plate</find>
+      <find>getQuota</find>
+      <find>startUpDeferTimerLoop</find>
+      <find>riskControl</find>
+      <find>selectRateByCurrency</find>
+      <find>getAdvertistment</find>
+      <find>qryAdvertisementByWeightUptDate</find>
+      <find>adverType</find>
+      <find>selectSysNoticeList</find>
+      <find>getNewsByBrandIdSection</find>
+      <find>SF00001</find>
+      <find>SIGN_FAILED</find>
+      <find>ip</find>
+      <find>fileUploadapi</find>
+      <find>queryFundMainCash</find>
+      <find>initFundMainCash</find>
+      <find>h5api</find>
+      <find>HeartbeatTimer</find>
       <find>saveForexCsv</find>
-      <find>listInvestorAccountForServer</find>
-      <find>getQuotaCoreConfigModelByName</find>
-      <find>subscribe0</find>
       <find>getCurrentProduct</find>
-      <find>contract=</find>
-      <find>findScorePositionList</find>
-      <find>selectProductOptionalByCondition</find>
-      <find>queryUserBuyId</find>
       <find>selectObjectByCondition</find>
       <find>selectProductForInvestorGroup</find>
-      <find>selectProductTypesByCondition</find>
-      <find>beginTime</find>
-      <find>currencyUnit</find>
-      <find>currentRateId</find>
-      <find>dayPoints</find>
-      <find>decimalDigits</find>
-      <find>exchangeId</find>
-      <find>exchangeName</find>
-      <find>expirationBeginTime</find>
-      <find>isDouble</find>
-      <find>jumpPrice</find>
-      <find>jumpValue</find>
-      <find>rate</find>
-      <find>surcharge</find>
-      <find>selectProductForTagId</find>
-      <find>不是交易时间</find>
+      <find>selectObjectByUserId</find>
+      <find>selectProductOptional</find>
+      <find>findQuotaObjectByCodeList</find>
     </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -197,43 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/tradeserver/BaseTrade.java" />
-        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/utils/TradeUtils.java" />
-        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/trade/OrderCashInfo.java" />
-        <option value="$PROJECT_DIR$/lt-fund/src/main/java/com/lt/fund/service/impl/FundCashServiceImpl.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/dao/OrderCashInfoDao.xml" />
-        <option value="$PROJECT_DIR$/lt-trade/pom.xml" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorFeeCfg.java" />
-        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/feedback/func/ListFeedbackFunc.java" />
-        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/feedback/func/DetailFeedbackFunc.java" />
-        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/feedback/func/SubmitFeedbackFunc.java" />
-        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/feedback/func/ReplyYesFeedbackFunc.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlQueue.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaListener.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaOperator.java" />
-        <option value="$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/sms/impl/SmsApiServiceImpl.java" />
-        <option value="$PROJECT_DIR$/lt-business/src/main/resources/config/mybatis-config.xml" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/ContractTrade.java" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/BaseTrade.java" />
-        <option value="$PROJECT_DIR$/lt-manager/pom.xml" />
-        <option value="$USER_HOME$/.m2/settings.xml" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/Application.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/QuotaStart.java" />
-        <option value="$PROJECT_DIR$/lt-quota/pom.xml" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/otod/bean/quote/snapshot/BidAsk.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/ServerContext.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/QuoteClient.java" />
-        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductVo.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/timer/HeartbeatTimer.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/bean/Product.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/bean/ProductVo.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/ProductTimeCache.java" />
-        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/rf/listener/RfClientListener.java" />
         <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/rf/RfTcpClientMain.java" />
         <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerTcpClientMain.java" />
         <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/ib/IbTcpClientMain.java" />
@@ -245,9 +243,46 @@
         <option value="$PROJECT_DIR$/lt-interface/src/main/resources/app_consumer.xml" />
         <option value="$PROJECT_DIR$/lt-trade/src/main/resources/config/config.properties" />
         <option value="$PROJECT_DIR$/lt-trade/src/main/resources/config/app_rmi_provider.xml" />
-        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/TradeServer.java" />
         <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/PositionOrderVo.java" />
         <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/Product.java" />
+        <option value="$PROJECT_DIR$/lt-manager/src/main/java/com/lt/manager/mail/MailBean.java" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/OrderVo.java" />
+        <option value="$USER_HOME$/.m2/settings.xml" />
+        <option value="$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/charge/service/impl/UserRechargeByEToneQuickpay.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/api/user/IInvestorFeeCfgApiService.java" />
+        <option value="$PROJECT_DIR$/lt-manager/src/main/resources/config/data_access.properties" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductVo.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/ProductTimeCache.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/BaseTrade.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/defer/DeferInterestScheduTask.java" />
+        <option value="$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/TradeServer.java" />
+        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/AdapterServlet.java" />
+        <option value="$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/StringTools.java" />
+        <option value="$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/crypt/MD5Util.java" />
+        <option value="$PROJECT_DIR$/lt-util/src/main/java/com/lt/util/utils/crypt/Md5Encrypter.java" />
+        <option value="$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/MainOperator.java" />
+        <option value="$PROJECT_DIR$/lt-promote/src/main/resources/config/data_access.properties" />
+        <option value="$PROJECT_DIR$/lt-promote/src/main/resources/config/app_rmi_provider.xml" />
+        <option value="$PROJECT_DIR$/lt-promote/src/main/resources/config/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/timer/HeartbeatTimer.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/coin/BtcMain.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/quote/snapshot/Snapshot.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/quote/snapshot/ForexSnapshot.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerTcpClient.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/QuoteClient.java" />
+        <option value="$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/GtQuotaClient.java" />
+        <option value="$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/dao/sqldb/IUserProductSelectDao.xml" />
+        <option value="$PROJECT_DIR$/lt-business/src/main/resources/config/app_rmi_provider.xml" />
+        <option value="$PROJECT_DIR$/lt-business/src/main/resources/config/config.properties" />
+        <option value="$PROJECT_DIR$/lt-user/src/main/resources/config/config.properties" />
+        <option value="$PROJECT_DIR$/lt-user/src/main/resources/config/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/dao/product/IProductSelectDao.xml" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductQuotaVo.java" />
+        <option value="$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/user/UserProductSelectListVo.java" />
       </list>
     </option>
   </component>
@@ -265,12 +300,6 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="D:/tool/apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="C:\Users\root\.m2\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -282,44 +311,30 @@
       <expand>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="interface Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="lt-business" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="interface Maven Webapp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="lt-business" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="lt-trade" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="lt-user" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
         <path>
           <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="lt-trade" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="lt-user" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="lt-util" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="lt-util" type="9519ce18:MavenProjectsStructure$ProjectNode" />
-          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
-        </path>
-        <path>
-          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
-          <item name="quota" type="9519ce18:MavenProjectsStructure$ProjectNode" />
         </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-165" />
-    <option name="y" value="36" />
-    <option name="width" value="1526" />
-    <option name="height" value="1044" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="813" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -360,183 +375,12 @@
               <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
               <item name="WTX" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="func" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="version" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-interface" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="adapter" type="462c0819:PsiDirectoryNode" />
-              <item name="adapterConfig" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-manager" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-trade" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="WTX" type="b2602c69:ProjectViewProjectNode" />
-              <item name="WTX" type="462c0819:PsiDirectoryNode" />
-              <item name="lt-user" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="user" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -598,17 +442,15 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelOrder0" value="0" />
@@ -616,6 +458,7 @@
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="SearchEverywhereHistoryKey" value="getAttentionProductList&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetAttentionProductListFunc.java&#10;fundProductQuotaVo&#9;PSI&#9;JAVA://com.lt.adapter.adapter.product.func.FundProductQuotaVoFunc&#10;getProductList&#9;PSI&#9;JAVA://com.lt.adapter.adapter.product.func.GetProductListFunc&#10;ProductTimeCa&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-quota/src/main/java/com/lt/quota/core/quota/ProductTimeCache.java&#10;QuotaClient&#9;PSI&#9;JAVA://com.lt.quota.core.client.QuotaClientHandler&#10;updateUserHeadPic&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/UpdateUserHeadPicFunc.java&#10;Token&#9;PSI&#9;JAVA://com.lt.util.utils.model.Token&#10;login&#9;PSI&#9;JAVA://com.lt.adapter.adapter.user.func.LoginFunc&#10;strategyList&#9;PSI&#9;JAVA://com.lt.adapter.adapter.news.func.StrategyListFunc&#10;getSysNotice&#9;PSI&#9;JAVA://com.lt.adapter.adapter.sys.func.GetSysNoticeFunc&#10;getTheAddressNew&#9;PSI&#9;JAVA://com.lt.adapter.adapter.config.func.GetTheAddressNewFunc&#10;getRateByCurrency&#9;PSI&#9;JAVA://com.lt.adapter.adapter.product.func.GetRateByCurrencyFunc&#10;BaseTrade&#9;PSI&#9;JAVA://com.lt.trade.tradeserver.BaseTrade&#10;RiskControlServer.java&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java&#10;DeferInterestScheduTask&#9;PSI&#9;JAVA://com.lt.trade.defer.DeferInterestScheduTask&#10;RiskControlServer&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-trade/src/main/java/com/lt/trade/riskcontrol/RiskControlServer.java&#10;CashOrderBuyTradeServiceImpl&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-trade/src/main/java/com/lt/trade/order/service/impl/cash/CashOrderBuyTradeServiceImpl.java&#10;ProductTimeCache&#9;PSI&#9;JAVA://com.lt.trade.ProductTimeCache&#10;BuyFunc&#9;FILE&#9;file:///Users/lixiaoyang00/Desktop/code/WTX/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java&#10;OrderVo&#9;PSI&#9;JAVA://com.lt.vo.trade.OrderVo" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -626,11 +469,11 @@
       <recent name="com.lt.quota.core.ProductTimeCache" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lt-quota/src/main/java" />
       <recent name="C:\code\WTX\lt-quota\src\main\java" />
       <recent name="C:\code\WTX\lt-quota\src\main\resources" />
       <recent name="C:\code\WTX\lt-trade" />
       <recent name="C:\code\lt-code\outer-quota\src\main\java\com\lt\quota\core\comm" />
-      <recent name="D:\code\lt-code\quota\src\main\java\com\lt\quota\core" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -645,13 +488,32 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.lt-trade [install]">
+  <component name="RunManager" selected="Maven.lt-user [install]">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
+    </configuration>
+    <configuration name="QuoteClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.otod.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.otod.test.QuoteClient" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="lt-quota" />
+      <envs />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -733,7 +595,7 @@
         </option>
       </MavenSettings>
     </configuration>
-    <configuration name="lt-interface [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+    <configuration name="lt-business [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -751,12 +613,12 @@
               <map />
             </option>
             <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$/lt-interface" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/lt-business" />
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
     </configuration>
-    <configuration name="lt-trade [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+    <configuration name="lt-user [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -774,30 +636,7 @@
               <map />
             </option>
             <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$/lt-trade" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-    </configuration>
-    <configuration name="lt-util [install]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="install" />
-              </list>
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$/lt-util" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/lt-user" />
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
@@ -938,18 +777,18 @@
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.trade" />
       <item index="2" class="java.lang.String" itemvalue="Spring Boot.Application" />
       <item index="3" class="java.lang.String" itemvalue="Spring Boot.Application (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Maven.lt-util [install]" />
+      <item index="4" class="java.lang.String" itemvalue="Application.QuoteClient" />
       <item index="5" class="java.lang.String" itemvalue="Maven.lt-api [install]" />
-      <item index="6" class="java.lang.String" itemvalue="Maven.lt-interface [install]" />
-      <item index="7" class="java.lang.String" itemvalue="Maven.lt-trade [install]" />
+      <item index="6" class="java.lang.String" itemvalue="Maven.lt-business [install]" />
+      <item index="7" class="java.lang.String" itemvalue="Maven.lt-user [install]" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Maven.lt-trade [install]" />
-        <item index="1" class="java.lang.String" itemvalue="Maven.lt-interface [install]" />
+        <item index="0" class="java.lang.String" itemvalue="Maven.lt-user [install]" />
+        <item index="1" class="java.lang.String" itemvalue="Maven.lt-business [install]" />
         <item index="2" class="java.lang.String" itemvalue="Maven.lt-api [install]" />
-        <item index="3" class="java.lang.String" itemvalue="Maven.lt-util [install]" />
-        <item index="4" class="java.lang.String" itemvalue="Spring Boot.Application (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Spring Boot.Application (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Application.QuoteClient" />
       </list>
     </recent_temporary>
   </component>
@@ -957,7 +796,7 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration" cleanupOnStartRun="true">
-    <configuration>C:\Users\root\AppData\Roaming\Subversion</configuration>
+    <configuration>$USER_HOME$/.subversion</configuration>
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
@@ -991,20 +830,26 @@
       <workItem from="1515907859189" duration="8819000" />
       <workItem from="1515996547372" duration="1605000" />
       <workItem from="1516722930781" duration="27000" />
+      <workItem from="1516784639436" duration="3192000" />
+      <workItem from="1516867724411" duration="1181000" />
+      <workItem from="1516940594017" duration="1720000" />
+      <workItem from="1516944896295" duration="664000" />
+      <workItem from="1516955749102" duration="32220000" />
+      <workItem from="1517203756402" duration="26037000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205368000" />
+    <option name="totallyTimeSpent" value="270382000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="812" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.200453" sideWeight="0.36634716" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3835022" sideWeight="0.22818312" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4918033" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18347639" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13876967" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1013,58 +858,59 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53395784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.533237" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299566" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1685879" sideWeight="0.7718169" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15807962" sideWeight="0.6336528" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26609442" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25178826" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277311" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53567386" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299566" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.200453" sideWeight="0.36634716" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3835022" sideWeight="0.22818312" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4918033" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18347639" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1695279" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960597" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0751073" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53395784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53567386" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53501403" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.4978701" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15807962" sideWeight="0.6336528" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3835022" sideWeight="0.7718169" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3290398" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2666309" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21959943" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32903227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277311" sideWeight="0.49722221" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
@@ -1086,371 +932,487 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/resources/spring.xml">
+    <entry file="file://$PROJECT_DIR$/inner-quota/src/main/java/com/lt/quota/core/client/QuotaClientHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/resources/spring_redis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/resources/config.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="12" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/resources/app_consumer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/ContractTrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="101" column="28" lean-forward="false" selection-start-line="101" selection-start-column="16" selection-end-line="101" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/InnerFutureTrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="122" column="0" lean-forward="false" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/OuterFutureTrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="128" column="49" lean-forward="false" selection-start-line="128" selection-start-column="49" selection-end-line="128" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/tradeserver/BaseTrade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11025">
-          <caret line="595" column="25" lean-forward="false" selection-start-line="595" selection-start-column="25" selection-end-line="595" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/TradeMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/resources/config/app_rmi_consumer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="150">
+          <caret line="21" column="19" lean-forward="false" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/resources/config/config.properties">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/quote/snapshot/BidAsk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="29" column="29" lean-forward="false" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="29" />
+        <state relative-caret-position="180">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/FindEntrustRecordFunc.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/component/tcp/client/TcpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="23" column="17" lean-forward="false" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/ServerContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="3" lean-forward="true" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+          <folding>
+            <element signature="e#425#426#0" expanded="false" />
+            <element signature="e#480#481#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/QuotaSubscribeJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-42">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerTcpClientThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerClientBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerTcpClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="22" column="13" lean-forward="false" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/BuyFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="45" column="38" lean-forward="false" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-manager/src/main/resources/config/app_consumer.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="30" column="62" lean-forward="false" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/resources/config/app_rmi_provider.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="34" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="34" />
+          <caret line="22" column="20" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/util/Map.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/rf/RfTcpClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="239" column="6" lean-forward="false" selection-start-line="239" selection-start-column="6" selection-end-line="239" selection-end-column="6" />
+        <state relative-caret-position="75">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/netty/BaseClient.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/rf/RfClientBox.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="43" />
+        <state relative-caret-position="75">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/TradeServer.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/rf/RfTcpClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1890">
-          <caret line="160" column="44" lean-forward="false" selection-start-line="160" selection-start-column="33" selection-end-line="160" selection-end-column="44" />
+        <state relative-caret-position="225">
+          <caret line="23" column="15" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/FindPosiOrderCountFunc.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/util/mutithread/TimerThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="36" column="58" lean-forward="false" selection-start-line="36" selection-start-column="40" selection-end-line="36" selection-end-column="58" />
+        <state relative-caret-position="176">
+          <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+          <folding>
+            <element signature="e#932#933#0" expanded="false" />
+            <element signature="e#986#987#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/order/dao/OrderScoreInfoDao.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/timer/HeartbeatTimer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+        <state relative-caret-position="272">
+          <caret line="43" column="21" lean-forward="false" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/order/service/impl/OrderBusinessServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/bean/QuotaBean.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="203" column="50" lean-forward="true" selection-start-line="203" selection-start-column="50" selection-end-line="203" selection-end-column="50" />
+        <state relative-caret-position="-651">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetActivityAccountStepFunc.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/quote/snapshot/Snapshot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="46">
+          <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/BaseAdapter.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/bean/quote/snapshot/ForexSnapshot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="61" lean-forward="false" selection-start-line="26" selection-start-column="57" selection-end-line="26" selection-end-column="61" />
+        <state relative-caret-position="263">
+          <caret line="30" column="53" lean-forward="false" selection-start-line="30" selection-start-column="53" selection-end-line="30" selection-end-column="53" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trades/src/main/java/com/lt/trade/order/service/impl/OrderScoreApiServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/ProductTimeCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="833" column="54" lean-forward="false" selection-start-line="833" selection-start-column="36" selection-end-line="833" selection-end-column="54" />
+        <state relative-caret-position="1058">
+          <caret line="135" column="43" lean-forward="false" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="43" />
+          <folding>
+            <element signature="e#1231#1260#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserServiceImpl.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home/src.zip!/java/lang/Runnable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="66" column="37" lean-forward="false" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="37" />
+        <state relative-caret-position="374">
+          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/coin/BtcMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="31" column="31" lean-forward="true" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/inner/InnerTcpClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/otod/test/QuoteClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="38" column="33" lean-forward="false" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="33" />
+          <folding>
+            <element signature="e#1488#1503#0" expanded="false" />
+            <element signature="e#1585#1600#0" expanded="false" />
+            <element signature="e#3053#3054#0" expanded="false" />
+            <element signature="e#3078#3079#0" expanded="false" />
+            <element signature="e#3114#3115#0" expanded="false" />
+            <element signature="e#3142#3143#0" expanded="false" />
+            <element signature="e#3170#3171#0" expanded="false" />
+            <element signature="e#3197#3198#0" expanded="false" />
+            <element signature="e#3234#3235#0" expanded="false" />
+            <element signature="e#3266#3267#0" expanded="false" />
+            <element signature="e#3302#3303#0" expanded="false" />
+            <element signature="e#3334#3335#0" expanded="false" />
+            <element signature="e#3385#3386#0" expanded="false" />
+            <element signature="e#3427#3428#0" expanded="false" />
+            <element signature="e#3466#3467#0" expanded="false" />
+            <element signature="e#3498#3499#0" expanded="false" />
+            <element signature="e#3551#3552#0" expanded="false" />
+            <element signature="e#3593#3594#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/server/bean/ProductInfoBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-361">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/quota/GtQuotaClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="57" column="89" lean-forward="false" selection-start-line="57" selection-start-column="78" selection-end-line="57" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/dao/jdbc/ProductJdbcDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="24" column="163" lean-forward="false" selection-start-line="24" selection-start-column="150" selection-end-line="24" selection-end-column="163" />
+          <folding>
+            <marker date="1516726291000" expanded="true" signature="515:816" ph="select p.id,... product" />
+            <marker date="1516726291000" expanded="true" signature="1002:1283" ph="select p.id product" />
+            <marker date="1516726291000" expanded="true" signature="1468:1752" ph="select p.id,... product" />
+            <marker date="1516726291000" expanded="true" signature="1940:1998" ph="select produ... product" />
+            <marker date="1516726291000" expanded="true" signature="2181:2397" ph="select p.pro... product" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-quota/src/main/java/com/lt/quota/core/service/impl/QuotaCoreConfigServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="70" column="76" lean-forward="false" selection-start-line="70" selection-start-column="59" selection-end-line="70" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/dao/sqldb/IUserProductSelectDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="19" column="68" lean-forward="false" selection-start-line="19" selection-start-column="50" selection-end-line="19" selection-end-column="68" />
+          <folding>
+            <marker date="1517383307000" expanded="true" signature="328:662" ph="select produ... product" />
+            <marker date="1517383307000" expanded="true" signature="792:1357" ph="select produ... product" />
+            <marker date="1517383307000" expanded="true" signature="1494:2107" ph="select pt.`n... investor_product_config" />
+            <marker date="1517383307000" expanded="true" signature="2676:2826" ph="insert into user_product_select" />
+            <marker date="1517383307000" expanded="true" signature="2912:2968" ph="delete from user_product_select... " />
+            <marker date="1517383307000" expanded="true" signature="3041:3201" ph="delete from user_product_select... " />
+            <marker date="1517383307000" expanded="true" signature="3126:3200" ph="select short... product" />
+            <marker date="1517383307000" expanded="true" signature="3589:3711" ph="select * fro... user_product_select" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserProductSelectServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="573">
-          <caret line="111" column="30" lean-forward="true" selection-start-line="111" selection-start-column="30" selection-end-line="111" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserApiServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="853">
-          <caret line="458" column="73" lean-forward="false" selection-start-line="458" selection-start-column="44" selection-end-line="458" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetAttentionProductListFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" column="32" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductQuotaVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/FundProductQuotaVoFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="33" column="41" lean-forward="false" selection-start-line="33" selection-start-column="41" selection-end-line="33" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/QueryProductLobbyFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="29" column="76" lean-forward="false" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/constant/LTConstant.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/dao/product/IProductTypeDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/Product.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="30" column="31" lean-forward="false" selection-start-line="30" selection-start-column="27" selection-end-line="30" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetUserAmtFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="15" lean-forward="false" selection-start-line="33" selection-start-column="15" selection-end-line="33" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/fund/FundVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="33" column="7" lean-forward="true" selection-start-line="33" selection-start-column="7" selection-end-line="33" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/order/func/FindSinglePositionListFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="33" column="20" lean-forward="false" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/trade/PositionOrderVo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2646">
-          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorProductConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetFeeRangeConfigFunc.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1218">
-          <caret line="85" column="19" lean-forward="false" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
+        <state relative-caret-position="341">
+          <caret line="105" column="27" lean-forward="false" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/user/InvestorFeeCfg.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_base.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2625">
-          <caret line="126" column="36" lean-forward="false" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="36" />
+        <state relative-caret-position="-52">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/QueryStatusAndTimePeriodFunc.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_jms_producer.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="31" column="62" lean-forward="false" selection-start-line="31" selection-start-column="38" selection-end-line="31" selection-end-column="62" />
+        <state relative-caret-position="-419">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/GetProductKindsFunc.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_log_mongo.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="35" column="60" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="60" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/user/UserProductSelectListVo.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_mybatis.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="-376">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductApiServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_scheduling.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2058">
-          <caret line="129" column="51" lean-forward="false" selection-start-line="129" selection-start-column="34" selection-end-line="129" selection-end-column="51" />
+        <state relative-caret-position="-124">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/app_scheduling.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8001">
-          <caret line="425" column="58" lean-forward="false" selection-start-line="425" selection-start-column="37" selection-end-line="425" selection-end-column="58" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/product/ProductType.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_rmi_provider.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1176">
-          <caret line="71" column="13" lean-forward="false" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+        <state relative-caret-position="165">
+          <caret line="11" column="46" lean-forward="false" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="13" column="26" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_rmi_consumer.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-55">
+          <caret line="4" column="75" lean-forward="false" selection-start-line="4" selection-start-column="75" selection-end-line="4" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/resources/config/app_redis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-98">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/app_base.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="41" column="36" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="e#1694#1713#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/config.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="38" lean-forward="false" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/GetProductListFunc.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="38" column="5" lean-forward="false" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
+        <state relative-caret-position="285">
+          <caret line="35" column="80" lean-forward="false" selection-start-line="35" selection-start-column="63" selection-end-line="35" selection-end-column="80" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lt-trade/src/main/java/com/lt/trade/riskcontrol/QuotaListener.java">
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/dao/product/IProductSelectDao.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="72" column="33" lean-forward="true" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="34" />
+        <state relative-caret-position="120">
+          <caret line="8" column="64" lean-forward="false" selection-start-line="8" selection-start-column="64" selection-end-line="8" selection-end-column="64" />
+          <folding>
+            <marker date="1517387660000" expanded="true" signature="330:760" ph="select produ... product" />
+            <marker date="1517387660000" expanded="true" signature="893:1451" ph="select pt.`n... investor_product_config" />
+            <marker date="1517387660000" expanded="true" signature="2019:2169" ph="insert into user_product_select" />
+            <marker date="1517387660000" expanded="true" signature="2232:2288" ph="delete from user_product_select... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/java/com/lt/user/core/service/impl/UserApiServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="446" column="57" lean-forward="true" selection-start-line="446" selection-start-column="57" selection-end-line="446" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductApiServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="97" column="55" lean-forward="false" selection-start-line="97" selection-start-column="30" selection-end-line="97" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/product/func/FundProductQuotaVoFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="37" column="27" lean-forward="false" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/product/ProductQuotaVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
+          <folding>
+            <element signature="e#527#528#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#599#600#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#661#662#0" expanded="true" />
+            <element signature="e#679#680#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#738#739#0" expanded="true" />
+            <element signature="e#771#772#0" expanded="true" />
+            <element signature="e#793#794#0" expanded="true" />
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#899#900#0" expanded="true" />
+            <element signature="e#921#922#0" expanded="true" />
+            <element signature="e#965#966#0" expanded="true" />
+            <element signature="e#996#997#0" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1097#1098#0" expanded="true" />
+            <element signature="e#1130#1131#0" expanded="true" />
+            <element signature="e#1190#1191#0" expanded="true" />
+            <element signature="e#1241#1242#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/model/dispatcher/enums/RedisQuotaObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-business/src/main/java/com/lt/business/core/service/product/impl/ProductServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="153" column="63" lean-forward="false" selection-start-line="153" selection-start-column="63" selection-end-line="153" selection-end-column="63" />
+          <folding>
+            <element signature="e#5908#5924#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-api/src/main/java/com/lt/vo/user/UserProductSelectListVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="22" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-interface/src/main/java/com/lt/adapter/adapter/user/func/GetAttentionProductListFunc.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/app_jms_receiver.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lt-user/src/main/resources/config/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="20" column="33" lean-forward="false" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
           <folding />
         </state>
       </provider>

@@ -225,7 +225,7 @@ public class ProductTimeCache {
         }
         ProductInfoBean productBean = productInfoMap.get(productName);
         if (productBean == null) {
-            LOGGER.error("==========商品:{},未配置==========", productName);
+            //LOGGER.error("==========商品:{},未配置==========", productName);
             return false;
         }
         Calendar calendar = Calendar.getInstance();

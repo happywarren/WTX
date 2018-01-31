@@ -170,12 +170,11 @@
 			<artifactId>activemq-pool</artifactId>
 			<version>5.10.1</version>
 		</dependency>
-		<!--
 		<dependency>
 			<groupId>com.etonepay.b2c</groupId>
 			<artifactId>etonepay_sdk</artifactId>
 			<version>1.0.1</version>
-		</dependency>-->
+		</dependency>
 	</dependencies>
 
 	<build>

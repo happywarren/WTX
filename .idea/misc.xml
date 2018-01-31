@@ -5,6 +5,7 @@
     <file type="web" url="file://$PROJECT_DIR$/lt-fund" />
     <file type="web" url="file://$PROJECT_DIR$/lt-interface" />
     <file type="web" url="file://$PROJECT_DIR$/lt-manager" />
+    <file type="web" url="file://$PROJECT_DIR$/lt-promote" />
     <file type="web" url="file://$PROJECT_DIR$/lt-quota" />
     <file type="web" url="file://$PROJECT_DIR$/lt-trade" />
     <file type="web" url="file://$PROJECT_DIR$/lt-trades" />
@@ -18,6 +19,7 @@
         <option value="$PROJECT_DIR$/lt-quota/pom.xml" />
         <option value="$PROJECT_DIR$/outer-quota/pom.xml" />
         <option value="$PROJECT_DIR$/inner-quota/pom.xml" />
+        <option value="$PROJECT_DIR$/lt-promote/pom.xml" />
       </list>
     </option>
   </component>

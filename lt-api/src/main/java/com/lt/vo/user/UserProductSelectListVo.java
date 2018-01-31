@@ -20,6 +20,7 @@ public class UserProductSelectListVo implements Serializable{
     private int status;
     private String productName;
     private int decimalDigits;//小数位数
+	private int plate;   //内外盘标识
 	/**
 	 * exchangeId：交易所ID
 	 */
@@ -104,5 +105,6 @@ public class UserProductSelectListVo implements Serializable{
 	public void setDecimalDigits(int decimalDigits) {
 		this.decimalDigits = decimalDigits;
 	}
-	
+	public int getPlate() {return plate;}
+	public void setPlate(int plate) {this.plate = plate;}
 }

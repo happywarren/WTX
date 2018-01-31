@@ -28,6 +28,11 @@ public class ProductQuotaVo implements Serializable{
 	 * 涨跌幅
 	 */
 	private String percentage;
+
+	/**
+	 *涨跌值
+	 */
+	private String changeValue;
 	
 	public ProductQuotaVo(){
 		
@@ -64,14 +69,25 @@ public class ProductQuotaVo implements Serializable{
 	public void setLastPrice(String lastPrice) {
 		this.lastPrice = lastPrice;
 	}
+
+	public String getChangeValue() {
+		return changeValue;
+	}
+
+	public void setChangeValue(String changeValue) {
+		this.changeValue = changeValue;
+	}
+
 	public ProductQuotaVo(String code, String bidPrice, String askPrice,
-			String lastPrice, String percentage) {
+						  String lastPrice, String percentage) {
 		this.code = code;
 		this.bidPrice = bidPrice;
 		this.askPrice = askPrice;
 		this.lastPrice = lastPrice;
 		this.percentage = percentage;
 	}
+
+
 	
 	
 }
