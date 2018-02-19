@@ -59,7 +59,7 @@ public abstract class QuoteClient extends Thread implements TcpClientDataHandler
 
     @Override
     public void run() {
-        System.out.println("实时数据源启动！");
+        logger.info("启动行情数据！！！");
         TimeZone tz = TimeZone.getTimeZone("GMT+8");
         TimeZone.setDefault(tz);
 
@@ -146,6 +146,7 @@ public abstract class QuoteClient extends Thread implements TcpClientDataHandler
     //发送登录请求
     private void sendLogin() {
 
+        logger.info("开始登陆！！！！");
         String username = "";
         String password = "";
         username = StringUtil.completeByBefore("DS-180", 12, " ");
@@ -232,16 +233,18 @@ public abstract class QuoteClient extends Thread implements TcpClientDataHandler
                 temp = new byte[1];
                 buffer.get(temp);
                 String loginFlagStr = new String(temp);
-                System.out.println("账号:" + userName + "||loginFlag:" + loginFlagStr);
+                logger.info("账号:" + userName + "||loginFlag:" + loginFlagStr);
                 if (loginFlagStr.equals("1")) {
-                    System.out.println("登录成功");
+                   // System.out.println("登录成功");
+                    logger.info("登陆到行情服务器成功！！！");
                     loginFlag = true;
                 } else if (loginFlagStr.equals("0")) {
-                    System.out.println("登录失败");
+                    logger.info("登陆到行情服务器失败！！！");
+                    //System.out.println("登录失败");
                     stopClient();
                     loginFlag = false;
                 } else if (loginFlagStr.equals("3")) {
-                    System.out.println("用户已经登录");
+                    logger.info("用户已经在其它地方登陆到行情服务器！！！");
                     stopClient();
                     loginFlag = false;
                 }
@@ -277,15 +280,12 @@ public abstract class QuoteClient extends Thread implements TcpClientDataHandler
                 snapshot.pClose = buffer.getDouble();
                 snapshot.tVolume = buffer.getDouble();
                 snapshot.tValue = buffer.getDouble();
-//                if (snapshot.symbol.equals("EURUSD")||snapshot.symbol.equals("USDCNY")||snapshot.symbol.equals("GBPUSD")||snapshot.symbol.equals("XAGUSD")) 
-//                {
-                //System.out.println(symbol + "," + name + ","+snapshot.ask1Volume+","+snapshot.bid1Volume);
-               // System.out.println(symbol + "," + name + "," + snapshot.date + "," + snapshot.time + "," + snapshot.open + "," + snapshot.high + "," + snapshot.low);
-//                }
+
                 onMessage(snapshot);
 
             } else if (rtqType == 10) {
-                  System.err.println("心跳包");
+                  //System.err.println("心跳包");
+                  logger.info("行情服务器心跳包！！！");
             }
 
         } catch (Exception ex) {

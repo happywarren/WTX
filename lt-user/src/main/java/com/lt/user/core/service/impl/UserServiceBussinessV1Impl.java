@@ -114,6 +114,7 @@ public class UserServiceBussinessV1Impl implements IUServiceBussinessV1 {
 		}
 
 		bussinessInfo.setBrandId(brandId);
+		bussinessInfo.setUserId(userId);
 		try{
 			Integer num = userBussinessDao.getUserUserIdCard(bussinessInfo);
 			if(num.intValue() > 0){
@@ -121,8 +122,6 @@ public class UserServiceBussinessV1Impl implements IUServiceBussinessV1 {
 			}else{
 				bussinessInfo.setIdCardNum(null);
 			}
-			
-			bussinessInfo.setUserId(userId);
 			UserBussinessInfo oldInfo  = userBussinessDao.getUserActivityAccountInfo(bussinessInfo);
 			bussinessInfo.setUserName(user_name);
 			bussinessInfo.setIdCardNum(idCard);

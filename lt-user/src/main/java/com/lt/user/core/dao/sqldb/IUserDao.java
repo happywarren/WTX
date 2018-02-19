@@ -3,6 +3,7 @@ package com.lt.user.core.dao.sqldb;
 import com.lt.model.user.UserBaseInfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IUserDao {
 
@@ -132,4 +133,11 @@ public interface IUserDao {
      * @return
      */
     public Integer selectUserBaseCountByNickName(String nickName);
+
+    /**
+     * 保存crash日志
+     * @param crashMap
+     * @return
+     */
+    public Integer saveCrashLog(Map<String,Object> crashMap);
 }

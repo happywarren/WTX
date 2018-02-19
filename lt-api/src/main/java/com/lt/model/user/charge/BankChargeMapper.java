@@ -31,6 +31,8 @@ public class BankChargeMapper implements Serializable {
 	private Date createDate;
 	/** 修改时间*/
 	private Date updateDate;
+	/**通道名称 */
+	private String channelName;
 	/**
 	 * @return the id
 	 */
@@ -115,8 +117,15 @@ public class BankChargeMapper implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
-	
-	
+
+	public String getChannelName() {
+		return channelName;
+	}
+
+	public void setChannelName(String channelName) {
+		this.channelName = channelName;
+	}
+
 	public BankChargeMapper() {
 		super();
 	}

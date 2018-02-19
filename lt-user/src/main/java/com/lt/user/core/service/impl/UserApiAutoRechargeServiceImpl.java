@@ -117,7 +117,7 @@ public class UserApiAutoRechargeServiceImpl implements IUserApiAutoRechargeServi
 	}
 
 	@Override
-	public Map<String, String> qryChargeChannel(String bankCard, String userId, String bankCode, Double amount) throws LTException {
+	public Map<String, Object> qryChargeChannel(String bankCard, String userId, String bankCode, Double amount) throws LTException {
 		// TODO Auto-generated method stub
 		// 查询用户关联的通道号
 		List<ChargeChannelInfo> chargeChannelList = userAutoRechargeServiceImpl.qryUserChargeChannel(userId);
@@ -197,7 +197,7 @@ public class UserApiAutoRechargeServiceImpl implements IUserApiAutoRechargeServi
 		//权重分配
 		Random rand = new Random();
 		int randWeight = rand.nextInt(totalWeight)+1;
-		Map<String,String> usedChannel = new HashMap<String,String>();
+		Map<String,Object> usedChannel = new HashMap<String,Object>();
 		for(String channel : usedChannelList){
 			int curWeight = channelWeight.get(channel)!=null?channelWeight.get(channel):0;
 			randWeight = randWeight - curWeight;
@@ -242,12 +242,12 @@ public class UserApiAutoRechargeServiceImpl implements IUserApiAutoRechargeServi
 		
 		//查询支付宝首次充值的账号
 		if(StringTools.isNotEmpty(usedChannel.get("channel"))){
-			String groupId = this.recharegeService.queryGroupIdByChannelId(usedChannel.get("channel"));
+			String groupId = this.recharegeService.queryGroupIdByChannelId(usedChannel.get("channel").toString());
 			usedChannel.put("groupId", groupId);
 			//查询支付宝首次充值的账号
 			if(RechargeGroupEnum.ALIPAYTRANSFER.getGroupId().equals(groupId) && StringTools.isNotEmpty(bankCard)){
 				FundIoCashRecharge fundIoCashRecharge = new FundIoCashRecharge();
-				fundIoCashRecharge.setThirdOptcode(usedChannel.get("channel"));
+				fundIoCashRecharge.setThirdOptcode(usedChannel.get("channel").toString());
 				fundIoCashRecharge.setStatus(FundIoRechargeEnum.SUCCESS.getValue());
 				fundIoCashRecharge.setTransferNumber(bankCard);
 				fundIoCashRecharge.setUserId(userId);
@@ -261,6 +261,7 @@ public class UserApiAutoRechargeServiceImpl implements IUserApiAutoRechargeServi
 			}
 
 		}
+		usedChannel.put("bankChargeList",bankChargeList);
 		return usedChannel;
 	}
 

@@ -1,5 +1,6 @@
 package com.lt.user.core.service;
 
+import com.itrus.raapi.info.UserInfo;
 import com.lt.model.sys.QuotaHostBean;
 import com.lt.model.user.UserBaseInfo;
 import com.lt.model.user.UserService;
@@ -9,6 +10,7 @@ import com.lt.util.error.LTException;
 import com.lt.util.utils.model.Token;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IUserService {
 
@@ -320,4 +322,17 @@ public interface IUserService {
      * @return
      */
     List<QuotaHostBean> findClientQuotaHost();
+
+
+    /**
+     * 获取基本信息
+     * @return
+     */
+    UserBaseInfo findUserInfo(String userId);
+
+    /**
+     * 保存crash日志
+     * @param params
+     */
+    void saveCrashLog(Map<String,Object> params);
 }

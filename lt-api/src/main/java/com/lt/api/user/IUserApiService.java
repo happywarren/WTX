@@ -2,6 +2,7 @@ package com.lt.api.user;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.lt.model.sys.QuotaHostBean;
 import com.lt.model.user.UserBaseInfo;
@@ -208,4 +209,19 @@ public interface IUserApiService {
      *  查询用户可以获取 btc
      */
     boolean findUserAccessBtc(String userId);
+
+    /**
+     * 获取用户信息
+     * @param userId
+     * @return
+     */
+    UserBaseInfo findUserInfo(String userId);
+
+    /**
+     * 保存crash日志
+     * @param crashMap
+     */
+    void saveCrashLog(Map<String,Object> crashMap);
+
+
 }

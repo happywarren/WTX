@@ -21,7 +21,7 @@
 	<select id="getAuthCodeByBrand"  resultType="java.lang.String">
 	    select content from sys_short_msg 
 	     where destination = #{0}
-	       and brand_id = #{1}
+	       <!-- and brand_id = #{1} -->
 	       and sms_type = #{4}
 	       and priority = ${0}  
 	   <![CDATA[    
@@ -136,4 +136,9 @@
 		where 
 			nick_name=#{nickName}
 	</select>
+
+	<insert id="saveCrashLog" parameterType="java.util.Map">
+		INSERT  INTO crash_log (tele,device_model,device_version,version,crash_time,crash_reason)
+		VALUES (#{tele},#{device_model},#{device_version},#{version},#{crash_time},#{crash_reason})
+	</insert>
 </mapper>

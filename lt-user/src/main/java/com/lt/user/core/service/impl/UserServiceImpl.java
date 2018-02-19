@@ -1,5 +1,6 @@
 package com.lt.user.core.service.impl;
 
+import com.itrus.raapi.info.UserInfo;
 import com.lt.model.sys.QuotaHostBean;
 import com.lt.model.user.*;
 import com.lt.model.user.log.UserCheckRegcode;
@@ -59,7 +60,6 @@ public class UserServiceImpl implements IUserService {
      * @return
      * @author XieZhibing
      * @date 2017年2月6日 上午11:17:21
-     * @see com.lt.user.core.service.IUserService#queryUserBuyId(java.lang.Integer)
      */
     @Override
     public UserBaseInfo queryUserBuyId(String id) {
@@ -754,5 +754,23 @@ public class UserServiceImpl implements IUserService {
             list.add(entry.getValue());
         }
         return list;
+    }
+
+    @Override
+    public UserBaseInfo findUserInfo(String userid) {
+
+        UserBaseInfo userInfo = new UserBaseInfo();
+        userInfo.setUserId(userid);
+
+        List<UserBaseInfo> userBaseInfoList =  userDao.getBaseUserInfo(userInfo);
+        if(userBaseInfoList != null && userBaseInfoList.size() > 0){
+            return userBaseInfoList.get(0);
+        }
+        return null;
+    }
+
+    @Override
+    public void saveCrashLog(Map<String, Object> params) {
+        userDao.saveCrashLog(params);
     }
 }

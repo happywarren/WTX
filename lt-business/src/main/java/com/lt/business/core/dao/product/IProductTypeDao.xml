@@ -49,9 +49,10 @@
 	</select>
 	
 	<select id="selectProductForTypeId" resultType="com.lt.vo.user.UserProductSelectListVo">
-		select pt.`name` ,product.* from investor_product_config as upc
+		select pt.`name` ,product.*,ex.plate from investor_product_config as upc
 		left JOIN product on product.short_code = upc.product_code
 	    JOIN product_type pt on pt.id = product.product_type_id
+	    JOIN exchange_info as ex on product.exchange_id=ex.id
 		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
 		and product.status in (1,2)
 		and upc.investor_account_id = #{investorId} and pt.id=#{id}

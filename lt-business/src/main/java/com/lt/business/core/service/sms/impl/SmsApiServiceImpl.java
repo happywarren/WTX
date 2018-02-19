@@ -1,9 +1,13 @@
 package com.lt.business.core.service.sms.impl;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.util.utils.HttpTools;
+import com.lt.util.utils.iapppay.demo.HttpUtils;
 import org.apache.commons.httpclient.NameValuePair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,7 +108,12 @@ public class SmsApiServiceImpl implements ISmsApiService {
 			final NameValuePair[] param =  params;
 			logger.info("进入SendSMSUtils方法中");
 			/*"http://h.1069106.com:1210/services/msgsend.asmx/SendMsg"/*url*/
-			str = SendSMSUtils.http(url, param);
+			Map<String,Object> paramMap = new HashMap<String,Object>();
+			paramMap.put("apikey",user_pass);
+			paramMap.put("mobile",destination);
+			paramMap.put("content",context);
+			str =  HttpTools.sendPost(url,paramMap);
+			//str = SendSMSUtils.http(url, param);
 			logger.info("执行完成，返回字符串为Str：{}",str);
 		}catch (Exception e) {
 			// TODO: handle exception

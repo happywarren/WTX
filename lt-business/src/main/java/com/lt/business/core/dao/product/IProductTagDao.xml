@@ -28,11 +28,12 @@
 	<select id="selectProductForTagId" resultType="com.lt.vo.user.UserProductSelectListVo"
 		>
 		
-		select pt.`name` ,product.* from investor_product_config as upc
+		select pt.`name` ,product.*,ex.plate from investor_product_config as upc
 		left JOIN product on product.short_code = upc.product_code
 	    JOIN product_type pt on pt.id = product.product_type_id
 	    JOIN user_product_select as ps on product.short_code = ps.product_short_code
 		JOIN product_tag_mapper ptm on ptm.product_id = product.id
+		JOIN exchange_info as ex on product.exchange_id=ex.id
 		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
 		and product.status in (1,2) and  ps.user_id = #{userId}
 		AND upc.investor_account_id = #{investorId}

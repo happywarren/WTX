@@ -8,6 +8,8 @@ import com.lt.util.utils.StringTools;
 import com.otod.bean.quote.snapshot.ForexSnapshot;
 import com.otod.test.QuoteClient;
 import com.otod.util.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +24,8 @@ import java.util.concurrent.*;
 
 @Component
 public class GtQuotaClient extends QuoteClient{
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private ProductTimeCache productTimeCache;
@@ -70,11 +74,10 @@ public class GtQuotaClient extends QuoteClient{
                     productListInner.clear();
                     for(int i=0 ;i<innerList.size();i++){
                         productListInner.put(innerList.get(i).get("commodityNo").toString(),innerList.get(i).get("contractNo").toString());
-
                     }
                 }
 
-                System.out.println("size="+productListOuter.size());
+                //System.out.println("size="+productListOuter.size());
                 /*
                 for(int i=0;i<productListOuter.size();i++){
                     String contractNo =  outerList.get(i).get("contractNo").toString();
@@ -120,13 +123,12 @@ public class GtQuotaClient extends QuoteClient{
             if(StringTools.isNotEmpty(contractNo)){
                 String contract =  format.format(date)+name.replaceAll("美黄金","");
                 if(contractNo.equals(contract)){
-                    System.out.println("contractNo="+contractNo);
                     addQuotaBean(snapshot,1,"GC"+contractNo);
                 }
             }
 
         }else if(name.startsWith("美白银")){
-            String contractNo =  productListOuter.get("SI");
+            String contractNo =  getOuterContractNo("SI");
             if(StringTools.isNotEmpty(contractNo)){
                 String contract =  format.format(date)+name.replaceAll("美白银","");
                 if(contractNo.equals(contract)){
@@ -139,24 +141,51 @@ public class GtQuotaClient extends QuoteClient{
 
     private void addQuotaBean(ForexSnapshot snapshot,int plate,String productName){
 
-        //算涨幅
+        QuotaBean quotaBean = new QuotaBean();
+        if(productName.startsWith("SI")){
+            //算涨幅
+
+            quotaBean.setAskPrice1(String.valueOf(snapshot.ask1Price/100.0f));
+            quotaBean.setAskQty1(String.valueOf(snapshot.ask1Volume));
+            quotaBean.setBidPrice1(String.valueOf(snapshot.bid1Price/100.0f));
+            quotaBean.setBidQty1(String.valueOf(snapshot.bid1Volume));
+            quotaBean.setChangeValue(String.valueOf(snapshot.close-snapshot.close));
+            quotaBean.setHighPrice(String.valueOf(snapshot.high/100.0f));
+            quotaBean.setLastPrice(String.valueOf(snapshot.close/100.0f));
+            quotaBean.setLowPrice(String.valueOf(snapshot.low/100.0f));
+            quotaBean.setOpenPrice(String.valueOf(snapshot.open/100.0f));
+            quotaBean.setPositionQty(String.valueOf(snapshot.tVolume));
+            quotaBean.setPreClosePrice(String.valueOf(snapshot.pClose/100.0f));
+            quotaBean.setProductName(productName);
+            quotaBean.setSettlePrice(String.valueOf(snapshot.pClose/100.0f));
+            quotaBean.setLimitDownPrice("0.0");
+            quotaBean.setLimitUpPrice("0.0");
+            quotaBean.setPreSettlePrice("0.0");
+            quotaBean.setAveragePrice("0.0");
+        }else{
+            quotaBean.setAskPrice1(String.valueOf(snapshot.ask1Price));
+            quotaBean.setAskQty1(String.valueOf(snapshot.ask1Volume));
+            quotaBean.setBidPrice1(String.valueOf(snapshot.bid1Price));
+            quotaBean.setBidQty1(String.valueOf(snapshot.bid1Volume));
+            quotaBean.setChangeValue(String.valueOf(snapshot.close-snapshot.close));
+            quotaBean.setHighPrice(String.valueOf(snapshot.high));
+            quotaBean.setLastPrice(String.valueOf(snapshot.close));
+            quotaBean.setLowPrice(String.valueOf(snapshot.low));
+            quotaBean.setOpenPrice(String.valueOf(snapshot.open));
+            quotaBean.setPositionQty(String.valueOf(snapshot.tVolume));
+            quotaBean.setPreClosePrice(String.valueOf(snapshot.pClose));
+            quotaBean.setProductName(productName);
+            quotaBean.setSettlePrice(String.valueOf(snapshot.pClose));
+            quotaBean.setLimitDownPrice("0.0");
+            quotaBean.setLimitUpPrice("0.0");
+            quotaBean.setPreSettlePrice("0.0");
+            quotaBean.setAveragePrice("0.0");
+        }
+
         double chageRate =  DoubleUtils.mul(DoubleUtils.div((snapshot.close-snapshot.pClose),snapshot.open),100);
         chageRate =  DoubleUtils.scaleFormatEnd(chageRate,2);
-        QuotaBean quotaBean = new QuotaBean();
-        quotaBean.setAskPrice1(String.valueOf(snapshot.ask1Price));
-        quotaBean.setAskQty1(String.valueOf(snapshot.ask1Volume));
-        quotaBean.setBidPrice1(String.valueOf(snapshot.bid1Price));
-        quotaBean.setBidQty1(String.valueOf(snapshot.bid1Volume));
-        quotaBean.setChangeRate(String.valueOf(chageRate));
-        quotaBean.setChangeValue(String.valueOf(snapshot.close-snapshot.close));
-        quotaBean.setHighPrice(String.valueOf(snapshot.high));
-        quotaBean.setLastPrice(String.valueOf(snapshot.close));
-        quotaBean.setLowPrice(String.valueOf(snapshot.low));
-        quotaBean.setOpenPrice(String.valueOf(snapshot.open));
-        quotaBean.setPositionQty(String.valueOf(snapshot.tVolume));
-        quotaBean.setPreClosePrice(String.valueOf(snapshot.pClose));
-        quotaBean.setProductName(productName);
-        quotaBean.setSettlePrice(String.valueOf(snapshot.pClose));
+
+
         // quotaBean.setTimeStamp();
         //String time = snapshot.date+snapshot.time;
         String time = String.valueOf(snapshot.time);
@@ -175,6 +204,10 @@ public class GtQuotaClient extends QuoteClient{
         quotaBean.setTimeStamp(datetime+".000");
         quotaBean.setPlate(plate);
         quotaBean.setTotalQty(0);
+        quotaBean.setChangeRate(String.valueOf(chageRate));
+        quotaBean.setChangeValue(String.valueOf(snapshot.close-snapshot.pClose));
+
+        logger.info("获取到行情{} ..quotaBean:{}",quotaBean.getProductName(),quotaBean.toString());
         CleanInstance.getInstance().setMarketDataQueue(quotaBean);
     }
 

@@ -35,6 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UserApiServiceImpl implements IUserApiService {
@@ -456,7 +457,9 @@ public class UserApiServiceImpl implements IUserApiService {
         logger.info("UserBaseInfo :{}", JSONObject.toJSON(info));
         if (StringTools.isNotEmpty(info) && StringTools.isNotEmpty(info.getInvestorAccountId())) {
             logger.info("userId :{} accountId{}", userId, info.getInvestorAccountId());
-            return userProductSelectService.selectProductForInvestorGroup(userId, info.getInvestorAccountId(), excludeProductTypeCode);
+            List<UserProductSelectListVo> productSelectListVos = userProductSelectService.selectProductForInvestorGroup(userId, info.getInvestorAccountId(), excludeProductTypeCode);
+           // return userProductSelectService.selectProductForInvestorGroup(userId, info.getInvestorAccountId(), excludeProductTypeCode);
+            return productSelectListVos;
         }
         return userProductSelectService.selectProductOptionalByCondition(userId, excludeProductTypeCode);
     }
@@ -521,4 +524,14 @@ public class UserApiServiceImpl implements IUserApiService {
         return userAccessBtc.getIsAccess();
     }
 
+    @Override
+    public UserBaseInfo findUserInfo(String userId) {
+        UserBaseInfo userBaseInfo =  userServiceImp.findUserInfo(userId);
+        return userBaseInfo;
+    }
+
+    @Override
+    public void saveCrashLog(Map<String, Object> crashMap) {
+        userServiceImp.saveCrashLog(crashMap);
+    }
 }

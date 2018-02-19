@@ -51,9 +51,17 @@ public class DefaultCleanService extends BaseCleanService {
 
         //第三方行情时间 大于 当前时间 30s
         long now = System.currentTimeMillis();
+        if(date.getTime() - now > 5000){
+            logger.info("商品 {} 行情 {} 大于当前5S",productCode,quotaBean.getTimeStamp());
+        }
+        if(date.getTime() - now > 8000){
+            logger.info("商品 {} 行情 {} 大于当前8S",productCode,quotaBean.getTimeStamp());
+        }
         if (date.getTime() - now > 30000){
+            logger.info("商品 {} 行情 {} 大于当前30S",productCode,quotaBean.getTimeStamp());
             return;
         }
+
 
         //判断行情时间
         if (!productTimeCache.isDispatch(productCode, date)) {
@@ -68,6 +76,7 @@ public class DefaultCleanService extends BaseCleanService {
         }
 
         if (preTimestamp >= timestamp) {
+            logger.info("商品 {} 行情时间不对,{},{}", productCode, timestamp,preTimestamp);
             return;
         }
 

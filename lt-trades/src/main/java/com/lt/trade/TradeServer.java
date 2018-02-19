@@ -196,6 +196,12 @@ public class TradeServer implements InitializingBean {
      */
     private void startupTrade(final BaseTrade baseTrade, final InvestorAccount investorAccount, boolean apiFlag) {
         LOGGER.info("1.开始连接【" + baseTrade.getPlateName() + "】c++交易模块...");
+
+        BaseClient baseClient = new BaseClient(investorAccount.getServerIp(),Integer.parseInt(investorAccount.getServerPort()),null,null);
+        serverMap.put(investorAccount.getServerIp() + ":" + investorAccount.getServerPort(),baseClient);
+        baseTrade.getClientMap().put(investorAccount.getSecurityCode(), baseClient);
+
+        /*
         final CountDownLatch signal0 = new CountDownLatch(1);
         baseTrade.startupFutureTrade(investorAccount.getServerIp(), Integer.parseInt(investorAccount.getServerPort()), new OnClientStartupListener() {
             @Override
@@ -228,7 +234,7 @@ public class TradeServer implements InitializingBean {
             if (!apiFlag) {
                 System.exit(1);
             }
-        }
+        }*/
 
     }
 

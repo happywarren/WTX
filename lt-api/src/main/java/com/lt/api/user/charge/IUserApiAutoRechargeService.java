@@ -40,7 +40,7 @@ public interface IUserApiAutoRechargeService {
 	 * @author        yuanxin
 	 * @Date          2017年6月12日 下午8:28:39
 	 */
-	public Map<String,String> qryChargeChannel(String bankCardId,String userId,String bankCode,Double amount) throws LTException;
+	public Map<String,Object> qryChargeChannel(String bankCardId,String userId,String bankCode,Double amount) throws LTException;
 	
 	/**
 	 * 根据用户id查询银行渠道充值金额

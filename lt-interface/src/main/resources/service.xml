@@ -60,6 +60,7 @@
     	<func name="login" token="0"/>
     	<func name="register" token="0"/>
     	<func name="sendRegisterMessage" token="0"/>
+		<func name="saveCrashLog" token="0" />
     	
     	<func name="userCharge" token="1"/>
     	<func name="qryUserChargeChannel" token="1"/>
@@ -86,6 +87,7 @@
     	<func name="getUserOpeningCount" token="1"/><!-- 查询用户当日开红次数 -->
     	<func name="getUserBaseInfoCountByIdCardNum" token="1"/><!--  查询此身份证是否已开开户 -->
     	<func name="getUserFundInOutLimitInfo" token="1"/><!--  开出用户出入金限额信息-->
+		<func name="getUserInfo" token="1" />
     </service>
     
      <service cmd="news" token="1">

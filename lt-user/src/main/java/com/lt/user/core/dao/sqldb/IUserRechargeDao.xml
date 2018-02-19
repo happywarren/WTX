@@ -9,10 +9,11 @@
 	</select>
 	
 	<select id="getUserBankChargeChannel" parameterType="java.util.List" resultType="com.lt.model.user.charge.BankChargeMapper">
-		select bank_code,channel_id,single_limit,daily_limit from bank_charge_mapper where 
+		select t1.bank_code,t1.channel_id,t1.single_limit,t1.daily_limit,t2.channel_name from bank_charge_mapper t1 INNER JOIN charge_channel_info  t2
+		ON  t1.channel_id = t2.channel_id where
 		bank_code = #{bankCode}
 		<if test="channelList != null and channelList != ''"> 
-			and channel_id in (
+			and t1.channel_id in (
 			<foreach collection="channelList" item="channel" open="" separator="," close="">			
 				#{channel}				
 			</foreach>	

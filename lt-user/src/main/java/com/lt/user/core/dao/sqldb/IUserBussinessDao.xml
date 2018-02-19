@@ -39,6 +39,9 @@
 		   <if test="brandId != null and brandId != ''">
 			   and brand_id = #{brandId}
 		   </if>
+		   <if test="userId != null and userId != ''">
+			   and user_id != #{userId}
+		   </if>
 	   </where>
 	</select>
 
