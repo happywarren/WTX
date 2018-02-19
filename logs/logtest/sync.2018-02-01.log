@@ -1,0 +1,63 @@
+2018-02-01  02:40:46.519 [restartedMain] INFO  com.lt.quota.core.Application - Starting Application on lixiaoyangs-MacBook-Pro.local with PID 32091 (/Users/lixiaoyang00/Desktop/code/WTX/inner-quota/target/classes started by lixiaoyang00 in /Users/lixiaoyang00/Desktop/code/WTX)
+2018-02-01  02:40:46.527 [restartedMain] INFO  com.lt.quota.core.Application - No active profile set, falling back to default profiles: default
+2018-02-01  02:40:46.677 [restartedMain] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@14e2ddd3: startup date [Thu Feb 01 02:40:46 PHT 2018]; root of context hierarchy
+2018-02-01  02:40:47.117 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.4.Final
+2018-02-01  02:40:48.632 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-02-01  02:40:48.697 [restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-02-01  02:40:49.403 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$68607665] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01  02:40:49.476 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'redisConfig' of type [com.lt.quota.core.comm.redis.RedisConfig$$EnhancerBySpringCGLIB$$1b71d712] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01  02:40:49.480 [restartedMain] INFO  o.s.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.cache.annotation.ProxyCachingConfiguration' of type [org.springframework.cache.annotation.ProxyCachingConfiguration$$EnhancerBySpringCGLIB$$b172ac83] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01  02:40:49.880 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat initialized with port(s): 9999 (http)
+2018-02-01  02:40:49.889 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service Tomcat
+2018-02-01  02:40:49.889 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet Engine: Apache Tomcat/8.5.11
+2018-02-01  02:40:49.984 [localhost-startStop-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2018-02-01  02:40:49.984 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 3308 ms
+2018-02-01  02:40:50.227 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-02-01  02:40:50.237 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-02-01  02:40:50.239 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-02-01  02:40:50.240 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-02-01  02:40:50.240 [localhost-startStop-1] INFO  org.springframework.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-02-01  02:40:51.457 [pool-2-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-02-01  02:40:51.685 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@14e2ddd3: startup date [Thu Feb 01 02:40:46 PHT 2018]; root of context hierarchy
+2018-02-01  02:40:51.753 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-02-01  02:40:51.756 [restartedMain] INFO  o.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-02-01  02:40:51.803 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-02-01  02:40:51.803 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-02-01  02:40:51.851 [restartedMain] INFO  org.springframework.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-02-01  02:40:51.921 [nioEventLoopGroup-2-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /118.31.11.71:50000 连接成功
+2018-02-01  02:40:51.922 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/118.31.11.71:50000
+2018-02-01  02:40:51.922 [nioEventLoopGroup-3-1] ERROR com.lt.quota.core.client.QuotaClientHandler - 与服务器 /120.55.46.85:50000 连接成功
+2018-02-01  02:40:51.922 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.client.QuotaListener - 连接到服务器:/120.55.46.85:50000
+2018-02-01  02:40:52.080 [nioEventLoopGroup-3-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器120.55.46.85:50000成功...
+2018-02-01  02:40:52.080 [nioEventLoopGroup-2-1] INFO  com.lt.quota.core.comm.netty.client.BaseClient - 连接服务器118.31.11.71:50000成功...
+2018-02-01  02:40:52.222 [pool-1-thread-1] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-02-01  02:40:52.958 [restartedMain] INFO  org.mongodb.driver.cluster - Cluster created with settings {hosts=[localhost:27017], mode=SINGLE, requiredClusterType=UNKNOWN, serverSelectionTimeout='30000 ms', maxWaitQueueSize=500}
+2018-02-01  02:40:53.019 [cluster-ClusterId{value='5a720db458b7887d5b00ef09', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Exception in monitor thread while connecting to server localhost:27017
+com.mongodb.MongoSocketOpenException: Exception opening socket
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:63)
+	at com.mongodb.connection.InternalStreamConnection.open(InternalStreamConnection.java:115)
+	at com.mongodb.connection.DefaultServerMonitor$ServerMonitorRunnable.run(DefaultServerMonitor.java:113)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.net.ConnectException: Connection refused (Connection refused)
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:350)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:206)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:188)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:589)
+	at com.mongodb.connection.SocketStreamHelper.initialize(SocketStreamHelper.java:57)
+	at com.mongodb.connection.SocketStream.open(SocketStream.java:58)
+	... 3 common frames omitted
+2018-02-01  02:40:53.903 [restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2018-02-01  02:40:53.989 [restartedMain] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-02-01  02:40:54.003 [restartedMain] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Starting beans in phase 2147483647
+2018-02-01  02:40:54.020 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-9999"]
+2018-02-01  02:40:54.030 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler [http-nio-9999]
+2018-02-01  02:40:54.034 [restartedMain] INFO  org.apache.tomcat.util.net.NioSelectorPool - Using a shared selector for servlet write/read
+2018-02-01  02:40:54.050 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer - Tomcat started on port(s): 9999 (http)
+2018-02-01  02:40:54.058 [restartedMain] INFO  com.lt.quota.core.Application - Started Application in 8.163 seconds (JVM running for 9.599)
+2018-02-01  02:40:55.609 [Thread-35] INFO  com.lt.quota.core.comm.netty.server.BaseServer - netty start
+2018-02-01  02:41:52.222 [pool-1-thread-2] INFO  com.lt.quota.core.quota.ProductTimeCache - 从Redis加载商品信息
+2018-02-01  02:42:19.693 [Thread-30] INFO  o.s.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@14e2ddd3: startup date [Thu Feb 01 02:40:46 PHT 2018]; root of context hierarchy
+2018-02-01  02:42:19.696 [Thread-30] INFO  org.springframework.context.support.DefaultLifecycleProcessor - Stopping beans in phase 2147483647
+2018-02-01  02:42:19.706 [Thread-30] INFO  org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
