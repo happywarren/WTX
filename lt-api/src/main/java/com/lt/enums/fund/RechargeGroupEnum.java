@@ -19,7 +19,8 @@ public enum RechargeGroupEnum {
 	SWIFTPASS("SwiftPass", "威富通"),
 	DADDYPAY("DaddyPay","爸爸付"),
 	AGGPAY("Aggpay","聚合支付"),
-	ALIPAYTRANSFER("AlipayTransfer","支付宝转账");
+	ALIPAYTRANSFER("AlipayTransfer","支付宝转账"),
+	ALIPAYH5("AliPayH5","支付宝H5");
 
 	/** 值 */
 	private String groupId;

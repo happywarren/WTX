@@ -141,6 +141,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.lt</groupId>
+            <artifactId>trade-client</artifactId>
+            <version>1.0</version>
+        </dependency>
+
         <!--
         <dependency>
             <groupId>com.otod</groupId>
