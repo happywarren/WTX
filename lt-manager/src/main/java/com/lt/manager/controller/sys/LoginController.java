@@ -84,8 +84,9 @@ public class LoginController {
             if (!staffService.checkIp(staff, ip)) {
                 throw new LTException(LTResponseCode.MA00019);
             }
+            /*
             //是否需要验证码处理
-            staffService.checkEmailDevice(staff, code, device);
+            staffService.checkEmailDevice(staff, code, device);*/
 
 //			错误登录次数校验
             staffService.checkErrorNum(staff);

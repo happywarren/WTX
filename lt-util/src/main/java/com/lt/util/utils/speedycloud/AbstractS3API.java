@@ -194,8 +194,10 @@ public class AbstractS3API {
             try {
                 httpURLConnection.setRequestProperty("Authorization", "AWS " + this.access_key + ":" + createSign(method, "", contentType, requestDate, url));
             } catch (InvalidKeyException e) {
+                e.printStackTrace();
                 return e.getMessage();
             } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
                 return e.getMessage();
             } finally {
 
@@ -235,10 +237,13 @@ public class AbstractS3API {
             reader.close();
             httpURLConnection.disconnect();
             if(StringTools.isNotEmpty(resultHead)){
+                logger.info("resultHead:{}",resultHead);
             	return resultHead;
             }
+
             return content;
         } catch (IOException e) {
+            e.printStackTrace();
             return e.getMessage();
         }
     }
@@ -246,8 +251,10 @@ public class AbstractS3API {
 
     /** 上传图片数据**/
     private String putImgData(String method, String url, InputStream inputStream) {
+        logger.info("............putImgData.........");
         try {
         	if(inputStream == null){
+        	    logger.info("inputStream is null!");
         		return null;
         	}
         	String contentType = null;
@@ -259,6 +266,7 @@ public class AbstractS3API {
 			}else if(".gif".equals(imgExt)){
 				contentType = "image/gif";
 			}else{
+        	    logger.info("图片格式不对！");
 				return null;
 			}
             URL localURL = new URL(this.host + url);
@@ -277,8 +285,10 @@ public class AbstractS3API {
             try {
                 httpURLConnection.setRequestProperty("Authorization", "AWS " + this.access_key + ":" + createSign(method, "", contentType, requestDate, url));
             } catch (InvalidKeyException e) {
+                e.printStackTrace();
                 return e.getMessage();
             } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
                 return e.getMessage();
             } finally {
 
@@ -288,6 +298,7 @@ public class AbstractS3API {
 
             //File file = new File(data);
             if (inputStream.available() > 1024 * 1024 * 10) {
+                logger.info("文件内容太大！");
                 return "File is bigger than 10M!";
             }
             contentLength = inputStream.available();
@@ -318,10 +329,13 @@ public class AbstractS3API {
             reader.close();
             httpURLConnection.disconnect();
             if(StringTools.isNotEmpty(resultHead)){
+                logger.info(resultHead);
             	return resultHead;
             }
+            logger.info(content);
             return content;
         } catch (IOException e) {
+            e.printStackTrace();
             return e.getMessage();
         }
     }

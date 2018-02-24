@@ -11,7 +11,7 @@
     <dubbo:application name="lt-manager-consumer"  /> 
  
     <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://192.168.1.245:2181" /> 
+    <dubbo:registry address="zookeeper://dubbo.lt:2181" />
     
  	
  	<dubbo:reference check="false" id="dispatcherApiService" interface="com.lt.api.dispatcher.IDispatcherApiService" />

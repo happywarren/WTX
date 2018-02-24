@@ -29,7 +29,7 @@
 
 
     <bean id="mailEngine" class="com.lt.manager.mail.MailEngine">
-        <property name="javaMailSender" ref="javaMailSender"/>
-        <property name="from" value="${MAIL.DEFAULT.FROM}"/>
+       <!--  <property name="javaMailSender" ref="javaMailSender"/>
+        <property name="from" value="${MAIL.DEFAULT.FROM}"/> -->
     </bean>
 </beans>

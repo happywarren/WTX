@@ -25,6 +25,7 @@ public class FundJiupaiCallBackController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
+    /*
     @Autowired
     private IFundWithdrawService fundWithDrawServiceImpl;
     @Autowired
@@ -47,7 +48,7 @@ public class FundJiupaiCallBackController {
         }
         fundWithDrawServiceImpl.withdrawalResultForJiuPai(paraMap,request);
         return "";
-    }
+    }*/
 
 
 

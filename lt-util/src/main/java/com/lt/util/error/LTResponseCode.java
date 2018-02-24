@@ -160,7 +160,7 @@ public class LTResponseCode {
      */
     public static final String US04101 = "US04101";
     /**
-     * 用户业务处理：信息已存在
+     * 用户业务处理： 信息已存在
      */
     public static final String US04102 = "US04102";
     /**

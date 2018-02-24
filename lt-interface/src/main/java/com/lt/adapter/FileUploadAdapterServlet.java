@@ -53,6 +53,7 @@ public class FileUploadAdapterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("........开始上传图片.........");
         response.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
         long time = new Date().getTime();

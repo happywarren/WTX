@@ -156,6 +156,7 @@ public class ProductManageController {
     @RequestMapping(value = "/uploadImg")
     @ResponseBody
     public String uploadImg(HttpServletRequest request, MultipartFile photoFile) {
+        logger.info("!!开始上传图片！！");
         Response response = null;
         if (photoFile == null) {
             return LTResponseCode.getCode(LTResponseCode.PR00001).toJsonString();
@@ -448,6 +449,7 @@ public class ProductManageController {
                 //String path = "http://"+OSSObjectSample.bucketName+OSSObjectSample.url+key;
                 Map<String, Object> result = FastMap.newInstance();
                 result = SpeedyCloudUtils.getSpeedyCloudUtils().uploadImage(key, input);
+                logger.info("result:{}",result);
                 if ("SUCCESS".equals((String) result.get("resultId"))) {
                     return (String) result.get("filePath");
                 }

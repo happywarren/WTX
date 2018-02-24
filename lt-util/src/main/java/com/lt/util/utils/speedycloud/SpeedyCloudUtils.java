@@ -16,9 +16,9 @@ public class SpeedyCloudUtils {
 	private final static Logger logger = LoggerFactory.getLogger(SpeedyCloudUtils.class);
 	public static SpeedyCloudS3 client = null;
 	public static String host = "http://cos.speedycloud.org";
-	public static String accessKey = "D862B7822119A3D797CE47F1604AAE63";
-	public static String secretKey = "d450ec3b19d40a6b0e738378548e18c9316f8c2e0bd6e4af00af8d008dc14d04";
-	public static String bucket = "cainiu-lt";
+	public static String accessKey = "103AA3E0B9E24CE9B2FBDF51632AAF7D";
+	public static String secretKey = "8dde8102c68a1b2b34c2d32ce06058d2b6d491258aedf03a009ae1bf942d28ec";
+	public static String bucket = "gt-bucket";
 
 	private static SpeedyCloudUtils cloudUtils;
 
@@ -89,7 +89,7 @@ public class SpeedyCloudUtils {
 			String ret1 = client.putObjectFromImgFile(bucket, key, path);
 			/** 修改权限地址 **/
 			String ret2 = client.updateKeyAcl(bucket, key, "public-read");
-
+			logger.info("ret1:{},ret2:{}", ret1, ret2);
 			if (ret1.contains("HTTP/1.1 200 OK") && (ret2.contains("HTTP/1.1 200 OK"))) {
 				logger.info("ret1:{},ret2:{}", ret1, ret2);
 			} else {
@@ -117,6 +117,8 @@ public class SpeedyCloudUtils {
 			String ret1 = client.putObjectFromImgData(bucket, key, inputStream);
 			/** 修改权限地址 **/
 			String ret2 = client.updateKeyAcl(bucket, key, "public-read");
+
+			logger.info("ret1:{},ret2:{}", ret1, ret2);
 
 			if (ret1.contains("HTTP/1.1 200 OK") && (ret2.contains("HTTP/1.1 200 OK"))) {
 				logger.info("ret1:{},ret2:{}", ret1, ret2);

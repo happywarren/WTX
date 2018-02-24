@@ -25,8 +25,7 @@
 
 	</select>
 	
-	<select id="selectProductForTagId" resultType="com.lt.vo.user.UserProductSelectListVo"
-		>
+	<select id="selectProductForTagId" resultType="com.lt.vo.user.UserProductSelectListVo">
 		
 		select pt.`name` ,product.*,ex.plate from investor_product_config as upc
 		left JOIN product on product.short_code = upc.product_code
