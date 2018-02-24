@@ -295,4 +295,6 @@ public class UserApiAutoRechargeServiceImpl implements IUserApiAutoRechargeServi
 		return chargeBankList;
 	}
 
+
+
 }

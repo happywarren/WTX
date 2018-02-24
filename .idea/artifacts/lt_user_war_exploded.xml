@@ -52,6 +52,7 @@
           <element id="library" level="project" name="Maven: org.javolution:javolution:5.3.1" />
           <element id="library" level="project" name="Maven: org.itrus:dinpayRsaSignAPI:2.7.10" />
           <element id="library" level="project" name="Maven: com.pay:qiantong:1.0.2" />
+          <element id="library" level="project" name="Maven: com.alipay:alipay-sdk-java:1.5" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.9.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.2.5.RELEASE" />

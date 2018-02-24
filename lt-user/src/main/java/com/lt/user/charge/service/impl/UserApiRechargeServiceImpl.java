@@ -113,7 +113,8 @@ public class UserApiRechargeServiceImpl implements IUserApiRechargeService {
 				|| RechargeGroupEnum.SWIFTPASS.getGroupId().equals(groupId)
 				|| RechargeGroupEnum.DADDYPAY.getGroupId().equals(groupId) 
 				|| RechargeGroupEnum.AGGPAY.getGroupId().equals(groupId)
-				|| RechargeGroupEnum.ALIPAYTRANSFER.getGroupId().equals(groupId)) {
+				|| RechargeGroupEnum.ALIPAYTRANSFER.getGroupId().equals(groupId)
+				|| RechargeGroupEnum.ALIPAYH5.getGroupId().equals(groupId)) {
 			logger.info("获取类名为：{}", "userRechargeBy" + groupId);
 			UserChargeFunc userChargefunc = (UserChargeFunc) SpringUtils.getBean("userRechargeBy" + groupId);
 			logger.info("userRechargeBy 是否为null ：{}", userChargefunc == null);
