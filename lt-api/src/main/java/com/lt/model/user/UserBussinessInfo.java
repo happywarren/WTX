@@ -25,6 +25,8 @@ public class UserBussinessInfo extends UserBaseInfo {
 	private String daddypayBankCode;
 	/** 九派银行编码**/
 	private String jiupaiBankCode;
+	/** 易宝银行编码**/
+	private String yibaoBankCode;
 /*	*//**开户省*//*
 	private String openBankProv;
 	*//**开户市*//*
@@ -181,5 +183,13 @@ public class UserBussinessInfo extends UserBaseInfo {
 
 	public void setJiupaiBankCode(String jiupaiBankCode) {
 		this.jiupaiBankCode = jiupaiBankCode;
+	}
+
+	public String getYibaoBankCode() {
+		return yibaoBankCode;
+	}
+
+	public void setYibaoBankCode(String yibaoBankCode) {
+		this.yibaoBankCode = yibaoBankCode;
 	}
 }

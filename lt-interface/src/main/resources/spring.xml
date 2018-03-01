@@ -79,7 +79,7 @@
 	<bean id = "SpeendyCloud" class="com.lt.util.utils.speedycloud.SpeedyCloudUtils" init-method="init">
 	    <property name="accessKey" value="103AA3E0B9E24CE9B2FBDF51632AAF7D" />
 		<property name="secretKey" value="8dde8102c68a1b2b34c2d32ce06058d2b6d491258aedf03a009ae1bf942d28ec" />
-		<property name="bucket" value="yitong" />
+		<property name="bucket" value="gt-bucket" />
 		<property name="host" value="http://cos.speedycloud.org" />
 
 	</bean>	

@@ -1,25 +1,31 @@
 package com.lt.manager.service.impl.fund;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import com.cfca.util.pki.api.CertUtil;
+import com.cfca.util.pki.api.KeyUtil;
+import com.cfca.util.pki.api.SignatureUtil;
+import com.cfca.util.pki.cert.X509Cert;
+import com.cfca.util.pki.cipher.JCrypto;
+import com.cfca.util.pki.cipher.JKey;
+import com.cfca.util.pki.cipher.Session;
 import com.lt.util.utils.*;
 import com.lt.util.utils.jiupai.DateUtils;
 import com.lt.util.utils.jiupai.HiDesUtils;
 import com.lt.util.utils.jiupai.MerchantUtil;
 import com.lt.util.utils.jiupai.RSASignUtil;
+import com.lt.util.utils.yibao.CallbackUtils;
 import com.pay.merchant.MerchantClient;
 import com.pay.vo.ReceivePayQueryRequest;
 import com.pay.vo.ReceivePayQueryResponse;
 import com.pay.vo.ReceivePayRequest;
 import com.pay.vo.ReceivePayResponse;
 import org.apache.commons.lang.StringUtils;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Node;
+import org.dom4j.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +71,7 @@ import com.lt.util.utils.dinpay.DinpayHttpTools;
 import com.lt.util.utils.redis.RedisInfoOperate;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 实现接口类
@@ -1923,5 +1930,472 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
         }
         return null;
+    }
+
+    @Override
+    public void withdrawForYiBao(String[] ioArr, Integer transferUserId, HttpServletRequest request) throws Exception {
+        String encoding = "UTF-8";
+        BoundHashOperations<String,String,String> sysCfgRedis = redisTemplate.boundHashOps(RedisUtil.SYS_CONFIG);
+
+        String merId = "10016756134";
+        String groupId = "10016756134";
+        String [] digestValues = {"cmd","mer_Id","batch_No","order_Id","amount","account_Number","hmacKey"};
+        String [] backDigestValues = {"cmd","ret_Code","mer_Id","batch_No","total_Amt","total_Num","r1_Code","hmacKey"};
+        String reqUrl = "http://cha.yeepay.com/app-merchant-proxy/groupTransferController.action";
+
+
+        //商户密钥
+        String hmacKey="5D4U9k43B2slR9485HAj57EVS24833fqV0454g266J13XIZ94c7lw44Cyv48";
+
+        List<FundIoCashWithdrawal> fioList = new ArrayList<>();// 提现流水集合
+        List<FundTransferDetail> ftdList = new ArrayList<>();// 提现明细集合
+
+        for(String id : ioArr){
+            FundIoCashWithdrawal fio = fundIoCashWithdrawalDao.selectFundIoCashWithdrawalById(Long.valueOf(id));
+            FundTransferDetail ftd = null;
+            if(fio == null || fio.getStatus() != FundIoWithdrawalEnum.WAIT.getValue()){
+                logger.info("记录不存在或者对应记录为非转账状态idId:{}",id);
+                if(fio != null){
+                    logger.info("提现记录状态为:{}",fio.getStatus());
+                }
+                continue;
+            }
+
+            //查询用户信息
+            UserBankInfo bankInfo = new UserBankInfo();
+            bankInfo.setUserId(fio.getUserId());
+            bankInfo.setUserId(fio.getUserId());
+            UserBussinessInfo ui = userApiBussinessService.getUserDefaultBankInfoForDinpay(bankInfo);
+            if(ui == null){
+                throw new LTException("用户账户银行卡为空");
+            }
+
+            Double amount = DoubleUtils.sub(fio.getRmbAmt(),fio.getRmbFactTax());
+            String transNo = "QT" + CalendarTools.formatDateTime(new Date(), CalendarTools.DATETIMEFORMAT) + id;// 交易流水
+
+            Random random = new Random();
+            String batchNo = CalendarTools.formatDateTime(new Date(), CalendarTools.DATETIMEFORMAT)+random.nextInt()%10;
+            StringBuilder xml = new StringBuilder();
+            xml.append("<data>");
+            xml.append("<cmd>TransferSingle</cmd>");
+            xml.append("<version>1.1</version>");
+            xml.append("<mer_Id>").append(merId).append("</mer_Id>");
+            xml.append("<group_Id>").append(groupId).append("</group_Id>");
+            xml.append("<batch_No>").append(batchNo).append("</batch_No>");
+            xml.append("<order_Id>").append(transNo).append("</order_Id>");
+            xml.append("<bank_Code>").append(ui.getYibaoBankCode()).append("</bank_Code>");
+            xml.append("<cnaps></cnaps>");
+            xml.append("<amount>").append(amount).append("</amount>");
+            xml.append("<account_Name>").append(ui.getUserName()).append("</account_Name>");
+            xml.append("<account_Number>").append(ui.getBankCardNum()).append("</account_Number>");
+            xml.append("<province></province>");
+            xml.append("<city>110000</city>");
+            xml.append("<fee_Type>SOURCE</fee_Type>");
+            xml.append("<payee_Email></payee_Email>");
+            xml.append("<payee_Mobile></payee_Mobile>");
+            xml.append("<leave_Word></leave_Word>");
+            xml.append("<abstractInfo></abstractInfo>");
+            xml.append("<remarksInfo></remarksInfo>");
+            xml.append("<urgency>0</urgency>");
+            xml.append("<hmac></hmac>");
+            xml.append("</data>");
+
+            Map result = new LinkedHashMap();
+            Map xmlMap = new LinkedHashMap();
+            Map xmlBackMap = new LinkedHashMap();
+            //第一步：将请求的数据和商户自己的密钥拼成一个字符串
+            Document document = null;
+            try{
+                document = DocumentHelper.parseText(xml.toString());
+            }catch(DocumentException e){
+                e.printStackTrace();
+            }
+            Element rootEle = document.getRootElement();
+            String cmdValue = rootEle.elementText("cmd");
+            List list = rootEle.elements();
+            for(int i=0; i<list.size(); i++){
+                Element ele = (Element)list.get(i);
+                String eleName = ele.getName();
+                if(!eleName.equals("list")){
+                    xmlMap.put(eleName,ele.getText().trim());
+                }else{
+                    continue;
+                }
+            }
+
+            String hmacStr = "";
+            for(int i=0; i<digestValues.length;i++){
+                if(digestValues[i].equals("hmacKey")){
+                    hmacStr = hmacStr+hmacKey;
+                    continue;
+                }
+                hmacStr = hmacStr + xmlMap.get(digestValues[i]);
+            }
+
+            logger.info("签名之前的源数据为-----||"+hmacStr);
+
+            //下面对数字证书进行签名
+            Session tempSession = null;
+            String ALGORITHM = SignatureUtil.SHA1_RSA;
+            JCrypto jcrypto =null;
+            if(tempSession == null){
+                try{
+                    //初始化加密库，获得会话session
+                    //多线程的应用可以共享一个session,不需要重复，只需初始化一次
+                    //初始化加密库并获得session
+                    //系统退出后要jcrypto.finalize(),释放加密库
+                    jcrypto = JCrypto.getInstance();
+                    jcrypto.initialize(JCrypto.JSOFT_LIB,null);
+                    tempSession = jcrypto.openSession(JCrypto.JSOFT_LIB);
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+
+            String sysPath = request.getRealPath("");
+            logger.info("sysPath:{}",sysPath);
+            JKey jkey = KeyUtil.getPriKey(sysPath+ File.separator + "10016756134.pfx", "qwe123");
+            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "qwe123");
+            X509Cert[] cs=new X509Cert[1];
+            cs[0]=cert;
+            String signMessage ="";
+            SignatureUtil signUtil =null;
+            try{
+                //第二步: 对请求的串进行MD5对数据进行签名
+                String yphs = com.lt.util.utils.yibao.Digest.hmacSign(hmacStr);
+                signUtil = new SignatureUtil();
+                byte[] b64SignData;
+                // 第三步:对MD5签名之后数据调用CFCA提供的api方法用商户自己的数字证书进行签名
+                b64SignData = signUtil.p7SignMessage(true, yphs.getBytes(),ALGORITHM, jkey, cs, tempSession);
+                if(jcrypto!=null){
+                    jcrypto.finalize (com.cfca.util.pki.cipher.JCrypto.JSOFT_LIB,null);
+                }
+                signMessage = new String(b64SignData, "UTF-8");
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+
+            Element r=rootEle.element("hmac");
+            r.setText(signMessage);
+            result.put("xml",xml);
+            document.setXMLEncoding("GBK");
+
+            logger.info("易宝代付完整的请求报文:"+document.asXML());
+
+            //第四步:发送https请求
+            String responseMsg = CallbackUtils.httpRequest(reqUrl, document.asXML(), "POST", "gbk","text/xml ;charset=gbk", false);
+
+            logger.info("易宝响应xml报文:"+responseMsg);
+
+            try {
+                document = DocumentHelper.parseText(responseMsg);
+            } catch (DocumentException e) {
+            }
+
+            rootEle = document.getRootElement();
+            cmdValue = rootEle.elementText("hmac");
+
+            //第五步:对服务器响应报文进行验证签名
+            //第五步:对服务器响应报文进行验证签名
+            boolean sigerCertFlag = false;
+            if(cmdValue!=null){
+                sigerCertFlag = signUtil.p7VerifySignMessage(cmdValue.getBytes(), tempSession);
+                String backmd5hmac = xmlBackMap.get("hmac") + "";
+                if(sigerCertFlag){
+                    logger.info("易宝代付证书签名成功！");
+                    backmd5hmac = new String(signUtil.getSignedContent());
+                   // logger.info("证书验签获得的MD5签名数据为----" + backmd5hmac);
+                   // logger.info("证书验签获得的证书dn为----" + new String(signUtil.getSigerCert()[0].getSubject()));
+                    //第六步.将验签出来的结果数据与自己针对响应数据做MD5签名之后的数据进行比较是否相等
+                    Document backDocument = null;
+                    try {
+                        backDocument = DocumentHelper.parseText(responseMsg);
+                    } catch (DocumentException e) {
+                        e.printStackTrace();
+                    }
+                    Element backRootEle = backDocument.getRootElement();
+                    List backlist = backRootEle.elements();
+                    for(int i = 0; i < backlist.size(); i++){
+                        Element ele = (Element)backlist.get(i);
+                        String eleName = ele.getName();
+                        if(!eleName.equals("list")){
+                            xmlBackMap.put(eleName, ele.getText().trim());
+                        }else{
+                            continue;
+                        }
+                    }
+                    String backHmacStr="";
+                    for(int i = 0; i < backDigestValues.length;i++){
+                        if(backDigestValues[i].equals("hmacKey")){
+                            backHmacStr = backHmacStr + hmacKey;
+                            continue;
+                        }
+                        String tempStr = (String)xmlBackMap.get(backDigestValues[i]);
+                        backHmacStr = backHmacStr + ((tempStr == null) ? "" : tempStr);
+                    }
+                    String newmd5hmac = com.lt.util.utils.yibao.Digest.hmacSign(backHmacStr);
+                    if(newmd5hmac.equals(backmd5hmac)){
+                        System.out.println("md5验签成功");
+                        //第七步:判断该证书DN是否为易宝
+                        if(signUtil.getSigerCert()[0].getSubject().toUpperCase().indexOf("OU=YEEPAY,") > 0){
+                            System.out.println("证书DN是易宝的");
+                            //第八步:.......加上业务逻辑
+                            String ret_Code = rootEle.elementText("ret_Code");
+                            String error_Msg = rootEle.elementText("error_Msg");
+                            if(ret_Code.equals("1")){
+                                //打款成功
+                                fio.setStatus(FundIoWithdrawalEnum.PROCESS.getValue());
+                                fio.setModifyDate(new Date());
+                                fio.setPayId(transNo);
+                                fio.setRemark("用户体现已提交到易宝，等待处理中");
+                                ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
+                                        ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
+                                        new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 0);
+                            }else{
+                                //打款失败
+                                fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
+                                fio.setModifyDate(new Date());
+                                fio.setPayId(transNo);
+                                fio.setRemark("用户提现，易宝返回失败："+error_Msg);
+                                ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
+                                        ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
+                                        new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 2);
+                            }
+                        }else{
+                            fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
+                            fio.setModifyDate(new Date());
+                            fio.setPayId(transNo);
+                            fio.setRemark("用户提现，易宝返回失败签名不通过");
+                            ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
+                                    ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
+                                    new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 2);
+                        }
+
+                        //
+                    }else{
+                        logger.info("易宝MD5验签不通过！");
+                        fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
+                        fio.setModifyDate(new Date());
+                        fio.setPayId(transNo);
+                        fio.setRemark("用户提现，易宝返回失败签名不通过");
+                        ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
+                                ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
+                                new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 2);
+
+                    }
+                }else{
+                    logger.info("易宝证书验签失败....");
+                    fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
+                    fio.setModifyDate(new Date());
+                    fio.setPayId(transNo);
+                    fio.setRemark("用户提现，易宝返回失败签名不通过");
+                    ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
+                            ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
+                            new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 2);
+
+                }
+            }
+
+            fio.setThirdOptCode(FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
+            ftd.setRmbAmt(amount);
+            ftd.setTransferUserId(transferUserId);
+            fioList.add(fio);
+            ftdList.add(ftd);
+        }
+
+        if(StringTools.isNotEmpty(fioList)){
+            // 批量修改提现流水
+            fundIoCashWithdrawalDao.updateFundIoCashWithds(fioList);
+        }
+        if(StringTools.isNotEmpty(ftdList)){
+            // 批量添加提现明细
+            fundIoCashWithdrawalDao.insertFundTransferDetails(ftdList);
+        }
+
+    }
+
+    @Override
+    public Map<String,String> withdrawalResultForYiBao(Map<String, String> map, HttpServletRequest request, HttpServletResponse response) {
+        String hmacKey="5D4U9k43B2slR9485HAj57EVS24833fqV0454g266J13XIZ94c7lw44Cyv48";
+        Map<String,String> rmap = new HashMap<>();
+        Map result = new LinkedHashMap();
+        Map xmlMap = new LinkedHashMap();
+        Map xmlBackMap = new LinkedHashMap();
+
+        String orderId = "";
+        String remark = "";
+        boolean isSuccess = false;
+
+        rmap.put("status", "1");
+        rmap.put("error_msg", "成功");
+        try{
+            //接收主动通知消息
+            StringBuffer sb = new StringBuffer(2000);
+            InputStream is = request.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is,"utf-8"));
+            //读取http请求内容
+            String buffer = null;
+            while((buffer = br.readLine()) != null){
+                sb.append(buffer);
+            }
+            String responseMsg = sb.toString();
+            logger.info("易宝收到的回调消息:{}",responseMsg);
+            Document document = null;
+            document = DocumentHelper.parseText(responseMsg);
+            Element rootEle = document.getRootElement();
+            String cmdValue = rootEle.elementText("hmac");
+
+            //对服务器响应报文记性验证签名
+            com.cfca.util.pki.cipher.Session tempsession = null;
+            String ALGORITHM = SignatureUtil.SHA1_RSA;
+            JCrypto jcrypto = null;
+            if(tempsession==null){
+                try {
+                    //初始化加密库，获得会话session
+                    //多线程的应用可以共享一个session,不需要重复,只需初始化一次
+                    //初始化加密库并获得session。
+                    //系统退出后要jcrypto.finalize()，释放加密库
+                    jcrypto = JCrypto.getInstance();
+                    jcrypto.initialize(JCrypto.JSOFT_LIB, null);
+                    tempsession = jcrypto.openSession(JCrypto.JSOFT_LIB);
+                } catch (Exception ex) {
+                    System.out.println(ex.toString());
+                }
+            }
+
+            String sysPath = request.getRealPath("");
+            JKey jkey = KeyUtil.getPriKey(sysPath+File.separator + "10016756134.pfx", "qwe123");
+            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "qwe123");
+            X509Cert[] cs=new X509Cert[1];
+            cs[0]=cert;
+            boolean sigerCertFlag = false;
+            SignatureUtil signUtil = new SignatureUtil();
+            if(cmdValue != null){
+                sigerCertFlag = signUtil.p7VerifySignMessage(cmdValue.getBytes(), tempsession);
+                String backmd5hmac = xmlBackMap.get("hmac") + "";
+
+                if(sigerCertFlag){
+                    logger.info("易宝回调证书签名认证成功！");
+                    backmd5hmac = new String(signUtil.getSignedContent());
+                    //将验签出来的结果数据与自己针对响应数据做MD5签名之后数据进行比较是否相等
+                    Document backDocument = null;
+                    try{
+                        backDocument = DocumentHelper.parseText(responseMsg);
+                    }catch(DocumentException e){
+                        e.printStackTrace();
+                    }
+                    Element backRootEle = backDocument.getRootElement();
+                    List backlist = backRootEle.elements();
+                    for(int i = 0; i < backlist.size(); i++){
+                        Element ele = (Element) backlist.get(i);
+                        String eleName = ele.getName();
+                        if(!eleName.equals("list")){
+                            xmlBackMap.put(eleName, ele.getText().trim());
+                        }else{
+                            continue;
+                        }
+                    }
+                    orderId = (String) xmlBackMap.get("order_Id");
+                    String status = (String) xmlBackMap.get("status");
+
+                    String backHmacStr="";
+                    String[] backDigestValues = "cmd,mer_Id,batch_No,order_Id,status,message,hmacKey".split(",");
+                    for(int i = 0; i < backDigestValues.length;i++){
+                        if(backDigestValues[i].equals("hmacKey")){
+                            backHmacStr = backHmacStr + hmacKey;
+                            continue;
+                        }
+                        String tempStr = (String)xmlBackMap.get(backDigestValues[i]);
+                        backHmacStr = backHmacStr + ((tempStr == null) ? "" : tempStr);
+                    }
+
+                    String newmd5hmac = com.lt.util.utils.yibao.Digest.hmacSign(backHmacStr);
+                    //System.out.println("提交返回源数据为---||" + backHmacStr+"||");
+                    //System.out.println("经过md5签名后的验证返回hmac为---||" + newmd5hmac+"||");
+                    //System.out.println("提交返回的hmac为---||" + backmd5hmac+"||");
+                    if(newmd5hmac.equals(backmd5hmac)){
+                        //System.out.println("md5验签成功");
+                        //判断该证书DN是否为易宝
+                        if(signUtil.getSigerCert()[0].getSubject().toUpperCase().indexOf("OU=YEEPAY,") > 0){
+                            //System.out.println("证书DN是易宝的");
+                            if(status.equals("S")){
+                                isSuccess = true;
+                                remark = "成功！";
+                            }else{
+                                remark = "转账失败！";
+                            }
+
+                            //回写易宝
+                            StringBuffer str = new StringBuffer();
+                            str.append("<?xml version=\"1.0\" encoding=\"GBK\"?>");
+                            str.append("<data>");
+                            str.append("<cmd>TransferNotify</cmd>");
+                            str.append("<version>1.1<ersion>");
+                            str.append("<mer_Id>" + xmlBackMap.get("mer_Id") + "</mer_Id>");
+                            str.append("<batch_No>" + xmlBackMap.get("batch_No") + "</batch_No>");
+                            str.append("<order_Id>" + xmlBackMap.get("order_Id") + "</order_Id>");
+                            str.append("<ret_Code>S</ret_Code>");//这里根据情况传 S 或 F 如果是 S 则不会重发   如果是 F 会重发
+                            cmdValue = "TransferNotify" + xmlBackMap.get("mer_Id") + xmlBackMap.get("batch_No") + xmlBackMap.get("order_Id") + "S" + hmacKey;
+                            String hmac = com.lt.util.utils.yibao.Digest.hmacSign(cmdValue);
+                            str.append("<hmac>" + new String(signUtil.p7SignMessage(true, hmac.getBytes(),ALGORITHM, jkey, cs, tempsession)) + "</hmac>");
+                            str.append("</data>");
+                            try {
+                                logger.info("回写易宝数据！");
+                                response.getOutputStream().write(str.toString().getBytes());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }else{
+                            remark = "证书DN不是易宝的！";
+                            //System.out.println("证书DN不是易宝的");
+                        }
+                    }else{
+                        remark = "md5验签名失败！";
+                        //System.out.println("md5验签失败");
+                    }
+
+
+                }else{
+                    remark = "易宝回调证书签名认证失败！";
+                    logger.info("易宝回调证书签名认证失败！");
+                }
+
+            }
+
+            FundIoCashWithdrawal ficw = new FundIoCashWithdrawal();
+            ficw.setPayId(orderId);
+            ficw.setThirdOptCode(FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
+            List<FundIoCashWithdrawal> list = fundIoCashWithdrawalDao.selectFundIoCashWithds(ficw);
+            if(StringTools.isEmpty(list)){
+                logger.info("未查询到易宝提现订单记录");
+                rmap.put("status","0");
+                rmap.put("error_msg","未查到易宝体现订单记录");
+                return rmap;
+            }
+
+            FundIoCashWithdrawal fio = list.get(0);
+            if(fio.getStatus() == FundIoWithdrawalEnum.PROCESS.getValue()){   //转账中
+                fio.setThirdOptCode(FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
+                if(isSuccess){   //提现成功
+                    withdrawSuccess(fio,FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
+                }else{//失败
+                    fio.setRemark(remark);
+                    withdrawFail(fio);
+                }
+            }else{
+                FundTransferDetail detail = fundIoCashWithdrawalDao.selectTransferDetailByPayid(orderId);
+                if(detail.getStatus() == 2 && detail.getOperateStatu() == FundTransferEnum.TREATED.getValue()){
+                    if(isSuccess){
+                        withdrawSuccess(fio,FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
+                    }
+                }
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+            rmap.put("status","0");
+            rmap.put("error_msg", e.getMessage());
+        }
+        return rmap;
     }
 }

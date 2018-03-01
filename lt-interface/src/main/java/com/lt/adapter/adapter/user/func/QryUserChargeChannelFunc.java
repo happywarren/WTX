@@ -1,7 +1,9 @@
 package com.lt.adapter.adapter.user.func;
 
+import java.util.List;
 import java.util.Map;
 
+import com.lt.model.user.charge.BankChargeMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,13 @@ public class QryUserChargeChannelFunc extends BaseFunction {
 			Double amount = Double.valueOf(amountStr);
 			
 			amount = DoubleTools.scaleFormat(amount,2) ;
-			
 			Map<String,Object> map = userApiAutoRechargeServiceImpl.qryChargeChannel(bankCard, userId, bankCode, amount);
+			List<BankChargeMapper> bankChargeMapperList =(List<BankChargeMapper>)map.get("bankChargeList");
+			logger.info("bankChargeList.size="+bankChargeMapperList.size());
+			for(int i = 0;i<bankChargeMapperList.size() ; i++){
+				logger.info("groupId="+bankChargeMapperList.get(i).getGroupId());
+			}
+
 			response.setData(map);
 			return response;
 		} catch (Exception e) {

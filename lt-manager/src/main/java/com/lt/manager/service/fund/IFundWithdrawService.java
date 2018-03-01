@@ -6,6 +6,7 @@ import com.lt.model.fund.FundOptCode;
 import com.lt.util.error.LTException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.Map;
 /**
  * 提现接口
@@ -237,5 +238,22 @@ public interface IFundWithdrawService {
 	 * @return
 	 */
 	Map<String,String> withdrawalResultForJiuPai(Map<String,String> map,HttpServletRequest request);
+
+
+	/**
+	 * 易宝体现
+	 * @param ioArr
+	 * @param transferUserId
+	 * @param request
+	 * @throws Exception
+	 */
+	public void withdrawForYiBao(String[] ioArr, Integer transferUserId, HttpServletRequest request) throws Exception;
+
+
+	/**
+	 * 易宝回调
+	 * @param map
+	 */
+	public Map<String,String> withdrawalResultForYiBao(Map<String,String> map, HttpServletRequest request, HttpServletResponse response);
 
 }

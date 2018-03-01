@@ -2239,4 +2239,8 @@ public class FundCashServiceImpl implements IFundCashService {
         swiftPassService.swiftPassResult(map);
     }
 
+    @Override
+    public void yibaoCallback(Map<String, String> map) throws LTException {
+
+    }
 }

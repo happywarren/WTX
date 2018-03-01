@@ -868,4 +868,9 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	public void swiftPassCallback(Map<String,String> map)throws LTException{
 		fundCashServiceImpl.swiftPassCallback(map);
 	}
+
+	@Override
+	public void callbackForYiBao(Map<String, String> map) throws LTException {
+
+	}
 }

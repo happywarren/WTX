@@ -571,4 +571,12 @@ public interface IFundAccountApiService extends Serializable {
 	 * @throws LTException
 	 */
 	public void swiftPassCallback(Map<String,String> map)throws LTException;
+
+	/**
+	 *
+	 * 易宝提现回调
+	 * @param map
+	 * @throws LTException
+	 */
+	public void callbackForYiBao(Map<String,String> map)throws LTException;
 }

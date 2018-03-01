@@ -641,11 +641,12 @@ public class FundWithdrawController {
 			if(staff!=null && StringTools.isNotEmpty(staff.getId()+"")){
 				transferUserId = staff.getId();
 			}
-			fundWithDrawServiceImpl.withdrawForQtongPay(ioList.split(","), transferUserId);
+			fundWithDrawServiceImpl.withdrawForYiBao(ioList.split(","), transferUserId,request);
 			resp = LTResponseCode.getCode(LTResponseCode.SUCCESS);
 		}catch(Exception e){
+			e.printStackTrace();
 			resp = LTResponseCode.getCode(e.getMessage());
-			logger.info("======钱通提现失败,e={}",e);
+			logger.info("======易宝体现失败,e={}",e);
 		}
 		return resp.toJsonString();
 	}
@@ -671,6 +672,28 @@ public class FundWithdrawController {
 		}
 		return resp.toString();
 	}
+
+	/*
+	@RequestMapping("withdrawForYiBao")
+	@ResponseBody
+	public String withdrawForYiBao(HttpServletRequest request,String ioList){
+		Response resp = null;
+		try{
+			if(StringTools.isEmpty(ioList)){
+				return LTResponseCode.getCode(LTResponseCode.FU00003).toString();
+			}
+			Integer transferUserId = 0;
+			Staff staff = StaffUtil.getStaff(request);
+			if(staff != null && StringTools.isNotEmpty(staff.getId()+"")){
+				transferUserId = staff.getId();
+			}
+
+
+		}catch(Exception e){
+
+		}
+
+	}*/
 
 
 

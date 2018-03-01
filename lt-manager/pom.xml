@@ -237,6 +237,36 @@
 			<version>1.5</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.yeepay</groupId>
+			<artifactId>YeePay_HTMLcommon</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk16-1.0.20140106</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.bouncycastle.cms</groupId>
+			<artifactId>bcmail-jdk</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.cfca</groupId>
+			<artifactId>PKIBASE</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.cfca.util.pki.api</groupId>
+			<artifactId>CFCACertKitJS</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<repositories>

@@ -520,4 +520,11 @@ public interface IFundCashService extends Serializable {
 	 * @throws LTException
 	 */
 	public void swiftPassCallback(Map<String,String> map)throws  LTException;
+
+	/**
+	 * 易宝回调
+	 * @param map
+	 * @throws LTException
+	 */
+	public void yibaoCallback(Map<String,String> map)throws LTException;
 }

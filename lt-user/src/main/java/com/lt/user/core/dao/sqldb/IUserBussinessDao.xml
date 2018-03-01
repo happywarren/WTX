@@ -131,6 +131,7 @@
 
 	<select id="getUserDefaultBankInfoForDinpay" parameterType="com.lt.model.user.UserBankInfo" resultType="com.lt.model.user.UserBussinessInfo">
 		SELECT t1.user_id,t1.user_name,t1.id_card_num,t.bank_name,t.bank_card_num,t.branch_id,t.city_code,t.province_code,t2.dinpay_bank_code,t2.daddypay_bank_code,t1.tele
+		,t2.yibao_bank_code
 		FROM user_bankcard t JOIN user_base t1 ON t.`user_id` = t1.`user_id` LEFT JOIN bank_info t2 ON t.`bank_code` = t2.`bank_code`
 		<where>
 			<if test="userId != null and userId != ''">
