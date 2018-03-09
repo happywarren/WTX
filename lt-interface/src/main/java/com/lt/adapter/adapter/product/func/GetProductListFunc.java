@@ -28,6 +28,8 @@ public class GetProductListFunc extends BaseFunction{
 	public Response response(Map<String, Object> paraMap) {
 		
 		int type = StringTools.formatInt(paraMap.get("productTypeId"), -1);
+
+		type = 1;  //只拿期货的数据
 		
 		String userId = StringTools.formatStr(paraMap.get("userId"), null);
 		Response response = LTResponseCode.getCode(LTResponseCode.SUCCESS);

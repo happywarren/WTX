@@ -534,4 +534,21 @@ public class UserApiServiceImpl implements IUserApiService {
     public void saveCrashLog(Map<String, Object> crashMap) {
         userServiceImp.saveCrashLog(crashMap);
     }
+
+    @Override
+    public String isOpen() {
+
+        String status  = redisTemplate.opsForValue().get(RedisUtil.IDNUMBER_STATUS);
+        if(StringTools.isEmpty(status)){
+            return "0";
+        }else{
+            return status;
+        }
+    }
+
+    @Override
+    public String getLiveUrl() {
+        String liveUrl  = redisTemplate.opsForValue().get(RedisUtil.LIVE_URL);
+        return liveUrl;
+    }
 }

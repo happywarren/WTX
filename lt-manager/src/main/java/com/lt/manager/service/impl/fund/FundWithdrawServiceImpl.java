@@ -100,6 +100,10 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
     BoundHashOperations<String, String, String> sysCfgRedis;
 
+    private static final String YIBAO_KEY = "4e1aapkr6m9fqu925vfsmf23axu1ycrwe6kg4afuvnre3myizw1j3io7uqra";
+
+    private static final String YIBAO_APPID = "10016756134";
+
     @Override
     public void auditWithdraw(String ioIds, int operate, String modifyId, String remark, IFundOptCode codeEnum)
             throws LTException {
@@ -1937,15 +1941,15 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
         String encoding = "UTF-8";
         BoundHashOperations<String,String,String> sysCfgRedis = redisTemplate.boundHashOps(RedisUtil.SYS_CONFIG);
 
-        String merId = "10016756134";
-        String groupId = "10016756134";
+        String merId = YIBAO_APPID;
+        String groupId = YIBAO_APPID;
         String [] digestValues = {"cmd","mer_Id","batch_No","order_Id","amount","account_Number","hmacKey"};
         String [] backDigestValues = {"cmd","ret_Code","mer_Id","batch_No","total_Amt","total_Num","r1_Code","hmacKey"};
         String reqUrl = "http://cha.yeepay.com/app-merchant-proxy/groupTransferController.action";
 
 
         //商户密钥
-        String hmacKey="5D4U9k43B2slR9485HAj57EVS24833fqV0454g266J13XIZ94c7lw44Cyv48";
+        String hmacKey=YIBAO_KEY;
 
         List<FundIoCashWithdrawal> fioList = new ArrayList<>();// 提现流水集合
         List<FundTransferDetail> ftdList = new ArrayList<>();// 提现明细集合
@@ -1971,10 +1975,10 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             }
 
             Double amount = DoubleUtils.sub(fio.getRmbAmt(),fio.getRmbFactTax());
-            String transNo = "QT" + CalendarTools.formatDateTime(new Date(), CalendarTools.DATETIMEFORMAT) + id;// 交易流水
+            String transNo = "YB" + CalendarTools.formatDateTime(new Date(), CalendarTools.DATETIMEFORMAT) + id;// 交易流水
 
             Random random = new Random();
-            String batchNo = CalendarTools.formatDateTime(new Date(), CalendarTools.DATETIMEFORMAT)+random.nextInt()%10;
+            String batchNo = CalendarTools.formatDateTime(new Date(), "yyyyMMddHHmmss")+Math.abs(random.nextInt()%10);
             StringBuilder xml = new StringBuilder();
             xml.append("<data>");
             xml.append("<cmd>TransferSingle</cmd>");
@@ -1985,11 +1989,14 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             xml.append("<order_Id>").append(transNo).append("</order_Id>");
             xml.append("<bank_Code>").append(ui.getYibaoBankCode()).append("</bank_Code>");
             xml.append("<cnaps></cnaps>");
-            xml.append("<amount>").append(amount).append("</amount>");
+            xml.append("<branch_Bank_Name></branch_Bank_Name>");
+            xml.append("<bank_Name></bank_Name>");
+
+            xml.append("<amount>").append(DoubleUtils.doubleFormat(amount,2)).append("</amount>");
             xml.append("<account_Name>").append(ui.getUserName()).append("</account_Name>");
             xml.append("<account_Number>").append(ui.getBankCardNum()).append("</account_Number>");
             xml.append("<province></province>");
-            xml.append("<city>110000</city>");
+            xml.append("<city></city>");
             xml.append("<fee_Type>SOURCE</fee_Type>");
             xml.append("<payee_Email></payee_Email>");
             xml.append("<payee_Mobile></payee_Mobile>");
@@ -2054,8 +2061,8 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
             String sysPath = request.getRealPath("");
             logger.info("sysPath:{}",sysPath);
-            JKey jkey = KeyUtil.getPriKey(sysPath+ File.separator + "10016756134.pfx", "qwe123");
-            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "qwe123");
+            JKey jkey = KeyUtil.getPriKey(sysPath+ File.separator + "10016756134.pfx", "QWe123");
+            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "QWe123");
             X509Cert[] cs=new X509Cert[1];
             cs[0]=cert;
             String signMessage ="";
@@ -2159,7 +2166,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
                                 fio.setRemark("用户提现，易宝返回失败："+error_Msg);
                                 ftd = new FundTransferDetail(transNo, fio.getUserId(), fio.getId(), ui.getUserName(), ui.getBankCardNum(),
                                         ui.getProvinceCode(), ui.getCityCode(), String.valueOf(ui.getBranchId()), ui.getBankName(), DoubleUtils.sub(fio.getAmount(), fio.getFactTax()),
-                                        new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 2);
+                                        new Date(), 0, fio.getRemark(), FundTransferEnum.UNTREATED.getValue(), 2);
                             }
                         }else{
                             fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
@@ -2199,6 +2206,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             fio.setThirdOptCode(FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
             ftd.setRmbAmt(amount);
             ftd.setTransferUserId(transferUserId);
+            ftd.setCreateDate(new Date());
             fioList.add(fio);
             ftdList.add(ftd);
         }
@@ -2216,7 +2224,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
     @Override
     public Map<String,String> withdrawalResultForYiBao(Map<String, String> map, HttpServletRequest request, HttpServletResponse response) {
-        String hmacKey="5D4U9k43B2slR9485HAj57EVS24833fqV0454g266J13XIZ94c7lw44Cyv48";
+        String hmacKey=YIBAO_KEY;
         Map<String,String> rmap = new HashMap<>();
         Map result = new LinkedHashMap();
         Map xmlMap = new LinkedHashMap();
@@ -2264,8 +2272,8 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             }
 
             String sysPath = request.getRealPath("");
-            JKey jkey = KeyUtil.getPriKey(sysPath+File.separator + "10016756134.pfx", "qwe123");
-            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "qwe123");
+            JKey jkey = KeyUtil.getPriKey(sysPath+File.separator + "10016756134.pfx", "QWe123");
+            X509Cert cert = CertUtil.getCert(sysPath+File.separator + "10016756134.pfx", "QWe123");
             X509Cert[] cs=new X509Cert[1];
             cs[0]=cert;
             boolean sigerCertFlag = false;

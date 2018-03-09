@@ -103,4 +103,14 @@ public class RedisUtil {
 	 */
 	public static final String DEFAULT_BRAND	= "DEFAULT_BRAND";//'20170905020140725'
 
+	/**
+	 * 身份认证是否可以修改
+	 */
+	public static final String IDNUMBER_STATUS = "IDNUMBER_STATUS";
+
+	/**
+	 * 直播url
+	 */
+	public static final String LIVE_URL = "LIVE_URL";
+
 }

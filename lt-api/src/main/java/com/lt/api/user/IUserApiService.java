@@ -223,5 +223,17 @@ public interface IUserApiService {
      */
     void saveCrashLog(Map<String,Object> crashMap);
 
+    /**
+     * 实名认证身份证姓名是否可以修改
+     * @return
+     */
+    String isOpen();
+
+    /**
+     * 获取直播链接
+     * @return
+     */
+    String getLiveUrl();
+
 
 }

@@ -103,7 +103,10 @@ public class ProductServiceImpl implements IProductService {
 				types = productTypeDao.selectProductTypesByCondition(excludeProductTypeCode);
 			}
 
+
 			for (ProductType type : types) {
+				if(type.getCode().equals(ProductTypeEnum.HAS.getCode()) || type.getCode().equals(ProductTypeEnum.HKS.getCode()) || type.getCode().equals(ProductTypeEnum.CONTRACT.getCode()))
+					continue;
 				// 查询该类型下的商品信息
 				map.put("productTypeId", type.getId());
 				List<ProductVo> pros = productDao.selectProductLobby(map);

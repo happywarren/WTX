@@ -48,11 +48,12 @@ public class QryUserChargeChannelFunc extends BaseFunction {
 			
 			amount = DoubleTools.scaleFormat(amount,2) ;
 			Map<String,Object> map = userApiAutoRechargeServiceImpl.qryChargeChannel(bankCard, userId, bankCode, amount);
+			/*
 			List<BankChargeMapper> bankChargeMapperList =(List<BankChargeMapper>)map.get("bankChargeList");
 			logger.info("bankChargeList.size="+bankChargeMapperList.size());
 			for(int i = 0;i<bankChargeMapperList.size() ; i++){
 				logger.info("groupId="+bankChargeMapperList.get(i).getGroupId());
-			}
+			}*/
 
 			response.setData(map);
 			return response;

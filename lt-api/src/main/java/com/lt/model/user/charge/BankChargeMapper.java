@@ -35,6 +35,8 @@ public class BankChargeMapper implements Serializable {
 	private String channelName;
 	/**groupid*/
 	private String groupId;
+	/*通道说明*/
+	private String note;
 	/**
 	 * @return the id
 	 */
@@ -134,6 +136,14 @@ public class BankChargeMapper implements Serializable {
 
 	public void setGroupId(String groupId) {
 		this.groupId = groupId;
+	}
+
+	public String getNote() {
+		return note;
+	}
+
+	public void setNote(String note) {
+		this.note = note;
 	}
 
 	public BankChargeMapper() {

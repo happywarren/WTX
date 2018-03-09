@@ -58,8 +58,7 @@ public class AliPayCallBackServlet extends HttpServlet {
 		
 		resp.getWriter().print("success");
 	}
-	
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub

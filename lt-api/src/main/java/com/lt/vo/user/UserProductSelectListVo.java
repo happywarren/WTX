@@ -25,6 +25,7 @@ public class UserProductSelectListVo implements Serializable{
 	 * exchangeId：交易所ID
 	 */
 	private int exchangeId;
+	private int sort;
 	//当前价
 	//涨跌幅 （今日开盘价-昨日收盘价）/昨日收盘价*100%，行情色彩为红涨绿跌。
 	public int getProductTypeId() {
@@ -107,4 +108,6 @@ public class UserProductSelectListVo implements Serializable{
 	}
 	public int getPlate() {return plate;}
 	public void setPlate(int plate) {this.plate = plate;}
+	public int getSort() { return sort;}
+    public void setSort(int sort) {this.sort = sort;}
 }

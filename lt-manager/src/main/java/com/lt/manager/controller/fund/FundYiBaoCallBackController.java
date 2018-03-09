@@ -23,6 +23,7 @@ import java.util.Map;
  *
  */
 @Controller
+@RequestMapping("/callback")
 public class FundYiBaoCallBackController {
 
     Logger logger = LoggerFactory.getLogger(getClass());
@@ -41,7 +42,7 @@ public class FundYiBaoCallBackController {
             String param = en.nextElement().toString();
             map.put(param, request.getParameter(param));
         }
-        logger.info("daddyPay回调开始,入参{}",map);
+        logger.info("易宝回调开始,入参{}",map);
 
         Map<String,String> rmap =  fundWithDrawServiceImpl.withdrawalResultForYiBao(map,request,response);
         return JSONTools.toJSON(rmap);

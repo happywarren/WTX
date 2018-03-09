@@ -161,6 +161,7 @@ public class UserManageServiceImpl implements IUserManageService {
     public UserBase getUserBaseFuzzy(String id) throws Exception {
         // TODO Auto-generated method stub
         UserBase userBase = userManageDao.selectUserBase(id);
+        logger.info("userbase:{}",userBase);
         userBase.setTele(StringTools.fuzzy(userBase.getTele(), 3, 4));
         userBase.setIdCardNum(StringTools.fuzzy(userBase.getIdCardNum(), 3, 3));
         return userBase;

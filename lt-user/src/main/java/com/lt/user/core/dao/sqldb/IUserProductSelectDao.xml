@@ -17,7 +17,8 @@
 	
 	<!-- 根据条件查询用户自选股 -->
 	<select id="selectObjectByCondition" resultType="com.lt.vo.user.UserProductSelectListVo">
-			select product.*,pt.`name` AS typeName,ex.plate AS plate from product
+			select product.*,pt.`name` AS typeName,ex.plate AS plate ,pcs.sort AS sort from product
+		LEFT JOIN product_sort pcs on product.short_code = pcs.short_code
 		JOIN product_type pt on pt.id = product.product_type_id
 		JOIN user_product_select as	ps on product.short_code = ps.product_short_code
 		JOIN exchange_info as ex on product.exchange_id=ex.id
@@ -33,8 +34,9 @@
 	
 	<!-- 查询券商分组后自选商品 -->
 	<select id="selectProductForInvestorGroup" resultType="com.lt.vo.user.UserProductSelectListVo">
-		select pt.`name` ,product.*,ex.plate from investor_product_config as upc
+		select pt.`name` ,product.*,ex.plate,pcs.sort AS sort from investor_product_config as upc
 		left JOIN product on product.short_code = upc.product_code
+		left JOIN product_sort pcs on product.short_code = pcs.short_code
 	    JOIN product_type pt on pt.id = product.product_type_id
 	    JOIN user_product_select as ps on product.short_code = ps.product_short_code
 		JOIN exchange_info as ex on product.exchange_id=ex.id

@@ -571,4 +571,9 @@ public class UserBase extends BaseBean{
 	public void setInvestorAccountId(String investorAccountId) {
 		this.investorAccountId = investorAccountId;
 	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 }
