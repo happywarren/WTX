@@ -23,7 +23,6 @@ import java.util.Map;
  *
  */
 @Controller
-@RequestMapping("/callback")
 public class FundYiBaoCallBackController {
 
     Logger logger = LoggerFactory.getLogger(getClass());

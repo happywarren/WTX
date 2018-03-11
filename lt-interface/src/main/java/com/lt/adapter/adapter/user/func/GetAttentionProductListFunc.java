@@ -1,8 +1,10 @@
 package com.lt.adapter.adapter.user.func;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+import com.lt.enums.trade.PlateEnum;
+import com.lt.model.user.UserProductSelect;
+import com.lt.vo.user.UserProductSelectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +31,25 @@ public class GetAttentionProductListFunc extends BaseFunction {
 		String clientVersion = StringTools.formatStr(paraMap.get("clientVersion"), "");
 
 		List<UserProductSelectListVo> list = null;
+
 		try {
 			list = userApiService.selectProductOptional(userId,clientVersion);
-			response = LTResponseCode.getCode(LTResponseCode.SUCCESS,list);
+			//对内容进行排序
+			LinkedList<UserProductSelectListVo> outerList= new LinkedList<UserProductSelectListVo>();
+			LinkedList<UserProductSelectListVo> innerList = new LinkedList<UserProductSelectListVo>();
+			for(UserProductSelectListVo userProductSelectListVo : list){
+				if(userProductSelectListVo.getPlate() == PlateEnum.INNER_PLATE.getValue()){
+					innerList.add(userProductSelectListVo);
+				}else if(userProductSelectListVo.getPlate() == PlateEnum.OUTER_PLATE.getValue()){
+					outerList.add(userProductSelectListVo);
+				}
+			}
+			Collections.sort(outerList);
+			Collections.sort(innerList);
+			for(UserProductSelectListVo innerProduct : innerList){
+				outerList.add(innerProduct);
+			}
+			response = LTResponseCode.getCode(LTResponseCode.SUCCESS,outerList);
 
 		} catch (Exception e) {
 			e.printStackTrace();

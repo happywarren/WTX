@@ -801,7 +801,9 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
         transferDetail.setStatus(FundTransferEnum.FAILED.getValue());
         transferDetail.setRemark("转账失败");
         transferDetail.setOperateStatu(FundTransferEnum.UNTREATED.getValue());
-        fundIoCashWithdrawalDao.updateTransferDetail(transferDetail);        
+        fundIoCashWithdrawalDao.updateTransferDetail(transferDetail);
+
+        fundAccountApiService.withdrawFail(fio);
         
         
 /*        fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());// 失败
@@ -2003,7 +2005,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             xml.append("<leave_Word></leave_Word>");
             xml.append("<abstractInfo></abstractInfo>");
             xml.append("<remarksInfo></remarksInfo>");
-            xml.append("<urgency>0</urgency>");
+            xml.append("<urgency>1</urgency>");
             xml.append("<hmac></hmac>");
             xml.append("</data>");
 
@@ -2105,6 +2107,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             //第五步:对服务器响应报文进行验证签名
             //第五步:对服务器响应报文进行验证签名
             boolean sigerCertFlag = false;
+            boolean isSuccess = true;
             if(cmdValue!=null){
                 sigerCertFlag = signUtil.p7VerifySignMessage(cmdValue.getBytes(), tempSession);
                 String backmd5hmac = xmlBackMap.get("hmac") + "";
@@ -2160,6 +2163,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
                                         new Date(), 0, "易宝转账", FundTransferEnum.UNTREATED.getValue(), 0);
                             }else{
                                 //打款失败
+                                isSuccess = false;
                                 fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
                                 fio.setModifyDate(new Date());
                                 fio.setPayId(transNo);
@@ -2169,6 +2173,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
                                         new Date(), 0, fio.getRemark(), FundTransferEnum.UNTREATED.getValue(), 2);
                             }
                         }else{
+                            isSuccess =false;
                             fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
                             fio.setModifyDate(new Date());
                             fio.setPayId(transNo);
@@ -2180,6 +2185,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
                         //
                     }else{
+                        isSuccess = false;
                         logger.info("易宝MD5验签不通过！");
                         fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
                         fio.setModifyDate(new Date());
@@ -2191,6 +2197,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
 
                     }
                 }else{
+                    isSuccess = false;
                     logger.info("易宝证书验签失败....");
                     fio.setStatus(FundIoWithdrawalEnum.FAILURE.getValue());
                     fio.setModifyDate(new Date());
@@ -2203,6 +2210,9 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
                 }
             }
 
+            if(!isSuccess){
+                fundAccountApiService.withdrawFail(fio); //将钱退到账户上
+            }
             fio.setThirdOptCode(FundThirdOptCodeEnum.YBTX.getThirdLevelCode());
             ftd.setRmbAmt(amount);
             ftd.setTransferUserId(transferUserId);

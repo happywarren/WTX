@@ -125,6 +125,11 @@ public class TradeServer implements InitializingBean {
         //读取券商帐号配置
         List<InvestorAccount> investorAccountList = feeCfgApiService.listInvestorAccountForServer();
         LOGGER.info("investorAccountList：{}", investorAccountList.size());
+        for(int i=0;i<investorAccountList.size();i++){
+            InvestorAccount investorAccount  =  investorAccountList.get(i);
+            LOGGER.info("accountName:{},securityCode:{}",investorAccount.getAccountName(),investorAccount.getSecurityCode());
+        }
+
 
         if (StringTools.isNotEmpty(investorAccountList)) {
             //内外盘交易模块启动

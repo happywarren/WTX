@@ -2,6 +2,7 @@ package com.lt.trade.riskcontrol;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.enums.trade.PlateEnum;
 import com.lt.trade.ProductTimeCache;
 import com.lt.trade.tradeserver.bean.ProductPriceBean;
 import com.lt.tradeclient.cmd.factory.TmsCmdFactory;
@@ -23,7 +24,7 @@ public class QuotaListener implements MarketDataListener {
 
     @Override
     public void onMarketData(String message) {
-        //LOGGER.info("收到行情: {} ", message);
+        LOGGER.info("收到行情: {} ", message);
         JSONObject jsonData = JSON.parseObject(message);
         if (jsonData.getDouble("lastPrice") == null || jsonData.getDouble("bidPrice1") == null
                 || jsonData.getDouble("askPrice1") == null) {
@@ -46,6 +47,8 @@ public class QuotaListener implements MarketDataListener {
 
 
         boolean isExchangeTradingTime = productTimeCache.getIsExchangeTradingTime(productName);
+
+
         if (isExchangeTradingTime) {
             ProductPriceBean productPrice = new ProductPriceBean();
             productPrice.setProductName(productName);

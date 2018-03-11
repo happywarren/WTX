@@ -197,6 +197,7 @@ public class RiskControlServer implements Runnable {
         LOGGER.info("【"+trade_.getPlateName()+"】开始进入风控处理模块");
         while (true) {
             try {
+
                 // 有行情数据过来就执行一次风控
                 final ProductPriceBean productPrice = QuotaOperator.getInstance().getProductPriceQueue(trade_.getPlateName()).take();
                 final String productName = productPrice.getProductName();

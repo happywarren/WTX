@@ -99,7 +99,7 @@
 	</insert>
 
 	<update id="activeUserAccount" parameterType="String">
-	    update user_base set open_account_status = 1,modify_date = now(),apply_time=now() where user_id = #{id}
+	    update user_base set open_account_status = 1,real_name_status = 2,modify_date = now(),apply_time=now() where user_id = #{id}
 	</update>
 
 	<select id="getUserDefaultBankInfo" parameterType="com.lt.model.user.UserBankInfo" resultType="com.lt.model.user.UserBussinessInfo">

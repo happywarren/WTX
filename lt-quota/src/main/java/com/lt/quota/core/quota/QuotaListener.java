@@ -1,6 +1,7 @@
 package com.lt.quota.core.quota;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lt.enums.trade.PlateEnum;
 import com.lt.quota.core.quota.bean.QuotaBean;
 import com.lt.quota.core.quota.clean.CleanInstance;
 import com.lt.tradeclient.cmd.factory.TmsCmdFactory;
@@ -11,15 +12,16 @@ import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class QuotaListener implements MarketDataListener{
 
     private static Logger logger = LoggerFactory.getLogger(QuotaServer.class);
+    private String [] innerList = {"ni","SR","au","ag","rb"};
+    private String [] outerList = {"CL","HSI","DAX","GC","MHI","NQ","SI","HG","YM","ES","BP","AD","EC","JY","ZL","ZM","NG","S"};
 
     @Override
     public void onMarketData(String msg) {
-
-        System.out.println("msg:"+msg);
 
         JSONObject jsonObject =  (JSONObject) JSONObject.parse(msg);
         logger.info("msg"+jsonObject);
@@ -56,6 +58,29 @@ public class QuotaListener implements MarketDataListener{
         quotaBean.setHigh26Week(jsonObject.getString("high26Week"));
         quotaBean.setLow52Week(jsonObject.getString("low52Week"));
         quotaBean.setHigh52Week(jsonObject.getString("high52Week"));
+        String productName = quotaBean.getProductName();
+        boolean isInnerPlate = false;
+        for(String inner:innerList){
+            if(productName.contains(inner)){
+                isInnerPlate = true;
+                break;
+            }
+        }
+        if(isInnerPlate){
+            quotaBean.setPlate(PlateEnum.INNER_PLATE.getValue());
+        }
+
+        boolean isOuterPlate = false;
+        for(String outer : outerList){
+            if(productName.contains(outer)){
+                isOuterPlate = true;
+                break;
+            }
+        }
+        if(isOuterPlate){
+            quotaBean.setPlate(PlateEnum.OUTER_PLATE.getValue());
+        }
+
         CleanInstance.getInstance().setMarketDataQueue(quotaBean);
     }
 

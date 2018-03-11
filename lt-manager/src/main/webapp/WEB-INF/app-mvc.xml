@@ -90,7 +90,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.lt.manager.inteceptor.PrivilegesInteceptor"> 
-				<property name="excuUrls" value="login,unlogin,sendSms,callbackForUnspay,callbackForDaddypay"></property>
+				<property name="excuUrls" value="login,unlogin,sendSms,callbackForUnspay,callbackForDaddypay,callbackForYiBao"></property>
 			</bean>
 		</mvc:interceptor>  
 		 <mvc:interceptor>

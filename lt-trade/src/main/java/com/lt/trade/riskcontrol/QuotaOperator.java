@@ -40,6 +40,7 @@ public class QuotaOperator {
     public void setProductPriceQueue(ProductPriceBean productPriceBean) {
         try {
             if(PlateEnum.INNER_PLATE.getValue().equals(productPriceBean.getPlate())){
+                logger.info("有内盘行情过来了:{}",productPriceBean.toString());
                 productPriceQueueInner.put(productPriceBean);
             }
             else if(PlateEnum.OUTER_PLATE.getValue().equals(productPriceBean.getPlate())){

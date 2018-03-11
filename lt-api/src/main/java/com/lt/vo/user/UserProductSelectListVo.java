@@ -2,7 +2,7 @@ package com.lt.vo.user;
 
 import java.io.Serializable;
 
-public class UserProductSelectListVo implements Serializable{
+public class UserProductSelectListVo implements Serializable,Comparable<UserProductSelectListVo>{
 	/**
 	 * 
 	 */
@@ -110,4 +110,11 @@ public class UserProductSelectListVo implements Serializable{
 	public void setPlate(int plate) {this.plate = plate;}
 	public int getSort() { return sort;}
     public void setSort(int sort) {this.sort = sort;}
+
+	@Override
+	public int compareTo(UserProductSelectListVo o) {
+		if(this.sort >o.getSort())
+			return 1;
+		return -1;
+	}
 }
