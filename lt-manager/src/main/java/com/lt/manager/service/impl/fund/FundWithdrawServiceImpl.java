@@ -2007,6 +2007,7 @@ public class FundWithdrawServiceImpl implements IFundWithdrawService {
             xml.append("<remarksInfo></remarksInfo>");
             xml.append("<urgency>1</urgency>");
             xml.append("<hmac></hmac>");
+            xml.append("<product>RJT</product>");
             xml.append("</data>");
 
             Map result = new LinkedHashMap();

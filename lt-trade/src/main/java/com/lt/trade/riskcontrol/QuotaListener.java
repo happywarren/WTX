@@ -18,13 +18,16 @@ public class QuotaListener implements MarketDataListener {
 
     private ProductTimeCache productTimeCache;
 
+    private String [] innerList = {"ni","SR","au","ag","rb"};
+    private String [] outerList = {"CL","HSI","DAX","GC","MHI","NQ","SI","HG","YM","ES","BP","AD","EC","JY","ZL","ZM","NG","S"};
+
+
     public QuotaListener(ProductTimeCache productTimeCache) {
         this.productTimeCache = productTimeCache;
     }
 
     @Override
     public void onMarketData(String message) {
-        LOGGER.info("收到行情: {} ", message);
         JSONObject jsonData = JSON.parseObject(message);
         if (jsonData.getDouble("lastPrice") == null || jsonData.getDouble("bidPrice1") == null
                 || jsonData.getDouble("askPrice1") == null) {
@@ -41,7 +44,6 @@ public class QuotaListener implements MarketDataListener {
         double askPrice = StringTools.formatDouble(jsonData.getDouble("askPrice1"), 0.0d);// 卖一价
         double changeValue = StringTools.formatDouble(jsonData.getDouble("changeValue"), 0.0d);//涨跌值
         double changeRate = StringTools.formatDouble(jsonData.getDouble("changeRate"), 0.0d);//涨跌幅
-        Integer plate = jsonData.getInteger("plate");
         String timeStamp = jsonData.getString("timeStamp");//接收行情时间
         String productName = jsonData.getString("productName");
 
@@ -58,7 +60,30 @@ public class QuotaListener implements MarketDataListener {
             productPrice.setChangeValue(changeValue);
             productPrice.setChangeRate(changeRate);
             productPrice.setQuotaTime(timeStamp);
-            productPrice.setPlate(plate);
+            if(StringTools.isEmpty(jsonData.getString("plate"))){
+                boolean isInnerPlate = false;
+                for(String inner:innerList){
+                    if(productName.contains(inner)){
+                        isInnerPlate = true;
+                        break;
+                    }
+                }
+
+                if(isInnerPlate){
+                    productPrice.setPlate(PlateEnum.INNER_PLATE.getValue());
+                }
+
+                boolean isOuterPlate = false;
+                for(String outer : outerList){
+                    if(productName.contains(outer)){
+                        isOuterPlate = true;
+                        break;
+                    }
+                }
+                if(isOuterPlate){
+                    productPrice.setPlate(PlateEnum.OUTER_PLATE.getValue());
+                }
+            }
             try {
                 QuotaOperator.getInstance().setQuotePriceMap(productName, productPrice);
                 QuotaOperator.getInstance().setProductPriceQueue(productPrice);
@@ -66,7 +91,7 @@ public class QuotaListener implements MarketDataListener {
                 LOGGER.error("添加行情信息出错, 异常信息: " + e.getMessage());
             }
         } else {
-            LOGGER.error("商品: {} 不是交易时间: {} ", productName, isExchangeTradingTime);
+           // LOGGER.error("商品: {} 不是交易时间: {} ", productName, isExchangeTradingTime);
         }
     }
 

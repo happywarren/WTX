@@ -43,12 +43,12 @@ public class GtQuotaClient extends QuoteClient{
 
     @PostConstruct
     public void init(){
-        subscribe();
+      //  subscribe();
 
-        System.out.println("size1="+productListOuter.size());
-        System.out.println("start quota");
-        GtQuotaClient quotaClient = new GtQuotaClient();
-        quotaClient.start();
+      //  System.out.println("size1="+productListOuter.size());
+      //  System.out.println("start quota");
+      //  GtQuotaClient quotaClient = new GtQuotaClient();
+     //   quotaClient.start();
 
     }
 
@@ -208,7 +208,7 @@ public class GtQuotaClient extends QuoteClient{
         quotaBean.setChangeValue(String.valueOf(snapshot.close-snapshot.pClose));
 
         logger.info("获取到行情{} ..quotaBean:{}",quotaBean.getProductName(),quotaBean.toString());
-        CleanInstance.getInstance().setMarketDataQueue(quotaBean);
+        //CleanInstance.getInstance().setMarketDataQueue(quotaBean);
     }
 
 

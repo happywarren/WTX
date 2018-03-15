@@ -98,7 +98,7 @@ public class InnerFutureTrade extends BaseTrade {
                 // String quotaTime =  productPriceBean.getQuotaTime();
                 LOGGER.info("......外盘开始报单最后依次行情时间:{}.....",productPriceBean.getQuotaTime());
                 //15S 无行情就认为没有行情 行情时间超过10S就认为没有行情
-                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-orderBean.getTimeStamp()) > 100 ){
+                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())) > 25000  ){
                     LOGGER.info("报单失败！！！,行情获取失败.");
                     //获取不到行情价格 保单失败
                     FutureErrorBean errorBean = new FutureErrorBean();

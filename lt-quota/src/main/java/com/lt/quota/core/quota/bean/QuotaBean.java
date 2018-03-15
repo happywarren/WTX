@@ -370,6 +370,7 @@ public class QuotaBean implements java.io.Serializable {
                 ", low52Week='" + low52Week + '\'' +
                 ", high52Week='" + high52Week + '\'' +
                 ", marketCap='" + marketCap + '\'' +
+                ", plate='" + plate + '\'' +
                 '}';
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -20,16 +21,19 @@ public class RfTcpClientMain {
     @Autowired
     private RfTcpClient rfTcpClient;
 
-   // @PostConstruct
+    @PostConstruct
     public void init() {
+        /*
         List<QuotaCoreConfigModel> dataList = quotaCoreConfigService.getQuotaCoreConfigModelByName("RF");
         if (null == dataList || dataList.isEmpty()) {
             logger.info("未加载RF配置文件");
             return;
         }
 
+        //dataList = new ArrayList<QuotaCoreConfigModel>()
         for (QuotaCoreConfigModel quotaCoreConfigModel : dataList) {
             rfTcpClient.start(quotaCoreConfigModel.getHost(), quotaCoreConfigModel.getPort());
-        }
+        }*/
+        rfTcpClient.start("106.14.153.130", 9100);
     }
 }

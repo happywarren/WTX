@@ -34,13 +34,21 @@ public class QuotaOperator {
     }
 
     public void setQuotePriceMap(String key, ProductPriceBean productPriceBean) {
+        try{
+            long time = System.currentTimeMillis() - Long.parseLong(productPriceBean.getQuotaTime());
+            if(time > 2000){
+                logger.info("******************行情有延迟!{}",productPriceBean.getProductName());
+            }
+        }catch(Exception e){
+            logger.info("error:{}",productPriceBean.getQuotaTime());
+        }
+
         quotePriceMap.put(key, productPriceBean);
     }
 
     public void setProductPriceQueue(ProductPriceBean productPriceBean) {
         try {
             if(PlateEnum.INNER_PLATE.getValue().equals(productPriceBean.getPlate())){
-                logger.info("有内盘行情过来了:{}",productPriceBean.toString());
                 productPriceQueueInner.put(productPriceBean);
             }
             else if(PlateEnum.OUTER_PLATE.getValue().equals(productPriceBean.getPlate())){

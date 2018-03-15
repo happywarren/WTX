@@ -142,7 +142,7 @@ public class TradeServer implements InitializingBean {
             }
 
             //差价合约交易模块启动
-            startupNext(contractTrade, null);
+            //startupNext(contractTrade, null);
             LOGGER.info("【" + contractTrade.getPlateName() + "】交易模块启动成功...");
             //启动内外盘报单线程
             executorService.execute(outerFutureTrade);

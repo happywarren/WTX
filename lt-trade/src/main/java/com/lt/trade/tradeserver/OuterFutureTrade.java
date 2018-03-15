@@ -5,11 +5,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.lt.enums.trade.PlateEnum;
 import com.lt.trade.tradeserver.bean.*;
 import com.lt.trade.utils.LTConstants;
+import com.lt.util.utils.DateTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 外盘期货交易
@@ -94,14 +96,19 @@ public class OuterFutureTrade extends BaseTrade {
 
 
                // String quotaTime =  productPriceBean.getQuotaTime();
-                LOGGER.info("......外盘开始报单最后依次行情时间:{}.....",productPriceBean.getQuotaTime());
+                Date quotaDate = new Date(Long.parseLong(productPriceBean.getQuotaTime()));
+                Date now  = new Date();
+                String quotaD = DateTools.parseToDefaultDateTimeString(quotaDate);
+                String nowStr = DateTools.parseToDefaultDateTimeString(now);
+                LOGGER.info("------行情时间{},当前时间{},行情数据:{}------",quotaD,nowStr,productPriceBean.toString());
+                LOGGER.info("......外盘开始报单最后依次行情时间:{},{},{}.....",productPriceBean.getQuotaTime(),System.currentTimeMillis(),(System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())));
                 //15S 无行情就认为没有行情 行情时间超过10S就认为没有行情
-                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-orderBean.getTimeStamp()) > 100 ){
+                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())) > 25000 ){
                     LOGGER.info("报单失败！！！,行情获取失败.");
                     //获取不到行情价格 保单失败
                     FutureErrorBean errorBean = new FutureErrorBean();
                     errorBean.setErrorId(5889);
-                    errorBean.setErrorMsg("行情获取失败");
+                    errorBean.setErrorMsg("行情过时");
                     errorBean.setFundType(orderBean.getFundType());
                     errorBean.setPlatformId(orderBean.getOrderInsertId());
                     FutureMatchWrapper matchWrapper = new FutureMatchWrapper();
