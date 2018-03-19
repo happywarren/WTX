@@ -179,4 +179,15 @@
 		<url-pattern>/aggpayCallBack</url-pattern>
 	</servlet-mapping>
 	<!-- 聚合回调end -->
+
+	<!--支付宝h5start -->
+	<servlet>
+		<servlet-name>alipayH5CallBack</servlet-name>
+		<servlet-class>com.lt.adapter.AlipayH5CallBackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>alipayH5CallBack</servlet-name>
+		<url-pattern>/alipayH5CallBack</url-pattern>
+	</servlet-mapping>
+	<!--支付宝h5end -->
 </web-app>

@@ -35,7 +35,15 @@ public class CleanInstance {
 
     public void setMarketDataQueue(QuotaBean quotaBean) {
         try {
+            String productName = quotaBean.getProductName();
+            //创建0.1模式的行情
+            if(productName.startsWith("CL") || productName.startsWith("DAX") || productName.startsWith("SI") ||productName.startsWith("GC")){
+                QuotaBean quotaBeanM = new QuotaBean(quotaBean);
+                quotaBeanM.setProductName(quotaBeanM.getProductName()+"(M)");
+                marketDataQueue.put(quotaBeanM);
+            }
             marketDataQueue.put(quotaBean);
+
         } catch (Exception e) {
         }
     }

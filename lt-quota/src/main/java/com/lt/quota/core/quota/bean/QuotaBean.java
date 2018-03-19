@@ -102,6 +102,38 @@ public class QuotaBean implements java.io.Serializable {
 
     }
 
+    public QuotaBean(QuotaBean quotaBean){
+        this.askPrice1 = quotaBean.getAskPrice1();
+        this.askQty1 = quotaBean.getAskQty1();
+        this.averagePrice = quotaBean.getAveragePrice();
+        this.bidPrice1 = quotaBean.getBidPrice1();
+        this.bidQty1 = quotaBean.getBidQty1();
+        this.changeRate = quotaBean.getChangeRate();
+        this.changeValue = quotaBean.getChangeValue();
+        this.highPrice = quotaBean.getHighPrice();
+        this.lastPrice = quotaBean.getLastPrice();
+        this.limitDownPrice = quotaBean.getLimitDownPrice();
+        this.limitUpPrice = quotaBean.getLimitUpPrice();
+        this.lowPrice = quotaBean.getLowPrice();
+        this.openPrice = quotaBean.getOpenPrice();
+        this.positionQty = quotaBean.getPositionQty();
+        this.preClosePrice = quotaBean.getPreClosePrice();
+        this.preSettlePrice = quotaBean.getPreSettlePrice();
+        this.productName = new String(quotaBean.getProductName());
+        this.settlePrice = quotaBean.getSettlePrice();
+        this.timeStamp = quotaBean.getTimeStamp();
+        this.totalQty = quotaBean.getTotalQty();
+        this.source = quotaBean.getSource();
+        this.plate = quotaBean.getPlate();
+        this.low13Week = quotaBean.getLow13Week();     //13周最低价
+        this.high13Week = quotaBean.getHigh13Week();     //13周最高价
+        this.low26Week = quotaBean.getLow26Week();     //26周最低价
+        this.high26Week = quotaBean.getHigh26Week();     //26周最高价
+        this.low52Week = quotaBean.getLow52Week();     //52周最低价
+        this.high52Week = quotaBean.getHigh52Week();     //52周最高价
+        this.marketCap = quotaBean.getMarketCap(); //市值
+    }
+
     public QuotaBean(String productName) {
         this.productName = productName;
     }

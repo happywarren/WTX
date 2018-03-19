@@ -30,7 +30,7 @@ import java.util.*;
  * 项目名称：lt-user 类名称：UserRehargeByIapppay 类描述： 爱贝充值 创建人：yubei
  */
 @Service
-public class UserRehargeByWeiXin extends UserRechargeSuper implements UserChargeFunc {
+public class UserRechargeByWeiXinH5 extends UserRechargeSuper implements UserChargeFunc {
 
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
@@ -72,7 +72,7 @@ public class UserRehargeByWeiXin extends UserRechargeSuper implements UserCharge
 
 
 		Map<String,String> param = new HashMap<String,String>();
-		param.put("body","大象-商品付款");
+		param.put("body","dxjc");
 		param.put("out_trade_no",baseCharge.getPayOrderId());
 		param.put("fee_type","CNY");
 		param.put("total_fee", "1");// 消费金额
@@ -80,12 +80,12 @@ public class UserRehargeByWeiXin extends UserRechargeSuper implements UserCharge
 		param.put("notify_url",notifyurl);
 		param.put("trade_type","MWEB");
 		param.put("notify_url",notifyurl);
-		String sceneinfo = "{\"h5_info\": {\"type\":\"h5_info\",\"wap_name\": \"大象建材\",\"wap_url\": \"jingzh.top\"}}";
+		String sceneinfo = "{\"h5_info\": {\"type\":\"h5_info\",\"wap_name\": \"dxjc\",\"wap_url\": \"jingzh.top\"}}";
 		param.put("scene_info",sceneinfo);
 
 		try {
 			Map<String, String> r = wxpay.unifiedOrder(param);
-			logger.info("返回微信支付:"+r);
+			logger.info("返回微信支付:"+r.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -139,7 +139,7 @@ public class CashOrderBuyTradeServiceImpl extends AbstractCashOrderTradeSerivce 
             investorFeeCfg.setIsSupportDefer(productRiskConfig.getIsDefer());
         }
         //处理角模式
-        changeInvestorFeeCfg(investorFeeCfg,orderVo);
+       // changeInvestorFeeCfg(investorFeeCfg,orderVo);
 
         logger.info("============费用配置，investorFeeCfg={}============", JSONObject.toJSONString(investorFeeCfg));
 

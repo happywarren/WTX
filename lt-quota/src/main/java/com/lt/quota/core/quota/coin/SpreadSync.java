@@ -70,7 +70,7 @@ public class SpreadSync {
     @Autowired
     private DistributedLock distributedLock;
 
-    @PostConstruct
+  //  @PostConstruct
     private void initData() {
         Map<String, String> dataMap = redisTemplate.opsForHash().entries(PRODUCT_INFO);
         for (Map.Entry<String, String> entry : dataMap.entrySet()) {

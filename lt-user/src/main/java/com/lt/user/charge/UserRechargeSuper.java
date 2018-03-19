@@ -302,6 +302,11 @@ public class UserRechargeSuper {
 			chargeBean = new BaseChargeBean(userId, bankCardId, amt, rmbAmt, rate, transferNum, bankCode, alipayNum, thirdOptCode);
 			chargeBean.setPayOrderId("alipay" + String.valueOf(CalendarTools.getMillis(new Date())));
 		}
+
+		if(RechargeGroupEnum.ALIPAYH5.getGroupId().equals(groupId)){
+			chargeBean = new BaseChargeBean(userId, bankCardId, amt, rmbAmt, rate, bankCardNum, bankCode, null, thirdOptCode);
+			chargeBean.setPayOrderId("alipayh5" + String.valueOf(CalendarTools.getMillis(new Date())));
+		}
 		logger.info("groupId:{}", groupId);
 		return chargeBean;
 

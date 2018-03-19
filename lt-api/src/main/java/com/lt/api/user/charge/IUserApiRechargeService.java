@@ -74,4 +74,11 @@ public interface IUserApiRechargeService {
 	 */
 	public Map<String,Object> qianTongPayConfirm(String checkCode,String payOrderId) throws LTException;
 
+	/**
+	 * 支付宝h5支付回调处理
+	 * @param map
+	 * @throws LTException
+	 */
+	public void userReviceAlipayH5Response(Map<String, Object> map) throws LTException;
+
 }

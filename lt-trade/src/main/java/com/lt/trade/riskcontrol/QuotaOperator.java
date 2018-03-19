@@ -36,7 +36,7 @@ public class QuotaOperator {
     public void setQuotePriceMap(String key, ProductPriceBean productPriceBean) {
         try{
             long time = System.currentTimeMillis() - Long.parseLong(productPriceBean.getQuotaTime());
-            if(time > 2000){
+            if(time > 4000){
                 logger.info("******************行情有延迟!{}",productPriceBean.getProductName());
             }
         }catch(Exception e){

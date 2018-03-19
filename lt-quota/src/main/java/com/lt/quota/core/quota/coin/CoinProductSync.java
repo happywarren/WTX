@@ -21,13 +21,13 @@ public class CoinProductSync {
 
     private final Map<String, Set<String>> coinMap = new HashMap<>();
 
-    @PostConstruct
+ //   @PostConstruct
     private void init() {
         coinMap.put(IConstants.BTC, new HashSet<>());
         coinMap.put(IConstants.ETH, new HashSet<>());
     }
 
-    @Scheduled(cron = "* * 0/1 * * ?")
+   // @Scheduled(cron = "* * 0/1 * * ?")
     public void getData() {
         List<Map<String, Object>> coinProductList = quotaCoreConfigService.getCoinProductList();
         for (Map<String, Object> dataMap : coinProductList) {

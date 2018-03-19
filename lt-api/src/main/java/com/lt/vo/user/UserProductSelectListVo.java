@@ -26,6 +26,7 @@ public class UserProductSelectListVo implements Serializable,Comparable<UserProd
 	 */
 	private int exchangeId;
 	private int sort;
+	private int isMini;  //是否开启0.1模式
 	//当前价
 	//涨跌幅 （今日开盘价-昨日收盘价）/昨日收盘价*100%，行情色彩为红涨绿跌。
 	public int getProductTypeId() {
@@ -110,6 +111,13 @@ public class UserProductSelectListVo implements Serializable,Comparable<UserProd
 	public void setPlate(int plate) {this.plate = plate;}
 	public int getSort() { return sort;}
     public void setSort(int sort) {this.sort = sort;}
+	public int getIsMini() {
+		return isMini;
+	}
+
+	public void setIsMini(int isMini) {
+		this.isMini = isMini;
+	}
 
 	@Override
 	public int compareTo(UserProductSelectListVo o) {

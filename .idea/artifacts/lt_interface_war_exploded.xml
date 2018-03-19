@@ -57,6 +57,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.1.0" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.1.0" />
           <element id="library" level="project" name="Maven: com.lt:lt-feedback-api:1.0.1" />
+          <element id="library" level="project" name="Maven: com.alipay:alipay-sdk-java:1.5" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-mongodb:1.9.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.2.5.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.2.5.RELEASE" />

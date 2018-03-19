@@ -1,5 +1,6 @@
 package com.lt.quota.core.quota.rf;
 
+import com.lt.quota.core.comm.config.SysConfig;
 import com.lt.quota.core.model.QuotaCoreConfigModel;
 import com.lt.quota.core.service.IQuotaCoreConfigService;
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ public class RfTcpClientMain {
     private IQuotaCoreConfigService quotaCoreConfigService;
     @Autowired
     private RfTcpClient rfTcpClient;
+    @Autowired
+    private SysConfig sysConfig;
 
     @PostConstruct
     public void init() {
@@ -34,6 +37,6 @@ public class RfTcpClientMain {
         for (QuotaCoreConfigModel quotaCoreConfigModel : dataList) {
             rfTcpClient.start(quotaCoreConfigModel.getHost(), quotaCoreConfigModel.getPort());
         }*/
-        rfTcpClient.start("106.14.153.130", 9100);
+        rfTcpClient.start(sysConfig.getCserverIp(), sysConfig.getCserverPort());
     }
 }

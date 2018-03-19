@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.internal.util.AlipaySignature;
+import com.lt.model.fund.FundIoCashRecharge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,7 +117,8 @@ public class UserApiRechargeServiceImpl implements IUserApiRechargeService {
 				|| RechargeGroupEnum.DADDYPAY.getGroupId().equals(groupId) 
 				|| RechargeGroupEnum.AGGPAY.getGroupId().equals(groupId)
 				|| RechargeGroupEnum.ALIPAYTRANSFER.getGroupId().equals(groupId)
-				|| RechargeGroupEnum.ALIPAYH5.getGroupId().equals(groupId)) {
+				|| RechargeGroupEnum.ALIPAYH5.getGroupId().equals(groupId)
+				|| RechargeGroupEnum.WEIXINH5.getGroupId().equals(groupId)) {
 			logger.info("获取类名为：{}", "userRechargeBy" + groupId);
 			UserChargeFunc userChargefunc = (UserChargeFunc) SpringUtils.getBean("userRechargeBy" + groupId);
 			logger.info("userRechargeBy 是否为null ：{}", userChargefunc == null);
@@ -497,4 +501,58 @@ public class UserApiRechargeServiceImpl implements IUserApiRechargeService {
 		}
 	}
 
+	@Override
+	@Transactional
+	public void userReviceAlipayH5Response(Map<String, Object> map) throws LTException {
+
+
+		try{
+			Map<String,String> alipayParams =  (Map<String,String>)map.get("alipayParams");
+			logger.info("支付宝接收的结果参数:{}", alipayParams.toString());
+			String out_trade_no =  String.valueOf(alipayParams.get("out_trade_no"));
+			//支付宝交易号
+
+			String trade_no = String.valueOf(alipayParams.get("trade_no")) ;
+
+			//交易状态
+			String trade_status = String.valueOf(alipayParams.get("trade_status"));
+
+			String amt = alipayParams.get("buyer_pay_amount");
+
+			FundIoCashRecharge fundIoCashRecharge =  this.fundAccountServiceImpl.qryFundIoCashRechargeByPayId(out_trade_no);
+
+			if (fundIoCashRecharge == null) {
+				logger.info("平台订单号不存在:{}", out_trade_no);
+				throw new LTException("平台订单号不存在");
+			}
+
+			BoundHashOperations<String, String, String> rechargeConfig = redisTemplate.boundHashOps(RedisUtil.FUND_RECHARGE_CONFIG);
+			JSONObject jsonObject = JSONObject.parseObject(rechargeConfig.get(fundIoCashRecharge.getThirdOptcode()));
+			String secretKey = jsonObject.getString("secretKey");
+			String publicKey = jsonObject.getString("publicKey");
+			String notifyUrl = jsonObject.getString("notifyUrl");
+			logger.info("publicKey:{}",publicKey);
+
+
+
+			boolean verify_result = AlipaySignature.rsaCheckV1(alipayParams, publicKey, "UTF-8", "RSA2");
+
+			if(verify_result){
+				logger.info("支付成功,订单号{}", out_trade_no);
+				if(trade_status.equals("TRADE_FINISHED") || trade_status.equals("TRADE_SUCCESS")){
+					FundOptCode optCode = this.userRechargeServiceImpl.getFundOptCodeByThirdOptCode(fundIoCashRecharge.getThirdOptcode());
+					this.fundAccountServiceImpl.doUserRecharge(out_trade_no, trade_no, optCode, Double.valueOf(amt));
+				}
+			}else{
+				logger.info("校验签名失败,订单号{}", out_trade_no);
+				throw new LTException("校验签名失败");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new LTException("处理支付宝回调异常");
+		}
+
+
+
+	}
 }

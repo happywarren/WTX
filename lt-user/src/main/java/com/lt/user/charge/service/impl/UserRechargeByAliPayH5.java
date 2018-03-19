@@ -3,6 +3,7 @@ package com.lt.user.charge.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
+import com.alipay.api.AlipayResponse;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeWapPayModel;
 import com.alipay.api.request.AlipayTradeWapPayRequest;
@@ -51,34 +52,40 @@ public class UserRechargeByAliPayH5 extends UserRechargeSuper implements UserCha
         String secretKey = jsonObject.getString("secretKey");
         String publicKey = jsonObject.getString("publicKey");
         String notifyUrl = jsonObject.getString("notifyUrl");
+        String returnUrl = jsonObject.getString("returnUrl");
 
         AlipayClient client = new DefaultAlipayClient(payUrl,appid, secretKey, "json", "UTF-8", publicKey,"RSA2");
         AlipayTradeWapPayRequest alipay_request=new AlipayTradeWapPayRequest();
 
         AlipayTradeWapPayModel model=new AlipayTradeWapPayModel();
         model.setOutTradeNo(baseCharge.getPayOrderId());
-        model.setSubject("支付费用");
+        model.setSubject("DXQH");
         model.setTotalAmount(baseCharge.getRmbAmt()+"");
-        model.setBody("");
+        model.setBody("DXQH");
         model.setTimeoutExpress("2m");
         model.setProductCode("QUICK_WAP_WAY");
         alipay_request.setNotifyUrl(notifyUrl);
+        alipay_request.setReturnUrl(returnUrl);
+        alipay_request.setBizModel(model);
 
 
         try {
-            String body =  client.pageExecute(alipay_request).getBody();
+
+            AlipayResponse alipayResponse = client.pageExecute(alipay_request);
+            String body =  alipayResponse.getBody();
+            Map<String,String> params = alipayResponse.getParams();
+            logger.info("params:{}",params);
             logger.info("body:{}",body);
+            map.put("code", "200");
+            map.put("msg", "处理成功");
+            map.put("body",body);
         } catch (AlipayApiException e) {
+            map.put("code","400");
+            map.put("msg","处理失败！");
             e.printStackTrace();
         }
         String signValue = "";
         requestParams.put("signValue",signValue);
-
-
-        map.put("code", "200");
-        map.put("msg", "处理成功");
-      //  map.put("returnUrl",url);
-
         return map;
     }
 

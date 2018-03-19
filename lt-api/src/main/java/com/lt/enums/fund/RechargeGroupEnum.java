@@ -20,7 +20,8 @@ public enum RechargeGroupEnum {
 	DADDYPAY("DaddyPay","爸爸付"),
 	AGGPAY("Aggpay","聚合支付"),
 	ALIPAYTRANSFER("AlipayTransfer","支付宝转账"),
-	ALIPAYH5("AliPayH5","支付宝H5");
+	ALIPAYH5("AliPayH5","支付宝H5"),
+	WEIXINH5("WeiXinH5","微信H5");
 
 	/** 值 */
 	private String groupId;

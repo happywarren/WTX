@@ -225,6 +225,14 @@ public class MainOperator {
         return adapter.execute(paramMap).getCode();
     }
 
+    public String alipayH5Operator(Map<String,Object> paramMap) throws LTException{
+        logger.info("===========【接收支付宝h5处理结果】==========");
+        IAdapter adapter = (IAdapter) SpringUtils.getBean("fund" + ADAPTER);
+        paramMap.put("func", "alipayH5Accept");
+        paramMap.put("cmd", "fund");
+        return adapter.execute(paramMap).getCode();
+    }
+
     /**
      * 操作处理类（Servlet已经携带参数）
      *

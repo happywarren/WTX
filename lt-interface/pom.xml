@@ -50,6 +50,16 @@
 			<artifactId>lt-feedback-api</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+        <dependency>
+            <groupId>com.alipay</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+		<dependency>
+			<groupId>com.alipay</groupId>
+			<artifactId>alipay-sdk-java</artifactId>
+			<version>RELEASE</version>
+		</dependency>
 	</dependencies>
 
 	<build>

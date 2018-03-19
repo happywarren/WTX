@@ -24,6 +24,12 @@ public class SysConfig {
     @Value("${sys.all.time.out}")
     private int allTimeout;
 
+    @Value("${sys.cserver.ip}")
+    private String cserverIp;
+
+    @Value("${sys.cserver.port}")
+    private int cserverPort;
+
     public SysConfig() {
     }
 
@@ -57,5 +63,21 @@ public class SysConfig {
 
     public void setAllTimeout(int allTimeout) {
         this.allTimeout = allTimeout;
+    }
+
+    public String getCserverIp() {
+        return cserverIp;
+    }
+
+    public void setCserverIp(String cserverIp) {
+        this.cserverIp = cserverIp;
+    }
+
+    public int getCserverPort() {
+        return cserverPort;
+    }
+
+    public void setCserverPort(int cserverPort) {
+        this.cserverPort = cserverPort;
     }
 }
