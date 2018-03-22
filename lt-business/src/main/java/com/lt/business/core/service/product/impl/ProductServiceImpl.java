@@ -116,9 +116,24 @@ public class ProductServiceImpl implements IProductService {
 							vo.setFundType(Integer.valueOf(map.get("fundType").toString()));
 						}
 					}
-					rlist.add(pros);
+					//rlist.add(pros);
 				}
+				map.put("productCode",map.get("productCode").toString()+"(M)");
+				List<ProductVo> pros2 = productDao.selectProductLobby(map);
+				if (StringTools.isNotEmpty(pros2)) {
+					if (StringTools.isNotEmpty(map.get("fundType"))) {
+						for (ProductVo vo : pros2) {
+							vo.setFundType(Integer.valueOf(map.get("fundType").toString()));
+						}
+					}
+					//rlist.add(pros);
+					pros.add(pros2.get(0));
+				}
+				rlist.add(pros);
+
+
 			}
+
 			return rlist;
 		} catch (Exception e) {
 			logger.error("获取商品大厅异常", e);
