@@ -2,6 +2,8 @@ package com.lt.trade.riskcontrol;
 
 import com.lt.enums.trade.PlateEnum;
 import com.lt.trade.tradeserver.bean.ProductPriceBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
@@ -10,6 +12,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 
 
 public class QuotaOperator {
+
+    private static Logger logger = LoggerFactory.getLogger(RiskControlServer.class);
 
     private final Map<String, ProductPriceBean> quotePriceMap = new ConcurrentHashMap<String, ProductPriceBean>();
     private final BlockingQueue<ProductPriceBean> productPriceQueueOuter = new LinkedBlockingDeque<ProductPriceBean>();

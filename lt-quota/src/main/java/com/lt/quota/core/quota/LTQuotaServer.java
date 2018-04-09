@@ -33,6 +33,8 @@ public class LTQuotaServer {
 
         String[] hostArray = {"39.108.160.13","120.79.172.237"};
         String[] portArray = {"50000","50000"};
+         //String[] hostArray = {"106.15.195.182"};
+        // String[] portArray = {"50000"};
         for(int i=0; i< hostArray.length; i++){
             quotaServers.add(new QuotaServer(hostArray[i],Integer.parseInt(portArray[i])));
         }
@@ -42,6 +44,14 @@ public class LTQuotaServer {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
+    }
+
+    public static  void main(String [] args){
+        LTQuotaServer lt= new LTQuotaServer();
+        lt.startQuota();
     }
 
 }

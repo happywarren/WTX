@@ -22,6 +22,27 @@ public class UserProductSelectListVo implements Serializable,Comparable<UserProd
     private int decimalDigits;//小数位数
 	private int plate;   //内外盘标识
 	/**
+	 * 买一价
+	 */
+	private String bidPrice;
+	/**
+	 * 卖价
+	 */
+	private String askPrice;
+	/**
+	 * 当前价
+	 */
+	private String lastPrice;
+	/**
+	 * 涨跌幅
+	 */
+	private String percentage;
+
+	/**
+	 *涨跌值
+	 */
+	private String changeValue;
+	/**
 	 * exchangeId：交易所ID
 	 */
 	private int exchangeId;
@@ -117,6 +138,46 @@ public class UserProductSelectListVo implements Serializable,Comparable<UserProd
 
 	public void setIsMini(int isMini) {
 		this.isMini = isMini;
+	}
+
+	public String getBidPrice() {
+		return bidPrice;
+	}
+
+	public void setBidPrice(String bidPrice) {
+		this.bidPrice = bidPrice;
+	}
+
+	public String getAskPrice() {
+		return askPrice;
+	}
+
+	public void setAskPrice(String askPrice) {
+		this.askPrice = askPrice;
+	}
+
+	public String getLastPrice() {
+		return lastPrice;
+	}
+
+	public void setLastPrice(String lastPrice) {
+		this.lastPrice = lastPrice;
+	}
+
+	public String getPercentage() {
+		return percentage;
+	}
+
+	public void setPercentage(String percentage) {
+		this.percentage = percentage;
+	}
+
+	public String getChangeValue() {
+		return changeValue;
+	}
+
+	public void setChangeValue(String changeValue) {
+		this.changeValue = changeValue;
 	}
 
 	@Override

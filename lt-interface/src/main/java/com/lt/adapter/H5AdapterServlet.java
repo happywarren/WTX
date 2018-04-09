@@ -42,6 +42,7 @@ public class H5AdapterServlet extends HttpServlet {
         	String ip = IpUtils.getUserIP(request);
         	jsonStr = mainOperator.operator(msg,ip);
         } catch (LTException e) {
+            e.printStackTrace();
             jsonStr = LTResponseCode.getCode(e.getMessage()).toJsonString();
         } catch (Exception e) {
         	e.printStackTrace();

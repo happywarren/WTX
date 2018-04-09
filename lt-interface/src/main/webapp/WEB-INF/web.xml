@@ -190,4 +190,15 @@
 		<url-pattern>/alipayH5CallBack</url-pattern>
 	</servlet-mapping>
 	<!--支付宝h5end -->
+
+	<!-- 微信h5start -->
+	<servlet>
+		<servlet-name>weixinH5CallBack</servlet-name>
+		<servlet-class>com.lt.adapter.WeiXinCallBackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>weixinH5CallBack</servlet-name>
+		<url-pattern>/weixinH5CallBack</url-pattern>
+	</servlet-mapping>
+	<!-- 微信h5end -->
 </web-app>

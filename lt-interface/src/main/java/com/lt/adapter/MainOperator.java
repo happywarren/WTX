@@ -213,6 +213,18 @@ public class MainOperator {
     }
 
     /**
+     * 微信h5充值回调处理
+     * @param paramMap
+     */
+    public void weixinh5Operator(Map<String,Object> paramMap){
+        logger.info("=============【接收微信处理结果】================");
+        IAdapter adapter = (IAdapter) SpringUtils.getBean("fund" + ADAPTER);
+        paramMap.put("func", "weixinh5Accept");
+        paramMap.put("cmd", "fund");
+        adapter.execute(paramMap);
+    }
+
+    /**
      * 聚合充值回调处理
      *
      * @param paramMap

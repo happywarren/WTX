@@ -14,7 +14,7 @@
         <setting name="mapUnderscoreToCamelCase" value="true" />
     </settings>
 	<typeAliases>
-	    <package name="com.lt"/>
+	    <package name="com.lt.fund"/>
 	</typeAliases>
 	<!-- Mybatis的分页插件,目标地址https://github.com/pagehelper/Mybatis-PageHelper -->
 	<plugins>

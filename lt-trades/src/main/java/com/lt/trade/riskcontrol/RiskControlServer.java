@@ -1,6 +1,7 @@
 package com.lt.trade.riskcontrol;
 
 import com.alibaba.fastjson.JSONObject;
+import com.lt.enums.trade.PlateEnum;
 import com.lt.model.dispatcher.enums.DispatcherRedisKey;
 import com.lt.model.dispatcher.enums.RedisQuotaObject;
 import com.lt.trade.ProductTimeCache;

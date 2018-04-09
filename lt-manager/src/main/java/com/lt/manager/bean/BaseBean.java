@@ -6,7 +6,7 @@ import java.io.Serializable;
 public class BaseBean implements Serializable {
     private String id;//主键
     private String ids;//id串1,2,3
-    private Integer rows = 10;// 默认条数
+    private Integer rows = 25;// 默认条数
     private Integer page = 1;// 默认页数
     private String sort;// 排序字段
     private String order;// 排序方式 desc asc

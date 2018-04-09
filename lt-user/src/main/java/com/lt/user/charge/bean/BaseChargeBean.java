@@ -36,6 +36,7 @@ public class BaseChargeBean {
 	private String tele;
 	private String userName;
 	private String idCardNum;
+	private String ip;
 	
 	
 	public BaseChargeBean(String userId,String bankCardId,Double amt,Double rmbAmt,Double rate,String bankCardNum,String bankCode,Object object){
@@ -202,6 +203,11 @@ public class BaseChargeBean {
 	public void setIdCardNum(String idCardNum) {
 		this.idCardNum = idCardNum;
 	}
-	
-	
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
 }

@@ -2,8 +2,10 @@ package com.lt.adapter.adapter.user.func;
 
 import java.util.*;
 
+import com.lt.api.business.product.IProductApiService;
 import com.lt.enums.trade.PlateEnum;
 import com.lt.model.user.UserProductSelect;
+import com.lt.vo.product.ProductQuotaVo;
 import com.lt.vo.user.UserProductSelectVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class GetAttentionProductListFunc extends BaseFunction {
 
 	@Autowired
 	private IUserApiService userApiService;
+
+	@Autowired
+	private IProductApiService productApiService;
 
 	@Override
 	public Response response(Map<String, Object> paraMap) {
@@ -48,6 +53,32 @@ public class GetAttentionProductListFunc extends BaseFunction {
 			Collections.sort(innerList);
 			for(UserProductSelectListVo innerProduct : innerList){
 				outerList.add(innerProduct);
+			}
+
+			//获取最新行情
+			List<String> prdcodeList = new ArrayList<String>();
+			for(int i=0;i<outerList.size();i++){
+				prdcodeList.add(outerList.get(i).getProductCode());
+			}
+			List<ProductQuotaVo> quotaList = productApiService.findQuotaObjectByCodeList(prdcodeList);
+			for(ProductQuotaVo quotaVo : quotaList){
+				UserProductSelectListVo tmp = null;
+
+				for(UserProductSelectListVo userProductSelectListVo : outerList){
+					if(userProductSelectListVo.getProductCode().equals(quotaVo.getCode())){
+						tmp = userProductSelectListVo;
+						break;
+					}
+				}
+
+				if(tmp != null){
+					tmp.setBidPrice(quotaVo.getBidPrice());
+					tmp.setAskPrice(quotaVo.getAskPrice());
+					tmp.setLastPrice(quotaVo.getLastPrice());
+					tmp.setPercentage(quotaVo.getPercentage());
+					tmp.setChangeValue(quotaVo.getChangeValue());
+				}
+
 			}
 			response = LTResponseCode.getCode(LTResponseCode.SUCCESS,outerList);
 

@@ -92,7 +92,6 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	 * 
 	 * @author XieZhibing
 	 * @date 2016年12月7日 下午9:53:45
-	 * @see com.lt.api.fund.rmi.IFundAccountApiService#queryFundMainCash(java.lang.Integer)
 	 * @param userId
 	 * @return
 	 */
@@ -106,7 +105,6 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	 * 
 	 * @author XieZhibing
 	 * @date 2016年12月7日 下午9:53:45
-	 * @see com.lt.api.fund.rmi.IFundAccountApiService#queryFundMainScore(java.lang.Integer)
 	 * @param userId
 	 * @return
 	 */
@@ -120,7 +118,6 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	 * 
 	 * @author XieZhibing
 	 * @date 2016年12月13日 上午11:19:11
-	 * @see com.lt.api.fund.IFundAccountApiService#doInitFundCashAccount(java.lang.Integer)
 	 * @param userId
 	 * @return
 	 * @throws LTException
@@ -140,7 +137,7 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	 * 
 	 * @author XieZhibing
 	 * @date 2016年12月13日 上午11:19:19
-	 * @see com.lt.api.fund.IFundAccountApiService#doInitFundScoreAccount(java.lang.Integer)
+	 * @see com.lt.api.fund.IFundAccountApiService#(java.lang.Integer)
 	 * @param userId
 	 * @return
 	 * @throws LTException
@@ -872,5 +869,10 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	@Override
 	public void callbackForYiBao(Map<String, String> map) throws LTException {
 
+	}
+
+	@Override
+	public List<FundIoCashRecharge> findRechargeByUserId(Map<String, Object> params) {
+		return fundFlowCashServiceImpl.findRechargeByUserId(params);
 	}
 }

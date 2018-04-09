@@ -112,4 +112,11 @@ public interface FundIoCashRechargeDao {
 	 * @param yubei
 	 */
 	public void insertUserChannelTrans(UserChannelTrans userChannelTrans);
+
+	/**
+	 * 分页查询充值记录
+	 * @param params
+	 * @return
+	 */
+	public List<FundIoCashRecharge> findRechargeByUserId(Map<String,Object> params);
 }

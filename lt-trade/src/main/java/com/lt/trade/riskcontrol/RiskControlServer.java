@@ -204,6 +204,9 @@ public class RiskControlServer implements Runnable {
                 final RiskControlQueue riskControlQueue = riskControlQueueMap_.get(productName);
                 //LOGGER.info("有行情过来 productPrice:{}",productPrice.toString());
 
+                if(productName.contains("SI")){
+                    LOGGER.info("美白银金进行风控！{}");
+                }
 
                 if (riskControlQueue == null) {
                     LOGGER.error("商品不存在:{} ", productName);

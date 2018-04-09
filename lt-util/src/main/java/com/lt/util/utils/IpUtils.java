@@ -18,12 +18,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class IpUtils {
 	public static String getUserIP(HttpServletRequest request) {
+
+		/*
 		String ip = request.getHeader("X-Real-IP");
+
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getHeader("X-Forwarded-For");
 		}
 		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
 			ip = request.getRemoteAddr();
+		}*/
+		//多层nginx获取ip
+
+		String ip = request.getHeader("X-Forwarded-For");
+		try{
+			ip = ip.split(",")[0];
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return ip;
 	}

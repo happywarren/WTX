@@ -2,6 +2,7 @@ package com.lt.trade.riskcontrol;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lt.enums.trade.PlateEnum;
 import com.lt.trade.ProductTimeCache;
 import com.lt.trade.tradeserver.bean.ProductPriceBean;
 import com.lt.tradeclient.cmd.factory.TmsCmdFactory;
@@ -21,9 +22,12 @@ public class QuotaListener implements MarketDataListener {
         this.productTimeCache = productTimeCache;
     }
 
+    private String [] innerList = {"ni","SR","au","ag","rb","SC"};
+    private String [] outerList = {"CL","HSI","DAX","GC","MHI","NQ","SI","HG","YM","ES","BP","AD","EC","JY","ZL","ZM","NG","S"};
+
     @Override
     public void onMarketData(String message) {
-//        LOGGER.info("收到行情: {} ", message);
+       //LOGGER.info("收到行情: {} ", message);
         JSONObject jsonData = JSON.parseObject(message);
         if (jsonData.getDouble("lastPrice") == null || jsonData.getDouble("bidPrice1") == null
                 || jsonData.getDouble("askPrice1") == null) {
@@ -51,6 +55,32 @@ public class QuotaListener implements MarketDataListener {
             productPrice.setPlate(plate);
             productPrice.setChangeRate(changeRate);
             productPrice.setChangeValue(changeValue);
+
+            if(StringTools.isEmpty(jsonData.getString("plate"))){
+                boolean isInnerPlate = false;
+                for(String inner:innerList){
+                    if(productName.contains(inner)){
+                        isInnerPlate = true;
+                        break;
+                    }
+                }
+
+                if(isInnerPlate){
+                    productPrice.setPlate(PlateEnum.INNER_PLATE.getValue());
+                }
+
+                boolean isOuterPlate = false;
+                for(String outer : outerList){
+                    if(productName.contains(outer)){
+                        isOuterPlate = true;
+                        break;
+                    }
+                }
+                if(isOuterPlate){
+                    productPrice.setPlate(PlateEnum.OUTER_PLATE.getValue());
+                }
+            }
+
             try {
                 QuotaOperator.getInstance().setQuotePriceMap(productName, productPrice);
                 QuotaOperator.getInstance().setProductPriceQueue(productPrice);

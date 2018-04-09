@@ -103,7 +103,7 @@ public class OuterFutureTrade extends BaseTrade {
                 LOGGER.info("------行情时间{},当前时间{},行情数据:{}------",quotaD,nowStr,productPriceBean.toString());
                 LOGGER.info("......外盘开始报单最后依次行情时间:{},{},{}.....",productPriceBean.getQuotaTime(),System.currentTimeMillis(),(System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())));
                 //15S 无行情就认为没有行情 行情时间超过10S就认为没有行情
-                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())) > 25000 ){
+                if(quotePrice <= 0.00000001 || (System.currentTimeMillis()-Long.parseLong(productPriceBean.getQuotaTime())) > 10000 ){
                     LOGGER.info("报单失败！！！,行情获取失败.");
                     //获取不到行情价格 保单失败
                     FutureErrorBean errorBean = new FutureErrorBean();
@@ -125,6 +125,7 @@ public class OuterFutureTrade extends BaseTrade {
                 matchBean.setPlatformId(orderBean.getOrderInsertId());
                 matchBean.setSysMatchId(orderBean.getUniqueOrderId());
                 matchBean.setSysOrderId(String.valueOf(orderBean.getOrderInsertId()));
+
 
                 FutureMatchWrapper matchWrapper = new FutureMatchWrapper();
                 matchWrapper.setMessageId(LTConstants.FRAME_TYPE_ORDER_MATCH);

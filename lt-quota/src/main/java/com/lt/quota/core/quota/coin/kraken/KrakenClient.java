@@ -32,7 +32,7 @@ public class KrakenClient {
     @Autowired
     private VolumeCalc volumeCalc;
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    //@Scheduled(cron = "0/10 * * * * ?")
     @Async
     public void getData() {
         for (Map.Entry<String, String> entry : KrakenTradePair.TRADE_PAIR.entrySet()) {

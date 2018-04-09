@@ -32,6 +32,8 @@ public class TcpClientMain implements InitializingBean {
     }
 
     public void startQuota(){
+        /*
+
         System.out.println("productTimeCache="+productTimeCache);
         String quotaServerStr =   sysConfig.getQuotaServer();
         Set<QuotaServer> quotaServerSet = new HashSet<QuotaServer>();
@@ -50,7 +52,19 @@ public class TcpClientMain implements InitializingBean {
             Thread t = new Thread(baseClient);
             ClientBox.getInstance().setClient(key,baseClient,t);
             t.start();
-        }
+        }*/
+        QuotaListener quotaListener = new QuotaListener();
+        BaseClient baseClient = new BaseClient("106.15.181.168",8068,new QuotaClientHandler(quotaListener),new QuotaStarupListener());
+        Thread t = new Thread(baseClient);
+        //ClientBox.getInstance().setClient(key,baseClient,t);
+        t.start();
+
+
+    }
+
+    public static void main(String [] args){
+        TcpClientMain t = new TcpClientMain();
+        t.startQuota();
     }
 
 }

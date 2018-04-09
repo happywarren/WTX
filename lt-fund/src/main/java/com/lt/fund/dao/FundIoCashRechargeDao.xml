@@ -265,4 +265,11 @@
 			#{createDate}
 		)		
 	</insert>
+
+	<select id="findRechargeByUserId" parameterType="java.util.Map" resultType="com.lt.model.fund.FundIoCashRecharge">
+		select * from fund_io_cash_recharge
+		 where user_id = #{userId}
+		 order by create_date desc
+		 limit #{limit1}, #{limit2}
+	</select>
 </mapper>

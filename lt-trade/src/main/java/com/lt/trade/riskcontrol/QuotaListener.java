@@ -11,6 +11,8 @@ import com.lt.util.utils.StringTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
+
 
 public class QuotaListener implements MarketDataListener {
 
@@ -18,7 +20,7 @@ public class QuotaListener implements MarketDataListener {
 
     private ProductTimeCache productTimeCache;
 
-    private String [] innerList = {"ni","SR","au","ag","rb"};
+    private String [] innerList = {"ni","SR","au","ag","rb","SC"};
     private String [] outerList = {"CL","HSI","DAX","GC","MHI","NQ","SI","HG","YM","ES","BP","AD","EC","JY","ZL","ZM","NG","S"};
 
 
@@ -28,6 +30,7 @@ public class QuotaListener implements MarketDataListener {
 
     @Override
     public void onMarketData(String message) {
+
         JSONObject jsonData = JSON.parseObject(message);
         if (jsonData.getDouble("lastPrice") == null || jsonData.getDouble("bidPrice1") == null
                 || jsonData.getDouble("askPrice1") == null) {
@@ -46,7 +49,11 @@ public class QuotaListener implements MarketDataListener {
         double changeRate = StringTools.formatDouble(jsonData.getDouble("changeRate"), 0.0d);//涨跌幅
         String timeStamp = jsonData.getString("timeStamp");//接收行情时间
         String productName = jsonData.getString("productName");
-
+        long now = new Date().getTime();
+        long quotaTime = Long.parseLong(timeStamp);
+        if(now -quotaTime > 2000){
+            LOGGER.info(message);
+        }
 
         boolean isExchangeTradingTime = productTimeCache.getIsExchangeTradingTime(productName);
 

@@ -322,7 +322,7 @@ public class RiskControlQueue {
 //    	logger.info("ProductPriceBean : {}",JSONObject.toJSONString(productPrice));
     	if(!TradeUtils.quotaEquals(productPrice)){
 //    		logger.error("行情价格与上一条一致");
-    		return null;
+    		//return null;
     	}
         double askPrice = productPrice.getAskPrice();// 卖一价
         double bidPrice = productPrice.getBidPrice();// 买一价
@@ -331,10 +331,14 @@ public class RiskControlQueue {
         // 普通订单
         priceLock.writeLock().lock();
         try {
-        	//多队列处理
-        	queueProcess(bidPrice, orderList);
-        	//空队列处理
-        	emptyQueueProcess(askPrice, orderList);
+            // 对SI进行调试
+            if(productPrice.getProductName().contains("SI")){
+                //多队列处理
+                queueProcess(bidPrice, orderList);
+                //空队列处理
+                emptyQueueProcess(askPrice, orderList);
+            }
+
         } finally {
             priceLock.writeLock().unlock();
         }
@@ -415,6 +419,13 @@ public class RiskControlQueue {
     	if (emptyabovePriceQueue.isEmpty() || emptybelowPriceQueue.isEmpty()) {
             return ;
         }
+
+        logger.info(".....空队列打印开始......");
+        for(Map.Entry <Double, Set<String>> entry : emptyabovePriceQueue.entrySet()){
+            logger.info(entry.getKey()+":"+entry.getValue().toString());
+    	    logger.info("");
+        }
+        logger.info(".....空队列打印结束.....");
     	// 空方向 止盈队列
         Iterator<Map.Entry<Double, Set<String>>> emptyAboveEntries = emptyabovePriceQueue.entrySet().iterator();
         while (emptyAboveEntries.hasNext()) {
@@ -424,6 +435,7 @@ public class RiskControlQueue {
             if (askPrice <= priceKey ) {
             	//收集触发平仓单
                 Set<String> listValue = entry.getValue();
+                logger.info("止盈：{}",listValue.toString());
                 for (String orderId : listValue) {
                 	//获取订单详情
                     RiskControlBean riskBean = riskOrdersMap.get(orderId);

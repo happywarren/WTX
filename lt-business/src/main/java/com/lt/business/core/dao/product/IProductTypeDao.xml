@@ -45,6 +45,7 @@
 		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
 		and product.status in (1,2)
 		and pt.id = #{id}
+		AND product.product_code not like '%(M)'  <!-- 去掉0.1合约-->
 		ORDER BY product.sort_num
 	</select>
 	
@@ -56,6 +57,7 @@
 		where NOW() > product.expiration_begin_time and product.expiration_time >= NOW()
 		and product.status in (1,2)
 		and upc.investor_account_id = #{investorId} and pt.id=#{id}
+		AND product.product_code not like '%(M)'  <!-- 去掉0.1合约-->
 		ORDER BY product.sort_num
 	</select>
 </mapper>

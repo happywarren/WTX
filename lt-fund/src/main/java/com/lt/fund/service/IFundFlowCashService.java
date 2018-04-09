@@ -3,6 +3,7 @@ package com.lt.fund.service;
 import java.util.List;
 import java.util.Map;
 
+import com.lt.model.fund.FundIoCashRecharge;
 import com.lt.model.fund.FundMainCash;
 import com.lt.vo.fund.FundFlowVo;
 
@@ -111,5 +112,12 @@ public interface IFundFlowCashService {
 	 * @return
 	 */
 	public Double getHoldFundByOrderId(String orderId);
+
+	/**
+	 * 分页查询充值记录
+	 * @param params
+	 * @return
+	 */
+	public List<FundIoCashRecharge> findRechargeByUserId(Map<String,Object> params);
 
 }

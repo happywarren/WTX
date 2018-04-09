@@ -26,12 +26,13 @@ public class BtcMain {
 
     //@PostConstruct
     private void BtcMain() {
+        /*
 
         bitstampClient.connect();
 
         bitfinexRunner.start();
 
-        gadxRunner.start();
+        gadxRunner.start();*/
     }
 
 }

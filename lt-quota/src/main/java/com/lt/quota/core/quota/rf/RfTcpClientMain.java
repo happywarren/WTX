@@ -2,6 +2,7 @@ package com.lt.quota.core.quota.rf;
 
 import com.lt.quota.core.comm.config.SysConfig;
 import com.lt.quota.core.model.QuotaCoreConfigModel;
+import com.lt.quota.core.quota.TaoBaoQuota;
 import com.lt.quota.core.service.IQuotaCoreConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,7 @@ public class RfTcpClientMain {
         for (QuotaCoreConfigModel quotaCoreConfigModel : dataList) {
             rfTcpClient.start(quotaCoreConfigModel.getHost(), quotaCoreConfigModel.getPort());
         }*/
-        rfTcpClient.start(sysConfig.getCserverIp(), sysConfig.getCserverPort());
+      //  rfTcpClient.start(sysConfig.getCserverIp(), sysConfig.getCserverPort());
+        TaoBaoQuota.startQuota(); //启动行情
     }
 }

@@ -2,9 +2,11 @@ package com.lt.trade.riskcontrol;
 
 import com.lt.enums.trade.PlateEnum;
 import com.lt.trade.tradeserver.bean.ProductPriceBean;
+import com.lt.util.utils.DateTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,7 +39,7 @@ public class QuotaOperator {
         try{
             long time = System.currentTimeMillis() - Long.parseLong(productPriceBean.getQuotaTime());
             if(time > 4000){
-                logger.info("******************行情有延迟!{}",productPriceBean.getProductName());
+             //   logger.info("******************行情有延迟!{},{},{}",productPriceBean.getProductName(),DateTools.formatDate(new Date(),DateTools.FORMAT_FULL),DateTools.formatDate(new Date(Long.parseLong(productPriceBean.getQuotaTime())),DateTools.FORMAT_FULL));
             }
         }catch(Exception e){
             logger.info("error:{}",productPriceBean.getQuotaTime());

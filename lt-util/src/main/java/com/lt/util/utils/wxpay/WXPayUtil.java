@@ -201,6 +201,9 @@ public class WXPayUtil {
             if (k.equals(WXPayConstants.FIELD_SIGN)) {
                 continue;
             }
+            if(data.get(k) == null){
+                System.out.println("K="+k);
+            }
             if (data.get(k).trim().length() > 0) // 参数值为空，则不参与签名
                 sb.append(k).append("=").append(data.get(k).trim()).append("&");
         }

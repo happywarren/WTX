@@ -139,7 +139,7 @@ public class TradeServer implements InitializingBean {
             }
 
             //差价合约交易模块启动
-            startupNext(contractTrade, null);
+            //startupNext(contractTrade, null);
             LOGGER.info("【" + contractTrade.getPlateName() + "】交易模块启动成功...");
             //启动内外盘报单线程
             executorService.execute(outerFutureTrade);
@@ -181,6 +181,13 @@ public class TradeServer implements InitializingBean {
         //初始化风控队列、加载数据、执行清仓调度器（各盘分别只触发一次）
         if (baseTrade.getClientMap().size() == 1
                 || PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())) {
+            if(PlateEnum.OUTER_PLATE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启外盘风控模块！..........");
+            }else if(PlateEnum.INNER_PLATE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启内盘风控模块！...........");
+            }else if(PlateEnum.CONTRACT_FOR_DIFFERENCE.getName().equals(baseTrade.getPlateName())){
+                LOGGER.info("........开启数字合约风控模块！..........");
+            }
             startupRiskControl(baseTrade);
             startupLoadRuntimeData(baseTrade);
             startupClearScheduler(baseTrade);

@@ -80,7 +80,7 @@ public class InnerClientListener implements OnMessageListener {
         final EventLoop loop = ctx.channel().eventLoop();
         heartBeatScheduler = loop.scheduleAtFixedRate(new HeartBeatRunnable(handlerContext), 0, HEART_BEAT_PERIOD, TimeUnit.SECONDS);
         //定时发送 订阅 退订合约信息
-        productScheduler = loop.scheduleAtFixedRate(new ProductInfoRunnable(handlerContext), 0, 1, TimeUnit.HOURS);
+        productScheduler = loop.scheduleAtFixedRate(new ProductInfoRunnable(handlerContext), 0, 3, TimeUnit.SECONDS);
         try {
             Thread.sleep(10000);
             //立即订阅

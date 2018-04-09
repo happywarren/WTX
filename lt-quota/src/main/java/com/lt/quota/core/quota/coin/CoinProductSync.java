@@ -29,6 +29,7 @@ public class CoinProductSync {
 
    // @Scheduled(cron = "* * 0/1 * * ?")
     public void getData() {
+        /*
         List<Map<String, Object>> coinProductList = quotaCoreConfigService.getCoinProductList();
         for (Map<String, Object> dataMap : coinProductList) {
             String productCode = dataMap.get("productCode") + "";
@@ -42,7 +43,7 @@ public class CoinProductSync {
                 productList.add(productCode);
                 coinMap.put(IConstants.ETH, productList);
             }
-        }
+        }*/
     }
 
 

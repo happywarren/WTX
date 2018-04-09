@@ -77,6 +77,7 @@ public class UserRechargeSuper {
 			//map.put("groupId", paraMap.get("groupId"));
 			return map;
 		} catch (Exception e) {
+			e.printStackTrace();
 			throw new LTException(e.getMessage());
 		}
 
@@ -307,6 +308,14 @@ public class UserRechargeSuper {
 			chargeBean = new BaseChargeBean(userId, bankCardId, amt, rmbAmt, rate, bankCardNum, bankCode, null, thirdOptCode);
 			chargeBean.setPayOrderId("alipayh5" + String.valueOf(CalendarTools.getMillis(new Date())));
 		}
+
+		if(RechargeGroupEnum.WEIXINH5.getGroupId().equals(groupId)){
+			chargeBean = new BaseChargeBean(userId, bankCardId, amt, rmbAmt, rate, bankCardNum, bankCode, null, thirdOptCode);
+			chargeBean.setPayOrderId("weixinh5" + String.valueOf(CalendarTools.getMillis(new Date())));
+			String ip = StringTools.formatStr(paraMap.get("ip"), "0");
+			chargeBean.setIp(ip);
+		}
+
 		logger.info("groupId:{}", groupId);
 		return chargeBean;
 

@@ -81,4 +81,10 @@ public interface IUserApiRechargeService {
 	 */
 	public void userReviceAlipayH5Response(Map<String, Object> map) throws LTException;
 
+
+	/***
+	 * 微信h5支付回调处理
+	 */
+	public void userReviceWeixinH5Response(Map<String,Object> map) throws LTException;
+
 }

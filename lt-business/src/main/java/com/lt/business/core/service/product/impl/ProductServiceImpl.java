@@ -1,11 +1,7 @@
 package com.lt.business.core.service.product.impl;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.lt.business.core.dao.product.*;
 import com.lt.model.product.ProductRiskConfig;
@@ -118,16 +114,32 @@ public class ProductServiceImpl implements IProductService {
 					}
 					//rlist.add(pros);
 				}
-				map.put("productCode",map.get("productCode").toString()+"(M)");
-				List<ProductVo> pros2 = productDao.selectProductLobby(map);
-				if (StringTools.isNotEmpty(pros2)) {
-					if (StringTools.isNotEmpty(map.get("fundType"))) {
-						for (ProductVo vo : pros2) {
-							vo.setFundType(Integer.valueOf(map.get("fundType").toString()));
+
+				if(map.get("productCode") == null){ //大厅的时候去掉0.1
+                    //去除(M)合约
+                    Iterator<ProductVo> it = pros.iterator();
+                    while(it.hasNext()){
+                        ProductVo productVo = it.next();
+                        if(productVo.getProductCode().endsWith("(M)")){
+                            it.remove();
+                        }
+                    }
+                }
+
+
+				//模拟不做0.1
+				if(map.get("productCode") != null && map.get("fundType") != null && map.get("fundType").equals("0")){
+					map.put("productCode",map.get("productCode").toString()+"(M)");
+					List<ProductVo> pros2 = productDao.selectProductLobby(map);
+					if (StringTools.isNotEmpty(pros2)) {
+						if (StringTools.isNotEmpty(map.get("fundType"))) {
+							for (ProductVo vo : pros2) {
+								vo.setFundType(Integer.valueOf(map.get("fundType").toString()));
+							}
 						}
+						//rlist.add(pros);
+						pros.add(pros2.get(0));
 					}
-					//rlist.add(pros);
-					pros.add(pros2.get(0));
 				}
 				rlist.add(pros);
 

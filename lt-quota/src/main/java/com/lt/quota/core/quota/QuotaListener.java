@@ -7,6 +7,7 @@ import com.lt.quota.core.quota.clean.CleanInstance;
 import com.lt.tradeclient.cmd.factory.TmsCmdFactory;
 import com.lt.tradeclient.listener.MarketDataListener;
 import com.lt.tradeclient.tcp.client.bean.QuotaServer;
+import com.lt.util.utils.DateTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +25,7 @@ public class QuotaListener implements MarketDataListener{
     public void onMarketData(String msg) {
 
         JSONObject jsonObject =  (JSONObject) JSONObject.parse(msg);
-        //logger.info("msg"+jsonObject);
+
         QuotaBean quotaBean = new QuotaBean();
         quotaBean.setAskPrice1(jsonObject.getString("askPrice1"));
         quotaBean.setAskQty1(jsonObject.getString("askQty1"));
@@ -83,11 +84,12 @@ public class QuotaListener implements MarketDataListener{
         if(isOuterPlate){
             quotaBean.setPlate(PlateEnum.OUTER_PLATE.getValue());
         }
+        /*
         if(productName.contains("DAX") ||quotaBean.getPlate() == PlateEnum.INNER_PLATE.getValue()){
             CleanInstance.getInstance().setMarketDataQueue(quotaBean);
-        }
+        }*/
 
-      //  CleanInstance.getInstance().setMarketDataQueue(quotaBean);
+       CleanInstance.getInstance().setMarketDataQueue(quotaBean);
     }
 
     @Override

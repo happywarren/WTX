@@ -141,4 +141,11 @@ public class ProductTimeCache {
         }
         return null;
     }
+
+    public boolean isExist(String productCode){
+        if(PRODUCT_QUOTA_MAP.containsKey(productCode)){
+            return true;
+        }
+        return false;
+    }
 }

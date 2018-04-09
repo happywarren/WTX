@@ -10,6 +10,7 @@ import com.lt.user.charge.dao.sqldb.UserRechargeIapppayDao;
 import com.lt.user.charge.service.UserChargeFunc;
 import com.lt.util.error.LTException;
 import com.lt.util.error.LTResponseCode;
+import com.lt.util.utils.DoubleUtils;
 import com.lt.util.utils.HttpTools;
 import com.lt.util.utils.crypt.MD5Util;
 import com.lt.util.utils.iapppay.IapppayUtil;
@@ -54,11 +55,13 @@ public class UserRechargeByWeiXinH5 extends UserRechargeSuper implements UserCha
 		String waresid = jsonObject.getString("waresid");
 		String waresname = jsonObject.getString("waresname");
 		String cporderid = baseCharge.getPayOrderId();
-		String notifyurl = jsonObject.getString("notifyappuseridUrl");
+		String notifyurl = jsonObject.getString("notifyUrl");
 		String appuserid = jsonObject.getString("");
 		String url_r = jsonObject.getString("url_r");
 		String reqUrl = jsonObject.getString("reqUrl");
 		String orderUrl = jsonObject.getString("orderUrl");
+
+		logger.info("notifyurl={}",notifyurl);
 
 		WXPayConfigImpl wxConfig = null;
 		WXPay wxpay = null;
@@ -75,22 +78,38 @@ public class UserRechargeByWeiXinH5 extends UserRechargeSuper implements UserCha
 		param.put("body","dxjc");
 		param.put("out_trade_no",baseCharge.getPayOrderId());
 		param.put("fee_type","CNY");
-		param.put("total_fee", "1");// 消费金额
-		param.put("spbill_create_ip","127.0.0.1");
+		param.put("total_fee", ((int)DoubleUtils.mul(baseCharge.getRmbAmt(),100))+"");// 消费金额
+		param.put("spbill_create_ip",baseCharge.getIp());
 		param.put("notify_url",notifyurl);
 		param.put("trade_type","MWEB");
 		param.put("notify_url",notifyurl);
-		String sceneinfo = "{\"h5_info\": {\"type\":\"h5_info\",\"wap_name\": \"dxjc\",\"wap_url\": \"jingzh.top\"}}";
+		param.put("nonce_str",baseCharge.getPayOrderId());
+		String sceneinfo = "{\"h5_info\": {\"type\":\"Wap\",\"wap_name\": \"dxjc\",\"wap_url\": \"www.jingzh.top\"}}";
 		param.put("scene_info",sceneinfo);
-
 		try {
+
 			Map<String, String> r = wxpay.unifiedOrder(param);
 			logger.info("返回微信支付:"+r.toString());
+			if(r != null  && "SUCCESS".equals(r.get("result_code"))){
+				Map<String, Object> map = FastMap.newInstance();
+				map.put("code", "200");
+				map.put("msg", "处理成功");
+				map.put("reqUrl", r.get("mweb_url"));
+				return map;
+			}else{
+				Map<String, Object> map = FastMap.newInstance();
+				map.put("code", "400");
+				map.put("msg", "处理失败");
+				return map;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Map<String, Object> map = FastMap.newInstance();
+		map.put("code", "400");
+		map.put("msg", "处理失败");
+		return map;
 
-		return null;
 	}
 
 	@Override

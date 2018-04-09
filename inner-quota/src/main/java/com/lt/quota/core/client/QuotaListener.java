@@ -13,6 +13,7 @@ import io.netty.channel.EventLoop;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
@@ -32,6 +33,8 @@ public class QuotaListener implements OnMessageListener {
 
     @Override
     public void onMessage(ChannelHandlerContext ctx, String msg) {
+        logger.info(msg);
+        /*
         JSONObject msgJson =  JSONObject.parseObject(msg);
         String data =  msgJson.getString("DATA");
         String cmd = msgJson.getString("CMD");
@@ -39,7 +42,7 @@ public class QuotaListener implements OnMessageListener {
             NewQuotaBean quotaBean =  FastJsonUtils.getJson(data, NewQuotaBean.class);
             QuotaBean quotaBean1 = new QuotaBean(quotaBean);
             CleanInstance.getInstance().setInnerMarketQueue(quotaBean1);
-        }
+        }*/
     }
 
 
@@ -50,15 +53,20 @@ public class QuotaListener implements OnMessageListener {
 
     @Override
     public void onActive(ChannelHandlerContext ctx) {
+
         logger.info("连接到服务器:"+ctx.channel().remoteAddress());
 
+        /*
         //发送订阅所有行情的消息
         Map map =  MapUtils.getMap("2000",null);
         ctx.writeAndFlush(FastJsonUtils.toJson(map));
 
         //启动心跳定时器
         EventLoop loop =  ctx.channel().eventLoop();
-        loop.scheduleAtFixedRate(new HeartBeatRunnable(ctx),0,5, TimeUnit.SECONDS);
+        loop.scheduleAtFixedRate(new HeartBeatRunnable(ctx),0,5, TimeUnit.SECONDS);*/
+        Map map =new HashMap();
+        map.put("code","GC1806");
+        ctx.writeAndFlush(FastJsonUtils.toJson(map));
     }
 
     @Override

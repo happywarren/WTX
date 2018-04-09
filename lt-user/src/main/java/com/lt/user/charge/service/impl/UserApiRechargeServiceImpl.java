@@ -1,13 +1,14 @@
 package com.lt.user.charge.service.impl;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.lt.model.fund.FundIoCashRecharge;
+import com.lt.util.utils.*;
+import com.lt.util.utils.wxpay.WXPayConfigImpl;
+import com.lt.util.utils.wxpay.WXPayConstants;
+import com.lt.util.utils.wxpay.WXPayUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +38,6 @@ import com.lt.user.core.service.IUserBankInfoService;
 import com.lt.user.core.service.impl.UserApiAutoRechargeServiceImpl;
 import com.lt.util.error.LTException;
 import com.lt.util.error.LTResponseCode;
-import com.lt.util.utils.DateTools;
-import com.lt.util.utils.MapUtils;
-import com.lt.util.utils.SpringUtils;
-import com.lt.util.utils.StringTools;
 import com.lt.util.utils.crypt.MD5Util;
 import com.lt.util.utils.iapppay.sign.SignHelper;
 import com.pay.merchant.MerchantClient;
@@ -552,7 +549,41 @@ public class UserApiRechargeServiceImpl implements IUserApiRechargeService {
 			throw new LTException("处理支付宝回调异常");
 		}
 
-
-
 	}
+
+	@Transactional
+	public void userReviceWeixinH5Response(Map<String, Object> map) throws LTException {
+		try{
+			logger.info("微信接收的结果参数:{}", JSONTools.toJSON(map));
+			WXPayConfigImpl wxPayConfig = WXPayConfigImpl.getInstance();
+			Map<String,String> wxMap = new HashMap<String,String>();
+			for(Map.Entry<String,Object> entry : map.entrySet()){
+				wxMap.put(entry.getKey(),entry.getValue().toString());
+			}
+			String out_trade_no =  String.valueOf(wxMap.get("out_trade_no"));
+			//微信交易号
+			String trade_no = String.valueOf(wxMap.get("transaction_id")) ;
+			double amt =  DoubleUtils.div(Double.valueOf(wxMap.get("total_fee")),100);
+			String return_code =  wxMap.get("return_code");
+			String result_code =  wxMap.get("result_code");
+			if("SUCCESS".equals(return_code) && result_code.equals("SUCCESS")){
+				boolean isValid =  WXPayUtil.isSignatureValid(wxMap,wxPayConfig.getKey(), WXPayConstants.SignType.HMACSHA256);
+				if(isValid){
+					FundIoCashRecharge fundIoCashRecharge =  this.fundAccountServiceImpl.qryFundIoCashRechargeByPayId(out_trade_no);
+					logger.info("支付成功,订单号{}", out_trade_no);
+					FundOptCode optCode = this.userRechargeServiceImpl.getFundOptCodeByThirdOptCode(fundIoCashRecharge.getThirdOptcode());
+					this.fundAccountServiceImpl.doUserRecharge(out_trade_no, trade_no, optCode, DoubleUtils.scaleFormat(amt,2));
+				}else{
+					//签名校验失败
+					logger.info("校验签名失败,订单号{}", out_trade_no);
+					throw new LTException("校验签名失败");
+				}
+			}
+
+		}catch (Exception e){
+			e.printStackTrace();
+			throw new LTException("处理微信支付回调异常");
+		}
+	}
+
 }

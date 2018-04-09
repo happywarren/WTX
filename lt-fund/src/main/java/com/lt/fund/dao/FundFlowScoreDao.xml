@@ -52,6 +52,8 @@
          limit #{limit1}, #{limit2}
 	</select>
 
+
+
 	<!-- 查询用户资金流水 -->
 	<select id="findFundFlowListByOrder" parameterType="java.util.Map" resultType="com.lt.vo.fund.FundFlowVo">
 		select remark ,amount,create_date from fund_flow_score where user_id = #{userId} and external_id = #{orderId} order by create_date desc ,id desc

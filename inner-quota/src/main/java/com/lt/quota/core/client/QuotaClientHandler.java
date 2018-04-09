@@ -41,6 +41,8 @@ public class QuotaClientHandler extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         logger.debug("收到服务器 {} 消息 {}", ctx.channel().remoteAddress(), msg);
+        logger.info(msg);
+        /*
         JSONObject jsonObject = JSON.parseObject(msg);
         String cmd =  jsonObject.getString("CMD");
         JSONObject data = jsonObject.getJSONObject("DATA");
@@ -53,7 +55,7 @@ public class QuotaClientHandler extends SimpleChannelInboundHandler<String> {
             }
         }else{
             onMessageListener.onMessage(ctx,msg);
-        }
+        }*/
 
     }
 

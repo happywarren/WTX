@@ -34,7 +34,7 @@ public class RfClientListener implements OnMessageListener {
     @Override
     public void onMessage(ChannelHandlerContext ctx, String msg) {
         SocketAddress socketAddress = ctx.channel().remoteAddress();
-        logger.debug("收到RF服务器 {} message: {} ", ctx.channel().remoteAddress(), msg);
+        logger.debug("行情信息: {} message: {} ", ctx.channel().remoteAddress(), msg);
         JSONObject jsonData = JSON.parseObject(msg);
         String cmd = jsonData.getString("CMDID");
         //处理行情数据
@@ -50,7 +50,6 @@ public class RfClientListener implements OnMessageListener {
             BigDecimal changeRate = NumberUtil.formatBigDecimal(new BigDecimal(changeRateStr),2);
             quotaBean.setChangeRate(NumberUtil.toStr(changeRate));
             quotaBean.setPlate(1);
-            System.out.println(quotaBean.toString());
             CleanInstance.getInstance().setMarketDataQueue(quotaBean);
         } else if ("1111".equals(cmd)) {
             Channel channel = ctx.channel();
@@ -83,7 +82,7 @@ public class RfClientListener implements OnMessageListener {
         final EventLoop loop = ctx.channel().eventLoop();
         heartBeatScheduler = loop.scheduleAtFixedRate(new HeartBeatRunnable(handlerContext), 0, HEART_BEAT_PERIOD, TimeUnit.SECONDS);
         //定时发送 订阅 退订合约信息
-        productScheduler = loop.scheduleAtFixedRate(new ProductInfoRunnable(handlerContext), 0, 1, TimeUnit.HOURS);
+        productScheduler = loop.scheduleAtFixedRate(new ProductInfoRunnable(handlerContext), 0, 3, TimeUnit.MINUTES);  //三分钟订阅一次行情
     }
 
     @Override

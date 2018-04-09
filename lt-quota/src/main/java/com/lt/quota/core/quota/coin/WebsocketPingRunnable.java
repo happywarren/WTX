@@ -25,12 +25,13 @@ public class WebsocketPingRunnable implements Runnable {
 
     @Override
     public void run() {
+        /*
         if (Utils.isEmpty(message)) {
             message = "ping";
         }
         logger.info("WebsocketPingRunnable send {} ping {}", webSocketClient.getURI().getHost(), message);
         if (webSocketClient.isOpen()) {
             webSocketClient.send(message);
-        }
+        }*/
     }
 }

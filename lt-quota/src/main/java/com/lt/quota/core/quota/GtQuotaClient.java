@@ -86,7 +86,7 @@ public class GtQuotaClient extends QuoteClient{
                     System.out.println("contractNo="+contractNo+",exchangeNo="+exchangeNo+",commodityNo="+commodityNo);
                 }*/
             }
-        },0,5, TimeUnit.HOURS);
+        },0,1, TimeUnit.HOURS);
 
     }
 

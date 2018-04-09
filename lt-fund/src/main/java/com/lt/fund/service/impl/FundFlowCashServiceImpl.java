@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import com.lt.fund.dao.FundIoCashRechargeDao;
+import com.lt.model.fund.FundIoCashRecharge;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,8 @@ public class FundFlowCashServiceImpl implements IFundFlowCashService {
 	private FundFlowCashDao fundFlowCashDao;
 	@Autowired
 	private FundMainCashDao fundMainCashDao;
+	@Autowired
+	private FundIoCashRechargeDao fundIoCashRechargeDao;
 	
 	@Override
 	public boolean doDeferFundDeductions(double deferFund, String orderId,
@@ -219,5 +223,9 @@ public class FundFlowCashServiceImpl implements IFundFlowCashService {
 		String amount = fundFlowCashDao.selectHoldFundByOrderId(orderId);
 		return DoubleTools.scaleFormat(Double.valueOf(amount));
 	}
-	
+
+	@Override
+	public List<FundIoCashRecharge> findRechargeByUserId(Map<String, Object> params) {
+		return fundIoCashRechargeDao.findRechargeByUserId(params);
+	}
 }

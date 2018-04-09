@@ -213,10 +213,8 @@ public interface IFundAccountApiService extends Serializable {
 	/**
 	 * 	内部存取审核
 	 * @param id
-	 * @param userId
 	 * @param modifyUserId
 	 * @param status
-	 * @param thirdOptCode
 	 * @param remark
 	 * @throws LTException    
 	 * @return:       void    
@@ -229,10 +227,8 @@ public interface IFundAccountApiService extends Serializable {
 	/**
 	 * 	内部存取审核
 	 * @param id
-	 * @param userId
 	 * @param modifyUserId
 	 * @param status
-	 * @param thirdOptCode
 	 * @param remark
 	 * @throws LTException    
 	 * @return:       void    
@@ -547,11 +543,7 @@ public interface IFundAccountApiService extends Serializable {
 	
 	/**
 	 * 登记智付信息
-	 * @param info
-	 * @param amount
-	 * @param responseUrl
-	 * @param thirdOptcode
-	 * @param rate
+	 * @param paramMap
 	 * @throws Exception
 	 */
 	public Map<String, Object> dinPayCreate(Map<String, Object> paramMap) throws LTException;
@@ -579,4 +571,12 @@ public interface IFundAccountApiService extends Serializable {
 	 * @throws LTException
 	 */
 	public void callbackForYiBao(Map<String,String> map)throws LTException;
+
+
+	/**
+	 * 获取充值记录
+	 * @param params
+	 * @return
+	 */
+	public List<FundIoCashRecharge> findRechargeByUserId(Map<String, Object> params);
 }

@@ -17,6 +17,7 @@ public class WebsocketPongHandle {
     private final Map<String, Long> PONG_MAP = new ConcurrentHashMap<>();
 
     public void pongHandle(WebSocketClient webSocketClient) {
+        /*
         long timestamp = System.currentTimeMillis();
         String host = webSocketClient.getURI().getHost();
         long lastTimestamp = 0L;
@@ -27,6 +28,6 @@ public class WebsocketPongHandle {
                 webSocketClient.close();
             }
         }
-        PONG_MAP.put(host, timestamp);
+        PONG_MAP.put(host, timestamp);*/
     }
 }

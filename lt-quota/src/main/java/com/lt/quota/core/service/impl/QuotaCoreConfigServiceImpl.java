@@ -60,7 +60,12 @@ public class QuotaCoreConfigServiceImpl implements IQuotaCoreConfigService {
             dataMap.put("exchangeNo", exchangeCode);
             dataMap.put("commodityNo", shortCode);
             dataMap.put("contractNo", productCode.replace(shortCode, ""));
+            //对0.1合约不订阅行情
+            if(shortCode.endsWith("_M")){
+                continue;
+            }
             dataList.add(dataMap);
+
         }
         return dataList;
     }
@@ -86,6 +91,9 @@ public class QuotaCoreConfigServiceImpl implements IQuotaCoreConfigService {
             dataMap.put("exchangeNo", exchangeCode);
             dataMap.put("commodityNo", shortCode);
             dataMap.put("contractNo", productCode.replace(shortCode, ""));
+            if(shortCode.endsWith("_M")){   //对于0.1不订阅行情
+                continue;
+            }
             dataList.add(dataMap);
         }
         return dataList;
@@ -112,6 +120,9 @@ public class QuotaCoreConfigServiceImpl implements IQuotaCoreConfigService {
             dataMap.put("exchangeNo", exchangeCode);
             dataMap.put("commodityNo", shortCode);
             dataMap.put("contractNo", productCode.replace(shortCode, ""));
+            if(shortCode.endsWith("_M")){   //对于0.1不订阅行情
+                continue;
+            }
             dataList.add(dataMap);
         }
         return dataList;
