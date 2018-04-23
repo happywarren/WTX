@@ -69,6 +69,7 @@ public class RfClientListener implements OnMessageListener {
     @Override
     public void onActive(ChannelHandlerContext ctx) {
         handlerContext = ctx;
+
         try {
             Thread.sleep(10000);
             //立即订阅

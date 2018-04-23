@@ -39,6 +39,6 @@ public class RfTcpClientMain {
             rfTcpClient.start(quotaCoreConfigModel.getHost(), quotaCoreConfigModel.getPort());
         }*/
       //  rfTcpClient.start(sysConfig.getCserverIp(), sysConfig.getCserverPort());
-        TaoBaoQuota.startQuota(); //启动行情
+       // TaoBaoQuota.startQuota(); //启动行情
     }
 }

@@ -867,12 +867,8 @@ public class FundAccountApiServiceImpl implements IFundAccountApiService {
 	}
 
 	@Override
-	public void callbackForYiBao(Map<String, String> map) throws LTException {
-
-	}
-
-	@Override
-	public List<FundIoCashRecharge> findRechargeByUserId(Map<String, Object> params) {
+	public List<FundIoCashRecharge> findRechargePage(Map<String, Object> params) throws LTException {
 		return fundFlowCashServiceImpl.findRechargeByUserId(params);
 	}
+
 }

@@ -254,7 +254,7 @@ public class NewClientOperator {
         if (!Utils.isNotEmpty(set)) {
             return;
         }
-        logger.info("订阅商品 {} 行情 {} 数量: {}", product, json, set.size());
+       // logger.info("订阅商品 {} 行情 {} 数量: {}", product, json, set.size());
         Set<String> rmSet = new HashSet<String>();
         for (String userId : set) {
             Channel channel = NewChannelManger.getInstance().getChannel(userId);

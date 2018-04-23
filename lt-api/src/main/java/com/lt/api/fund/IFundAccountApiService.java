@@ -564,19 +564,11 @@ public interface IFundAccountApiService extends Serializable {
 	 */
 	public void swiftPassCallback(Map<String,String> map)throws LTException;
 
-	/**
-	 *
-	 * 易宝提现回调
-	 * @param map
-	 * @throws LTException
-	 */
-	public void callbackForYiBao(Map<String,String> map)throws LTException;
-
 
 	/**
 	 * 获取充值记录
 	 * @param params
 	 * @return
 	 */
-	public List<FundIoCashRecharge> findRechargeByUserId(Map<String, Object> params);
+	public List<FundIoCashRecharge> findRechargePage(Map<String, Object> params)throws LTException;
 }

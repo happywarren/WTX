@@ -77,14 +77,6 @@ public class GtQuotaClient extends QuoteClient{
                     }
                 }
 
-                //System.out.println("size="+productListOuter.size());
-                /*
-                for(int i=0;i<productListOuter.size();i++){
-                    String contractNo =  outerList.get(i).get("contractNo").toString();
-                    String exchangeNo =  outerList.get(i).get("exchangeNo").toString();
-                    String commodityNo = outerList.get(i).get("commodityNo").toString();
-                    System.out.println("contractNo="+contractNo+",exchangeNo="+exchangeNo+",commodityNo="+commodityNo);
-                }*/
             }
         },0,1, TimeUnit.HOURS);
 
